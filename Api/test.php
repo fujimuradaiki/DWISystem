@@ -1,6 +1,4 @@
 <?php
  //test
-//imaizumi
-
 //fujimura
 ?>
