@@ -15,3 +15,17 @@
 
 *************************************
 */
+
+
+/*//////////////////////////////////
+
+ *関数名 ready
+
+ *概要 コンストラクタ
+
+  //////////////////////////////////*/
+$(document).ready(function(){
+	var elem = document.getElementById("#ImageTest");
+
+	elem.src = "../User/TestUser/1.png";
+})
