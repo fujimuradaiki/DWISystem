@@ -5,16 +5,17 @@ class connectDB{
     private $DBuser ='root';
     private $DBpass ='tgoda100100';
     private $DBhost ='192.168.63.128';
-    private $DBname ='DWISystemdb';
+    private $DBname ='DWISystem_testdb';
 
     public  $dbo;
 
     public function __construct(){
         try{
             //データベースに接続
-            $this->dbo = new PDO('mysql:host=192.168.63.128; dbname=clientdb; charset=utf8mb4',$this->DBuser,$this->DBpass);
+            $this->dbo = new PDO('mysql:host=192.168.63.128; dbname=DWISystem_testdb; charset=utf8mb4',$this->DBuser,$this->DBpass);
         }catch(PDOException $e){
             echo $e->getMessage();
+           // echo "接続OK";
             exit;
         };
     }
