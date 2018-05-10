@@ -9,19 +9,31 @@
 		<script type="text/javascript"src="../Lib/jquery.js"></script>
 		<script type="text/javascript"src="../Lib/vue.js"></script>
 
-		<!-- Vue.js 開発バージョン
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
-		<!-- Vue.js 本番バージョン
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-
-
-
 	</head>
 
 	<body>
 
 		<p>藤村テスト用HTML<br><br></p>
-		<p>画像表示テスト 動的にフォルダから画像を取得し表示</p>
+
+
+		<form id ="testForm">
+
+			<p>
+				<input type="radio"name="sortType"value="insert_at:DESC"checked="checked">NEW
+				<input type="radio"name="sortType"value="insert_at:ASC">OLD
+				<input type="radio"name="sortType"value="rank:DESC">POPUARIY
+			</p>
+			<p>
+				<input type="checkbox"name ="category1"value="1"id="c1"checked="checked">キャラクタ
+				<input type="checkbox"name ="category2"value="2"id="c2"checked="checked">背景
+				<input type="checkbox"name ="category3"value="3"id="c3"checked="checked">アイテム
+			</p>
+
+		</form>
+
+		<button id="testButton"type="button"name="action"value="action">フォーム情報取得</button>
+
+		<p>画像表示テスト<br>動的にフォルダから画像を取得し表示</p>
 		<div id = ImageOutPutTest>
 		</div>
 
