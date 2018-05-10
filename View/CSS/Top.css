@@ -1,17 +1,222 @@
 /*
 *************************************
 
-*åå‰ : Top.css
+*–¼‘O : Top.css
 
-*æ¦‚è¦ : Topãƒšãƒ¼ã‚¸ã®CSSãƒ•ã‚¡ã‚¤ãƒ«
+*ŠT—v : Topƒy[ƒW‚ÌCSSƒtƒ@ƒCƒ‹
 
-*ä½œæˆæ—¥ : 2018/05/09
+*ì¬“ú : 2018/05/09
 
-*ä½œæˆè€… : è—¤æ‘ å¤§è¼
+*ì¬Ò : “¡‘º ‘å‹P
 
-*æœ€çµ‚æ›´æ–°æ—¥ : 2018/05/09
+*ÅIXV“ú : 2018/05/09
 
-*æœ€çµ‚æ›´æ–°è€… : è—¤æ‘ å¤§è¼
+*ÅIXVÒ : “¡‘º ‘å‹P
 
 *************************************
 */
+
+.clearfix:after{
+	display:block;
+  height:0;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+
+/*ƒXƒNƒ[ƒ‹ƒo[Á‹*/
+::-webkit-scrollbar{
+  width:0px;
+}
+
+/*ƒ‰ƒCƒgƒ{ƒbƒNƒX‚ğŠJ‚¢‚½‚ÉƒXƒNƒ[ƒ‹‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ég—p*/
+.overflow{
+  overflow:hidden;
+}
+body{
+  margin:0;
+}
+/*------------------------------- ƒwƒbƒ_[ŠJn@-------------------------------*/
+header{
+/*  min-width:1280px;*/
+  width:100%;
+  height:80px;
+  position:fixed;
+  z-index:1;
+  background-color:#111;
+}
+
+nav ul{
+  float: right;
+  margin-right:80px;
+}
+
+nav ul li{
+  float: left;
+  margin:45px 0 0 100px;
+}
+
+nav ul li a{
+  color:#fff;
+  text-decoration: none;
+}
+
+.bg-slider {
+	width: 100vw;
+	height: 100vh;
+	background-position:center center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bg-slider__title{
+	color: #fff;
+	font-size: 48px;
+	line-height: 1.5;
+	font-weight: bold;
+	text-align:center;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.top_btn{
+  position: absolute;
+  top: 60%;
+  left:42%;
+}
+
+.login_btn{
+  width: 120px;
+  height: 40px;
+  position: relative;
+  float:right;
+  margin:20px 20px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_btn2{
+  width: 150px;
+  height: 45px;
+  position: relative;
+  right: 6%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.touroku_btn{
+  width: 150px;
+  height: 45px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.touroku_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.scroll a {
+  padding-top: 60px;
+}
+.scroll a span {
+  position: absolute;
+  top: 200px;
+  left: 40%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+.scroll a span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+.scroll a span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  content: '';
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+  border-radius: 100%;
+  opacity: 0;
+  -webkit-animation: sdb 3s infinite;
+  animation: sdb 3s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.scrool{
+  
+}

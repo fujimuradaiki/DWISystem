@@ -1,17 +1,45 @@
-<!--
-*************************************
-
-*名前 : Top.html
-
-*概要 : TopページのHTMLファイル
-
-*作成日 : 2018/05/09
-
-*作成者 : 藤村 大輝
-
-*最終更新日 : 2018/05/09
-
-*最終更新者 : 藤村 大輝
-
-*************************************
--->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>デザイン紹介システム</title>
+<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
+<link href="../CSS/Top.css" rel="stylesheet" type="text/css"/>
+<script src="../JS/jquery.3.3.1.js"></script>
+<script src="../JS/jquery.bgswitcher.js"></script>
+<script>
+  jQuery(function($) {
+      $('.bg-slider').bgSwitcher({
+          images: ['../images/background1.jpg','../images/background2.png','../images/background3.jpg'], // 切り替える背景画像を指定
+      });
+  });
+</script>
+</head>
+<body>
+  <header class="clearfix">
+      <div class="nav">
+        <nav>
+          <input class="login_btn" type="button" onClick="onClickEventSearch()" value="ログイン" width = 300px height = 100px; >
+          <ul>
+            <li><a href="#">TOP</a></li>
+            <li><a href="#">作品一覧</a></li>
+            <li><a href="#">制作者一覧</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+  <div class="bg-slider">
+    <div class="title">
+  <h1 class="bg-slider__title">DESING INTRODUCTION</h1>
+    </div>
+</div>
+  <div class="top_btn">
+    <input class="login_btn2" type="button" onClick="onClickEventSearch()" value="ログイン" width = 300px height = 100px; >
+    <input class="touroku_btn" type="button" onClick="onClickEventSearch()" value="新規登録" width = 300px height = 100px; >
+    <div class="scroll">
+     <a href="#"><span></span>Scroll</a>
+    </div>
+  </div>
+  
+</body>
+</html>
