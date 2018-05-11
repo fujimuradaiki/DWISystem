@@ -125,7 +125,9 @@ function getform(){
 
 *関数名 runSearch
 
-*概要 画像表示
+*概要 フォーム情報をPHPに渡して
+      PHPから返ってきた情報をもとに
+      画像表示
 
 //////////////////////////////////
 */
@@ -133,7 +135,7 @@ function runSearch(){
 	var data = {'model':'images','action':'imageList',data:getform()};
 	console.log(data);
 	$.ajax({
-		url:"/DWISystem_TEST(fujimura)/Api/controller.php",
+		url:"../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
@@ -145,13 +147,14 @@ function runSearch(){
 			var imageId = data[i].id;
 			var categoryName = data[i].categoryName;
 			var title = data[i].title;
+			var insert_at = data[i].insert_at;
 
 			//画像表示
 			$div.append($
-				("<img>").attr("src",'/DWISystem_TEST(fujimura)/User/'+ userName +'/'+ imageId +'.png')
+				("<img>").attr("src","/DWISystem_TEST(fujimura)/User/"+ userName +"/"+ imageId +".png")
 			);
-			$div.append($
-				("<p>" + title + " " + categoryName + "</p>")
+			$div.append($//仮でタイトルとカテゴリ名と投稿日時を表示
+				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
 			);
 
 			//5件表示ごとに改行
