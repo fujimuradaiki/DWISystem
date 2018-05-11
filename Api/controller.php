@@ -7,16 +7,16 @@ header('Content-type: application/json');
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
-      $classname = new $_POST['model'];
-      $classname->controller($_POST['action']);
+//      $classname = new $_POST['model'];
+//      $classname->controller($_POST['action']);
 
 
 }else{
     //Ajaxからの値がないので現在はここに記述し動かしている
-//     $test_model = "images";
-//     $test_action = "imageList";
-//     $classname = new $test_model;
-//     $classname->controller($test_action);
+     $test_model = "images";
+     $test_action = "imageList";
+     $classname = new $test_model;
+     $classname->controller($test_action);
 
 }
 ?>

@@ -14,9 +14,6 @@ class users{
     }
 
 
-
-
-
     //フォルダの作成
     public function createDirectory(){
         $result = "";
