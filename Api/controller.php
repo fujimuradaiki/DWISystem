@@ -1,20 +1,22 @@
 <?php
 //require_once ('connectdb.php');
 require_once ('users.php');
+require_once ('images.php');
 
 header('Content-type: application/json');
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 
-      //$classname = new $_POST['model'];
-      //$classname->controller($_POST['action']);
+      $classname = new $_POST['model'];
+      $classname->controller($_POST['action']);
 
 
 }else{
-    $test_model = "user";
-    $test_action = "test";
-    $classname = new $test_model;
-    $classname->controller($test_action);
+    //Ajaxからの値がないので現在はここに記述し動かしている
+//     $test_model = "images";
+//     $test_action = "imageList";
+//     $classname = new $test_model;
+//     $classname->controller($test_action);
 
 }
 ?>
