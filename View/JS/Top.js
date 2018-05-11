@@ -32,24 +32,29 @@ $(document).ready(function(){
 
 	//ajax/////////////////////////////////////////////////////////////////
 
-	var data = {'model':'image','action':'imageList',data:getform()};
+	var data = {'model':'images','action':'imageList',data:getform()};
 	console.log(data);
-/*
-	$ajax({
-		url:"/DWISystem/Api/controller.php",
+
+	$.ajax({
+		url:"/DWISystem_TEST(fumimura)/Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
 	}).done(function(data){
 		alert(data);
+		for(var i = 0;i < data.length;i++){
+
+
+
+		}
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
 
-	/////////////////////////////////////////////////////////////////////*/
+	/////////////////////////////////////////////////////////////////////
 
 
-
+/*
 	//画像表示テスト
 	var $div = $('#ImageOutPutTest');
 	var userName = "TestUser";
@@ -65,7 +70,7 @@ $(document).ready(function(){
 			$div.append("<br>");
 		}
 	}
-
+*/
 
 });
 
@@ -150,6 +155,7 @@ function getform(){
 
 		}
 	};
+	console.clear();
 	console.log(param);
 	return param;
 }
