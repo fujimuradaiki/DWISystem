@@ -30,54 +30,47 @@
 $(document).ready(function(){
 
 
-	//ajax/////////////////////////////////////////////////////////////////
-
 	var data = {'model':'images','action':'imageList',data:getform()};
-	console.log(data);
 
 	$.ajax({
-		url:"/DWISystem_TEST(fumimura)/Api/controller.php",
+		url:"/DWISystem_TEST(fujimura)/Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
 	}).done(function(data){
-		alert(data);
+		var $div = $('#ImageOutPutTest');
 		for(var i = 0;i < data.length;i++){
 
+			var userName = data[i].userName;
+			var imageId = data[i].id;
+			var categoryName = data[i].categoryName;
+			var title = data[i].title;
 
+			//画像表示
+			$div.append($
+				("<img>").attr("src",'/DWISystem_TEST(fujimura)/User/'+ userName +'/'+ imageId +'.png')
+			);
+			$div.append($
+				("<p>" + title + " " + categoryName + "</p>")
+			);
 
+			//5件表示ごとに改行
+			//if((i+1) % 5 == 0){
+				//$div.append("<br>");
+			//}
 		}
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
 
-	/////////////////////////////////////////////////////////////////////
-
-
-/*
-	//画像表示テスト
-	var $div = $('#ImageOutPutTest');
-	var userName = "TestUser";
-	var id = 1;
-
-	for(var i = 1;i <= 7;i++){
-		$div.append($
-			("<img>").attr("src",'/DWISystem_TEST/User/'+ userName +'/'+ i +'.png')
-		);
-
-		//5件ごとに改行させるテスト
-		if(i % 5 == 0){
-			$div.append("<br>");
-		}
-	}
-*/
 
 });
 
-//ボタン//////////////////////////////////////////////////////////////////
+//フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
 $('#testButton').on("click",function(){
 
-	getform();
+	console.clear();
+	console.log(getform());
 });
 
 
@@ -155,8 +148,7 @@ function getform(){
 
 		}
 	};
-	console.clear();
-	console.log(param);
+
 	return param;
 }
 
