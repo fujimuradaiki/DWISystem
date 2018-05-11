@@ -30,6 +30,26 @@
 $(document).ready(function(){
 
 
+	//ajax/////////////////////////////////////////////////////////////////
+
+	var data = {'model':'image','action':'imageList',data:getform()};
+	console.log(data);
+/*
+	$ajax({
+		url:"/DWISystem/Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data
+	}).done(function(data){
+		alert(data);
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});
+
+	/////////////////////////////////////////////////////////////////////*/
+
+
+
 	//画像表示テスト
 	var $div = $('#ImageOutPutTest');
 	var userName = "TestUser";
@@ -46,7 +66,16 @@ $(document).ready(function(){
 		}
 	}
 
-})
+
+});
+
+//ボタン//////////////////////////////////////////////////////////////////
+$('#testButton').on("click",function(){
+
+	getform();
+});
+
+
 
 
 /*
@@ -93,3 +122,36 @@ $('#file1').on("change",function(e){
 	 alert('ファイル名 : ' + fileName + '\nファイルサイズ : ' + fileSize + ' bytes\nファイルタイプ : ' + fileType);
 
 });
+
+
+/*
+///////////////////////////////////
+
+*関数名 getform
+
+*概要 フォーム情報取得
+
+*戻り値 フォーム情報を格納した連想配列
+
+//////////////////////////////////
+*/
+function getform(){
+	var $sortType = $("input[name='sortType']:checked").val();
+	var $category1 = $("#c1").prop("checked");
+	var $category2 = $("#c2").prop("checked");
+	var $category3 = $("#c3").prop("checked");
+
+
+	var param = {
+		0:{name:'sortType',value:$sortType},
+		1:{category1:{name:'charactor',value:$category1},
+		   category2:{name:'backGround',value:$category2},
+		   category3:{name:'item',value:$category3}
+
+		}
+	};
+	console.log(param);
+	return param;
+}
+
+
