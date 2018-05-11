@@ -46,9 +46,9 @@ $('#testButton').on("click",function(){
 /*
 ///////////////////////////////////
 
- *関数名 InputButton on click
+ *関数名
 
- *概要 アップロード画像選択
+ *概要 アップロードファイルの画像判定
 
 //////////////////////////////////
 */
@@ -141,6 +141,10 @@ function runSearch(){
 		data:data
 	}).done(function(data){
 		var $div = $('#ImageOutPutTest');
+
+		//表示中の画像を削除
+		$div.empty();
+
 		for(var i = 0;i < data.length;i++){
 
 			var userName = data[i].userName;
@@ -151,11 +155,12 @@ function runSearch(){
 
 			//画像表示
 			$div.append($
-				("<img>").attr("src","/DWISystem_TEST(fujimura)/User/"+ userName +"/"+ imageId +".png")
-			);
-			$div.append($//仮でタイトルとカテゴリ名と投稿日時を表示
+				("<img>").attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				//("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
+				//仮でタイトルとカテゴリ名と投稿日時を表示
 				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
 			);
+
 
 			//5件表示ごとに改行
 			//if((i+1) % 5 == 0){
