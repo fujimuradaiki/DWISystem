@@ -9,7 +9,7 @@
 
 *作成者 : 藤村 大輝
 
-*最終更新日 : 2018/05/09
+*最終更新日 : 2018/05/11
 
 *最終更新者 : 藤村 大輝
 
@@ -29,47 +29,14 @@
 */
 $(document).ready(function(){
 
-
-	var data = {'model':'images','action':'imageList',data:getform()};
-
-	$.ajax({
-		url:"/DWISystem_TEST(fujimura)/Api/controller.php",
-		dataType:'json',
-		type:"POST",
-		data:data
-	}).done(function(data){
-		var $div = $('#ImageOutPutTest');
-		for(var i = 0;i < data.length;i++){
-
-			var userName = data[i].userName;
-			var imageId = data[i].id;
-			var categoryName = data[i].categoryName;
-			var title = data[i].title;
-
-			//画像表示
-			$div.append($
-				("<img>").attr("src",'/DWISystem_TEST(fujimura)/User/'+ userName +'/'+ imageId +'.png')
-			);
-			$div.append($
-				("<p>" + title + " " + categoryName + "</p>")
-			);
-
-			//5件表示ごとに改行
-			//if((i+1) % 5 == 0){
-				//$div.append("<br>");
-			//}
-		}
-	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("error");
-	});
-
+	runSearch();
 
 });
 
 //フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
 $('#testButton').on("click",function(){
-
 	console.clear();
+	runSearch();
 	console.log(getform());
 });
 
@@ -153,3 +120,46 @@ function getform(){
 }
 
 
+/*
+///////////////////////////////////
+
+*関数名 runSearch
+
+*概要 画像表示
+
+//////////////////////////////////
+*/
+function runSearch(){
+	var data = {'model':'images','action':'imageList',data:getform()};
+	console.log(data);
+	$.ajax({
+		url:"/DWISystem_TEST(fujimura)/Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data
+	}).done(function(data){
+		var $div = $('#ImageOutPutTest');
+		for(var i = 0;i < data.length;i++){
+
+			var userName = data[i].userName;
+			var imageId = data[i].id;
+			var categoryName = data[i].categoryName;
+			var title = data[i].title;
+
+			//画像表示
+			$div.append($
+				("<img>").attr("src",'/DWISystem_TEST(fujimura)/User/'+ userName +'/'+ imageId +'.png')
+			);
+			$div.append($
+				("<p>" + title + " " + categoryName + "</p>")
+			);
+
+			//5件表示ごとに改行
+			//if((i+1) % 5 == 0){
+				//$div.append("<br>");
+			//}
+		}
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});
+}
