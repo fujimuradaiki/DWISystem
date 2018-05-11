@@ -9,9 +9,9 @@ class user{
             echo "「users.php」関数がありません";
             exit();
         }
-<<<<<<< HEAD
 
-=======
+
+
     }
 
 
@@ -36,7 +36,7 @@ class user{
             $result ="そのディレクトリはすでに存在します";
         }
         echo $result."\n".$directoryPath;
->>>>>>> origin/imaizumi
+
     }
 
 }
