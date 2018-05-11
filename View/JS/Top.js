@@ -135,7 +135,7 @@ function runSearch(){
 	var data = {'model':'images','action':'imageList',data:getform()};
 	console.log(data);
 	$.ajax({
-		url:"../Api/controller.php",
+		url:"../../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
