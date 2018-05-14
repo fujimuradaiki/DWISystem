@@ -11,13 +11,13 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
         $classname = new $_POST['model'];
         $classname->controller($_POST['action'],$_POST['data']);
 }else{
-    echo "else!";
+    //echo "else!";
 
-      //  $test_model = 'images';
-       // $test_action = 'imageList';
-       // $test_data = '';
-       // $classname = new $test_model;
-      //  $classname->controller($test_action,$test_data);
+//         $test_model = 'images';
+//         $test_action = 'imageList';
+//         $test_data = '';
+//         $classname = new $test_model;
+//         $classname->controller($test_action,$test_data);
 
 }
 ?>

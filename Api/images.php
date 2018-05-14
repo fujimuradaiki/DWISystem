@@ -74,7 +74,7 @@ class images{
 
          while($val = $result->fetch(PDO::FETCH_ASSOC)){
               $imagesArray[] = array(
-              'Id' => $val['image.id'],
+              'Id' => $val['id'],
               'Title' => $val['title'],
               'UserName' => $val['userName'],
               'categoryName' => $val['categoryName'],
