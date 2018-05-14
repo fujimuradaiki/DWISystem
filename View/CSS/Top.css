@@ -35,6 +35,7 @@
 }
 body{
   margin:0;
+  background-attachment: fixed;
 }
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
@@ -46,17 +47,17 @@ header{
   background-color:#111;
 }
 
-nav ul{
+.menu ul{
   float: right;
   margin-right:80px;
 }
 
-nav ul li{
+.menu ul li{
   float: left;
   margin:45px 0 0 100px;
 }
 
-nav ul li a{
+.menu ul li a{
   color:#fff;
   text-decoration: none;
 }
@@ -143,17 +144,24 @@ nav ul li a{
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.scroll{
+  margin-top: 180px;
+}
+
 .scroll a {
-  padding-top: 60px;
+  margin: 120px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 .scroll a span {
   position: absolute;
   top: 200px;
-  left: 40%;
+  left: 47%;
   width: 46px;
   height: 46px;
   margin-left: -23px;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 100%;
   box-sizing: border-box;
 }
@@ -165,8 +173,8 @@ nav ul li a{
   width: 16px;
   height: 16px;
   margin: -12px 0 0 -8px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   box-sizing: border-box;
@@ -217,6 +225,35 @@ nav ul li a{
   }
 }
 
-.scrool{
-  
+.scroll a:hover{
+  color:#0000ff;
+}
+
+.scroll a span:hover{
+  border:2px solid #0000ff;
+}
+
+.scroll a span:hover::after{
+  border-left:2px solid #0000ff;
+  border-bottom:2px solid #0000ff;
+}
+
+.icon ul{
+  width: 15%;
+  margin-top: -10px;
+  float: right;
+}
+
+.icon ul li{
+  float: left;
+  margin:45px 0 0 20px;
+}
+
+.icon ul li img{
+  width:30px;
+}
+
+.works{
+  width:100%;
+  height:1200px;
 }
