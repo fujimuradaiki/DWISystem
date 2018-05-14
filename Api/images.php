@@ -20,37 +20,36 @@ class images{
         //DBへの接続関数
         $pdo = new connectdb();
         //追加のsql文作成
-        $addSql = "";
-        //文字列 分割 (配列)　ソート 0:対象 1:ソート種類
+        $addSql ="";
+        $addSortSql = "";
 
-       // $pieces = explode(":", $postData[0]['value']);
+        if($postData != ""){
+            //文字列 分割 (配列)　ソート 0:対象 1:ソート種類
+         $pieces = explode(":", $postData[0]['value']);
 
-        //カテゴリーの検索フィルタ
-       // echo $postData[1]['category1']['value'];
-//         if($postData[1]['category1']['value'] == 'true'){
-//             $addSql .= "AND image.category = 1";
-//         }
-//         if($postData[1]['category2']['value'] == 'true'){
-//             if($addSql != ""){
-//                 $addSql .= " OR";
-//             }else{
-//                 $addSql .= " AND";
-//             }
-//                 $addSql .= " image.category = 2";
-//         }
-
-//         if($postData[1]['category3']['value'] == 'true'){
-//             if($addSql != ""){
-//                 $addSql .= " OR";
-//             }else{
-//                 $addSql .= " AND";
-//             }
-//             $addSql .= " image.category= 3";
-//         }
-//          //ソート種類
-//         if($pieces[0] != ""){
-//             $addSql .= " ORDER BY $pieces[0] $pieces[1]";
-//         }
+            //カテゴリーの検索フィルタ
+          //  echo $postData[1]['category1']['value'];
+            if($postData[1]['category1']['value'] == 'true'){
+                 $addSql .= " categoriesId = 1";
+            }
+            if($postData[1]['category2']['value'] == 'true'){
+                if($addSql != ""){
+                    $addSql .= " OR";
+                }
+                $addSql .= " categoriesId = 2";
+            }
+            if($postData[1]['category3']['value'] == 'true'){
+                if($addSql != ""){
+                    $addSql .= " OR";
+                }
+                $addSql .= " categoriesId = 3";
+              }
+              //ソート種類
+            if($pieces[0] != ""){
+                $addSortSql .= " ORDER BY $pieces[0] $pieces[1]";
+            }
+        }
+//
         //sqlの発行
         $sql = "SELECT
                 image.id,
@@ -66,10 +65,28 @@ class images{
                 WHERE
                 image.user_id = user.id
                 AND
-                image.category = category.categoriesId ";
-        //sortのSQL文を結合
-       // $sql .= $addSql;
-       //   echo $sql . "\n";
+                image.category = category.categoriesId
+                AND
+                image.user_id  = user.id";
+         //検索フィルタSQL作成
+        $categorySql .= " AND
+                          category.categoryName
+                          IN
+                          (select
+                           categoryName
+                           FROM
+                           categories
+                           WHERE "
+                           .$addSql.
+                           ")";
+         //チェックボックスがすべて押されなかった場合
+         if($addSql != ""){
+             //検索フィルターSQLの結合
+             $sql .= $categorySql;
+         }
+         //ソートSQLの結合
+         $sql .= $addSortSql;
+        // echo $sql . "\n";
          $result = $pdo->dbo->query($sql);
 
          while($val = $result->fetch(PDO::FETCH_ASSOC)){

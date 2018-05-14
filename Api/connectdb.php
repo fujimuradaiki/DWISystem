@@ -7,7 +7,6 @@ class connectdb{
     private $DBhost ='192.168.63.128';
     private $DBname ='DWISystem_testdb';
 
-
     public  $dbo;
 
     public function __construct(){
