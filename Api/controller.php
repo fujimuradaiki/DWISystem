@@ -6,10 +6,8 @@ require_once ('images.php');
 header('Content-type: application/json');
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-
-
-        $classname = new $_POST['model'];
-        $classname->controller($_POST['action'],$_POST['data']);
+       $classname = new $_POST['model'];
+      $classname->controller($_POST['action'],$_POST['data']);
 }else{
     //echo "else!";
 
