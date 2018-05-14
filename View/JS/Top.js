@@ -31,7 +31,6 @@ $(document).ready(function(){
 
 	runSearch();
 
-
 });
 
 //フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
@@ -43,7 +42,19 @@ $('#testButton').on("click",function(){
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+$(document).on("click",".images",function(){
+	var src = $(this).attr('src');
+	var $div = $('#ComentTest');
+	var cols = 30;
+	var rows = 10;
 
+	$div.empty();
+	$div.append($
+			("<img id='preview'>").attr("src",src),
+			("<textarea cols='"+cols+"'rows='"+rows+"'readonly>この画像は"+this.id+"です</textarea>")
+	);
+});
 /*
 ///////////////////////////////////
 
@@ -133,7 +144,7 @@ function getform(){
 //////////////////////////////////
 */
 function runSearch(){
-	var data = {'model':'images','action':'imageList',data:getform()};
+	var data = {'model':'images','action':'imageList','data':getform()};
 	console.log(data);
 	$.ajax({
 		url:"../../Api/controller.php",
@@ -142,7 +153,6 @@ function runSearch(){
 		data:data
 	}).done(function(data){
 		var $div = $('#ImageOutPutTest');
-		console.log(data);
 
 		//表示中の画像を削除
 		$div.empty();
@@ -157,8 +167,10 @@ function runSearch(){
 
 			//画像表示
 			$div.append($
-				("<img>").attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				("<img id='"+imageId+"'class='images'>")
+					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
 				//("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
+
 				//仮でタイトルとカテゴリ名と投稿日時を表示
 				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
 			);
