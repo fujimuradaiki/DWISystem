@@ -49,16 +49,16 @@ class images{
                 $addSortSql .= " ORDER BY $pieces[0] $pieces[1]";
             }
         }
-//
         //sqlの発行
         $sql = "SELECT
                 image.id,
                 image.insert_at,
                 image.title,
                 image.category,
+                user.id,
                 user.userName,
                 category.categoryName
-                from
+                FROM
                 users user,
                 images image,
                 categories category
@@ -72,7 +72,7 @@ class images{
         $categorySql .= " AND
                           category.categoryName
                           IN
-                          (select
+                          (SELECT
                            categoryName
                            FROM
                            categories
@@ -87,6 +87,7 @@ class images{
          //ソートSQLの結合
          $sql .= $addSortSql;
         // echo $sql . "\n";
+        //SQL実行
          $result = $pdo->dbo->query($sql);
 
          while($val = $result->fetch(PDO::FETCH_ASSOC)){
@@ -97,8 +98,77 @@ class images{
               'categoryName' => $val['categoryName'],
               'Insert_at'=>$val['insert_at']
             );
-            // echo $val['id']."\n".$val['title']."\n".$val['userName']."\n".$val['categoryName']."\n".$val['insert_at']."\n";
          };
          echo json_encode($imagesArray);
     }
+
+
+    //詳細情報の表示処理
+    //ユーザー情報(全て)　画像情報(タイトル、画像ID、)　カテゴリー　コメント
+    //送信されてくる値　0:画像ID 1:userID
+    public function imegeInfo($postData){
+        //送るとき配列
+        $datas = array();
+        //投稿者情報の配列
+        $userData  = array();
+        //コメント情報は配列
+        $commentData = array();
+        //DBへの接続関数
+        $pdo = new connectdb();
+
+         $imageId = $postData;
+         $creatorId = $postData;
+         //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
+        $userSql = "SELECT
+                    image.id,
+                    image.title,
+                    user.userName,
+                    user.id
+                    FROM
+                    images image, users user
+                    WHERE
+                    image.user_id = user.id
+                    AND
+                    user.userName IN(SELECT userName FROM users WHERE id = " .$imageId.")
+                    AND
+                    image.id = " .$creatorId. ")" ;
+        //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
+        $commentSql = "SELECT
+                       comment.id,
+                       comment.rank,
+                       comment.comment,
+                       comment.insert_at
+                       FROM
+                       users user, comments comment,images image
+                       WHERE
+                       comment.image_id = image.id
+                       AND
+                       image.id IN(SELECT id from images WHERE ".$postData.")";
+        $result= $pdo->dbo->query($userSql);
+        while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $userData[] = array(
+                'imageId' => $val['id'],
+                'imageTitle'=>$val['title'],
+                'creatorName'=> $val['userName'],
+                'creatorId' => $val['user_id']
+            );
+        }
+        $result= $pdo->dbo->query($commentSql);
+        //コメント配列
+        while ($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $commentData[] = array(
+               'commentId' => $val['id'],
+               'rank' => $val['rank'],
+               'comment' => $val['comment'],
+               'insert_at'=> $val['insert_at']
+            );
+        }
+        //連想配列に格納
+        $datas[] = array(
+            'usersData'=> $userData,
+            'commentData'=>$commentData
+        );
+        echo json_encode($datas);
+    }
 }
+
