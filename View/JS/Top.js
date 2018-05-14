@@ -152,7 +152,7 @@ function runSearch(){
 		type:"POST",
 		data:data
 	}).done(function(data){
-		var $div = $('#ImageOutPutTest');
+		var $div = $(/*'#ImageOutPutTest'*/'#lightbox_waku');
 
 		//表示中の画像を削除
 		$div.empty();
