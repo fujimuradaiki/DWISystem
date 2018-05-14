@@ -142,17 +142,18 @@ function runSearch(){
 		data:data
 	}).done(function(data){
 		var $div = $('#ImageOutPutTest');
+		console.log(data);
 
 		//表示中の画像を削除
 		$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
-			var userName = data[i].userName;
-			var imageId = data[i].id;
+			var userName = data[i].UserName;
+			var imageId = data[i].Id;
 			var categoryName = data[i].categoryName;
-			var title = data[i].title;
-			var insert_at = data[i].insert_at;
+			var title = data[i].Title;
+			var insert_at = data[i].Insert_at;
 
 			//画像表示
 			$div.append($
