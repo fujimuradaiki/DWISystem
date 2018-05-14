@@ -31,6 +31,7 @@ $(document).ready(function(){
 
 	runSearch();
 
+
 });
 
 //フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
@@ -61,7 +62,7 @@ $('#file1').on("change",function(e){
 
     // 画像ファイル以外の場合は何もしない
     if(file.type.indexOf("image") < 0){
-    	alert("画像じゃないべよ");
+    	alert("画像を選択してください");
     	return false;
     }
 
@@ -141,17 +142,18 @@ function runSearch(){
 		data:data
 	}).done(function(data){
 		var $div = $('#ImageOutPutTest');
+		console.log(data);
 
 		//表示中の画像を削除
 		$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
-			var userName = data[i].userName;
-			var imageId = data[i].id;
+			var userName = data[i].UserName;
+			var imageId = data[i].Id;
 			var categoryName = data[i].categoryName;
-			var title = data[i].title;
-			var insert_at = data[i].insert_at;
+			var title = data[i].Title;
+			var insert_at = data[i].Insert_at;
 
 			//画像表示
 			$div.append($
@@ -162,12 +164,13 @@ function runSearch(){
 			);
 
 
-			
+
 			//5件表示ごとに改行
 			//if((i+1) % 5 == 0){
 				//$div.append("<br>");
 			//}
 		}
+
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
