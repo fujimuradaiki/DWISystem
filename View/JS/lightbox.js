@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
 $('.login_btn').click(function(){
   $('.login_view').fadeIn();
   $('body').addClass("overflow");
@@ -9,7 +9,7 @@ $('.login_btn2').click(function(){
   $('.login_view').fadeIn();
   $('body').addClass("overflow");
 });
-  
+
   $('.images #1').click(function(){
   $('.lightbox_view1').fadeIn();
   $('body').addClass("overflow");
@@ -43,15 +43,15 @@ $('#6.images').click(function(){
 
 
 
-// closeƒ{ƒ^ƒ“//
+// closeï¿½{ï¿½^ï¿½ï¿½//
 
-$('.close_btn img').click(function(){//.close_btn img‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«//
-  $('.lightbox_view1,.lightbox_view2,.lightbox_view3,.lightbox_view4,.lightbox_view5,.lightbox_view6,.login_view').fadeOut();//view‚ªƒtƒF[ƒhƒAƒEƒg‚·‚é//
+$('.close_btn img').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
+  $('.lightbox_view1,.lightbox_view2,.lightbox_view3,.lightbox_view4,.lightbox_view5,.lightbox_view6,.login_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   $('body').removeClass("overflow");
 });
 
-$('.close_btn2').click(function(){//.close_btn img‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«//
-  $('.login_view').fadeOut();//view‚ªƒtƒF[ƒhƒAƒEƒg‚·‚é//
+$('.close_btn2').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
+  $('.login_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   $('body').removeClass("overflow");
 });
 
