@@ -7,7 +7,11 @@ class images{
         if($postAction == "imageList"){
             $this->imageList($postData);
             exit;
-        }else{
+        }else if($postAction == "imageInfo"){
+             $this->imegeInfo($postData);
+            exit;
+        }
+        else{
             echo "postActionにマッチングする関数がありません";
             exit;
         }
@@ -55,10 +59,9 @@ class images{
                 image.insert_at,
                 image.title,
                 image.category,
-                user.id,
                 user.userName,
                 category.categoryName
-                FROM
+                from
                 users user,
                 images image,
                 categories category
@@ -72,7 +75,7 @@ class images{
         $categorySql .= " AND
                           category.categoryName
                           IN
-                          (SELECT
+                          (select
                            categoryName
                            FROM
                            categories
@@ -105,25 +108,25 @@ class images{
 
     //詳細情報の表示処理
     //ユーザー情報(全て)　画像情報(タイトル、画像ID、)　カテゴリー　コメント
-    //送信されてくる値　0:画像ID 1:userID
+    //送信されてくる値　1:画像ID 2:userID
     public function imegeInfo($postData){
         //送るとき配列
         $datas = array();
         //投稿者情報の配列
-        $userData  = array();
+        $creatorData  = array();
         //コメント情報は配列
         $commentData = array();
         //DBへの接続関数
         $pdo = new connectdb();
 
-         $imageId = $postData;
-         $creatorId = $postData;
+         $imageId = 1; //$postData;
+         $creatorId = 2; //$postData;
          //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
         $userSql = "SELECT
                     image.id,
                     image.title,
                     user.userName,
-                    user.id
+                    image.user_id
                     FROM
                     images image, users user
                     WHERE
@@ -131,28 +134,38 @@ class images{
                     AND
                     user.userName IN(SELECT userName FROM users WHERE id = " .$imageId.")
                     AND
-                    image.id = " .$creatorId. ")" ;
+                    image.id = " .$creatorId;
         //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
         $commentSql = "SELECT
                        comment.id,
                        comment.rank,
                        comment.comment,
-                       comment.insert_at
+                       comment.insert_at,
+                       comment.comment_user_id,
+                       user.userName
                        FROM
                        users user, comments comment,images image
                        WHERE
                        comment.image_id = image.id
                        AND
-                       image.id IN(SELECT id from images WHERE ".$postData.")";
+                       comment.comment_user_id = user.id
+                       AND
+                       image.id IN(SELECT id from images WHERE id = ".$imageId.")
+                       AND
+                       user.id IN(SELECT id from users WHERE id = " .$creatorId. ")";
+
+     //    echo  $userSql ."\n";
+       //  echo  $commentSql;
         $result= $pdo->dbo->query($userSql);
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
-            $userData[] = array(
+            $creatorData[] = array(
                 'imageId' => $val['id'],
                 'imageTitle'=>$val['title'],
                 'creatorName'=> $val['userName'],
                 'creatorId' => $val['user_id']
             );
         }
+
         $result= $pdo->dbo->query($commentSql);
         //コメント配列
         while ($val = $result->fetch(PDO::FETCH_ASSOC)){
@@ -160,15 +173,23 @@ class images{
                'commentId' => $val['id'],
                'rank' => $val['rank'],
                'comment' => $val['comment'],
-               'insert_at'=> $val['insert_at']
+               'insert_at'=> $val['insert_at'],
+                'userId' => $val['comment_user_id'],
+                'userName' => $val['userName']
             );
         }
+        echo  json_encode($creatorData)."\n";
+        echo  json_encode($commentData);
+       // echo count($userData) ."\n";
+       // echo count($commentData) ."\n";
+
         //連想配列に格納
-        $datas[] = array(
-            'usersData'=> $userData,
-            'commentData'=>$commentData
-        );
-        echo json_encode($datas);
+//         $datas[] = array(
+//             'usersData'=> $userData,
+//             'commentData'=>$commentData
+//         );
+
+     //   echo json_encode($datas);
     }
 }
 
