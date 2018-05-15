@@ -1,4 +1,4 @@
-/*
+﻿/*
 *************************************
 
 *名前 : Top.js
@@ -152,10 +152,10 @@ function runSearch(){
 		type:"POST",
 		data:data
 	}).done(function(data){
-		var $div = $(/*'#ImageOutPutTest'*/'#lightbox_waku');
+		var $div = $(/*'#ImageOutPutTest'*/'.lightbox_waku');
 
 		//表示中の画像を削除
-		$div.empty();
+		//$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
@@ -167,12 +167,12 @@ function runSearch(){
 
 			//画像表示
 			$div.append($
-				("<img id='"+imageId+"'class='images'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
-				//("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
-
-				//仮でタイトルとカテゴリ名と投稿日時を表示
-				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
+				// ("<img id='"+imageId+"'class='images'>")
+				// 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				// //("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
+				//
+				// //仮でタイトルとカテゴリ名と投稿日時を表示
+				// ("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
 			);
 
 
