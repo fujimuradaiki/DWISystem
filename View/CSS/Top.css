@@ -362,7 +362,7 @@ header{
 }
 
 .menu_btn{
-  width: 450px;
+  width: 480px;
   margin: 0 auto;
   padding: 40px;
 }
@@ -373,20 +373,22 @@ color:#fff;
 }
 
 .OLD_btn{
+margin-left:20px;
 background: #3F3ACE;
 color:#fff;
 }
 
 .POPULARTY_btn{
+margin-left:20px;
 background: #3F3ACE;
 color:#fff;
 }
 
-.redio_btn_waku{
+.check_btn_waku{
   float:right;
 }
 
-.redio_btn{
+.check_btn{
   float:left;
   color:#fff;
 }
