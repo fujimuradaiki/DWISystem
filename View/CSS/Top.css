@@ -61,36 +61,42 @@ header{
   text-decoration: none;
 }
 
-/*.bg-slider {
-	width: 100vw;
-	height: 100vh;
-  background-attachment: scroll;
-  position: relative;
-	background-size: cover;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+/*固定する背景*/
+.parallax-bg, .scrollbox, parallax-bg {
+  box-sizing: border-box;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 5%;
 }
 
-.bg-slider__title{
-	color: #fff;
-	font-size: 48px;
-	line-height: 1.5;
-	font-weight: bold;
-	text-align:center;
-	text-shadow: 1px 1px 1px #000;
-}*/
+/*スライダー部分*/
+.parallax-bg {
+  width:100%;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-.background{
-  min-width:1230px;
-  min-height:877px;
+#container{
   width: 100%;
-  height: 974px;
-  top:0;
-  bottom:0;
-  background:url('../Images/background1.jpg') no-repeat 50% 50%;
   position: fixed;
-  background-size:cover;
+}
+
+/*スクロールするコンテンツ*/
+.scrollbox {
+  height: 150px;
+  background-color: rgba(30,30,30,0.75) ;
+}
+
+.glay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30,30,30,0.75);
 }
 
 .top{
@@ -104,7 +110,7 @@ header{
   width: 100%;
   position: absolute;
   text-align: center;
-  top: 60%;
+  top: 32%;
 }
 
 .login_btn{
@@ -177,7 +183,7 @@ header{
 }
 .scroll a span {
   position: absolute;
-  top: 200px;
+  top: 85%;
   left: 50%;
   width: 46px;
   height: 46px;
@@ -258,7 +264,42 @@ header{
   border-left:2px solid #0000ff;
   border-bottom:2px solid #0000ff;
 }
-
+/*--------------謎-------------------*/
+.scroll1 a span::before {
+  content: '';
+  animation: sdb 3s infinite;
+}
+@-webkit-keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*--------------------謎-----------------------*/
 .icon ul{
   width: 15%;
   margin-top: -10px;
@@ -274,10 +315,21 @@ header{
   width:30px;
 }
 
+.bg-slider__title{
+  margin: 70px;
+	color: #fff;
+	font-size: 48px;
+	line-height: 1.5;
+	font-weight: bold;
+	text-align:center;
+	text-shadow: 1px 1px 1px #000;
+}
+
 .works{
   width:100%;
   height:2200px;
   position: absolute;
+  top:100%;
 }
 
 .works_contents{
@@ -345,10 +397,217 @@ color:#fff;
   position: relative;
 }
 
-.lightbox{
+/*.lightbox{
     width: 250px;
     height: 250px;
     margin: 31px;
     float: left;
     background: #fff;
+}*/
+
+.close_btn img{
+  width:40px;
+}
+
+.close_btn{
+  position:absolute;
+  left:206%;
+  top:-150px;
+  cursor:pointer;
+}
+
+.lightbox_left{
+  float:left;
+}
+
+.lightbox_right{
+  float:right;
+}
+
+.lightbox{
+  width:250px;
+  height:250px;
+  background: #fff;
+  float:left;
+  margin:31px;
+}
+
+.lightbox_view1{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_view2{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_view3{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_view4{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_view5{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_view6{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.lightbox_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.lightbox_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.login_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.login_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.login_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.login_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.login_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.login_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+  margin-left: 200px;
+}
+
+.login_header{
+  width:400px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.login_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.login_content{
+  width: 400px;
+  text-align: center;
+  margin: 70px 0 0 5px;
+}
+
+.login_text{
+  width: 105%;
+  height: 22px;
+}
+
+.pass_text{
+  width: 105%;
+  height: 22px;
 }

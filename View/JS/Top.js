@@ -188,7 +188,11 @@ function runSearch(){
 		data:data
 	//ajax通信成功時
 	}).done(function(data){
+<<<<<<< HEAD
 		var $div = $('.lightbox_waku');
+=======
+		var $div = $(/*'#ImageOutPutTest'*/'.lightbox_waku');
+>>>>>>> origin/muraisuzuka
 
 		//表示中の画像を削除
 		//$div.empty();
@@ -203,8 +207,19 @@ function runSearch(){
 
 			//画像表示
 			$div.append($
+<<<<<<< HEAD
 				("<img id='"+imageId+"'class='images'>")
 					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+=======
+				// ("<img id='"+imageId+"'class='images'>")
+				// 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				// //("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
+				//
+				// //仮でタイトルとカテゴリ名と投稿日時を表示
+				// ("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
+			);
+
+>>>>>>> origin/muraisuzuka
 
 				/*デバッグ用にタイトルとカテゴリ名と投稿日時を表示////////////////
 				*/("<p>" + title + " " + categoryName + " " + insert_at +"</p>")/*
