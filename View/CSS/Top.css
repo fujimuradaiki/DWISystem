@@ -769,6 +769,16 @@ color:#fff;
   border:1px solid #111;
 }
 
+.new_image{
+  width:200px;
+  height:200px;
+}
+
+.new_image h1{
+  text-align: center;
+  padding-top:95px;
+}
+
 .choice_btn{
   width: 56px;
   height: 26px;
@@ -957,7 +967,6 @@ footer{
   width:100%;
   height:200px;
   background:#000;
-  z-index: 1;
 }
 
 #pageTop i {
