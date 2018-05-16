@@ -1,4 +1,4 @@
-/*
+﻿/*
 *************************************
 
 *名前 : Top.js
@@ -9,7 +9,7 @@
 
 *作成者 : 藤村 大輝
 
-*最終更新日 : 2018/05/11
+*最終更新日 : 2018/05/14
 
 *最終更新者 : 藤村 大輝
 
@@ -28,39 +28,64 @@
 //////////////////////////////////
 */
 $(document).ready(function(){
-
+	//画像表示実行
 	runSearch();
 
 });
 
-//フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
-$('#testButton').on("click",function(){
-	console.clear();
-	runSearch();
-	console.log(getform());
-});
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-$(document).on("click",".images",function(){
-	var src = $(this).attr('src');
-	var $div = $('#ComentTest');
-	var cols = 30;
-	var rows = 10;
-
-	$div.empty();
-	$div.append($
-			("<img id='preview'>").attr("src",src),
-			("<textarea cols='"+cols+"'rows='"+rows+"'readonly>この画像は"+this.id+"です</textarea>")
-	);
-});
 /*
 ///////////////////////////////////
 
- *関数名
+*関数 再検索ボタンクリックで発火
 
- *概要 アップロードファイルの画像判定
+*概要 再度検索を行い、画像表示
+
+//////////////////////////////////
+*/
+$('#testButton').on("click",function(){
+	console.clear();
+	runSearch();
+	console.log(getForm());
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 表示された作品画像をクリック
+      したら発火
+
+*概要 画像詳細を仮表示する
+
+//////////////////////////////////
+*/
+$(document).on("click",".images",function(){
+
+	var src = $(this).attr('src');		//クリックした画像のアドレスを取得
+	var $div = $('.lightbox_waku');		//詳細を仮表示する対象となるdiv
+	var cols = 30;						//textareaの初期文字数(横)
+	var rows = 10;						//testareaの初期文字数(縦)
+
+	//表示中の画像を削除
+	//$div.empty();
+
+	$div.append($
+			//クリックした画像と同じ画像を表示
+			("<img id='preview'>").attr("src",src),
+			//テキストエリアを作成し、書き込み不可属性を付与する
+			("<textarea cols='"+cols+"'rows='"+rows+"'readonly>この画像は"+this.id+"です</textarea>")
+	);
+});
+
+
+/*
+///////////////////////////////////
+
+ *関数 ファイルアップロードボタンが
+       押された後に発火
+
+ *概要 アップロードファイルの画像バリデート判定
 
 //////////////////////////////////
 */
@@ -72,6 +97,7 @@ $('#file1').on("change",function(e){
     t = this;
 
     // 画像ファイル以外の場合は何もしない
+    // (.jpg .bmp .gif .png等は可)
     if(file.type.indexOf("image") < 0){
     	alert("画像を選択してください");
     	return false;
@@ -91,20 +117,32 @@ $('#file1').on("change",function(e){
 
     reader.readAsDataURL(file);
 
-
-	 var file = $("#file1")[0].files[0];
-	 var fileName = file.name;
-	 var fileSize = file.size;
-	 var fileType = file.type;
-	 alert('ファイル名 : ' + fileName + '\nファイルサイズ : ' + fileSize + ' bytes\nファイルタイプ : ' + fileType);
+    /*デバッグ用表示(ファイル名、サイズ、タイプを表示)////////////
+	 */var file = $("#file1")[0].files[0];
+	   var fileName = file.name;
+	   var fileSize = file.size;
+	   var fileType = file.type;
+	   alert('ファイル名 : ' + fileName + '\nファイルサイズ : '
+			+ fileSize + ' bytes\nファイルタイプ : ' + fileType);/*
+	/////////////////////////////////////////////////////////////*/
 
 });
 
 
+$('.NEW_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+$('.OLD_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+$('.POPULARTY_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+
 /*
 ///////////////////////////////////
 
-*関数名 getform
+*関数名 getForm
 
 *概要 フォーム情報取得
 
@@ -112,13 +150,14 @@ $('#file1').on("change",function(e){
 
 //////////////////////////////////
 */
-function getform(){
+function getForm(){
+
 	var $sortType = $("input[name='sortType']:checked").val();
 	var $category1 = $("#c1").prop("checked");
-	var $category2 = $("#c2").prop("checked");
+	var $category2 = $("#c2").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
 	var $category3 = $("#c3").prop("checked");
 
-
+	//取得したフォーム情報を連想配列に格納
 	var param = {
 		0:{name:'sortType',value:$sortType},
 		1:{category1:{name:'charactor',value:$category1},
@@ -144,18 +183,25 @@ function getform(){
 //////////////////////////////////
 */
 function runSearch(){
-	var data = {'model':'images','action':'imageList','data':getform()};
-	console.log(data);
+	var data = {'model':'images','action':'imageList','data':getForm()};
+
+	/*デバッグ用表示//////
+	*/console.log(data);/*
+	////////////////////*/
+
+	//ajax通信
 	$.ajax({
 		url:"../../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
+	//ajax通信成功時
 	}).done(function(data){
-		var $div = $('#ImageOutPutTest');
+
+		var $div = $('.lightbox_waku');
 
 		//表示中の画像を削除
-		$div.empty();
+		//$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
@@ -167,22 +213,23 @@ function runSearch(){
 
 			//画像表示
 			$div.append($
-				("<img id='"+imageId+"'class='images'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
-				//("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
 
-				//仮でタイトルとカテゴリ名と投稿日時を表示
-				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
+				// ("<img id='"+imageId+"'class='images'>")
+				// 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				// //("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
+
+				/*デバッグ用にタイトルとカテゴリ名と投稿日時を表示////////////////
+				*/("<p>" + title + " " + categoryName + " " + insert_at +"</p>")/*
+				////////////////////////////////////////////////////////////////*/
+
 			);
-
-
-
 			//5件表示ごとに改行
 			//if((i+1) % 5 == 0){
-				//$div.append("<br>");
+			//    $div.append("<br>");
 			//}
 		}
 
+	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
