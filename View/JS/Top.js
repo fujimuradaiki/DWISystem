@@ -129,6 +129,16 @@ $('#file1').on("change",function(e){
 });
 
 
+$('.NEW_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+$('.OLD_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+$('.POPULARTY_btn').on("click",function(){
+	$(this).css("background-color","#e23131");
+});
+
 /*
 ///////////////////////////////////
 
@@ -141,9 +151,8 @@ $('#file1').on("change",function(e){
 //////////////////////////////////
 */
 function getForm(){
-	//現在、Test.htmlの場所を指している状態のため、
-	//Top.htmlに対応し書き換えること
-	var $sortType = $("input[name='sortType']:checked").val();//現在仮でラジオボタンを使用しているため
+
+	var $sortType = $("input[name='sortType']:checked").val();
 	var $category1 = $("#c1").prop("checked");
 	var $category2 = $("#c2").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
 	var $category3 = $("#c3").prop("checked");
