@@ -9,7 +9,7 @@
 
 *作成者 : 藤村 大輝
 
-*最終更新日 : 2018/05/14
+*最終更新日 : 2018/05/16
 
 *最終更新者 : 藤村 大輝
 
@@ -28,8 +28,10 @@
 //////////////////////////////////
 */
 $(document).ready(function(){
+	$('.NEW_btn').css("background-color","rgb(226, 49, 49)");
 	//画像表示実行
 	runSearch();
+
 
 });
 
@@ -129,15 +131,139 @@ $('#file1').on("change",function(e){
 });
 
 
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(新しい順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
 $('.NEW_btn').on("click",function(){
-	$(this).css("background-color","#e23131");
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(226, 49, 49)");
+		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
+		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+	}
 });
+
+
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(古い順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
 $('.OLD_btn').on("click",function(){
-	$(this).css("background-color","#e23131");
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(226, 49, 49)");
+		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
+		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+	}
 });
+
+
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(人気順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
 $('.POPULARTY_btn').on("click",function(){
-	$(this).css("background-color","#e23131");
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(226, 49, 49)");
+		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
+		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
+	}
 });
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(全て)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#all').on("click",function(){
+
+	if($("#all").prop("checked")){
+		$("#chara").prop("checked",true);
+		$("#backGround").prop("checked",true);
+		$("#item").prop("checked",true);
+	}else{
+		$("#chara").prop("checked",false);
+		$("#backGround").prop("checked",false);
+		$("#item").prop("checked",false);
+	}
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(キャラクター)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#chara').on("click",function(){
+	$("#all").prop("checked",false);
+	if($("#chara").prop("checked") &&
+	  $("#backGround").prop("checked") &&
+	  $("#item").prop("checked")){
+		$("#all").prop("checked",true);
+	}
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(背景)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#backGround').on("click",function(){
+	$("#all").prop("checked",false);
+	if($("#chara").prop("checked") &&
+	  $("#backGround").prop("checked") &&
+	  $("#item").prop("checked")){
+		$("#all").prop("checked",true);
+	}
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(アイテム)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#item').on("click",function(){
+	$("#all").prop("checked",false);
+	if($("#chara").prop("checked") &&
+	  $("#backGround").prop("checked") &&
+	  $("#item").prop("checked")){
+		$("#all").prop("checked",true);
+	}
+});
+
 
 /*
 ///////////////////////////////////
@@ -152,14 +278,26 @@ $('.POPULARTY_btn').on("click",function(){
 */
 function getForm(){
 
-	var $sortType = $("input[name='sortType']:checked").val();
-	var $category1 = $("#c1").prop("checked");
-	var $category2 = $("#c2").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
-	var $category3 = $("#c3").prop("checked");
+	var sortType;
+	if($('.NEW_btn').css("background-color") == "rgb(226, 49, 49)"){
+		sortType = 'insert_at:DESC';
+	}else{
+		if($('.OLD_btn').css("background-color") == "rgb(226, 49, 49)"){
+			sortType = "insert_at:ASC";
+		}else{
+			if($('.POPULARTY_btn').css("background-color") == "rgb(226, 49, 49)"){
+				sortType = "rank:DESC";
+			}
+		}
+	}
+
+	var $category1 = $("#chara").prop("checked");
+	var $category2 = $("#backGround").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
+	var $category3 = $("#item").prop("checked");
 
 	//取得したフォーム情報を連想配列に格納
 	var param = {
-		0:{name:'sortType',value:$sortType},
+		0:{name:'sortType',value:sortType},
 		1:{category1:{name:'charactor',value:$category1},
 		   category2:{name:'backGround',value:$category2},
 		   category3:{name:'item',value:$category3}
@@ -214,19 +352,19 @@ function runSearch(){
 			//画像表示
 			$div.append($
 
-				// ("<img id='"+imageId+"'class='images'>")
-				// 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+				 ("<img id='"+imageId+"'class='images'>")
+				 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
 				// //("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
 
 				/*デバッグ用にタイトルとカテゴリ名と投稿日時を表示////////////////
-				*/("<p>" + title + " " + categoryName + " " + insert_at +"</p>")/*
+				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")/*
 				////////////////////////////////////////////////////////////////*/
 
 			);
-			//5件表示ごとに改行
-			//if((i+1) % 5 == 0){
-			//    $div.append("<br>");
-			//}
+			//6件表示ごとに改行
+			if((i+1) % 6 == 0){
+			   $div.append("<br>");
+			}
 		}
 
 	//ajax通信失敗時
