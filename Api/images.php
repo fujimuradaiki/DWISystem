@@ -34,62 +34,59 @@ class images{
             //カテゴリーの検索フィルタ
           //  echo $postData[1]['category1']['value'];
             if($postData[1]['category1']['value'] == 'true'){
-                 $addSql .= " categoriesId = 1";
+                 $addSql .= " categories.categoriesId = 1";
             }
             if($postData[1]['category2']['value'] == 'true'){
                 if($addSql != ""){
                     $addSql .= " OR";
                 }
-                $addSql .= " categoriesId = 2";
+                $addSql .= " categories.categoriesId = 2";
             }
             if($postData[1]['category3']['value'] == 'true'){
                 if($addSql != ""){
                     $addSql .= " OR";
                 }
-                $addSql .= " categoriesId = 3";
+                $addSql .= " categories.categoriesId = 3";
               }
               //ソート種類
             if($pieces[0] != ""){
-                $addSortSql .= " ORDER BY $pieces[0] $pieces[1]";
+                if($pieces[0] != "rank"){
+                    $addSortSql .= " ORDER BY images.$pieces[0] $pieces[1]";
+                }else{
+                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , images.id ASC";
+                }
             }
         }
         //sqlの発行
         $sql = "SELECT
-                image.id,
-                image.insert_at,
-                image.title,
-                image.category,
-                user.userName,
-                category.categoryName
-                from
-                users user,
-                images image,
-                categories category
-                WHERE
-                image.user_id = user.id
-                AND
-                image.category = category.categoriesId
-                AND
-                image.user_id  = user.id";
+                images.id,
+                title,
+                categoryName,
+                userName
+                FROM
+                images AS images
+                LEFT JOIN
+                users AS users
+                ON
+                images.user_id = users.id
+                LEFT JOIN
+                comments AS comments
+                ON
+                images.id = comments.image_id
+                LEFT JOIN
+                categories AS categories
+                ON
+                images.category = categoriesId ";
          //検索フィルタSQL作成
-        $categorySql .= " AND
-                          category.categoryName
-                          IN
-                          (select
-                           categoryName
-                           FROM
-                           categories
-                           WHERE "
-                           .$addSql.
-                           ")";
+        $categorySql .= " WHERE ".$addSql;
          //チェックボックスがすべて押されなかった場合
          if($addSql != ""){
              //検索フィルターSQLの結合
              $sql .= $categorySql;
          }
          //ソートSQLの結合
-         $sql .= $addSortSql;
-        // echo $sql . "\n";
+         $sql .= " GROUP BY  images.id ". $addSortSql;
+         //echo $sql . "\n";
         //SQL実行
          $result = $pdo->dbo->query($sql);
 
@@ -98,8 +95,7 @@ class images{
               'Id' => $val['id'],
               'Title' => $val['title'],
               'UserName' => $val['userName'],
-              'categoryName' => $val['categoryName'],
-              'Insert_at'=>$val['insert_at']
+              'categoryName' => $val['categoryName']
             );
          };
          echo json_encode($imagesArray);
@@ -126,11 +122,11 @@ class images{
                     image.id,
                     image.title,
                     user.userName,
-                    image.user_id
+                    image.iamge_user_id
                     FROM
                     images image, users user
                     WHERE
-                    image.user_id = user.id
+                    image.image_user_id = user.id
                     AND
                     user.userName IN(SELECT userName FROM users WHERE id = " .$imageId.")
                     AND
