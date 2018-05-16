@@ -184,12 +184,12 @@ class images{
        // echo count($commentData) ."\n";
 
         //連想配列に格納
-//         $datas[] = array(
-//             'usersData'=> $userData,
-//             'commentData'=>$commentData
-//         );
+        $datas[] = array(
+            'usersData'=> $userData,
+            'commentData'=>$commentData
+        );
 
-     //   echo json_encode($datas);
+       echo json_encode($datas);
     }
 }
 
