@@ -34,49 +34,50 @@ class images{
             //カテゴリーの検索フィルタ
           //  echo $postData[1]['category1']['value'];
             if($postData[1]['category1']['value'] == 'true'){
-                 $addSql .= " categories.categoriesId = 1";
+                 $addSql .= " category_id = 1";
             }
             if($postData[1]['category2']['value'] == 'true'){
                 if($addSql != ""){
                     $addSql .= " OR";
                 }
-                $addSql .= " categories.categoriesId = 2";
+                $addSql .= " category_id = 2";
             }
             if($postData[1]['category3']['value'] == 'true'){
                 if($addSql != ""){
                     $addSql .= " OR";
                 }
-                $addSql .= " categories.categoriesId = 3";
+                $addSql .= " category_id = 3";
               }
               //ソート種類
             if($pieces[0] != ""){
                 if($pieces[0] != "rank"){
-                    $addSortSql .= " ORDER BY images.$pieces[0] $pieces[1]";
+                    $addSortSql .= " ORDER BY image_$pieces[0] $pieces[1]";
                 }else{
-                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , images.id ASC";
+                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , image_insert_at ASC";
                 }
             }
         }
         //sqlの発行
         $sql = "SELECT
-                images.id,
-                title,
-                categoryName,
-                userName
+                image_id,
+                image_title,
+                category_name,
+                user_name,
+                user_id
                 FROM
-                images AS images
+                imagesCP AS images
                 LEFT JOIN
-                users AS users
+                usersCP AS users
                 ON
-                images.user_id = users.id
+                image_user_id = user_id
                 LEFT JOIN
-                comments AS comments
+                commentsCP AS comments
                 ON
-                images.id = comments.image_id
+                image_id = comment_image_id
                 LEFT JOIN
-                categories AS categories
+                categoriesCP AS categories
                 ON
-                images.category = categoriesId ";
+                image_category_id = category_id ";
          //検索フィルタSQL作成
         $categorySql .= " WHERE ".$addSql;
          //チェックボックスがすべて押されなかった場合
@@ -85,17 +86,18 @@ class images{
              $sql .= $categorySql;
          }
          //ソートSQLの結合
-         $sql .= " GROUP BY  images.id ". $addSortSql;
-         //echo $sql . "\n";
+         $sql .= " GROUP BY  image_id ". $addSortSql;
+       //  echo $sql . "\n";
         //SQL実行
          $result = $pdo->dbo->query($sql);
 
          while($val = $result->fetch(PDO::FETCH_ASSOC)){
               $imagesArray[] = array(
-              'Id' => $val['id'],
-              'Title' => $val['title'],
-              'UserName' => $val['userName'],
-              'categoryName' => $val['categoryName']
+              'Id' => $val['image_id'],
+              'Title' => $val['image_title'],
+              'UserName' => $val['user_name'],
+              'userId'=>$val['user_id'],
+              'categoryName' => $val['category_name']
             );
          };
          echo json_encode($imagesArray);
@@ -119,63 +121,64 @@ class images{
          $creatorId = 2; //$postData;
          //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
         $userSql = "SELECT
-                    image.id,
-                    image.title,
-                    user.userName,
-                    image.iamge_user_id
+                    image_id,
+                    image_title,
+                    user_name,
+                    user_id
                     FROM
-                    images image, users user
+                    imagesCP image, usersCP user
                     WHERE
-                    image.image_user_id = user.id
+                    image_user_id = user_id
                     AND
-                    user.userName IN(SELECT userName FROM users WHERE id = " .$imageId.")
+                    user_name IN(SELECT user_name FROM usersCP WHERE user_id = " .$imageId.")
                     AND
-                    image.id = " .$creatorId;
+                    image_id = " .$creatorId;
         //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
         $commentSql = "SELECT
-                       comment.id,
-                       comment.rank,
-                       comment.comment,
-                       comment.insert_at,
-                       comment.comment_user_id,
-                       user.userName
+                       comment_id,
+                       comment_rank,
+                       comment,
+                       comment_insert_at,
+                       comment_user_id,
+                       user_id,
+                       user_name
                        FROM
-                       users user, comments comment,images image
+                       usersCP user, commentsCP comment,imagesCP image
                        WHERE
-                       comment.image_id = image.id
+                       comment_image_id = image_id
                        AND
-                       comment.comment_user_id = user.id
+                       comment_user_id = user_id
                        AND
-                       image.id IN(SELECT id from images WHERE id = ".$imageId.")
+                       image_id IN(SELECT image_id from imagesCP WHERE image_id = ".$imageId.")
                        AND
-                       user.id IN(SELECT id from users WHERE id = " .$creatorId. ")";
+                       user_id IN(SELECT user_id from usersCP WHERE user_id = " .$creatorId. ")";
 
      //    echo  $userSql ."\n";
-       //  echo  $commentSql;
+         echo  $commentSql;
         $result= $pdo->dbo->query($userSql);
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
             $creatorData[] = array(
-                'imageId' => $val['id'],
-                'imageTitle'=>$val['title'],
-                'creatorName'=> $val['userName'],
+                'imageId' => $val['image_id'],
+                'imageTitle'=>$val['image_title'],
+                'creatorName'=> $val['user_name'],
                 'creatorId' => $val['user_id']
             );
         }
 
-        $result= $pdo->dbo->query($commentSql);
+       $result= $pdo->dbo->query($commentSql);
         //コメント配列
         while ($val = $result->fetch(PDO::FETCH_ASSOC)){
             $commentData[] = array(
-               'commentId' => $val['id'],
-               'rank' => $val['rank'],
+               'commentId' => $val['comment_id'],
+               'rank' => $val['comment_rank'],
                'comment' => $val['comment'],
-               'insert_at'=> $val['insert_at'],
-                'userId' => $val['comment_user_id'],
-                'userName' => $val['userName']
+               'commentInsert_at'=> $val['comment_insert_at'],
+                'userId' => $val['user_id'],
+                'userName' => $val['user_name']
             );
         }
-        echo  json_encode($creatorData)."\n";
-        echo  json_encode($commentData);
+    //    echo  json_encode($creatorData)."\n";
+    //    echo  json_encode($commentData);
        // echo count($userData) ."\n";
        // echo count($commentData) ."\n";
 
