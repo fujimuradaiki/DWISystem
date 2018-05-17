@@ -30,35 +30,12 @@ $('.touroku_btn').click(function(){
   $('body').addClass("overflow");
 });
 
-  $('.images #1').click(function(){
-  $('.lightbox_view1').fadeIn();
+  $('.lightbox').click(function(){
+  $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 });
 
-$('#2.images').click(function(){
-  $('.lightbox_view2').fadeIn();
-  $('body').addClass("overflow");
-});
 
-$('#3.images').click(function(){
-  $('.lightbox_view3').fadeIn();
-  $('body').addClass("overflow");
-});
-
-$('#4.images').click(function(){
-  $('.lightbox_view4').fadeIn();
-  $('body').addClass("overflow");
-});
-
-$('#5.images').click(function(){
-  $('.lightbox_view5').fadeIn();
-  $('body').addClass("overflow");
-});
-
-$('#6.images').click(function(){
-  $('.lightbox_view6').fadeIn();
-  $('body').addClass("overflow");
-});
 
 
 
@@ -66,7 +43,7 @@ $('#6.images').click(function(){
 // close�{�^��//
 
 $('.close_btn img').click(function(){//.close_btn img���N���b�N�����Ƃ�//
-  $('.lightbox_view1,.lightbox_view2,.lightbox_view3,.lightbox_view4,.lightbox_view5,.lightbox_view6,.login_view,.new_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('.lightbox_view,.login_view,.new_view').fadeOut();//view���t�F�[�h�A�E�g����//
   $('body').removeClass("overflow");
 });
 
