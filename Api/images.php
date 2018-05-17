@@ -65,17 +65,17 @@ class images{
                 user_name,
                 user_id
                 FROM
-                imagesCP AS images
+                images AS images
                 LEFT JOIN
-                usersCP AS users
+                users AS users
                 ON
                 image_user_id = user_id
                 LEFT JOIN
-                commentsCP AS comments
+                comments AS comments
                 ON
                 image_id = comment_image_id
                 LEFT JOIN
-                categoriesCP AS categories
+                categories AS categories
                 ON
                 image_category_id = category_id ";
          //検索フィルタSQL作成
@@ -117,8 +117,8 @@ class images{
         //DBへの接続関数
         $pdo = new connectdb();
 
-         $imageId = 1; //$postData;
-         $creatorId = 2; //$postData;
+        $imageId = $postData[0]; //$postData;
+        $creatorId = $postData[1]; //$postData;
          //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
         $userSql = "SELECT
                     image_id,
@@ -126,11 +126,11 @@ class images{
                     user_name,
                     user_id
                     FROM
-                    imagesCP image, usersCP user
+                    images image, users user
                     WHERE
                     image_user_id = user_id
                     AND
-                    user_name IN(SELECT user_name FROM usersCP WHERE user_id = " .$imageId.")
+                    user_name IN(SELECT user_name FROM users WHERE user_id = " .$imageId.")
                     AND
                     image_id = " .$creatorId;
         //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
@@ -143,18 +143,18 @@ class images{
                        user_id,
                        user_name
                        FROM
-                       usersCP user, commentsCP comment,imagesCP image
+                       users user, comments comment,images image
                        WHERE
                        comment_image_id = image_id
                        AND
                        comment_user_id = user_id
                        AND
-                       image_id IN(SELECT image_id from imagesCP WHERE image_id = ".$imageId.")
+                       image_id IN(SELECT image_id from images WHERE image_id = ".$imageId.")
                        AND
-                       user_id IN(SELECT user_id from usersCP WHERE user_id = " .$creatorId. ")";
+                       user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId. ")";
 
      //    echo  $userSql ."\n";
-         echo  $commentSql;
+     //    echo  $commentSql;
         $result= $pdo->dbo->query($userSql);
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
             $creatorData[] = array(
