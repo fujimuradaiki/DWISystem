@@ -178,7 +178,30 @@ function runSearch(){
 				//仮でタイトルとカテゴリ名と投稿日時を表示
 				//("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
 			)
+
+			//トリミング処理
 			var img = $("#" + imageId);
+			var trimming = 150;		//トリミングサイズ
+			var iw,ih;
+
+			var w = img.width();	//横幅取得
+			var h = img.height();	//縦幅取得
+
+			//横幅と縦幅が同じか、横幅の方が長い場合
+			if(w >= h){
+				iw = (trimming / h * w - trimming) / 2;
+				img.height(trimming);
+				img.css("top",0);
+				img.css("left","-" + iw + "px");
+			}
+			//縦幅の方が長い場合
+			else{
+				ih = (trimming / w * h - trimming) / 2;
+				img.width(trimming);
+				img.css("top","-" + ih + "px");
+				img.css("left",0);
+			}
+
 		}
 
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
