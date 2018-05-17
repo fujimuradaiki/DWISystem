@@ -272,6 +272,11 @@ function runSearch(){
 			trimmingImage($("#" + imageId+"Img"),250);
 		}
 
+		//float解除用div
+		$div.append(
+			("<div class='cle'></div>")
+		);
+
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
