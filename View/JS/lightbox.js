@@ -30,7 +30,7 @@ $('.touroku_btn').click(function(){
   $('body').addClass("overflow");
 });
 
-  $('.lightbox').click(function(){
+  $(document).on("click",".lightbox",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 });
