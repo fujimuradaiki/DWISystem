@@ -164,7 +164,7 @@ function runSearch(){
 			var categoryName = data[i].categoryName;
 			var title = data[i].Title;
 			var insert_at = data[i].Insert_at;
-//alert(imageId);
+
 			//画像表示
 			$div.append(
 				("<div class='aaaaa'id='"+ imageId + "Div'></div>")
@@ -172,41 +172,57 @@ function runSearch(){
 			var $num = $('#'+imageId+'Div');
 			$num.append(
 
-					$("<img id='"+imageId+"'class='images'>")
+					$("<img id='"+imageId+"Img'class='images'value='"+imageId+"'>")
 					.attr("src","../../User/"+ userName +"/"+ imageId +".png")
 
 				//仮でタイトルとカテゴリ名と投稿日時を表示
 				//("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
-			)
+			);
 
-			//トリミング処理
-			var img = $("#" + imageId);
-			var trimming = 150;		//トリミングサイズ
-			var iw,ih;
-
-			var w = img.width();	//横幅取得
-			var h = img.height();	//縦幅取得
-
-			//横幅と縦幅が同じか、横幅の方が長い場合
-			if(w >= h){
-				iw = (trimming / h * w - trimming) / 2;
-				img.height(trimming);
-				img.css("top",0);
-				img.css("left","-" + iw + "px");
-			}
-			//縦幅の方が長い場合
-			else{
-				ih = (trimming / w * h - trimming) / 2;
-				img.width(trimming);
-				img.css("top","-" + ih + "px");
-				img.css("left",0);
-			}
+			//トリミング
+			trimmingImage($("#" + imageId+"Img"),250);
 
 		}
 
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
+}
+
+
+/*
+///////////////////////////////////
+
+*関数名 trimmingImage
+
+*概要 渡された画像をトリミングする
+
+*引数 img  : 画像のHTML上での場所
+      size : トリミングするサイズ
+
+//////////////////////////////////
+*/
+function trimmingImage(img,size){
+	//トリミング処理
+	var iw,ih;
+
+	var w = img.width();	//横幅取得
+	var h = img.height();	//縦幅取得
+
+	//横幅と縦幅が同じか、横幅の方が長い場合
+	if(w >= h){
+		iw = (size / h * w - size) / 2;
+		img.height(size);
+		img.css("top",0);
+		img.css("left","-" + iw + "px");
+	}
+	//縦幅の方が長い場合
+	else{
+		ih = (size / w * h - size) / 2;
+		img.width(size);
+		img.css("top","-" + ih + "px");
+		img.css("left",0);
+	}
 }
 
 

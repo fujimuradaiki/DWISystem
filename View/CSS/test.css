@@ -1,10 +1,21 @@
 .aaaaa {
-  width:150px;
-  height:150px;
+  width:250px;
+  height:250px;
   overflow:hidden;
   float: left;
-  margin: 10px;
-  border: solid 1px #666;
+  margin: 31px;
   }
 
 .aaaaa img { position:relative;}
+
+.bbbbb {
+	width:70px;
+	height:70px;
+	overflow:hidden;
+	float: left;
+	margin: 10px;
+	border: solid 1px #666;
+	border-radius: 50%;
+}
+
+.bbbbb img { position:relative;}

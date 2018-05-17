@@ -9,7 +9,7 @@
 
 *作成者 : 藤村 大輝
 
-*最終更新日 : 2018/05/16
+*最終更新日 : 2018/05/17
 
 *最終更新者 : 藤村 大輝
 
@@ -32,101 +32,6 @@ $(document).ready(function(){
 	//画像表示実行
 	runSearch();
 
-
-});
-
-
-/*
-///////////////////////////////////
-
-*関数 再検索ボタンクリックで発火
-
-*概要 再度検索を行い、画像表示
-
-//////////////////////////////////
-*/
-$('#testButton').on("click",function(){
-	console.clear();
-	runSearch();
-	console.log(getForm());
-});
-
-
-/*
-///////////////////////////////////
-
-*関数 表示された作品画像をクリック
-      したら発火
-
-*概要 画像詳細を仮表示する
-
-//////////////////////////////////
-*/
-$(document).on("click",".images",function(){
-
-	var src = $(this).attr('src');		//クリックした画像のアドレスを取得
-	var $div = $('.lightbox_waku');		//詳細を仮表示する対象となるdiv
-	var cols = 30;						//textareaの初期文字数(横)
-	var rows = 10;						//testareaの初期文字数(縦)
-
-	//表示中の画像を削除
-	//$div.empty();
-
-	$div.append($
-			//クリックした画像と同じ画像を表示
-			("<img id='preview'>").attr("src",src),
-			//テキストエリアを作成し、書き込み不可属性を付与する
-			("<textarea cols='"+cols+"'rows='"+rows+"'readonly>この画像は"+this.id+"です</textarea>")
-	);
-});
-
-
-/*
-///////////////////////////////////
-
- *関数 ファイルアップロードボタンが
-       押された後に発火
-
- *概要 アップロードファイルの画像バリデート判定
-
-//////////////////////////////////
-*/
-$('#file1').on("change",function(e){
-
-	var file = e.target.files[0],
-    reader = new FileReader(),
-    $preview = $("#ImageInPutTest");
-    t = this;
-
-    // 画像ファイル以外の場合は何もしない
-    // (.jpg .bmp .gif .png等は可)
-    if(file.type.indexOf("image") < 0){
-    	alert("画像を選択してください");
-    	return false;
-    }
-
-    reader.onload = (function(file) {
-    	return function(e) {
-    		$preview.empty();
-    		$preview.append($('<img>').attr({
-    			src: e.target.result,
-    			width: "150px",
-    			class: "preview",
-    			title: file.name
-    		}));
-    	};
-    })(file);
-
-    reader.readAsDataURL(file);
-
-    /*デバッグ用表示(ファイル名、サイズ、タイプを表示)////////////
-	 */var file = $("#file1")[0].files[0];
-	   var fileName = file.name;
-	   var fileSize = file.size;
-	   var fileType = file.type;
-	   alert('ファイル名 : ' + fileName + '\nファイルサイズ : '
-			+ fileSize + ' bytes\nファイルタイプ : ' + fileType);/*
-	/////////////////////////////////////////////////////////////*/
 
 });
 
@@ -339,7 +244,7 @@ function runSearch(){
 		var $div = $('.lightbox_waku');
 
 		//表示中の画像を削除
-		//$div.empty();
+		$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
@@ -350,25 +255,60 @@ function runSearch(){
 			var insert_at = data[i].Insert_at;
 
 			//画像表示
-			$div.append($
-
-				 ("<img id='"+imageId+"'class='images'>")
-				 	.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
-				// //("<a href='../../User/TestUser/i.png data-lightbox='gruop''></a>")
-
-				/*デバッグ用にタイトルとカテゴリ名と投稿日時を表示////////////////
-				("<p>" + title + " " + categoryName + " " + insert_at +"</p>")/*
-				////////////////////////////////////////////////////////////////*/
-
+			$div.append(
+				("<div class='lightbox'id='"+ imageId + "Div'></div>")
 			);
-			//6件表示ごとに改行
-			if((i+1) % 6 == 0){
-			   $div.append("<br>");
-			}
+			var $num = $('#'+imageId+'Div');
+			$num.append(
+
+					$("<img id='"+imageId+"Img'class='images'value='"+imageId+"'>")
+					.attr("src","../../User/"+ userName +"/"+ imageId +".png")
+
+				//仮でタイトルとカテゴリ名と投稿日時を表示
+				//("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
+			);
+
+			//トリミング
+			trimmingImage($("#" + imageId+"Img"),250);
 		}
 
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
+}
+
+/*
+///////////////////////////////////
+
+*関数名 trimmingImage
+
+*概要 渡された画像をトリミングする
+
+*引数 img  : 画像のHTML上での場所
+	  size : トリミングするサイズ
+
+//////////////////////////////////
+*/
+function trimmingImage(img,size){
+	//トリミング処理
+	var iw,ih;
+
+	var w = img.width();	//横幅取得
+	var h = img.height();	//縦幅取得
+
+	//横幅と縦幅が同じか、横幅の方が長い場合
+	if(w >= h){
+		iw = (size / h * w - size) / 2;
+		img.height(size);
+		img.css("top",0);
+		img.css("left","-" + iw + "px");
+	}
+	//縦幅の方が長い場合
+	else{
+		ih = (size / w * h - size) / 2;
+		img.width(size);
+		img.css("top","-" + ih + "px");
+		img.css("left",0);
+	}
 }
