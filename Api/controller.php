@@ -11,11 +11,11 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 }else{
   //  echo "controller.php:::エラー";
 
-         $test_model = 'images';
-         $test_action = 'imageList';
-         $test_data = '';
-         $classname = new $test_model;
-         $classname->controller($test_action,$test_data);
+       //  $test_model = 'users';
+       //  $test_action = 'insertReview';
+       //  $test_data = '';
+       //  $classname = new $test_model;
+       //  $classname->controller($test_action,$test_data);
 
 }
 ?>
