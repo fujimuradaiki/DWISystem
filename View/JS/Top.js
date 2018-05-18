@@ -262,10 +262,31 @@ function runSearch(){
 			$num.append(
 
 					$("<img id='"+imageId+"Img'class='images'value='"+imageId+"'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +".png")
+					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+
+					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
+					//("<div class = 'lightbox_hover_waku'</div>")
 
 				//仮でタイトルとカテゴリ名と投稿日時を表示
 				//("<p>" + title + " " + categoryName + " " + insert_at +"</p>")
+			);
+
+			var $hover = $('#'+imageId+'Hover');
+			$hover.append(
+				("<div class='hover_background'></div>"),
+				("<div class='lightbox_information'id='"+imageId+"Info'></div>")
+			);
+
+			var $info = $('#'+imageId+'Info');
+			$info.append(
+				("<div class='lightbox_title'><h1>首絞めハム太郎</h1></div>"),
+				("<div class='lightbox_user_waku'id='"+imageId+"Waku'>")
+			);
+
+			var $waku = $('#'+imageId+'Waku');
+			$waku.append(
+				("<div class='lightbox_user_icon'></div>"),
+				("<div class='lightbox_user_name'><h1>illustration by 〇〇〇〇〇</h1></div>")
 			);
 
 			//トリミング
