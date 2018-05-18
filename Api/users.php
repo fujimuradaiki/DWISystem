@@ -6,10 +6,7 @@ class users{
 
     public function controller($postAction,$postData){
         if($postAction == "userList"){
-             $this->userList();
-            exit();
-        }else if($postAction == "insertReview"){
-            $this->insertReview($postData);
+            $this->userList($postData);
             exit();
         }else if($postAction == "userInfo"){
             $this->userInfo($postData);
@@ -22,90 +19,25 @@ class users{
     }
 ///////////////////////////////////////////////////////////////////////////////////
     //ユーザーリスト
-    public  function userList(){
+    public  function userList($postData){
         $pdo = new connectdb();
-        $sql = "select id,userName from users";
+        $sql = "select user_id,user_name from users";
         $data = array();
+        if($postData[0] !="" ){
+            $sql .= " WHERE user_name LIKE "."'%$postData[0]%'";
+        }
+       //echo $sql;
         $result = $pdo->dbo->query($sql);
         while ($val = $result->fetch(PDO::FETCH_ASSOC)){
             $data[] = array(
-                "userId" => $val['id'],
-                "userName" => $val['userName']
+                "userId" => $val['user_id'],
+                "userName" => $val['user_name']
             );
         }
         echo json_encode($data);
     }
 ///////////////////////////////////////////////////////////////////////////////////////
-    //レビューの登録 0:画像ID　1:
-    public function insertReview($postData){
-        $pdo = new connectdb();
-        $commentData = array();
 
-        $imageId = $postData[0]; //$postData;
-        $creatorId = $postData[1]; //$postData;  投稿者ID
-
-        $insert_comment_user_id = $postData[2]; //コメントユーザーID
-        $insert_comment_image_id = $imageId;//コメント対象 画像ID
-        $insert_comment_rank = $postData[3];    //評価ポイント数
-        $insert_comment = $postData[4];//コメント
-        $insert_at=  date("Y/m/d H:i:s");//日時
-
-        //DB追加SQL
-        $sql = "INSERT
-                INTO
-                comments(
-                comment_user_id,
-                comment_image_id,
-                comment_rank,
-                comment,
-                comment_insert_at
-                )VALUES("
-            .$insert_comment_user_id.","
-            .$insert_comment_image_id.","
-            .$insert_comment_rank.","
-            ."'$insert_comment'".","
-            ."'$insert_at'"
-            .")";
-            //コメント更新用SQL
-            $commentSql = "SELECT
-                       comment_id,
-                       comment_rank,
-                       comment,
-                       comment_insert_at,
-                       comment_user_id,
-                       user_id,
-                       user_name
-                       FROM
-                       users user, comments comment,images image
-                       WHERE
-                       comment_image_id = image_id
-                       AND
-                       comment_user_id = user_id
-                       AND
-                       image_id IN(SELECT image_id from images WHERE image_id = ".$imageId.")
-                       AND
-                       user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId.
-                       ")";
-         $stmt=$pdo->dbo->prepare($sql);
-         $resultFlg = $stmt->execute();
-         if($resultFlg == true){
-          //echo "コメントありがとう！";
-           $result= $pdo->dbo->query($commentSql);
-           while ($val = $result->fetch(PDO::FETCH_ASSOC)){
-               $commentData[] = array(
-                   'commentId' => $val['comment_id'],
-                   'rank' => $val['comment_rank'],
-                   'comment' => $val['comment'],
-                   'commentInsertAt'=> $val['comment_insert_at'],
-                   'userId' => $val['user_id'],
-                   'userName' => $val['user_name']
-               );
-           }
-        }else{
-           echo "コメントが追加できなかったです・・・";
-        }
-        echo json_encode($commentData);
-    }
 ///////////////////////////////////////////////////////////////////////////////////
     //user詳細 0:userID   1:ページ番号
     public function userInfo($postData){
