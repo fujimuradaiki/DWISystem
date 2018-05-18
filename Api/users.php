@@ -114,11 +114,17 @@ class users{
         $userData = array();
         $iamgeData = array();
 
-        $test_user_id = $postData[0];//userID
-        $P = $postData[1];           //ページ番号番号
-        $max = $P * 12;
+        $user_id = $postData[0];//userID
+        $pageNamber = $postData[1];      //ページ番号番号
+        $imageSearch = $postData[2];//タイトル名で検索
+        $max = $pageNamber * 12;
         $min = $max - 12;
+        $likeSq = "";
 
+        $limitSql =  " LIMIT ".$min.",".$max;
+        if($postData[2] != ""){
+            $likeSq = " AND image_title LIKE " ."'%$imageSearch%'";
+        }
         $sql = "SELECT
                 user_id,
                 user_name,
@@ -132,10 +138,10 @@ class users{
                 image_user_id = user_id
                 WHERE
                 user_id=".
-                $test_user_id.
-                " limit ".
-                $min.",".$max;
-        //echo $sql;
+                $user_id;
+
+        $sql .= $likeSq.$limitSql;
+       // echo $sql;
         $result = $pdo->dbo->query($sql);
 
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
@@ -147,16 +153,21 @@ class users{
                 "imageId"=>$val['image_id'],
                 "imageTitle"=>$val['image_title']
             );
-
         };
 
         $datas[] = array(
             'userData'=> $userData,
             'iamgeData'=>$iamgeData
         );
-       // echo json_encode($userData)."\n";
-       // echo json_encode($iamgeData);
-        echo json_encode($datas);
+
+        $userNullCheck = is_null($datas[0]['userData'][0]['userId'][0]);
+        $imageNullCheck = is_null($datas[0]['iamgeData'][0]['imageId'][0]);
+
+        if(!($userNullCheck && $imageNullCheck)){
+            echo json_encode($datas);
+        }else{
+            echo "該当するレコードがありません";
+        }
     }
 
     //フォルダの作成
