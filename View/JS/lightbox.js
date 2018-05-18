@@ -30,7 +30,11 @@ $('.touroku_btn').click(function(){
   $('body').addClass("overflow");
 });
 
+<<<<<<< HEAD
   $(document).on("click",".lightbox_hover",function(){
+=======
+  $(document).on("click",".lightbox",function(){
+>>>>>>> 4cf6a954bb9b69195b80417c411586740721d0bb
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 });
