@@ -11,6 +11,9 @@ class users{
         }else if($postAction == "userInfo"){
             $this->userInfo($postData);
             exit();
+        }else if($postAction == "insert"){
+            $this->insert($postData);
+            exit();
         }else{
             echo "「users.php」関数がありません";
             exit();
@@ -107,6 +110,40 @@ class users{
         }
     }
 
+    //////////////////////////////////////////////////////////////
+    //新規作成
+    public  function insert($postData){
+    $pdo = new connectdb();
+    $postData = array("'test3'","'aaaa'","'2011/01/01 12:00:00'","'aaaa@sss.ss'");
+    $sql = "insert
+            into
+            usersCP(
+            user_name,
+            password,
+            user_insert_at,
+            user_mail
+            )VALUES("
+            .$postData[0].","
+            .$postData[1].","
+            .$postData[2].","
+            .$postData[3]
+            .")";
+   //  echo $sql;
+//      $stmt=$pdo->dbo->prepare($sql);
+//      $resultFlg = $stmt->execute();
+            $resultFlg = false;
+     if($resultFlg == true){
+        echo "新規登録ありがとうございます。";
+     }else{
+         $a = md5( $postData[4] );
+         $b = crypt($a);
+         $d = crypt($a);
+         $c = md5( $a );
+         echo($a."\n".$c."\n".$b."\n".$d);
+       // echo  "新規登録に失敗しました。";
+     }
+    }
+////////////////////////////////////////////////////////////////////////
     //フォルダの作成
     public function createDirectory(){
         $result = "";
@@ -130,5 +167,4 @@ class users{
         echo $result."\n".$directoryPath;
 
     }
-
 }
