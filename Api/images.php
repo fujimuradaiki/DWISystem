@@ -118,7 +118,6 @@ class images{
         $commentData = array();
         //DBへの接続関数
         $pdo = new connectdb();
-        $postData = array(3,1);
         $imageId = $postData[0]; //$postData;
         $creatorId = $postData[1]; //$postData;
          //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
