@@ -11,6 +11,7 @@
 <script src="../JS/lightbox.js"></script>
 <script src="../JS/style.js" type="text/javascript"></script>
 <script src="../JS/page_top.js" type="text/javascript"></script>
+<script src="../JS/scroll.js" type="text/javascript"></script>
 <script>
   jQuery(function($) {
       $('.bg-slider').bgSwitcher({
@@ -40,7 +41,7 @@
           </div>
         </nav>
       </div>
-    <div class="logo"><img src="../Images/logo.png"></div>
+    <div class="logo"><a href="#"><img src="../Images/logo.png"></a></div>
   </header>
 <!--  <div class="bg-slider">
     <div class="title">
@@ -62,7 +63,7 @@
     <input class="login_btn2" type="button"  value="ログイン">
     <input class="new_btn" type="button" value="新規登録">
     <div class="scroll">
-     <a href="#"><span></span>Scroll</a>
+     <a href="#works"><span></span>Scroll</a>
     </div>
   </div>
     
@@ -196,6 +197,7 @@
         <!--登録完了画面終わり -->
         
       </div>
+  <div id="works"></div>
     <div class="works">
         <div class="works_title"><p>作品一覧</p>
           <div class="works_menu">
@@ -225,31 +227,20 @@
             </div>
           <div class="works_contents"></div>
             <div class="lightbox_waku">
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              <div class="lightbox"></div>
-              
+                <div class="lightbox">
+                  <img src="../Images/kaguyaruna.jpg" width="250px" height="250px">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                    <div class="lightbox_information">
+                      <div class="lightbox_title"><h1>首絞めハム太郎</h1></div>
+                       <div class="lightbox_user_waku">
+                      <div class="lightbox_user_icon"></div>
+                      <div class="lightbox_user_name"><h1>illustration by 〇〇〇〇〇</h1></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
             </div>
         <div class="lightbox_view">
         <div class="lightbox_background"></div>
@@ -269,7 +260,7 @@
                     <li><img src="../Images/facebook.png" alt=""></li>
                   </ul>
                 </div>
-                <div class="work_title"><h1>生焼けの魚(作品タイトル)</h1></div>
+                <div class="work_title"><h1>首絞めハム太郎(作品タイトル)</h1></div>
                 <div class="review">
                   <h1>レビューをする</h1>
                   <h2>★★★★★</h2>
@@ -290,9 +281,10 @@
         </div>
         </div>
       <footer>
-      
-  
-  
+      <div class="footer_logo">
+        <a href="#"><img src="../Images/logo.png"></a>
+      </div>
+        <h2>©social_sharing_×××××××××××</h2>
     </footer>
       </div>
        <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
