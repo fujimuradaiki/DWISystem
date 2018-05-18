@@ -186,7 +186,7 @@ class images{
 
         //連想配列に格納
         $datas[] = array(
-            'usersData'=> $userData,
+            'usersData'=> $creatorData,
             'commentData'=>$commentData
         );
 
