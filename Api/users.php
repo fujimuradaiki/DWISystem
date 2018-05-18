@@ -11,14 +11,16 @@ class users{
         }else if($postAction == "insertReview"){
             $this->insertReview($postData);
             exit();
-
+        }else if($postAction == "userInfo"){
+            $this->userInfo($postData);
+            exit();
         }else{
             echo "「users.php」関数がありません";
             exit();
         }
 
     }
-
+///////////////////////////////////////////////////////////////////////////////////
     //ユーザーリスト
     public  function userList(){
         $pdo = new connectdb();
@@ -33,7 +35,7 @@ class users{
         }
         echo json_encode($data);
     }
-
+///////////////////////////////////////////////////////////////////////////////////////
     //レビューの登録 0:画像ID　1:
     public function insertReview($postData){
         $pdo = new connectdb();
@@ -103,6 +105,58 @@ class users{
            echo "コメントが追加できなかったです・・・";
         }
         echo json_encode($commentData);
+    }
+///////////////////////////////////////////////////////////////////////////////////
+    //user詳細 0:userID   1:ページ番号
+    public function userInfo($postData){
+        $pdo = new connectdb();
+        $datas = array();
+        $userData = array();
+        $iamgeData = array();
+
+        $test_user_id = $postData[0];//userID
+        $P = $postData[1];           //ページ番号番号
+        $max = $P * 12;
+        $min = $max - 12;
+
+        $sql = "SELECT
+                user_id,
+                user_name,
+                image_id,
+                image_title
+                FROM
+                images AS images
+                LEFT JOIN
+                users AS users
+                ON
+                image_user_id = user_id
+                WHERE
+                user_id=".
+                $test_user_id.
+                " limit ".
+                $min.",".$max;
+        //echo $sql;
+        $result = $pdo->dbo->query($sql);
+
+        while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $userData[] = array(
+                "userId"=>$val['user_id'],
+                "userName"=>$val['user_name']
+            );
+            $iamgeData[] = array(
+                "imageId"=>$val['image_id'],
+                "imageTitle"=>$val['image_title']
+            );
+
+        };
+
+        $datas[] = array(
+            'userData'=> $userData,
+            'iamgeData'=>$iamgeData
+        );
+       // echo json_encode($userData)."\n";
+       // echo json_encode($iamgeData);
+        echo json_encode($datas);
     }
 
     //フォルダの作成
