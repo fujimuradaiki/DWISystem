@@ -8,13 +8,19 @@ class users{
         if($postAction == "userList"){
              $this->userList();
             exit();
-        }else;{
+        }else if($postAction == "insertReview"){
+            $this->insertReview($postData);
+            exit();
+        }else if($postAction == "userInfo"){
+            $this->userInfo($postData);
+            exit();
+        }else{
             echo "「users.php」関数がありません";
             exit();
         }
 
     }
-
+///////////////////////////////////////////////////////////////////////////////////
     //ユーザーリスト
     public  function userList(){
         $pdo = new connectdb();
@@ -28,6 +34,140 @@ class users{
             );
         }
         echo json_encode($data);
+    }
+///////////////////////////////////////////////////////////////////////////////////////
+    //レビューの登録 0:画像ID　1:
+    public function insertReview($postData){
+        $pdo = new connectdb();
+        $commentData = array();
+
+        $imageId = $postData[0]; //$postData;
+        $creatorId = $postData[1]; //$postData;  投稿者ID
+
+        $insert_comment_user_id = $postData[2]; //コメントユーザーID
+        $insert_comment_image_id = $imageId;//コメント対象 画像ID
+        $insert_comment_rank = $postData[3];    //評価ポイント数
+        $insert_comment = $postData[4];//コメント
+        $insert_at=  date("Y/m/d H:i:s");//日時
+
+        //DB追加SQL
+        $sql = "INSERT
+                INTO
+                comments(
+                comment_user_id,
+                comment_image_id,
+                comment_rank,
+                comment,
+                comment_insert_at
+                )VALUES("
+            .$insert_comment_user_id.","
+            .$insert_comment_image_id.","
+            .$insert_comment_rank.","
+            ."'$insert_comment'".","
+            ."'$insert_at'"
+            .")";
+            //コメント更新用SQL
+            $commentSql = "SELECT
+                       comment_id,
+                       comment_rank,
+                       comment,
+                       comment_insert_at,
+                       comment_user_id,
+                       user_id,
+                       user_name
+                       FROM
+                       users user, comments comment,images image
+                       WHERE
+                       comment_image_id = image_id
+                       AND
+                       comment_user_id = user_id
+                       AND
+                       image_id IN(SELECT image_id from images WHERE image_id = ".$imageId.")
+                       AND
+                       user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId.
+                       ")";
+         $stmt=$pdo->dbo->prepare($sql);
+         $resultFlg = $stmt->execute();
+         if($resultFlg == true){
+          //echo "コメントありがとう！";
+           $result= $pdo->dbo->query($commentSql);
+           while ($val = $result->fetch(PDO::FETCH_ASSOC)){
+               $commentData[] = array(
+                   'commentId' => $val['comment_id'],
+                   'rank' => $val['comment_rank'],
+                   'comment' => $val['comment'],
+                   'commentInsertAt'=> $val['comment_insert_at'],
+                   'userId' => $val['user_id'],
+                   'userName' => $val['user_name']
+               );
+           }
+        }else{
+           echo "コメントが追加できなかったです・・・";
+        }
+        echo json_encode($commentData);
+    }
+///////////////////////////////////////////////////////////////////////////////////
+    //user詳細 0:userID   1:ページ番号
+    public function userInfo($postData){
+        $pdo = new connectdb();
+        $datas = array();
+        $userData = array();
+        $iamgeData = array();
+
+        $user_id = $postData[0];//userID
+        $pageNamber = $postData[1];      //ページ番号番号
+        $imageSearch = $postData[2];//タイトル名で検索
+        $max = $pageNamber * 12;
+        $min = $max - 12;
+        $likeSq = "";
+
+        $limitSql =  " LIMIT ".$min.",".$max;
+        if($postData[2] != ""){
+            $likeSq = " AND image_title LIKE " ."'%$imageSearch%'";
+        }
+        $sql = "SELECT
+                user_id,
+                user_name,
+                image_id,
+                image_title
+                FROM
+                images AS images
+                LEFT JOIN
+                users AS users
+                ON
+                image_user_id = user_id
+                WHERE
+                user_id=".
+                $user_id;
+
+        $sql .= $likeSq.$limitSql;
+       // echo $sql;
+        $result = $pdo->dbo->query($sql);
+
+        while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $userData[] = array(
+                "userId"=>$val['user_id'],
+                "userName"=>$val['user_name']
+            );
+            $iamgeData[] = array(
+                "imageId"=>$val['image_id'],
+                "imageTitle"=>$val['image_title']
+            );
+        };
+
+        $datas[] = array(
+            'userData'=> $userData,
+            'iamgeData'=>$iamgeData
+        );
+
+        $userNullCheck = is_null($datas[0]['userData'][0]['userId'][0]);
+        $imageNullCheck = is_null($datas[0]['iamgeData'][0]['imageId'][0]);
+
+        if(!($userNullCheck && $imageNullCheck)){
+            echo json_encode($datas);
+        }else{
+            echo "該当するレコードがありません";
+        }
     }
 
     //フォルダの作成

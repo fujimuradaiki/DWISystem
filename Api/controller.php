@@ -12,7 +12,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     echo "controller.php:::エラー";
 
 //          $test_model = 'users';
-//          $test_action = 'userList';
+//          $test_action = 'userInfo';
 //          $test_data = '';
 //          $classname = new $test_model;
 //          $classname->controller($test_action,$test_data);
