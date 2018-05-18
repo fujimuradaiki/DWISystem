@@ -367,7 +367,7 @@ header{
 }
 
 .menu_btn{
-  width: 610px;
+  width: 680px;
   margin: 0 auto;
   padding: 40px;
 }
@@ -390,13 +390,69 @@ color:#fff;
 }
 
 .check_btn_waku{
+  margin: 4px 0 0 20px;
   float:right;
 }
 
 .check_btn{
-  margin-left:20px;
+  margin-left: 13px;
   float:left;
   color:#fff;
+}
+
+.check_btn_waku input{
+  float:left;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+.check_btn {
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 42px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.check_btn:hover:after {
+  border-color: #0171bd;
+}
+.check_btn:after {
+  -webkit-transition: border-color 0.2s linear;
+  transition: border-color 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  display: block;
+  margin-top: -10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  content: '';
+}
+.check_btn:before {
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 21px;
+  display: block;
+  margin-top: -7px;
+  width: 5px;
+  height: 9px;
+  border-right: 3px solid #0171bd;
+  border-bottom: 3px solid #0171bd;
+  content: '';
+  opacity: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=checkbox]:checked + .check_btn:before {
+  opacity: 1;
 }
 
 .lightbox_waku{
