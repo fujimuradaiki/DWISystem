@@ -30,7 +30,7 @@
 $(document).ready(function(){
 	$('.NEW_btn').css("background-color","rgb(226, 49, 49)");
 	//画像表示実行
-	runSearch();
+	runSearch();runSearch();
 
 
 });
@@ -50,6 +50,8 @@ $('.NEW_btn').on("click",function(){
 		$(this).css("background-color","rgb(226, 49, 49)");
 		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
 		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+
+		runSearch();
 	}
 });
 
@@ -68,6 +70,8 @@ $('.OLD_btn').on("click",function(){
 		$(this).css("background-color","rgb(226, 49, 49)");
 		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
 		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+
+		runSearch();
 	}
 });
 
@@ -86,6 +90,8 @@ $('.POPULARTY_btn').on("click",function(){
 		$(this).css("background-color","rgb(226, 49, 49)");
 		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
 		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
+
+		runSearch();
 	}
 });
 
@@ -110,6 +116,8 @@ $('#all').on("click",function(){
 		$("#backGround").prop("checked",false);
 		$("#item").prop("checked",false);
 	}
+
+	runSearch();
 });
 
 
@@ -129,6 +137,8 @@ $('#chara').on("click",function(){
 	  $("#item").prop("checked")){
 		$("#all").prop("checked",true);
 	}
+
+	runSearch();
 });
 
 
@@ -148,6 +158,8 @@ $('#backGround').on("click",function(){
 	  $("#item").prop("checked")){
 		$("#all").prop("checked",true);
 	}
+
+	runSearch();
 });
 
 
@@ -167,6 +179,8 @@ $('#item').on("click",function(){
 	  $("#item").prop("checked")){
 		$("#all").prop("checked",true);
 	}
+
+	runSearch();
 });
 
 
@@ -249,6 +263,7 @@ function runSearch(){
 		for(var i = 0;i < data.length;i++){
 
 			var userName = data[i].UserName;
+			var userId = data[i].userId;
 			var imageId = data[i].Id;
 			var categoryName = data[i].categoryName;
 			var title = data[i].Title;
@@ -261,7 +276,7 @@ function runSearch(){
 			var $num = $('#'+imageId+'Div');
 			$num.append(
 
-					$("<img id='"+imageId+"Img'class='images'value='"+imageId+"'>")
+					$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
 					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
 
 					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
@@ -279,18 +294,29 @@ function runSearch(){
 
 			var $info = $('#'+imageId+'Info');
 			$info.append(
-				("<div class='lightbox_title'><h1>首絞めハム太郎</h1></div>"),
+				("<div class='lightbox_title'><h1>"+ title +"</h1></div>"),
 				("<div class='lightbox_user_waku'id='"+imageId+"Waku'>")
 			);
 
 			var $waku = $('#'+imageId+'Waku');
 			$waku.append(
-				("<div class='lightbox_user_icon'></div>"),
-				("<div class='lightbox_user_name'><h1>illustration by 〇〇〇〇〇</h1></div>")
+				("<div class='lightbox_user_icon'id='"+ imageId +"Icon'></div>"),
+				("<div class='lightbox_user_name'><h1>illustration by "+ userName +"</h1></div>")
 			);
 
+			var $icon = $('#'+imageId+'Icon');
+			$icon.append(
+					$("<img id='"+imageId+"IconImg'class='icon'>")
+					.attr("src","../../User/"+ userName +"/icon.png")
+			);
+			var $iconImage = $('#'+imageId+'IconImg');
+			$iconImage.css('width',30);
+			$iconImage.css('height',30);
+			$iconImage.css('border-radius','50%');
+
+
 			//トリミング
-			trimmingImage($("#" + imageId+"Img"),250);
+			trimmingImage($("#" + imageId),250);
 		}
 
 		//float解除用div

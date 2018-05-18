@@ -30,17 +30,96 @@ $('.touroku_btn').click(function(){
   $('body').addClass("overflow");
 });
 
-<<<<<<< HEAD
-  $(document).on("click",".lightbox_hover",function(){
-=======
-<<<<<<< HEAD
-  $(document).on("click",".lightbox_hover",function(){
-=======
-  $(document).on("click",".lightbox",function(){
->>>>>>> 4cf6a954bb9b69195b80417c411586740721d0bb
->>>>>>> master
+////////////////////////////////////////////////////////////////////
+$(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
+
+  var $image = $(this).prev('img');
+  var $imageId = $image.attr('id');
+  var $userId = $image.attr('value');
+  var $imageWidth = $image.width();
+  var $imageHeight = $image.height();
+
+  var imageTitle;
+  var creatorName;
+
+  var $div;
+
+  var param = {
+		  0:$imageId,
+		  1:$userId
+  };
+  console.log(param);
+  var data = {'model':'images','action':'imageInfo','data':param};
+  //ajax通信
+  $.ajax({
+	url:"../../Api/controller.php",
+	dataType:'json',
+	type:"POST",
+	data:data
+  //ajax通信成功時
+  }).done(function(data){
+	console.log(data);
+
+	imageTitle = data[0]['usersData'][0]['imageTitle'];
+	creatorName = data[0]['usersData'][0]['creatorName'];
+
+
+
+	//画像詳細を表示////////////////////
+	var $div = $('.lightbox_left_image');
+	$div.empty();
+	$div.append(
+			$("<img class='view_image'>")
+			.attr("src","../../User/"+ creatorName +"/"+ $imageId +".png")
+	);
+	var w,h;
+	if($imageWidth >= $imageHeight){
+		w = 500;
+		h = (500 / $imageWidth) * $imageHeight;
+	}else{
+		w = (600 / $imageHeight) * $imageWidth;
+		h = 600;
+	}
+	$('.view_image').css('width',w);
+	$('.view_image').css('height',h);
+	//ユーザーアイコン表示//////////////////
+	$div = $('.user_icon');
+	$div.empty();
+	$div.append(
+			$("<img class='view_icon'>")
+			.attr("src","../../User/"+ creatorName +"/icon.png")
+	);
+	$('.view_icon').css('width',50);
+	$('.view_icon').css('height',50);
+	$('.view_icon').css('border-radius','50%');
+
+	//作者名表示////////////////////////
+	$div = $('.user_name');
+	$div.empty();
+	$div.append(
+		("<h1>illustration by "+ creatorName +"</h1>")
+	);
+
+
+	//作品タイトル表示////////////////////////
+	$div = $('.work_title');
+	$div.empty();
+	$div.append(
+		("<h1>"+ imageTitle +"</h1>")
+	);
+
+	//コメント表示
+	console.log(data[0]['commentData'].length);
+
+
+  //ajax通信失敗時
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+	alert("error");
+  });
+
+
 });
 
 // $(document).on("mouseover",".lightbox",function(){
