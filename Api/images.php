@@ -172,7 +172,7 @@ class images{
                'commentId' => $val['comment_id'],
                'rank' => $val['comment_rank'],
                'comment' => $val['comment'],
-               'commentInsert_at'=> $val['comment_insert_at'],
+               'commentInsertAt'=> $val['comment_insert_at'],
                 'userId' => $val['user_id'],
                 'userName' => $val['user_name']
             );
