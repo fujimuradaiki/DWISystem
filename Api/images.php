@@ -118,7 +118,6 @@ class images{
         $commentData = array();
         //DBへの接続関数
         $pdo = new connectdb();
-
         $imageId = $postData[0]; //$postData;
         $creatorId = $postData[1]; //$postData;
          //画像タイトル 画像ID　投稿者名　　検索条件　画像IDと投稿者ID
@@ -128,13 +127,18 @@ class images{
                     user_name,
                     user_id
                     FROM
-                    images image, users user
-                    WHERE
+                    images AS images
+                    LEFT JOIN
+                    users AS users
+                    ON
                     image_user_id = user_id
-                    AND
-                    user_name IN(SELECT user_name FROM users WHERE user_id = " .$imageId.")
-                    AND
-                    image_id = " .$creatorId;
+                    LEFT JOIN
+                    categories AS categories
+                    ON
+                    image_category_id = category_id
+                    WHERE
+                    image_id = " .$imageId
+                    ." AND user_id = " .$creatorId;
         //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
         $commentSql = "SELECT
                        comment_id,
@@ -155,8 +159,8 @@ class images{
                        AND
                        user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId. ")";
 
-     //    echo  $userSql ."\n";
-     //    echo  $commentSql;
+        // echo  $userSql ."\n";
+        // echo  $commentSql;
         $result= $pdo->dbo->query($userSql);
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
             $creatorData[] = array(
@@ -179,14 +183,14 @@ class images{
                 'userName' => $val['user_name']
             );
         }
-    //    echo  json_encode($creatorData)."\n";
-    //    echo  json_encode($commentData);
+       // echo  json_encode($creatorData)."\n";
+       // echo  json_encode($commentData);
        // echo count($userData) ."\n";
        // echo count($commentData) ."\n";
 
         //連想配列に格納
         $datas[] = array(
-            'usersData'=> $userData,
+            'usersData'=> $creatorData,
             'commentData'=>$commentData
         );
 

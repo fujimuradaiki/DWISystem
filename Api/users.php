@@ -34,7 +34,12 @@ class users{
                 "userName" => $val['user_name']
             );
         }
-        echo json_encode($data);
+        $userNullCheck = is_null($data[0]['userId']);
+        if(!($userNullCheck)){
+            echo json_encode($data);
+        }else{
+            echo "該当するレコードがありません";
+        }
     }
 ///////////////////////////////////////////////////////////////////////////////////////
 
