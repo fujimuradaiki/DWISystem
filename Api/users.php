@@ -5,18 +5,20 @@ header('Content-type: application/json');
 class users{
 
     public function controller($postAction,$postData){
-        if($postAction == "userList"){
-            $this->userList($postData);
-            exit();
-        }else if($postAction == "userInfo"){
-            $this->userInfo($postData);
-            exit();
-        }else if($postAction == "insert"){
-            $this->insert($postData);
-            exit();
-        }else{
-            echo "「users.php」関数がありません";
-            exit();
+
+        switch ($postAction){
+            case "userList":
+                $this->userList($postData);
+                break;
+            case "userInfo":
+                $this->userInfo($postData);
+                break;
+            case "insert":
+                $this->insert($postData);
+                break;
+            default:
+                echo "users.php ユーザー定義関数に該当しませんでした";
+                break;
         }
 
     }
@@ -44,7 +46,6 @@ class users{
             echo "該当するレコードがありません";
         }
     }
-///////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////
     //user詳細 0:userID   1:ページ番号
@@ -110,11 +111,15 @@ class users{
         }
     }
 
-    //////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
     //新規作成
     public  function insert($postData){
     $pdo = new connectdb();
-    $postData = array("'test3'","'aaaa'","'2011/01/01 12:00:00'","'aaaa@sss.ss'");
+    $insert_at=  date("Y/m/d H:i:s");//日時
+   // $postData = array("'test3'","'aaaa'","'aaaa@sss.ss'");
+    //passの暗号化
+    $pass = md5( $postData[1] );
+
     $sql = "insert
             into
             usersCP(
@@ -124,47 +129,60 @@ class users{
             user_mail
             )VALUES("
             .$postData[0].","
-            .$postData[1].","
-            .$postData[2].","
-            .$postData[3]
+            ."'$pass'".","
+            ."'$insert_at'".","
+            .$postData[2]
             .")";
-   //  echo $sql;
-//      $stmt=$pdo->dbo->prepare($sql);
-//      $resultFlg = $stmt->execute();
-            $resultFlg = false;
-     if($resultFlg == true){
-        echo "新規登録ありがとうございます。";
-     }else{
-         $a = md5( $postData[4] );
-         $b = crypt($a);
-         $d = crypt($a);
-         $c = md5( $a );
-         echo($a."\n".$c."\n".$b."\n".$d);
-       // echo  "新規登録に失敗しました。";
+          //echo $sql;
+        //新規登録名でフォルダ名を検索
+        if($this->searchDirectory($postData[0])){
+            //SQL実行
+            $stmt=$pdo->dbo->prepare($sql);
+            $resultFlg = $stmt->execute();
+            if($resultFlg == true){
+                $this->createDirectory($postData[0]);
+                echo "true";
+             }
+        }else{
+         //echo json_encode($postData[1]);
+         echo  "false";
      }
     }
 ////////////////////////////////////////////////////////////////////////
     //フォルダの作成
-    public function createDirectory(){
+    public function searchDirectory($userName){
         $result = "";
-        $directoryName = 'test';
+        $directoryName = str_replace("'", "", $userName);
         //フォルダパスを作成
-        $directoryPath = '../User/test'.$directoryName;
+        $directoryPath = '../User/'.$directoryName;
         //フォルダの存在確認
         if(!(file_exists($directoryPath))){
             $result="ディレクトリを作成します\n";
             //ディレクトリ作成処理
-            if(mkdir($directoryPath,0777)){
-                //作成したディレクトリのパーミッションの変更（一応）
-                chmod($directoryPath,0777);
-                $result="作成が完了しました";
-            }else{
-                $result="作成に失敗しました";
-            }
+           return true;
         }else{
-            $result ="そのディレクトリはすでに存在します";
+            //$result ="そのディレクトリはすでに存在します";
+            return false;
         }
-        echo $result."\n".$directoryPath;
+        //echo $result."\n".$directoryPath;
+
+    }
+    public  function createDirectory($postData){
+        $directoryPath = '../User/'.$directoryName;
+        if(mkdir($directoryPath,0777)){
+            //作成したディレクトリのパーミッションの変更（一応）
+            chmod($directoryPath,0777);
+            //$result="作成が完了しました";
+            return true;
+        }else{
+            //$result="作成に失敗しました";
+            return false;
+        }
+    }
+//////////////////////////////////////////////////////////////////////////////////
+    //ログイン
+    public function login($postData){
+
 
     }
 }
