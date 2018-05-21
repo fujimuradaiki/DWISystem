@@ -15,6 +15,9 @@ class images{
             case "insertReview":
                 $this->insertReview($postData);
                 break;
+            case "insertImage":
+                $this->insertImage($postData);
+                break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
                 break;
@@ -112,6 +115,7 @@ class images{
     //ユーザー情報(全て)　画像情報(タイトル、画像ID、)　カテゴリー　コメント
     //送信されてくる値　1:画像ID 2:userID
     public function imegeInfo($postData){
+       // $postData = array(8,1);
         //送るとき配列
         $datas = array();
         //投稿者情報の配列
@@ -142,24 +146,25 @@ class images{
                     image_id = " .$imageId
                     ." AND user_id = " .$creatorId;
         //レビュー　コメント　ランク　予定：コメント者の追加   変数　検索条件　画像IDと投稿者ID
-        $commentSql = "SELECT
+                    $commentSql = "SELECT
                        comment_id,
                        comment_rank,
                        comment,
                        comment_insert_at,
-                       comment_user_id,
                        user_id,
                        user_name
                        FROM
-                       users user, comments comment,images image
-                       WHERE
-                       comment_image_id = image_id
-                       AND
+                       comments AS comments
+                       LEFT JOIN
+                       users AS users
+                       ON
                        comment_user_id = user_id
-                       AND
-                       image_id IN(SELECT image_id from images WHERE image_id = ".$imageId.")
-                       AND
-                       user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId. ")";
+                       LEFT JOIN
+                       images AS images
+                       ON
+                       comment_image_id = image_id
+                       WHERE
+                       image_id =".$imageId."  ORDER BY comment_insert_at ASC";
 
         // echo  $userSql ."\n";
         // echo  $commentSql;
@@ -176,13 +181,26 @@ class images{
        $result= $pdo->dbo->query($commentSql);
         //コメント配列
         while ($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $userId =$val['user_id'];
+            $userName= $val['user_name'];
+            $userNullCheck = is_null($userId);
+            $userNameNullCheck = is_null($userName);
+
+            if($userNullCheck){
+                $userId = 0;
+            }
+            if($userNameNullCheck){
+                $userName = "";
+            }
+
+
             $commentData[] = array(
                'commentId' => $val['comment_id'],
                'rank' => $val['comment_rank'],
                'comment' => $val['comment'],
                'commentInsertAt'=> $val['comment_insert_at'],
-                'userId' => $val['user_id'],
-                'userName' => $val['user_name']
+                'userId' => $userId,
+                'userName' => $userName
             );
         }
        // echo  json_encode($creatorData)."\n";
@@ -230,38 +248,53 @@ class images{
                 ."'$insert_at'"
                 .")";
         //コメント更新用SQL
-        $commentSql = "SELECT
-                 comment_id,
-                 comment_rank,
-                 comment,
-                 comment_insert_at,
-                 comment_user_id,
-                 user_id,
-                 user_name
-                 FROM
-                 users user, comments comment,images image
-                 WHERE
-                 comment_image_id = image_id
-                 AND
-                 comment_user_id = user_id
-                 AND
-                 image_id IN(SELECT image_id from images WHERE image_id = ".$imageId.")
-                 AND
-                 user_id IN(SELECT user_id from users WHERE user_id = " .$creatorId.
-                 ")";
+                $commentSql = "SELECT
+                       comment_id,
+                       comment_rank,
+                       comment,
+                       comment_insert_at,
+                       user_id,
+                       user_name
+                       FROM
+                       comments AS comments
+                       LEFT JOIN
+                       users AS users
+                       ON
+                       comment_user_id = user_id
+                       LEFT JOIN
+                       images AS images
+                       ON
+                       comment_image_id = image_id
+                       WHERE
+                       image_id =".$imageId."  ORDER BY comment_insert_at ASC";
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
         if($resultFlg == true){
             //echo "コメントありがとう！";
             $result= $pdo->dbo->query($commentSql);
             while ($val = $result->fetch(PDO::FETCH_ASSOC)){
+                $userId =$val['user_id'];
+                $userName= $val['user_name'];
+                $userNullCheck = is_null($userId);
+                $userNameNullCheck = is_null($userName);
+
+                if($userNullCheck){
+                    $userId = 0;
+                }
+                if($userNameNullCheck){
+                    $userName = "";
+                }
+
+
+
+
                 $commentData[] = array(
                     'commentId' => $val['comment_id'],
                     'rank' => $val['comment_rank'],
                     'comment' => $val['comment'],
                     'commentInsertAt'=> $val['comment_insert_at'],
-                    'userId' => $val['user_id'],
-                    'userName' => $val['user_name']
+                    'userId' => $userId,
+                    'userName' =>$userName
                      );
                 }
         }else{
@@ -269,5 +302,13 @@ class images{
         }
             echo json_encode($commentData);
     }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function insertImage($postData){
+
+
+    }
+
+
+
 }
 
