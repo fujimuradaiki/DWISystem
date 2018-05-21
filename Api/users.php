@@ -16,6 +16,9 @@ class users{
             case "insert":
                 $this->insert($postData);
                 break;
+            case "login":
+                $this->login($postData);
+                break;
             default:
                 echo "users.php ユーザー定義関数に該当しませんでした";
                 break;
@@ -122,7 +125,7 @@ class users{
 
     $sql = "insert
             into
-            usersCP(
+            users(
             user_name,
             password,
             user_insert_at,
@@ -180,9 +183,44 @@ class users{
         }
     }
 //////////////////////////////////////////////////////////////////////////////////
-    //ログイン
+    //ログイン 0:userName 1:password   メールアドレスでのログイン 0:mail 1:psaaword
     public function login($postData){
+       // $postData = array("aaaa@sss.ss","'aaaa'");
+        $pdo = new connectdb();
+        $sql = "SELECT * FROM usersCP WHERE ";
+        $pass = "";
 
+        if($postData[0] != "" && $postData[1] != ""){
+            $userPass = $postData[1];
+            $pass = md5( $userPass );
 
+            if(!(strpos($postData[0],'@'))){
+                $userName = $postData[0];
+                $sql .= "user_name ="."'$userName'";
+                $userdata = array();
+            }else{
+                $mail =$postData[0];
+                $sql .= "user_mail =  " . "'$mail'";
+            }
+        }else{
+            echo "名前またはパスワードに問題があります";
+            exit();
+        }
+
+        $stmt=$pdo->dbo->prepare($sql);
+       // echo $sql;
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($pass != "" && $pass == $result['password']){
+                $userdata = array(
+                    "userId"=>$result['user_id'],
+                    "user_name"=>$result['user_name']
+                );
+            }else{
+                echo "ログインに失敗しました";
+                exit();
+            }
+            echo json_encode($userdata);
     }
 }
