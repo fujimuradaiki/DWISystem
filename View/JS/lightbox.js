@@ -65,7 +65,7 @@ $(document).on("click",".lightbox_hover",function(){
 	imageTitle = data[0]['usersData'][0]['imageTitle'];
 	creatorName = data[0]['usersData'][0]['creatorName'];
 
-
+	$.fn.raty.defaults.path = "../Lib/images";
 
 	//画像詳細を表示////////////////////
 	var $div = $('.lightbox_left_image');
@@ -84,6 +84,7 @@ $(document).on("click",".lightbox_hover",function(){
 	}
 	$('.view_image').css('width',w);
 	$('.view_image').css('height',h);
+
 	//ユーザーアイコン表示//////////////////
 	$div = $('.user_icon');
 	$div.empty();
@@ -110,9 +111,62 @@ $(document).on("click",".lightbox_hover",function(){
 		("<h1>"+ imageTitle +"</h1>")
 	);
 
-	//コメント表示
-	console.log(data[0]['commentData'].length);
+	//レビューコメント表示/////////////////////
+	$div = $('.past_coment');
+	$div.empty();
+	$div.append(
+		("<div id='commentPreview' style='overflow: auto; width: 500px; height: 160px'></div>")
+	);
+	var sum = 0;
+	for(var i = 0;i<data[0]['commentData'].length;i++){
+		$('#commentPreview').append(
+			("<div id ='comment"+ i +"'</div>")
+		);
+		$('#comment' + i).raty({
+			readOnly : true,
+			hints: ['1', '2', '3', '4', '5'],
+			number : 5,
+			score : data[0]['commentData'][i]['rank']
+		});
+		$('#comment' + i).append(
+			(" "),
+			$("<img id='commenter_icon"+i+"'>")
+				.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
+			("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+			("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
+			("<br>")
+		);
+		$('#commenter_icon'+i).css('width',25);
+		$('#commenter_icon'+i).css('height',25);
+		$('#commenter_icon'+i).css('border-radius','50%');
+		sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
+	}
 
+	//レビュー合計表示/////////////////////////////
+	$div = $('.review_all');
+	$div.empty();
+	$div.append(
+		("<h1>レビュー合計 : "+ data[0]['commentData'].length +"件</h1>"),
+		("<div id = 'averageReview'></div>")
+	);
+	$('#averageReview').raty({
+		readOnly : true,
+		number : 5,
+		halfShow : true,
+		score : (sum / data[0]['commentData'].length)
+	});
+
+	//レビューする部分を表示////////////////////////
+	$div = $('.review');
+	$div.empty();
+	$div.append(
+		("<h1>レビューをする</h1>"),
+		("<div id = 'reviewErea'></div>")
+	);
+	$('#reviewErea').raty({
+		number : 5,
+		hints: ['1', '2', '3', '4', '5']
+	});
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
