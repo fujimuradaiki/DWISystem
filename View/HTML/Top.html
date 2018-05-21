@@ -12,6 +12,7 @@
 <script src="../JS/style.js" type="text/javascript"></script>
 <script src="../JS/page_top.js" type="text/javascript"></script>
 <script src="../JS/scroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Lib/jquery.raty.js"></script>
 <script>
   jQuery(function($) {
       $('.bg-slider').bgSwitcher({
@@ -25,6 +26,7 @@
       <div class="nav">
         <nav>
           <input class="login_btn" type="button" value="ログイン">
+          <input class="new_btn" type="button" value="新規登録">
            <div class="icon">
             <ul>
               <li><img src="../Images/Twitter.png" alt=""></li>
@@ -59,9 +61,12 @@
   </div>
     </div>
       <div class="top_btn">
-        <h1 class="bg-slider__title">DESING INTRODUCTION</h1>
-    <input class="login_btn2" type="button"  value="ログイン">
-    <input class="new_btn" type="button" value="新規登録">
+        <div class="bg-slider__title">
+          <img src="../Images/logo_.png">
+          <p>DESING</p>
+          <p>INTRODUCTION<p>
+        </div>
+    
     <div class="scroll">
      <a href="#works"><span></span>Scroll</a>
     </div>
@@ -231,8 +236,8 @@
                   <label for="chara" class="check_btn">キャラ</label>
                   
                   
-                  <input type="checkbox" id="back" checked />
-                  <label for="back" class="check_btn">背景</label>
+                  <input type="checkbox" id="backGround" checked />
+                  <label for="backGround" class="check_btn">背景</label>
                   
                   
                   <input type="checkbox" id="item" checked />
