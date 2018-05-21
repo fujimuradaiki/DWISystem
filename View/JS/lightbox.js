@@ -82,9 +82,9 @@ $(document).on("click",".lightbox_hover",function(){
 		w = (600 / $imageHeight) * $imageWidth;
 		h = 600;
 	}
+	$('.lightbox_left_image').css('background','transparent')
 	$('.view_image').css('width',w);
 	$('.view_image').css('height',h);
-
 	//ユーザーアイコン表示//////////////////
 	$div = $('.user_icon');
 	$div.empty();
@@ -124,7 +124,7 @@ $(document).on("click",".lightbox_hover",function(){
 		);
 		$('#comment' + i).raty({
 			readOnly : true,
-			hints: ['1', '2', '3', '4', '5'],
+			hints: ['', '', '', '', ''],
 			number : 5,
 			score : data[0]['commentData'][i]['rank']
 		});
@@ -144,8 +144,8 @@ $(document).on("click",".lightbox_hover",function(){
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
 				("<br>")
 			);
-			$('#commenter_icon'+i).css('width',15);
-			$('#commenter_icon'+i).css('height',15);
+			$('#commenter_icon'+i).css('width',20);
+			$('#commenter_icon'+i).css('height',20);
 			$('#commenter_icon'+i).css('border-radius','50%');
 		}
 		sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
@@ -161,6 +161,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$('#averageReview').raty({
 		readOnly : true,
 		number : 5,
+		hints: ['', '', '', '', ''],
 		halfShow : true,
 		score : (sum / data[0]['commentData'].length)
 	});
@@ -205,6 +206,9 @@ $(document).on("click",".review_btn",function(){
 	var $point = $('#hint').attr('value');
 	var $comment = $('#'+ $imageId + 'ComentErea').val();
 
+	if($point == 0){
+		alert("レビュー点数をつけてください");
+	}else{
 	var param = {
 			  0:$imageId,
 			  1:$createrId,
@@ -237,7 +241,7 @@ $(document).on("click",".review_btn",function(){
 				);
 				$('#comment' + i).raty({
 					readOnly : true,
-					hints: ['1', '2', '3', '4', '5'],
+					hints: ['', '', '', '', ''],
 					number : 5,
 					score : data[i]['rank']
 				});
@@ -257,8 +261,8 @@ $(document).on("click",".review_btn",function(){
 						("<p2>"+" "+data[i]['comment'] +"</p2>"),
 						("<br>")
 					);
-					$('#commenter_icon'+i).css('width',15);
-					$('#commenter_icon'+i).css('height',15);
+					$('#commenter_icon'+i).css('width',20);
+					$('#commenter_icon'+i).css('height',20);
 					$('#commenter_icon'+i).css('border-radius','50%');
 				}
 				sum = parseInt(sum) +  parseInt(data[i]['rank']);
@@ -274,6 +278,7 @@ $(document).on("click",".review_btn",function(){
 			$('#averageReview').raty({
 				readOnly : true,
 				number : 5,
+				hints: ['', '', '', '', ''],
 				halfShow : true,
 				score : (sum / data.length)
 			});
@@ -303,6 +308,7 @@ $(document).on("click",".review_btn",function(){
 	  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	  });
+	}
 });
 
 
