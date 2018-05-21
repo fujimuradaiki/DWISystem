@@ -364,3 +364,17 @@ function trimmingImage(img,size){
 		img.css("left",0);
 	}
 }
+
+
+/*
+///////////////////////////////////
+
+*関数 戻るボタンが押された時
+
+*概要 再度検索をかける
+
+//////////////////////////////////
+*/
+$(document).on("click",".close_btn",function(){
+	runSearch();
+});
