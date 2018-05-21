@@ -4,18 +4,20 @@ header('Content-type: application/json');
 
 class images{
     public function controller($postAction,$postData){
-        if($postAction == "imageList"){
-            $this->imageList($postData);
-            exit;
-        }else if($postAction == "imageInfo"){
-             $this->imegeInfo($postData);
-            exit;
-        }else if($postAction == "insertReview"){
-            $this->insertReview($postData);
-            exit();
-        }else{
-            echo "postActionにマッチングする関数がありません";
-            exit;
+
+        switch ($postAction){
+            case "imageList":
+                $this->imageList($postData);
+                break;
+            case "imageInfo":
+                $this->imegeInfo($postData);
+                break;
+            case "insertReview":
+                $this->insertReview($postData);
+                break;
+            default:
+                echo "images.php ユーザー定義関数に該当しませんでした";
+                break;
         }
     }
 
