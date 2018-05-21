@@ -35,16 +35,144 @@
           </div>
           <div class="menu">
           <ul>
-            <li><a href="#">TOP</a></li>
-            <li><a href="#works">作品一覧</a></li>
-            <li><a href="#">制作者一覧</a></li>
+            <li><a href="Top.html">TOP</a></li>
+            <li><a href="Top.html">作品一覧</a></li>
+            <li><a href="CreatorsInfo.html">制作者一覧</a></li>
           </ul>
           </div>
         </nav>
       </div>
     <div class="logo"><a href="#"><img src="../Images/logo.png"></a></div>
   </header>
+  <!--ログイン画面 -->
+    <div class="login_view">
+        <div class="login_background"></div>
+        <div class="login_image_container">
+          <div class="close_btn_container">
+            <div class="login_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="login_box">
+              <div class="login_header">
+                <div class="login_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="login_word">
+                <div class="login_title"><h1>ログイン</h1></div>
+                ユーザー名<input class="login_text" type="text" >
+                 パスワード<input class="pass_text" type="text" >
+              </div>
+                <div class="login_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる">
+                  <input class="login_btn3" type="button"  value="ログイン">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--ログイン画面終わり -->
 
+        <!--新規登録画面 -->
+        <div class="new_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="new_word">
+
+              </div>
+              <div class="new_form_waku">
+              <div class="new_title"><h1>新規登録</h1></div>
+              <div class="new_images">
+                <div class="new_image"><h1>アップロードしてー</h1></div>
+                <input class="choice_btn" type="button"  value="選択">
+              </div>
+                <dl class="new_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"></dd>
+                  <dt>パスワード</dt>
+                  <dd><input type="text" name="password1"></dd>
+                  <dt>※パスワード確認</dt>
+                  <dd><input type="text" name="password2"></dd>
+                </dl>
+              </div>
+                <div class="new_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる">
+                  <input class="confirmation_btn" type="button"  value="確認">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--新規登録画面終わり -->
+
+        <!--新規登録確認画面 -->
+        <div class="new_confirmation_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="new_word">
+
+              </div>
+              <div class="new_form_waku">
+              <div class="new_title"><h1>新規登録内容確認</h1></div>
+              <div class="new_images">
+                <div class="new_image"><h1>アップロードしてー</h1></div>
+              </div>
+
+                <dl class="new_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"></dd>
+                  <dt>パスワード</dt>
+                  <dd><input type="text" name="password1"></dd>
+                  <dt>※パスワード確認</dt>
+                  <dd><input type="text" name="password2"></dd>
+                </dl>
+              </div>
+                <div class="new_btn_content">
+                  <input class="return_btn" type="button"  value="戻る" >
+                  <input class="touroku_btn" type="button"  value="登録" >
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--新規登録確認画面終わり -->
+
+        <!--登録完了画面 -->
+        <div class="new_touroku_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="touroku_text">
+                <h1>登録完了</h1>
+                <h2>ご登録ありがとうございます。</h2>
+              </div>
+                <div class="new_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる"  >
+                  <input class="mypage_btn" type="button"  value="マイページへ" >
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--登録完了画面終わり -->
+<div class="info">
 		<div class="background"></div>
 		<div class="contents">
 			<div class="left">
@@ -60,22 +188,74 @@
 			 </div>
 	</div>
 	<div class="right">
+	<dl class="kensaku">
+		<dt><input type="text" name="kensaku" value="検索" /></dt>
+		<dd><button>検索</button></dd>
+	</dl>
+</form>
 		<div class="works_list">
 			<div class="lightbox_waku">
                 <div class="lightbox">
-                  <img src="../Images/kaguyaruna.jpg" width="250px" height="250px">
                   <div class="lightbox_hover">
                     <div class="hover_background"></div>
-                    <div class="lightbox_information">
-                      <div class="lightbox_title"><h1>首絞めハム太郎</h1></div>
-                       <div class="lightbox_user_waku">
-                      <div class="lightbox_user_icon"></div>
-                      <div class="lightbox_user_name"><h1>illustration by 〇〇〇〇〇</h1></div>
-                      </div>
-                    </div>
                   </div>
                 </div>
-
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <div class="lightbox">
+                  <div class="lightbox_hover">
+                    <div class="hover_background"></div>
+                  </div>
+                </div>
+                <input class="next_btn" type="button" value="次へ">
             </div>
 
 			<div class="lightbox_view">
@@ -116,8 +296,15 @@
       </div>
         </div>
 		</div>
+  </div>
 	</div>
 	</div>
 </div>
+<footer>
+      <div class="footer_logo">
+        <a href="#"><img src="../Images/logo.png"></a>
+      </div>
+        <h2>©social_sharing_×××××××××××</h2>
+    </footer>
 </body>
 </html>
