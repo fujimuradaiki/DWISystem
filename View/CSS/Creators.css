@@ -32,6 +32,8 @@ header{
   margin: 23px 0 0 20px;
 }
 
+/*----------g-nav開始----------*/
+
 .menu ul{
   float: right;
   margin-right:80px;
@@ -47,6 +49,9 @@ header{
   text-decoration: none;
 }
 
+/*----------g-nav終了----------*/
+
+/*----------SNS開始----------*/
 .icon ul{
   width: 15%;
   margin-top: -10px;
@@ -61,7 +66,11 @@ header{
 .icon ul li img{
   width:30px;
 }
+/*----------SNS終了----------*/
 
+/*--------------------ヘッダー終了--------------------*/
+
+/*ログインボタン*/
 .login_btn{
   width: 120px;
   height: 40px;
@@ -80,7 +89,7 @@ header{
 .login_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-
+/*新規登録ボタン*/
 .new_btn{
   width: 120px;
   height: 40px;
@@ -101,6 +110,7 @@ header{
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*----------ログイン画面開始----------*/
 .login_contents{
   width:800px;
   margin:0 auto;
@@ -234,6 +244,50 @@ header{
   height: 22px;
 }
 
+.login_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*----------ログイン画面終了----------*/
+
+/*----------新規登録画面開始----------*/
 .new_view{
   display:none;
   width:100%;
@@ -287,47 +341,6 @@ header{
 .new_contents{
   width:800px;
   margin:0 auto;
-}
-
-.login_btn3{
-  width: 100px;
-  height: 35px;
-  position: relative;
-  right: 2%;
-  margin-left: 20px;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-.login_btn3:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
-}
-
-.close_btn2{
-  width: 100px;
-  height: 35px;
-  position: relative;
-  right: 2%;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-.close_btn2:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 .new_close_btn{
@@ -432,7 +445,9 @@ header{
   float:right;
 }
 
-/*新規登録確認*/
+/*新規登録画面終了*/
+
+/*新規登録内容確認画面開始*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -462,7 +477,7 @@ header{
 .confirmation_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-
+/*登録ボタン*/
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -483,7 +498,7 @@ header{
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-
+/*戻るボタン*/
 .return_btn{
   width: 100px;
   height: 35px;
@@ -504,6 +519,8 @@ header{
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*新規登録内容確認ページ終了*/
+
 /*登録完了*/
 .new_touroku_view{
   display:none;
@@ -514,6 +531,7 @@ header{
   left:0;
 }
 
+/*マイページへボタン*/
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -546,18 +564,21 @@ header{
 }
 
 .contents{
-  min-width:1200px;
-	width: 80%;
+	min-width: 1200px;
+  width: 80%;
+  height: auto;
   position: absolute;
   top: 25%;
+  left: 10%;
+  margin-bottom: 10%;
 
 }
-
+/*背景*/
 .background{
- min-width:1920px;
+ width:1920px;
  min-height:877px;
  height:974px;
- position:relative;
+ position:fixed;
  bottom:0;
  background:url('../Images/background__.png') no-repeat 50% 50% ;
  background-size:cover;
@@ -565,18 +586,120 @@ header{
 
 .left_border{
   width: 50px;
+	margin-top: 13px;
+	float: left;
   border-bottom: 2px solid;
-}
-
-.title{
-    color:#fff;
-}
-
-.title h1{
-  font-size:25px;
 }
 
 .right_border{
   width: 50px;
+	margin-top: 13px;
+	float: right;
   border-bottom: 2px solid;
 }
+
+.title{
+	width:25%;
+	margin: 0 auto;
+  color:#fff;
+}
+
+.title h1{
+	text-align: center;
+  font-size:25px;
+}
+
+/*検索フォーム*/
+dl.kensaku{
+	width: 625px;
+	position:relative;
+	margin: 20px;
+}
+dl.kensaku dt{
+	margin-right:367px;
+	padding:3px;
+	background-color:#fff;
+	border:1px solid #aaa;
+}
+dl.kensaku dt input{
+	width:100%;
+	height:24px;
+	line-height:24px;
+	background:none;
+	border:none;
+}
+dl.kensaku dd{
+	position:absolute;
+	top:0;
+	right:43%;
+}
+dl.kensaku dd button{
+	display:block;
+	width:100px;
+	height:34px;
+	color:#fff;
+	line-height:32px;
+	text-align:center;
+	background-color:#f66;
+	border:1px solid #c66;
+}
+
+/*-------------------userアイコンリスト--------------------*/
+
+.creators_box_waku{
+	margin-top:30px;
+}
+
+.creators_box{
+	width:130px;
+	height:130px;
+	margin:20px;
+	float: left;
+	background:#fff;
+}
+
+.creators_box:hover .creators_hover{
+  display: block;
+}
+
+.creators_hover{
+	display: none;
+	width:130px;
+	height:130px;
+}
+
+.hover_background{
+	width:130px;
+	height:130px;
+	background:#000;
+	opacity: 0.7;
+}
+
+.creator_name{
+	width: 130px;
+	position: absolute;
+  text-align: center;
+  margin-top: -70px;
+	color:#fff;
+}
+/*-------------------userアイコンリスト終了--------------------*/
+
+/*-------------------フッター開始--------------------*/
+footer{
+  min-width: 1920px;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  background: #000;
+}
+
+footer h2{
+  color: #fff;
+}
+
+.footer_logo{
+  text-align: center;
+  padding-top: 25px;
+}
+/*-------------------フッター終了--------------------*/
