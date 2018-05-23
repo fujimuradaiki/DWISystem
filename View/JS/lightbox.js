@@ -41,8 +41,8 @@ $(document).on("click",".lightbox_hover",function(){
   var $imageWidth = $image.width();
   var $imageHeight = $image.height();
 
-  var imageTitle;
-  var creatorName;
+  var $imageTitle;
+  var $creatorName;
 
   var $div;
 
@@ -62,9 +62,10 @@ $(document).on("click",".lightbox_hover",function(){
   }).done(function(data){
 	console.log(data);
 
-	imageTitle = data[0]['usersData'][0]['imageTitle'];
-	creatorName = data[0]['usersData'][0]['creatorName'];
+	$imageTitle = data[0]['usersData'][0]['imageTitle'];
+	$creatorName = data[0]['usersData'][0]['creatorName'];
 
+	//5段階評価に使う星画像の場所を明示
 	$.fn.raty.defaults.path = "../Lib/images";
 
 	//画像詳細を表示////////////////////
@@ -72,7 +73,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.empty();
 	$div.append(
 			$("<img class='view_image'>")
-			.attr("src","../../User/"+ creatorName +"/"+ $imageId +".png")
+			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
 	);
 	var w,h;
 	if($imageWidth >= $imageHeight){
@@ -90,7 +91,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.empty();
 	$div.append(
 			$("<img class='view_icon'>")
-			.attr("src","../../User/"+ creatorName +"/icon.png")
+			.attr("src","../../User/"+ $creatorName +"/icon.png")
 	);
 	$('.view_icon').css('width',50);
 	$('.view_icon').css('height',50);
@@ -99,17 +100,27 @@ $(document).on("click",".lightbox_hover",function(){
 	//作者名表示////////////////////////
 	$div = $('.user_name');
 	$div.empty();
-	$div.append(
-		("<h1>illustration by "+ creatorName +"</h1>")
-	);
+	$div.append("{{creatorName}}");
+	var drowCreatorName = new Vue({
+		el : '.user_name',
+		data :{
+			creatorName : "illustration by "+ $creatorName
+		}
+	})
 
 
 	//作品タイトル表示////////////////////////
 	$div = $('.work_title');
 	$div.empty();
-	$div.append(
-		("<h1>"+ imageTitle +"</h1>")
-	);
+	$div.append("{{imageTitle}}");
+	$div.css("color","white");
+	$div.css("fontSize","1.5rem")
+	var drowImageTitle = new Vue({
+		el : '.work_title',
+		data :{
+			imageTitle : $imageTitle
+		}
+	})
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -131,24 +142,27 @@ $(document).on("click",".lightbox_hover",function(){
 
 		if( data[0]['commentData'][i]['userName'] == ""){
 			$('#comment' + i).append(
-				("<p1> GestUser</p1>"),
+				("<br>"),
+				("<p1>(GestUser)</p1>"),
+				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
-				("<br>")
+				("<br><br><br>")
 			);
 		}else{
 			$('#comment' + i).append(
-				(" "),
+				("<br>"),
 				$("<img id='commenter_icon"+i+"'>")
 					.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
 				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
-				("<br>")
+				("<br><br><br>")
 			);
 			$('#commenter_icon'+i).css('width',20);
 			$('#commenter_icon'+i).css('height',20);
 			$('#commenter_icon'+i).css('border-radius','50%');
 		}
-		sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
+	sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
 	}
 
 	//レビュー合計表示/////////////////////////////
@@ -206,28 +220,38 @@ $(document).on("click",".review_btn",function(){
 	var $point = $('#hint').attr('value');
 	var $comment = $('#'+ $imageId + 'ComentErea').val();
 
+	String.prototype.bytes = function () {
+	  return(encodeURIComponent(this).replace(/%../g,"x").length);
+	}
+	console.log("size = "+$comment.bytes());
+
 	if($point == 0){
-		alert("レビュー点数をつけてください");
+		alert("レビュー点数をつけてください。");
+	}else if($comment.bytes() > 600){
+		alert("投稿できるコメントのサイズは600byteまでです。\n文字数を減らしてください。\n" +
+				"現在"+$comment.bytes()+"byteです。");
 	}else{
-	var param = {
+
+		$comment = $comment.replace(/\r?\n/g, '<br />');
+		var param = {
 			  0:$imageId,
 			  1:$createrId,
 			  2:$commenterId,
 			  3:$point,
 			  4:$comment
-	  };
-	var data = {'model':'images','action':'insertReview','data':param};
-	  //ajax通信
-	  $.ajax({
-		url:"../../Api/controller.php",
-		dataType:'json',
-		type:"POST",
-		data:data
-	  //ajax通信成功時
-	  }).done(function(data){
+		};
+		var data = {'model':'images','action':'insertReview','data':param};
+		//ajax通信
+		$.ajax({
+			url:"../../Api/controller.php",
+			dataType:'json',
+			type:"POST",
+			data:data
+		//ajax通信成功時
+		}).done(function(data){
 		  console.log(data);
 
-		  var $div;
+		var $div;
 		//レビューコメント表示/////////////////////
 			$div = $('.past_coment');
 			$div.empty();
@@ -248,18 +272,21 @@ $(document).on("click",".review_btn",function(){
 
 				if( data[i]['userName'] == ""){
 					$('#comment' + i).append(
-						("<p1> GestUser</p1>"),
+						("<br>"),
+						("<p1>(GestUser)</p1>"),
+						("<br>"),
 						("<p2>"+" "+data[i]['comment'] +"</p2>"),
-						("<br>")
+						("<br><br><br>")
 					);
 				}else{
 					$('#comment' + i).append(
-						(" "),
+						("<br>"),
 						$("<img id='commenter_icon"+i+"'>")
 							.attr("src","../../User/"+ data[i]['userName'] +"/icon.png"),
 						("<p1>"+" "+ data[i]['userName'] +"</p1>"),
+						("<br>"),
 						("<p2>"+" "+data[i]['comment'] +"</p2>"),
-						("<br>")
+						("<br><br><br>")
 					);
 					$('#commenter_icon'+i).css('width',20);
 					$('#commenter_icon'+i).css('height',20);
