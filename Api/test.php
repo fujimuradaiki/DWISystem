@@ -1,16 +1,23 @@
 <?php
 $postData = array('userName');
-if( isset( $_FILES["upload_file"] ) )
-{
+$f = false;
+for( $i = 0;$i<count($_FILES["upload_file"]['name']);$i++){
+    if($_FILES["upload_file"]['tmp_name'][$i] != ""){
+    $f = true;
+    }
+}
+
+if($f){
+    $imageId = 0;
     foreach( $_FILES["upload_file"]["error"] as $key => $error ){
         $directoryPath = '../User/'.$postData[0].'/';
-        $newName = $key.".png";
-
+        $newName = $imageId.".png";
         $directoryPath .= $newName;
         if( $error == UPLOAD_ERR_OK ){
             if(move_uploaded_file($_FILES['upload_file']['tmp_name'][$key],$directoryPath)){
                 //echo "\n".realpath($directoryPath);
                 echo "アップロード成功";
+                $imageId++;
                // var_dump($_FILES['upload_file']['tmp_name'][$key]);
                 $directoryPath = "";
             }else{
@@ -20,7 +27,10 @@ if( isset( $_FILES["upload_file"] ) )
             }
         }
     }
+}else{
+    echo "アップロードされた画像なし";
 }
+
 
 
 
@@ -60,7 +70,7 @@ if( isset( $_FILES["upload_file"] ) )
 <title>テスト</title>
 </head>
 <body>
-	<form method="post" action="test.php" enctype="multipart/form-data">
+	<form method="post" action="controller.php" enctype="multipart/form-data">
 		<input type="file" name="upload_file[]" /><br />
 		<input type="file" name="upload_file[]" /><br />
 		<input type="file" name="upload_file[]" />
