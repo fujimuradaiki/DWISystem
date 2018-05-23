@@ -21,11 +21,15 @@
 	</script>
 	</head>
 	<body>
+		<!--------------------ヘッダー開始-------------------->
 		<header class="clearfix">
 	      <div class="nav">
 	        <nav>
+						<!--ログインボタン-->
 	          <input class="login_btn" type="button" value="ログイン">
+						<!--新規登録ボタン-->
 	          <input class="new_btn" type="button" value="新規登録">
+						<!--SNS開始-->
 	           <div class="icon">
 	            <ul>
 	              <li><img src="../Images/Twitter.png" alt=""></li>
@@ -33,6 +37,8 @@
 	              <li><img src="../Images/facebook.png" alt=""></li>
 	            </ul>
 	          </div>
+						<!--SNS終了-->
+						<!--g-nav開始-->
 	          <div class="menu">
 	          <ul>
 	            <li><a href="Top.html">TOP</a></li>
@@ -40,27 +46,38 @@
 	            <li><a href="CreatorsInfo.html">制作者一覧</a></li>
 	          </ul>
 	          </div>
+						<!--g-nav終了-->
 	        </nav>
 	      </div>
+				<!--ロゴ-->
 	    <div class="logo"><a href="#"><img src="../Images/logo.png"></a></div>
 	  </header>
+		<!--------------------ヘッダー終了-------------------->
+
 	  <!--ログイン画面 -->
 	    <div class="login_view">
 	        <div class="login_background"></div>
 	        <div class="login_image_container">
 	          <div class="close_btn_container">
+							<!--閉じるボタン-->
 	            <div class="login_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
 	            <div class="login_box">
 	              <div class="login_header">
 	                <div class="login_logo"><img src="../Images/logo.png"></div>
 	              </div>
 	              <div class="login_word">
+									<!--タイトル-->
 	                <div class="login_title"><h1>ログイン</h1></div>
+
+									<!--入力フォーム-->
 	                ユーザー名<input class="login_text" type="text" >
 	                 パスワード<input class="pass_text" type="text" >
 	              </div>
+
 	                <div class="login_btn_content">
+										<!--閉じるボタン-->
 	                  <input class="close_btn2" type="button"  value="閉じる">
+										<!--ログインボタン-->
 	                  <input class="login_btn3" type="button"  value="ログイン">
 	                </div>
 	            </div>
@@ -84,10 +101,13 @@
 	              </div>
 	              <div class="new_form_waku">
 	              <div class="new_title"><h1>新規登録</h1></div>
+								<!--画像ファイルアップロード部分開始-->
 	              <div class="new_images">
 	                <div class="new_image"><h1>アップロードしてー</h1></div>
 	                <input class="choice_btn" type="button"  value="選択">
 	              </div>
+								<!--画像ファイルアップロード部分終了-->
+								<!--入力フォーム開始-->
 	                <dl class="new_form">
 	                  <dt>ユーザー名</dt>
 	                  <dd><input type="text" name="user_name"></dd>
@@ -98,6 +118,7 @@
 	                  <dt>※パスワード確認</dt>
 	                  <dd><input type="text" name="password2"></dd>
 	                </dl>
+									<!--入力フォーム終了-->
 	              </div>
 	                <div class="new_btn_content">
 	                  <input class="close_btn2" type="button"  value="閉じる">
@@ -172,17 +193,54 @@
 	        </div>
 	    </div>
 	        <!--登録完了画面終わり -->
+					<!--------------------コンテンツ部分開始-------------------->
 					<div class="info">
+
+						<!--背景-->
 							<div class="background"></div>
+
 							<div class="contents">
+								<!--タイトル-->
 								<div class="title">
 									<div class="left_border"></div>
-									<h1>制作者一覧</h1>
 									<div class="right_border"></div>
+									<h1>制作者一覧</h1>
 								</div>
 
+								<!--検索窓開始-->
+								<dl class="kensaku">
+									<dt><input type="text" name="kensaku" value="検索" /></dt>
+									<dd><button>検索</button></dd>
+								</dl>
+								<!--検索窓終了-->
+
+								<!--クリエイターアイコン表示部分-->
+								<div class="creators_box_waku">
+									<div class="creators_box">
+										<div class="creators_hover">
+										<div class="hover_background"></div>
+                    <div class="creator_name">
+                      <h1>首絞めハム太郎</h1>
+										</div>
+										</div>
+									</div>
 						  </div>
+							<!--クリエイターアイコン表示部分終了-->
+
+						</div>
 					</div>
+					<!--------------------コンテンツ部分終了-------------------->
+
+		<!--------------------フッター開始------------------->
+		<footer>
+			<div class="footer">
+      <div class="footer_logo">
+        <a href="#"><img src="../Images/logo.png"></a>
+      </div>
+        <h2>©social_sharing_×××××××××××</h2>
+			</div>
+    </footer>
+		<!--------------------フッター終了-------------------->
 <body>
 </body>
 </html>
