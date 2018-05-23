@@ -378,3 +378,46 @@ function trimmingImage(img,size){
 $(document).on("click",".close_btn",function(){
 	runSearch();
 });
+
+
+/*
+///////////////////////////////////
+
+*関数 ログインフォームのログインボタン押下時
+
+*概要 バリデーションを行い、問題なければログイン状態に
+
+//////////////////////////////////
+*/
+$(document).on("click",".login_btn3",function(){
+
+	var text = $('.login_text').val();
+	var pass = $('.pass_text').val();
+	var param = [];
+	param[0] = text;
+	param[1] = pass;
+	console.log(param);
+	var data = {'model':'users','action':'login','data':param};
+
+	//ajax通信
+	$.ajax({
+		url:"../../Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data
+	//ajax通信成功時
+	}).done(function(data){
+		alert("ログイン成功");
+		console.log(data);
+
+		//ログイン時にヘッダーにアイコン出す処理をここに
+
+		$('.login_view').fadeOut();
+		$('body').removeClass("overflow");
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert(XMLHttpRequest['responseText']);
+	});
+
+
+});
