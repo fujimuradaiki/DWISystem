@@ -31,6 +31,10 @@ $(document).ready(function(){
 
 	runSearch();
 
+	var userId = sessionStorage.getItem('userId');
+	var userName = sessionStorage.getItem('userName');
+	console.log(userId,userName);
+
 });
 
 //フォーム情報取得ボタン(コンソール表示)//////////////////////////////////////////////////////////////////
