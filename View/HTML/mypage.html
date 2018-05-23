@@ -1,0 +1,198 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>デザイン紹介システム</title>
+<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
+<link href="../CSS/Top.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="../JS/jquery.3.3.1.js"></script>
+<script src="../JS/jquery.bgswitcher.js"></script>
+<script src="../JS/lightbox.js"></script>
+<script src="../JS/style.js" type="text/javascript"></script>
+<script src="../JS/page_top.js" type="text/javascript"></script>
+<script src="../JS/scroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Lib/jquery.raty.js"></script>
+<script>
+  jQuery(function($) {
+      $('.bg-slider').bgSwitcher({
+          images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
+      });
+  });
+</script>
+</head>
+<body>
+  <header class="clearfix">
+      <div class="nav">
+        <nav>
+          <input class="login_btn" type="button" value="ログイン">
+          <input class="new_btn" type="button" value="新規登録">
+           <div class="icon">
+            <ul>
+              <li><img src="../Images/Twitter.png" alt=""></li>
+              <li><img src="../Images/instagram.png" alt=""></li>
+              <li><img src="../Images/facebook.png" alt=""></li>
+            </ul>
+          </div>
+          <div class="menu">
+          <ul>
+            <li><a href="#">TOP</a></li>
+            <li><a href="#works">作品一覧</a></li>
+            <li><a href="#">制作者一覧</a></li>
+          </ul>
+          </div>
+        </nav>
+      </div>
+    <div class="logo"><a href="#"><img src="../Images/logo.png"></a></div>
+  </header>
+
+  <div id="contents">
+    <div class="top">
+    <div id="container">
+      <div class="parallax-bg"></div>
+    <div class="scroll1">
+     <a href="#"><span></span>Scroll</a>
+    </div>
+  </div>
+    </div>
+      <div class="top_btn">
+        <div class="bg-slider__title">
+          <img src="../Images/logo_.png">
+          <p>DESING</p>
+          <p>INTRODUCTION<p>
+        </div>
+
+    <div class="scroll">
+     <a href="#works"><span></span>Scroll</a>
+    </div>
+  </div>
+
+    <!--ログイン画面 -->
+    <div class="login_view">
+        <div class="login_background"></div>
+        <div class="login_image_container">
+          <div class="close_btn_container">
+            <div class="login_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="login_box">
+              <div class="login_header">
+                <div class="login_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="login_word">
+                <div class="login_title"><h1>ログイン</h1></div>
+                ユーザー名<input class="login_text" type="text" >
+                 パスワード<input class="pass_text" type="text" >
+              </div>
+                <div class="login_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる">
+                  <input class="login_btn3" type="button"  value="ログイン">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--ログイン画面終わり -->
+
+        <!--新規登録画面 -->
+        <div class="new_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="new_word">
+
+              </div>
+              <div class="new_form_waku">
+              <div class="new_title"><h1>新規登録</h1></div>
+              <div class="new_images">
+                <div class="new_image"><h1>アップロードしてー</h1></div>
+                <input class="choice_btn" type="button"  value="選択">
+              </div>
+                <dl class="new_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"></dd>
+                  <dt>パスワード</dt>
+                  <dd><input type="text" name="password1"></dd>
+                  <dt>※パスワード確認</dt>
+                  <dd><input type="text" name="password2"></dd>
+                </dl>
+              </div>
+                <div class="new_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる">
+                  <input class="confirmation_btn" type="button"  value="確認">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--新規登録画面終わり -->
+
+        <!--新規登録確認画面 -->
+        <div class="new_confirmation_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="new_word">
+
+              </div>
+              <div class="new_form_waku">
+              <div class="new_title"><h1>新規登録内容確認</h1></div>
+              <div class="new_images">
+                <div class="new_image"><h1>アップロードしてー</h1></div>
+              </div>
+
+                <dl class="new_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"></dd>
+                  <dt>パスワード</dt>
+                  <dd><input type="text" name="password1"></dd>
+                  <dt>※パスワード確認</dt>
+                  <dd><input type="text" name="password2"></dd>
+                </dl>
+              </div>
+                <div class="new_btn_content">
+                  <input class="return_btn" type="button"  value="戻る" >
+                  <input class="touroku_btn" type="button"  value="登録" >
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--新規登録確認画面終わり -->
+
+        <!--登録完了画面 -->
+        <div class="new_touroku_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="touroku_text">
+                <h1>登録完了</h1>
+                <h2>ご登録ありがとうございます。</h2>
+              </div>
+                <div class="new_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる"  >
+                  <input class="mypage_btn" type="button"  value="マイページへ" >
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--登録完了画面終わり -->
+  </body>
+  </html>
