@@ -299,6 +299,7 @@ class images{
             echo json_encode($commentData);
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //画像保存
     public function insertImage($postData ,$postImage = null){
         $pdo = new connectdb();
         //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
@@ -367,7 +368,7 @@ class images{
             }
         }else{echo "画像なし";exit();}
     }
-
+//////////////////////////////////////////////////////////////////////////////////
 
 
 }

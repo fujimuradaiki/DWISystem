@@ -4,7 +4,7 @@ header('Content-type: application/json');
 
 class users{
 
-    public function controller($postAction,$postData){
+    public function controller($postAction,$postData,$postImage = null){
 
         switch ($postAction){
             case "userList":
@@ -14,7 +14,7 @@ class users{
                 $this->userInfo($postData);
                 break;
             case "insert":
-                $this->insert($postData);
+                $this->insert($postData,$postImage);
                 break;
             case "login":
                 $this->login($postData);
@@ -116,10 +116,10 @@ class users{
 
 //////////////////////////////////////////////////////////////
     //新規作成
-    public  function insert($postData){
+    public  function insert($postData,$postImage = null){
     $pdo = new connectdb();
     $insert_at=  date("Y/m/d H:i:s");//日時
-    $postData = array("'test6'","i","'555@sss.ss'");
+    //$postData = array("'test9'","i","'555@sss.ss'");
     //passの暗号化
     $pass = md5( $postData[1] );
 
@@ -142,8 +142,10 @@ class users{
             //SQL実行
             $stmt=$pdo->dbo->prepare($sql);
             $resultFlg = $stmt->execute();
+            $resultFlg = true;
             if($resultFlg == true){
                 $this->createDirectory($postData[0]);
+                $this->icon($postData[0],$postImage);
                 echo "true";
              }
         }else{
@@ -165,6 +167,7 @@ class users{
            return true;
         }else{
             //$result ="そのディレクトリはすでに存在します";
+           // echo $directoryPath;
             return false;
         }
         //echo $result."\n".$directoryPath;
@@ -183,6 +186,26 @@ class users{
             //$result="作成に失敗しました";
             return false;
         }
+    }
+    //アイコン画像移動
+    public  function icon($userName,$postImage){
+        if( isset($postImage)){
+                $userName = str_replace("'", "", $userName);
+                //移動先パス
+                $directoryPath = '../User/'.$userName.'/';
+                $newName = "icon.png";
+                //パスに新しい名前結合
+                $directoryPath .= $newName;
+                if( $error == UPLOAD_ERR_OK ){
+                    //新しい名前で画像が移動したか
+                    if(move_uploaded_file($postImage['tmp_name'][0],$directoryPath)){
+                        return true;
+                    }else{
+                        echo "アイコンが保存できませんでした";
+                    }
+                }
+        }
+
     }
 //////////////////////////////////////////////////////////////////////////////////
     //ログイン 0:userName 1:password   メールアドレスでのログイン 0:mail 1:psaaword
