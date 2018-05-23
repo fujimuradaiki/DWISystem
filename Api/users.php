@@ -119,7 +119,7 @@ class users{
     public  function insert($postData){
     $pdo = new connectdb();
     $insert_at=  date("Y/m/d H:i:s");//日時
-   // $postData = array("'test3'","'aaaa'","'aaaa@sss.ss'");
+    $postData = array("'test6'","i","'555@sss.ss'");
     //passの暗号化
     $pass = md5( $postData[1] );
 
@@ -152,7 +152,7 @@ class users{
      }
     }
 ////////////////////////////////////////////////////////////////////////
-    //フォルダの作成
+
     public function searchDirectory($userName){
         $result = "";
         $directoryName = str_replace("'", "", $userName);
@@ -170,7 +170,9 @@ class users{
         //echo $result."\n".$directoryPath;
 
     }
-    public  function createDirectory($postData){
+    //フォルダの作成
+    public  function createDirectory($userName){
+        $directoryName = str_replace("'", "", $userName);
         $directoryPath = '../User/'.$directoryName;
         if(mkdir($directoryPath,0777)){
             //作成したディレクトリのパーミッションの変更（一応）
@@ -187,7 +189,7 @@ class users{
     public function login($postData){
        // $postData = array("aaaa@sss.ss","'aaaa'");
         $pdo = new connectdb();
-        $sql = "SELECT * FROM usersCP WHERE ";
+        $sql = "SELECT * FROM users WHERE ";
         $pass = "";
 
         if($postData[0] != "" && $postData[1] != ""){
