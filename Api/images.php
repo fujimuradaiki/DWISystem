@@ -16,7 +16,7 @@ class images{
                 $this->insertReview($postData);
                 break;
             case "insertImage":
-                $this->insertImage($postData);
+               // $this->insertImage($postData);
                 break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
@@ -284,10 +284,6 @@ class images{
                 if($userNameNullCheck){
                     $userName = "";
                 }
-
-
-
-
                 $commentData[] = array(
                     'commentId' => $val['comment_id'],
                     'rank' => $val['comment_rank'],
@@ -304,8 +300,41 @@ class images{
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////
     public function insertImage($postData){
+        $pdo = new connectdb();
+        //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
+        $postData = array('userName','2','2','test1');
+        $userName = $postData[0];
+        //$upFile = $postData[1];
+        /////画像の最大IDに＋１する
+        $sql = "select COUNT(*) from images";
+        $insertSql = "insert into images";
+        $stmt=$pdo->dbo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $imageId =  $result['COUNT(*)'] + 1;
+        $insert_at=  date("Y/m/d H:i:s");//日時
+        //////////////////////////////////
+        //ファイルが送られてきているか//
+        if( isset( $_FILES["upload_file"] ) )
+        {
+            foreach( $_FILES["upload_file"]["error"] as $key => $error ){
+                $directoryPath = '../User/'.$postData[0].'/';
+                $newName = $imageId.".png";
 
-
+                $directoryPath .= $newName;
+                if( $error == UPLOAD_ERR_OK ){
+                    if(move_uploaded_file($_FILES['upload_file']['tmp_name'][$key],$directoryPath)){
+                        //echo "\n".realpath($directoryPath);
+                        echo "アップロード成功";
+                        $imageId++;
+                        $directoryPath = "";
+                    }else{
+                        echo "失敗！";
+                        $directoryPath = "";
+                    }
+                }
+            }
+        }
     }
 
 
