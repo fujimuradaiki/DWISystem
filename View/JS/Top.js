@@ -475,7 +475,6 @@ $(document).on("click",".confirmation_btn",function(){
 	var mail = $('#sineUP_mail').val();
 	var pass1 = $('#sineUp_password1').val();
 	var pass2 = $('#sineUp_password2').val();
-	console.log(name,mail,pass1,pass2);
 
 	var errorFlag = 0;
 	var errorMsg = "入力内容に不備があります。\n\n";
@@ -514,7 +513,7 @@ $(document).on("click",".confirmation_btn",function(){
 			}
 		}else{
 			errorFlag = 1;
-			errorMsg = errorMsg + "・入力されたパスワードとパスワード確認が一致しません。\n";
+			errorMsg = errorMsg + "・入力されたパスワードとパスワード再確認が一致しません。\n";
 		}
 	}
 
@@ -526,8 +525,8 @@ $(document).on("click",".confirmation_btn",function(){
 		param[0] = name;
 		param[1] = pass1;
 		param[2] = mail;
-		param[3] = $(".new_image").children('img').attr('name'),//sessionStorage.getItem('iconImage');
-		param[4] = $(".new_image").children('img').attr('src')
+		//param[3] = $(".new_image").children('img').attr('name'),//sessionStorage.getItem('iconImage');
+		param[3] = $(".new_image").children('img').attr('src');
 		sessionStorage.clear('iconImage');
 		var data = {'model':'users','action':'insert','data':param};
 		console.log(data);
@@ -537,7 +536,6 @@ $(document).on("click",".confirmation_btn",function(){
 			dataType:'json',
 			type:"POST",
 			data:data,
-			//processData: false
 		//ajax通信成功時
 		}).done(function(data){
 
@@ -557,9 +555,9 @@ $(".choice_btn").on("change",function(e){
     reader = new FileReader(),
     $preview = $(".new_image");
 
-    // 画像ファイル以外の場合は何もしない
-    if(file.type.indexOf("image") < 0){
-    	alert("画像を選択してください");
+    // pngファイル以外の場合は何もしない
+    if(file.type.indexOf("png") < 0){
+    	alert("png以外のファイルは利用できません。");
     	return false;
     }
 
