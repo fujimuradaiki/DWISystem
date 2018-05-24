@@ -85,18 +85,20 @@
               <div class="new_form_waku">
               <div class="new_title"><h1>新規登録</h1></div>
               <div class="new_images">
-                <div class="new_image"><h1>アップロードしてー</h1></div>
-                <input class="choice_btn" type="button"  value="選択">
+                <div class="new_image">
+                	<h1>アイコン画像</h1>
+                </div>
+                <input class="choice_btn" type="file"  value="選択">
               </div>
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"></dd>
+                  <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"></dd>
+                  <dd><input type="text" name="mail"id="sineUP_mail"></dd>
                   <dt>パスワード</dt>
-                  <dd><input type="text" name="password1"></dd>
+                  <dd><input type="password" name="password1"id="sineUp_password1"></dd>
                   <dt>※パスワード確認</dt>
-                  <dd><input type="text" name="password2"></dd>
+                  <dd><input type="password" name="password2"id="sineUp_password2"></dd>
                 </dl>
               </div>
                 <div class="new_btn_content">
@@ -107,7 +109,7 @@
           </div>
         </div>
     </div>
-        <!--新規登録画面終わり -->
+  <!--新規登録画面終わり -->
 
         <!--新規登録確認画面 -->
         <div class="new_confirmation_view">

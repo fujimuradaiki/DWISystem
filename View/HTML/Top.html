@@ -72,12 +72,12 @@
           <p>DESING</p>
           <p>INTRODUCTION<p>
         </div>
-    
+
     <div class="scroll">
      <a href="#works"><span></span>Scroll</a>
     </div>
   </div>
-    
+
     <!--ログイン画面 -->
     <div class="login_view">
         <div class="login_background"></div>
@@ -102,7 +102,7 @@
         </div>
     </div>
         <!--ログイン画面終わり -->
-        
+
         <!--新規登録画面 -->
         <div class="new_view">
         <div class="new_background"></div>
@@ -114,23 +114,25 @@
                 <div class="new_logo"><img src="../Images/logo.png"></div>
               </div>
               <div class="new_word">
-                
+
               </div>
               <div class="new_form_waku">
               <div class="new_title"><h1>新規登録</h1></div>
               <div class="new_images">
-                <div class="new_image"><h1>アップロードしてー</h1></div>
+                <div class="new_image">
+                	<h1>アイコン画像</h1>
+                </div>
                 <input class="choice_btn" type="file"  value="選択">
               </div>
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"></dd>
+                  <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"></dd>
+                  <dd><input type="text" name="mail"id="sineUP_mail"></dd>
                   <dt>パスワード</dt>
-                  <dd><input type="text" name="password1"></dd>
+                  <dd><input type="password" name="password1"id="sineUp_password1"></dd>
                   <dt>※パスワード確認</dt>
-                  <dd><input type="text" name="password2"></dd>
+                  <dd><input type="password" name="password2"id="sineUp_password2"></dd>
                 </dl>
               </div>
                 <div class="new_btn_content">
@@ -141,8 +143,7 @@
           </div>
         </div>
     </div>
-        <!--新規登録画面終わり -->
-        
+  <!--新規登録画面終わり -->
         <!--新規登録確認画面 -->
         <div class="new_confirmation_view">
         <div class="new_background"></div>
@@ -154,14 +155,14 @@
                 <div class="new_logo"><img src="../Images/logo.png"></div>
               </div>
               <div class="new_word">
-                
+
               </div>
               <div class="new_form_waku">
               <div class="new_title"><h1>新規登録内容確認</h1></div>
               <div class="new_images">
                 <div class="new_image"><h1>アップロードしてー</h1></div>
               </div>
-              
+
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
                   <dd><input type="text" name="user_name"></dd>
@@ -182,7 +183,7 @@
         </div>
     </div>
         <!--新規登録確認画面終わり -->
-        
+
         <!--登録完了画面 -->
         <div class="new_touroku_view">
         <div class="new_background"></div>
@@ -206,7 +207,7 @@
         </div>
     </div>
         <!--登録完了画面終わり -->
-        
+
       </div>
   <div id="works"></div>
     <div class="works">
@@ -217,38 +218,22 @@
             <input class="OLD_btn" type="button"  value="古い順">
             <input class="POPULARTY_btn" type="button"  value="人気順" >
                 <div class="check_btn_waku">
-<!--                  <div class="check_btn">
-                  <input type="checkbox" id="all" checked />
-                      <label>すべて</label>
-                  </div>
-                  <div class="check_btn">
-                  <input type="checkbox" id="chara" checked />
-                      <label>キャラ</label>
-                  </div>
-                  <div class="check_btn">
-                   <input type="checkbox" id="backGround" checked />
-                      <label>背景</label>
-                  </div>
-                  <div class="check_btn">
-                    <input type="checkbox" id="item" checked />
-                      <label>アイテム</label>
-                  </div>-->
-                  
+
                   <input type="checkbox" id="all" checked />
                   <label for="all" class="check_btn">すべて</label>
-                  
-                 
+
+
                   <input type="checkbox" id="chara" checked />
                   <label for="chara" class="check_btn">キャラ</label>
-                  
-                  
+
+
                   <input type="checkbox" id="backGround" checked />
                   <label for="backGround" class="check_btn">背景</label>
-                  
-                  
+
+
                   <input type="checkbox" id="item" checked />
                   <label for="item" class="check_btn">アイテム</label>
-                 
+
                 </div>
               </div>
             </div>
@@ -267,7 +252,7 @@
                     </div>
                   </div>
                 </div>
-               
+
             </div>
         <div class="lightbox_view">
         <div class="lightbox_background"></div>

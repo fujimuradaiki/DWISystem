@@ -1,17 +1,19 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>デザイン紹介システム</title>
+<title>マイページ</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
-<link href="../CSS/Top.css" rel="stylesheet" type="text/css"/>
+<link href="../CSS/mypage.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="../JS/jquery.3.3.1.js"></script>
 <script src="../JS/jquery.bgswitcher.js"></script>
 <script src="../JS/lightbox.js"></script>
 <script src="../JS/style.js" type="text/javascript"></script>
 <script src="../JS/page_top.js" type="text/javascript"></script>
+<script src="../JS/dropdown.js" type="text/javascript"></script>
 <script src="../JS/scroll.js" type="text/javascript"></script>
 <script type="text/javascript" src="../Lib/jquery.raty.js"></script>
+<script type="text/javascript" src="../Lib/vue.js"></script>
 <script>
   jQuery(function($) {
       $('.bg-slider').bgSwitcher({
@@ -26,6 +28,7 @@
         <nav>
           <input class="login_btn" type="button" value="ログイン">
           <input class="new_btn" type="button" value="新規登録">
+          <div class="login_user_icon"></div>
            <div class="icon">
             <ul>
               <li><img src="../Images/Twitter.png" alt=""></li>
@@ -44,27 +47,14 @@
       </div>
     <div class="logo"><a href="#"><img src="../Images/logo.png"></a></div>
   </header>
-
-  <div id="contents">
-    <div class="top">
-    <div id="container">
-      <div class="parallax-bg"></div>
-    <div class="scroll1">
-     <a href="#"><span></span>Scroll</a>
-    </div>
-  </div>
-    </div>
-      <div class="top_btn">
-        <div class="bg-slider__title">
-          <img src="../Images/logo_.png">
-          <p>DESING</p>
-          <p>INTRODUCTION<p>
-        </div>
-
-    <div class="scroll">
-     <a href="#works"><span></span>Scroll</a>
-    </div>
-  </div>
+  <div class="login_user_menu">
+            <ul>
+              <li><a href="#">マイページ</a></li>
+              <li><a href="#">作品投稿</a></li>
+              <li><a href="#">プロフィール編集</a></li>
+              <li><a href="#">ログアウト</a></li>
+            </ul>
+          </div>
 
     <!--ログイン画面 -->
     <div class="login_view">
@@ -107,18 +97,20 @@
               <div class="new_form_waku">
               <div class="new_title"><h1>新規登録</h1></div>
               <div class="new_images">
-                <div class="new_image"><h1>アップロードしてー</h1></div>
-                <input class="choice_btn" type="button"  value="選択">
+                <div class="new_image">
+                	<h1>アイコン画像</h1>
+                </div>
+                <input class="choice_btn" type="file"  value="選択">
               </div>
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"></dd>
+                  <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"></dd>
+                  <dd><input type="text" name="mail"id="sineUP_mail"></dd>
                   <dt>パスワード</dt>
-                  <dd><input type="text" name="password1"></dd>
+                  <dd><input type="password" name="password1"id="sineUp_password1"></dd>
                   <dt>※パスワード確認</dt>
-                  <dd><input type="text" name="password2"></dd>
+                  <dd><input type="password" name="password2"id="sineUp_password2"></dd>
                 </dl>
               </div>
                 <div class="new_btn_content">
@@ -129,7 +121,7 @@
           </div>
         </div>
     </div>
-        <!--新規登録画面終わり -->
+  <!--新規登録画面終わり -->
 
         <!--新規登録確認画面 -->
         <div class="new_confirmation_view">
@@ -194,5 +186,138 @@
         </div>
     </div>
         <!--登録完了画面終わり -->
+
+        <!--登録完了画面 -->
+        <div class="storage_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="storage_text">
+                <h1>保存完了</h1>
+                <h2>ご登録内容を変更しました。</h2>
+              </div>
+                <div class="new_btn_content">
+                  <input class="close_btn2" type="button"  value="閉じる"  >
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--登録完了画面終わり -->
+
+        <!--プロフィール編集画面 -->
+        <div class="Editing_view">
+        <div class="Editing_background"></div>
+        <div class="Editing_image_container">
+          <div class="close_btn_container">
+            <div class="Editing_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="Editing_box">
+              <div class="Editing_header">
+                <div class="Editing_logo"><img src="../Images/logo.png"></div>
+              </div>
+              <div class="Editing_word">
+
+              </div>
+              <div class="Editing_form_waku">
+              <div class="Editing_title"><h1>プロフィール編集</h1></div>
+              <div class="Editing_images">
+                <div class="Editing_image"><h1>アップロードしてー</h1></div>
+                <input class="choice_btn" type="file"  value="選択">
+              </div>
+                <dl class="Editing_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"></dd>
+                  <dt>旧パスワード</dt>
+                  <dd><input type="text" name="password1"></dd>
+                  <dt>新パスワード</dt>
+                  <dd><input type="text" name="password2"></dd>
+                </dl>
+              </div>
+                <div class="Editing_btn_content">
+                  <input class="delete_btn2" type="button"  value="アカウントを削除">
+                  <input class="storage_btn" type="button"  value="保存">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <!--プロフィール編集画面終わり -->
+
+        <div id="mypage">
+        <div class="mypage">
+        		<div class="background"></div>
+            <div class="infomation_background"></div>
+        		<div class="contents">
+              <div class="user_information">
+              <div class="mypage_icon"></div>
+              <div class="mypage_name"><h1>首絞めハム太郎</h1></div>
+              <div class="btn_mypage">
+              <input class="works_btn" type="button" value="作品投稿">
+              <input class="Editing_btn" type="button" value="プロフィール編集">
+            </div>
+            </div>
+            <div class="my_works">
+              <div class="title">
+                <div class="left_border"></div>
+                <div class="right_border"></div>
+                <h1>投稿作品一覧</h1>
+              </div>
+              <div class="lightbox_waku">
+                  <div class="lightbox">
+                    <img src="../Images/kaguyaruna.jpg" width="250px" height="250px">
+                    <div class="lightbox_hover">
+                      <div class="hover_background"></div>
+                    </div>
+                  </div>
+
+              </div>
+          <div class="lightbox_view">
+          <div class="lightbox_background"></div>
+          <div class="lightbox_image_container">
+            <div class="close_btn_container">
+              <div class="close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            </div>
+              <div class="lightbox_left_image">投稿作品</div>
+              <div class="lightbox_right">
+                <div class="works_title">
+                  <p>タイトル</p>
+                  <input class="title_box" type="text" value="親分">
+                </div>
+                <div class="serect_box">
+                  <p>ジャンル</p>
+                  <select name="Genre" id ="Genre" >
+                    <option value="">選択してください</option>
+                  <option value="">キャラ</option>
+                  <option value="">背景</option>
+                  <option value="">アイテム</option>
+        	  </select>
+                </div>
+                <div class="btn_lightbox">
+                <input class="delete_btn" type="button" value="削除">
+                <input class="storage_btn" type="button" value="保存">
+              </div>
+
+            </div>
+        </div>
+          </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+    			<div class="footer">
+          <div class="footer_logo">
+            <a href="#"><img src="../Images/logo.png"></a>
+          </div>
+            <h2>©social_sharing_×××××××××××</h2>
+    			</div>
+        </footer>
   </body>
   </html>
