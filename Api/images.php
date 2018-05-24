@@ -3,7 +3,7 @@ require_once('connectdb.php');
 header('Content-type: application/json');
 
 class images{
-    public function controller($postAction,$postData){
+    public function controller($postAction,$postData,$postImage = null){
 
         switch ($postAction){
             case "imageList":
@@ -16,7 +16,7 @@ class images{
                 $this->insertReview($postData);
                 break;
             case "insertImage":
-                $this->insertImage($postData);
+                $this->insertImage($postData,$postImage);
                 break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
@@ -284,10 +284,6 @@ class images{
                 if($userNameNullCheck){
                     $userName = "";
                 }
-
-
-
-
                 $commentData[] = array(
                     'commentId' => $val['comment_id'],
                     'rank' => $val['comment_rank'],
@@ -303,11 +299,76 @@ class images{
             echo json_encode($commentData);
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function insertImage($postData){
+    //画像保存
+    public function insertImage($postData ,$postImage = null){
+        $pdo = new connectdb();
+        //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
+        //$postData = array('userName',2,2,'titleTest');
+        $userName = $postData[0];
+        $imageUserId = $postData[1];
+        $imageCategoryId = $postData[2];
+        $imageTitle = $postData[3];
+        $insert_at=  date("Y/m/d H:i:s");//日時
+        /////画像の最大IDに＋１する
+        $sql = "select COUNT(*) from imagesCP";
+        $stmt=$pdo->dbo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $imageId =  $result['COUNT(*)'] + 1;
+        //////////////////////////////////
+        //insertSQL文
+        $insertSql = "insert
+                      into
+                      images(
+                      image_id,
+                      image_user_id,
+                      image_category_id,
+                      image_insert_at,
+                      image_title
+                      )VALUES("
+                      ."?".","
+                      .$imageUserId.","
+                      .$imageCategoryId.","
+                      ."'$insert_at'".","
+                      ."'$imageTitle'"
+                      .")";
+        //echo $insertSql;
 
-
+        //ファイルが送られてきているか//
+        if( isset($postImage))
+        {
+            //エラーcheck
+            foreach($postImage["error"] as $key => $error ){
+                //移動先パス
+                $directoryPath = '../User/'.$userName.'/';
+                $newName = $imageId.".png";
+                //パスに新しい名前結合
+                $directoryPath .= $newName;
+                if( $error == UPLOAD_ERR_OK ){
+                    //新しい名前で画像が移動したか
+                    if(move_uploaded_file($postImage['tmp_name'][$key],$directoryPath)){
+                        //echo "\n".realpath($directoryPath);
+                        //imageテーブルに画像情報を追加
+                        $stmt=$pdo->dbo->prepare($insertSql);
+                        $resultFlg = $stmt->execute(array($imageId));
+                        //追加できたか
+                        if($resultFlg == true){
+                            echo "アップロード成功";
+                            //登録IDを進める
+                            $imageId++;
+                            $directoryPath = "";
+                        }else{
+                            echo "新規追加に失敗";
+                        }
+                    }else{
+                        echo "失敗！";
+                        $directoryPath = "";
+                    }
+                }
+            }
+        }else{echo "画像なし";exit();}
     }
-
+//////////////////////////////////////////////////////////////////////////////////
 
 
 }
