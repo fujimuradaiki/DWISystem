@@ -549,10 +549,11 @@ header{
 .info{
   min-width:1200px;
 	position: absolute;
+	top:200px;
 }
 
 .background{
- min-width:1920px;
+ min-width:1280px;
  min-height:877px;
  height:974px;
  position:relative;
@@ -562,12 +563,10 @@ header{
 }
 
 .contents{
-	min-width:1200px;
-	width: 65%;
+	width: 96%;
 	height:61%;
   position: absolute;
-  top: 25%;
-	left: 20%;
+	left: 33%;
 }
 
 .left{
