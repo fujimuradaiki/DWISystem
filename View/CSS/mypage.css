@@ -671,6 +671,30 @@ header{
   cursor: pointer;
 }
 
+
+/*アカウント削除画面*/
+.delete_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.delete_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.delete_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+/*アカウント削除画面終了*/
+
+
 .Editing_view{
   display:none;
   width:100%;

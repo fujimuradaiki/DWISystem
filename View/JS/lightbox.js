@@ -40,6 +40,12 @@ $('.menu_Editing').click(function(){
   $('body').addClass("overflow");
 });
 
+$('.toukou_btn').click(function(){
+  $('.toukou_view').fadeIn();
+  $('body').addClass("overflow");
+});
+
+
 
 
 /*$('.storage_btn').click(function(){
@@ -370,7 +376,7 @@ $('.login_close_btn img').click(function(){//.close_btn img���N���b�
 });
 
 $('.new_close_btn img').click(function(){//.close_btn img���N���b�N�����Ƃ�//
-  $('.new_view,.new_confirmation_view,.new_touroku_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('.new_view,.new_confirmation_view,.new_touroku_view,.toukou_view').fadeOut();//view���t�F�[�h�A�E�g����//
   $('body').removeClass("overflow");
 });
 
@@ -387,7 +393,7 @@ $('.Editing_close_btn img').click(function(){//.close_btn img���N���
 });
 
 $('.close_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
-  $('.login_view,.new_view,.new_touroku_view,.storage_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('.login_view,.new_view,.new_touroku_view,.storage_view,.toukou_view').fadeOut();//view���t�F�[�h�A�E�g����//
   $('body').removeClass("overflow");
 });
 
