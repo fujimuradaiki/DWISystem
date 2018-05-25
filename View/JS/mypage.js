@@ -30,9 +30,9 @@ $(document).ready(function(){
 
 
 	/*Debug用・仮でユーザーID、名を指定中//////////////
-	*/sessionStorage.clear();/*////////////////////////
-	*/sessionStorage.setItem('userId','7');/*//////////
-	*/sessionStorage.setItem('userName','i');//*
+	sessionStorage.clear();////////////////////////
+	sessionStorage.setItem('userId','7');//////////
+	sessionStorage.setItem('userName','i');//*
 	/////////////////////////////////////////////////*/
 
 	//ログイン中のユーザーIDとユーザー名を取得
@@ -139,6 +139,9 @@ $(document).on("click",".storage_btn",function(){
 	var errorFlag = 0;
 	var errorMsg = "入力内容に不備があります。\n\n";
 
+	var obj = document.getElementById("editingIcon");
+	var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
+
 	//ユーザー名バリデーション
 	if(name == ""){
 		errorFlag = 1;
@@ -181,18 +184,6 @@ $(document).on("click",".storage_btn",function(){
 	if(errorFlag == 1){
 		alert(errorMsg);
 	}else{
-
-		var obj = document.getElementById("editingIcon");
-		var cvs = document.createElement('canvas');
-		cvs.width  = obj.width;
-		cvs.height = obj.height;
-		var ctx = cvs.getContext('2d');
-		ctx.drawImage(obj, 0, 0);
-		var bace64 = cvs.toDataURL("image/jpeg");
-
-
-
-
 		//ajax通信で入力されている情報をPHPに渡す
 
 		 var param = [];
@@ -202,7 +193,7 @@ $(document).on("click",".storage_btn",function(){
 		param[3] = pass_new;
 		param[4] = mail;
 		param[5] = bace64;
-
+		param[6] = sessionStorage.getItem('userName');
 		 var data = {'model':'users','action':'update','data':param};
 		 console.log(data);
 		 //ajax通信
@@ -221,7 +212,7 @@ $(document).on("click",".storage_btn",function(){
 
 					$('.storage_view').fadeIn();
 					$('body').addClass("overflow");
-					
+
 			//ajax通信失敗時
 			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 				alert("error : \n" + XMLHttpRequest['responseText']);
@@ -250,6 +241,7 @@ $(".choice_btn").on("change",function(e){
     			src: e.target.result,
     			width: "200px",
     			class: "preview",
+    			id : "editingIcon",
     			title: file.name,
     			name:"upload_file"
     		}));
@@ -260,3 +252,24 @@ console.log(sessionStorage.getItem('iconImage'));
 
     reader.readAsDataURL(file);
 });
+
+
+//////////////////////////////////////////////////////////////////
+var imageToBase64 = function(imgElement, mimeType,naturalWidth,naturalHeight) {
+    var canvas       = document.createElement('canvas'),
+        context      = canvas.getContext('2d'),
+        base64String = '';
+
+    if (!imgElement || typeof mimeType !== 'string') return '';
+
+    mimeType = mimeType.replace(/\/png$/, '/octet-stream');
+
+    canvas.width  = naturalWidth;
+    canvas.height = naturalHeight;
+
+    context.drawImage(imgElement, 0, 0);
+
+    base64String = canvas.toDataURL(mimeType);
+
+    return base64String;
+};
