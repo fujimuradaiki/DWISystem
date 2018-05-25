@@ -527,7 +527,7 @@ $(document).on("click",".confirmation_btn",function(){
 		param[2] = mail;
 		//param[3] = $(".new_image").children('img').attr('name'),//sessionStorage.getItem('iconImage');
 		param[3] = $(".new_image").children('img').attr('src');
-		sessionStorage.clear('iconImage');
+		//sessionStorage.clear('iconImage');
 		var data = {'model':'users','action':'insert','data':param};
 		console.log(data);
 		//ajax通信
