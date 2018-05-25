@@ -11,16 +11,16 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 
 
 }else{
-    //echo "controller.php:::エラー";
+    echo "controller.php:::エラー";
 
 
-         $test_model = 'users';
-         $test_action = 'delete';
-         $test_data = '';
-         $classname = new $test_model;
+//          $test_model = 'images';
+//          $test_action = 'update';
+//          $test_data = '';
+//          $classname = new $test_model;
 
-         $classname = new $test_model;
-         $classname->controller($test_action,$test_data);
+//          $classname = new $test_model;
+//          $classname->controller($test_action,$test_data);
 
 
 
