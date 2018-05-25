@@ -610,6 +610,29 @@ header{
   margin-bottom: 20px;
   font-size: 25px;
 }
+/*投稿画面*/
+.toukou_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.toukou_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.toukou_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+/*投稿画面終了*/
+
+/*プロフィール編集画面開始*/
 
 .Editing_view{
   display:none;
@@ -770,8 +793,6 @@ header{
   width: 200px;
 }
 
-/*新規登録フォーム*/
-
 .Editing_form_waku{
   width: 670px;
   margin: 0 auto;
@@ -806,6 +827,7 @@ header{
   float:right;
 }
 
+/*プロフィール編集終了*/
 
 /*コンテンツ内容*/
 .toukou{
@@ -937,6 +959,7 @@ header{
   height: 40px;
   position: relative;
   margin-top:70px;
+	right:35%;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -956,7 +979,6 @@ header{
   height: 40px;
   position: relative;
   margin-top:70px;
-  right:35%;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
