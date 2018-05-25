@@ -19,7 +19,7 @@ class images{
                 $this->insertImage($postData);
                 break;
             case"delete":
-
+                $this->delete($postData);
                 break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
@@ -381,6 +381,21 @@ class images{
         $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type;
         //echo $fileName;
         file_put_contents($fileName, $fileData);
+    }
+////////////////////////////////////////////////////////////////////////////////////
+//画像削除
+    public function delete($postData){
+        $pdo = new connectdb();
+        $imageId = $postData[0];
+        $userName = $postData[1];
+        $imageName = $imageId.".png";
+        $sql = "DELETE FROM images WHERE image_id = ".$imageId;
+        $stmt=$pdo->dbo->prepare($sql);
+        $resultFlg = $stmt->execute();
+        if($resultFlg){
+            unlink("../User/".$userName."/".$imageName);
+            echo "画像を削除しました";
+        }
     }
 
 }
