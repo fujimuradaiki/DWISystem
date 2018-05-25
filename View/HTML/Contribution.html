@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>マイページ</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
-<link href="../CSS/mypage.css" rel="stylesheet" type="text/css"/>
+<link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="../JS/jquery.3.3.1.js"></script>
 <script src="../JS/jquery.bgswitcher.js"></script>
@@ -226,18 +226,18 @@
               <div class="Editing_form_waku">
               <div class="Editing_title"><h1>プロフィール編集</h1></div>
               <div class="Editing_images">
-                <div class="Editing_image"></div>
+                <div class="Editing_image"><h1>アップロードしてー</h1></div>
                 <input class="choice_btn" type="file"  value="選択">
               </div>
                 <dl class="Editing_form">
                   <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>
+                  <dd><input type="text" name="user_name"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"id="sineIn_mail"></dd>
+                  <dd><input type="text" name="mail"></dd>
                   <dt>旧パスワード</dt>
-                  <dd><input type="text" name="password1"id="sineIn_pass_old"></dd>
+                  <dd><input type="text" name="password1"></dd>
                   <dt>新パスワード</dt>
-                  <dd><input type="text" name="password2"id="sineIn_pass_new"></dd>
+                  <dd><input type="text" name="password2"></dd>
                 </dl>
               </div>
                 <div class="Editing_btn_content">
@@ -249,76 +249,80 @@
         </div>
     </div>
         <!--プロフィール編集画面終わり -->
-
-        <div id="mypage">
-        <div class="mypage">
-        		<div class="background"></div>
-            <div class="infomation_background"></div>
-        		<div class="contents">
-              <div class="user_information">
-              <div class="mypage_icon"></div>
-              <div class="mypage_name"><h1>首絞めハム太郎</h1></div>
-              <div class="btn_mypage">
-              <input class="works_btn" type="button" value="作品投稿">
-              <input class="Editing_btn" type="button" value="プロフィール編集">
-            </div>
-            </div>
-            <div class="my_works">
-              <div class="title">
-                <div class="left_border"></div>
-                <div class="right_border"></div>
-                <h1>投稿作品一覧</h1>
-              </div>
-              <div class="lightbox_waku">
-                  <div class="lightbox">
-                    <img src="../Images/kaguyaruna.jpg" width="250px" height="250px">
-                    <div class="lightbox_hover">
-                      <div class="hover_background"></div>
-                    </div>
-                  </div>
-
-              </div>
-          <div class="lightbox_view">
-          <div class="lightbox_background"></div>
-          <div class="lightbox_image_container">
-            <div class="close_btn_container">
-              <div class="close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-            </div>
-              <div class="lightbox_left_image">投稿作品</div>
-              <div class="lightbox_right">
-                <div class="works_title">
-                  <p>タイトル</p>
-                  <input class="title_box" type="text" value="親分">
-                </div>
-                <div class="serect_box">
-                  <p>ジャンル</p>
-                  <select name="Genre" id ="Genre" >
-                    <option value="">選択してください</option>
-                  <option value="">キャラ</option>
-                  <option value="">背景</option>
-                  <option value="">アイテム</option>
-        	  </select>
-                </div>
-                <div class="btn_lightbox">
-                <input class="delete_btn" type="button" value="削除">
-                <input class="storage_btn" type="button" value="保存">
-              </div>
-
-            </div>
-        </div>
+        <div id="toukou">
+        <div class="toukou">
+          <div class="background"></div>
+          <div class="title">
+            <div class="left_border"></div>
+            <div class="right_border"></div>
+            <h1>作品投稿</h1>
           </div>
+          <div class="toukou_form">
+            <div class="toukou_waku">
+            <div class="toukou_images"></div>
+            <input class="toukou_title" type="text" name="title">
+            <div class="serect_box">
+              <select name="Genre" id ="Genre" >
+                <option value="">選択</option>
+              <option value="">キャラ</option>
+              <option value="">背景</option>
+              <option value="">アイテム</option>
+              </select>
             </div>
+            <div class="toukou_btn_waku">
+              <input class="delete3_btn" type="button"  value="削除">
+              <input class="Choice2_btn" type="button"  value="選択">
             </div>
+          </div>
+
+          <div class="toukou_waku">
+          <div class="toukou_images"></div>
+          <input class="toukou_title" type="text" name="title">
+          <div class="serect_box">
+            <select name="Genre" id ="Genre" >
+              <option value="">選択</option>
+            <option value="">キャラ</option>
+            <option value="">背景</option>
+            <option value="">アイテム</option>
+            </select>
+          </div>
+          <div class="toukou_btn_waku">
+            <input class="delete3_btn" type="button"  value="削除">
+            <input class="Choice2_btn" type="button"  value="選択">
           </div>
         </div>
-        <footer>
-    			<div class="footer">
-          <div class="footer_logo">
-            <a href="#"><img src="../Images/logo.png"></a>
-          </div>
-            <h2>©social_sharing_×××××××××××</h2>
-    			</div>
-        </footer>
-        <script type="text/javascript" src="../JS/mypage.js"></script>
-  </body>
-  </html>
+
+        <div class="toukou_waku">
+        <div class="toukou_images"></div>
+        <input class="toukou_title" type="text" name="title">
+        <div class="serect_box">
+          <select name="Genre" id ="Genre" >
+            <option value="">選択</option>
+          <option value="">キャラ</option>
+          <option value="">背景</option>
+          <option value="">アイテム</option>
+          </select>
+        </div>
+        <div class="toukou_btn_waku">
+          <input class="delete3_btn" type="button"  value="削除">
+          <input class="Choice2_btn" type="button"  value="選択">
+        </div>
+      </div>
+      <div class="toukou_Decision">
+        <input class="toukou_btn" type="button"  value="投稿">
+        <input class="back_btn" type="button"  value="戻る">
+      </div>
+        </div>
+        </div>
+      </div>
+      </div>
+      <footer>
+        <div class="footer">
+        <div class="footer_logo">
+          <a href="#"><img src="../Images/logo.png"></a>
+        </div>
+          <h2>©social_sharing_×××××××××××</h2>
+        </div>
+      </footer>
+</body>
+</html>
