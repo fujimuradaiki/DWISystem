@@ -239,6 +239,7 @@ class users{
         $oldpass = $postData[2];
         $newPass = $postData[3];
         $newMail = $postData[4];
+        $data = array();
         if(isset($postData[5])){
         $icon = $postData[5];
         }
@@ -263,7 +264,8 @@ class users{
             $this->icon($newName,$icon);
             }
             if($resultFlg == true){
-                echo "編集が完了しました";
+                $data = array( "userId"=>$updateUserId ,"userName"=>$newName);
+                echo ($data);
             }else{
                 echo "編集に失敗しました";
             }
