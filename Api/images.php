@@ -354,6 +354,7 @@ class images{
                         //追加できたか
                         if($resultFlg == true){
                             echo "アップロード成功";
+                            chmod($directoryPath,0777);
                             //登録IDを進める
                             $imageId++;
                             $directoryPath = "";

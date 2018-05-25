@@ -4,7 +4,7 @@ header('Content-type: application/json');
 
 class users{
 
-    public function controller($postAction,$postData,$postImage = null){
+    public function controller($postAction,$postData){
 
         switch ($postAction){
             case "userList":
@@ -14,10 +14,19 @@ class users{
                 $this->userInfo($postData);
                 break;
             case "insert":
-                $this->insert($postData,$postImage);
+                $this->insert($postData);
                 break;
             case "login":
                 $this->login($postData);
+                break;
+            case "update":
+                $this->update($postData);
+                break;
+            case "profile":
+                $this->profile($postData);
+                break;
+            case "delete":
+                $this->delete($postData);
                 break;
             default:
                 echo "users.php ユーザー定義関数に該当しませんでした";
@@ -116,13 +125,14 @@ class users{
 
 //////////////////////////////////////////////////////////////
     //新規作成
-    public  function insert($postData,$postImage = null){
+    public  function insert($postData){
+
     $pdo = new connectdb();
     $insert_at=  date("Y/m/d H:i:s");//日時
-    //$postData = array("'test9'","i","'555@sss.ss'");
+  //  $postData = array("'test11'","i","'555@sss.ss'");
     //passの暗号化
     $pass = md5( $postData[1] );
-
+    $icon = $postData[3];
     $sql = "insert
             into
             users(
@@ -145,8 +155,8 @@ class users{
             $resultFlg = true;
             if($resultFlg == true){
                 $this->createDirectory($postData[0]);
-                $this->icon($postData[0],$postImage);
-                echo "true";
+                $this->icon($postData[0],$icon);
+                echo json_encode($icon);//"true";
              }
         }else{
          //echo json_encode($postData[1]);
@@ -154,7 +164,7 @@ class users{
      }
     }
 ////////////////////////////////////////////////////////////////////////
-
+//フォルダ検索
     public function searchDirectory($userName){
         $result = "";
         $directoryName = str_replace("'", "", $userName);
@@ -162,7 +172,7 @@ class users{
         $directoryPath = '../User/'.$directoryName;
         //フォルダの存在確認
         if(!(file_exists($directoryPath))){
-            $result="ディレクトリを作成します\n";
+           // $result="ディレクトリを作成します\n";
             //ディレクトリ作成処理
            return true;
         }else{
@@ -187,26 +197,95 @@ class users{
             return false;
         }
     }
-    //アイコン画像移動
-    public  function icon($userName,$postImage){
-        if( isset($postImage)){
-                $userName = str_replace("'", "", $userName);
-                //移動先パス
-                $directoryPath = '../User/'.$userName.'/';
-                $newName = "icon.png";
-                //パスに新しい名前結合
-                $directoryPath .= $newName;
-                if( $error == UPLOAD_ERR_OK ){
-                    //新しい名前で画像が移動したか
-                    if(move_uploaded_file($postImage['tmp_name'][0],$directoryPath)){
-                        return true;
-                    }else{
-                        echo "アイコンが保存できませんでした";
-                    }
-                }
+    //フォルダの削除
+    public  function deleteDirectory($userName){
+        $directoryName = str_replace("'", "", $userName);
+        $directoryPath = '../User/'.$directoryName;
+        //echo $directoryPath;
+        system("rm -rf {$directoryPath}");
+    }
+    //アイコン画像移動(base64)をデコードして画像保存
+    public  function icon($userName,$icon){
+        $directoryName = str_replace("'", "", $userName);
+        $img = $icon;
+        $type = str_replace('data:image/', '', $icon);
+        $type = substr($type, 0, strpos($type,";"));
+        $img = str_replace('data:image/'.$type.';base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $fileData = base64_decode($img);
+        //拡張子の指定
+
+
+        $fileName = '../User/'.$directoryName.'/icon'.'.'.$type;
+
+        file_put_contents($fileName, $fileData);
+//
+
+    }
+//////////////////////////////////////////////////////////////////////////////////
+    //プロフィール編集
+    public  function update($postData,$postImage = null){
+        $pdo = new connectdb();
+        $update_at =  date("Y/m/d H:i:s");//日時
+        $postData = array(33,"newName",'i','a','aaaa@aaaa.aa.aa');
+        $updateUserId = $postData[0];
+        $newName = $postData[1];
+        $oldpass = $postData[2];
+        $newPass = $postData[3];
+        $newMail = $postData[4];
+        //暗号化
+        $oldpass = md5( $oldpass);
+        $newPass = md5( $newPass);
+        $sql = "select password from usersCP WHERE user_id =".$updateUserId;
+        $stmt=$pdo->dbo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        //入力されたパスワードがあってるか
+        if($result['password'] == $oldpass){
+            $sql = "UPDATE usersCP SET "
+                   ."user_name ="."'$newName'".","
+                   ."password  = "."'$newPass'".","
+                   ."user_mail = "."'$newMail'".","
+                   ."user_update_at = "."'$update_at'"
+                   ."WHERE user_id = ".$updateUserId;
+                   echo $sql;
+            $stmt=$pdo->dbo->prepare($sql);
+            $resultFlg = $stmt->execute();
+            if($resultFlg == true){
+                echo "編集が完了しました";
+            }else{
+                echo "編集に失敗しました";
+            }
+        }else{
+            echo "passエラー"."\n".$oldpass."\n".$result['password']."\n";
+
         }
 
     }
+////////////////////////////////////////////////////////////////////////////////////
+//プロフィール表示 0 ユーザーID
+    public function profile($postData){
+        $postData = array(25);
+        $data = array();
+        $pdo = new connectdb();
+        $sql = "select user_id,user_name, user_mail from usersCP WHERE user_id =".$postData[0];
+       // echo $sql;
+        $stmt=$pdo->dbo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $userNullCheck = is_null($result['user_mail']);
+        $user_mail = $result['user_mail'];
+        if($userNullCheck){
+            $user_mail = "";
+        }
+        $data = array(
+            "userId"=>$result['user_id'],
+            "userName"=>$result['user_name'],
+            "userMail"=>$user_mail
+        );
+        echo json_encode($data);
+    }
+
 //////////////////////////////////////////////////////////////////////////////////
     //ログイン 0:userName 1:password   メールアドレスでのログイン 0:mail 1:psaaword
     public function login($postData){
@@ -247,5 +326,20 @@ class users{
                 exit();
             }
             echo json_encode($userdata);
+    }
+///////////////////////////////////////////////////////////////
+//////アカウント削除
+    public  function delete($postData){
+
+        $postData = array(31,"test11");
+        $userId = $postData[0];
+        $userName = $postData[1];
+        //フォルダが存在したら
+        if(!($this->searchDirectory($userName))){
+            //echo "hit";
+            $this->deleteDirectory($userName);
+        }else{
+           echo "フォルダ削除に失敗しました";
+        };
     }
 }
