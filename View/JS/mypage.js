@@ -130,8 +130,6 @@ $(document).on("click",".Editing_btn",function(){
 */
 $(document).on("click",".storage_btn",function(){
 
-	  $('.storage_view').fadeIn();
-	  $('body').addClass("overflow");
 	var user_id = sessionStorage.getItem('userId');
 	var name = $('#sineIn_user_name').val();
 	var mail = $('#sineIn_mail').val();
@@ -221,6 +219,9 @@ $(document).on("click",".storage_btn",function(){
 				$('.Editing_view,.lightbox_view').fadeOut();
 				  $('body').removeClass("overflow");
 
+					$('.storage_view').fadeIn();
+					$('body').addClass("overflow");
+					
 			//ajax通信失敗時
 			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 				alert("error : \n" + XMLHttpRequest['responseText']);
@@ -259,5 +260,3 @@ console.log(sessionStorage.getItem('iconImage'));
 
     reader.readAsDataURL(file);
 });
-
-
