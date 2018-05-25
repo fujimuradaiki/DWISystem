@@ -152,7 +152,7 @@ class users{
             //SQL実行
             $stmt=$pdo->dbo->prepare($sql);
             $resultFlg = $stmt->execute();
-            $resultFlg = true;
+            //$resultFlg = true;
             if($resultFlg == true){
                 $this->createDirectory($postData[0]);
                 $this->icon($postData[0],$icon);
@@ -203,6 +203,7 @@ class users{
         $directoryPath = '../User/'.$directoryName;
         //echo $directoryPath;
         system("rm -rf {$directoryPath}");
+        echo "削除されました";
     }
     //アイコン画像移動(base64)をデコードして画像保存
     public  function icon($userName,$icon){
@@ -328,18 +329,25 @@ class users{
             echo json_encode($userdata);
     }
 ///////////////////////////////////////////////////////////////
-//////アカウント削除
+//////アカウント削除　0:ID 1：対象名
     public  function delete($postData){
-
-        $postData = array(31,"test11");
+        $pdo = new connectdb();
+        //$postData = array(6,"test10");
         $userId = $postData[0];
         $userName = $postData[1];
+        $sql = "DELETE FROM users WHERE user_id = ".$postData[0];
+        $stmt=$pdo->dbo->prepare($sql);
+        $resultFlg = $stmt->execute();
+        echo $sql;
         //フォルダが存在したら
         if(!($this->searchDirectory($userName))){
-            //echo "hit";
+            if($resultFlg){
             $this->deleteDirectory($userName);
+            }else{
+                echo "対象のアカウントがありません";
+            }
         }else{
-           echo "フォルダ削除に失敗しました";
+           echo "対象のフォルダがありません";
         };
     }
 }
