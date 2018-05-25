@@ -926,13 +926,17 @@ header{
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.toukou_Decision{
+	width: 246px;
+  height: 44px;
+	margin: 0 auto;
+}
+
 .back_btn{
   width: 120px;
   height: 40px;
   position: relative;
   margin-top:70px;
-  right:45%;
-  float: right;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -953,7 +957,6 @@ header{
   position: relative;
   margin-top:70px;
   right:35%;
-  float: right;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
