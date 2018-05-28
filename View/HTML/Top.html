@@ -18,7 +18,7 @@
 <script>
   jQuery(function($) {
       $('.bg-slider').bgSwitcher({
-          images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
+          Images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
       });
   });
 </script>
@@ -200,7 +200,7 @@
               </div>
                 <div class="new_btn_content">
                   <input class="close_btn2" type="button"  value="閉じる"  >
-                  <input class="mypage_btn" type="button"  value="マイページへ" >
+                  <input class="mypage_btn" type="button" onclick="location.href='mypage.html'"  value="マイページへ" >
                 </div>
             </div>
           </div>
@@ -211,7 +211,7 @@
       </div>
   <div id="works"></div>
     <div class="works">
-        <div class="works_title"><p>作品一覧</p>
+      <div class="works_title"><p><a name="works">作品一覧</a></p>
           <div class="works_menu">
             <div class="menu_btn">
             <input class="NEW_btn" type="button"  value="新しい順" >
