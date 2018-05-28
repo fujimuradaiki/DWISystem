@@ -24,6 +24,9 @@ class images{
             case"update":
                 $this->update($postData);
                 break;
+            case"creatorWorksList":
+                $this->creatorWorksList($postData);
+                break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
                 break;
@@ -425,6 +428,37 @@ class images{
         }
 
     }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//ユーザーの作品 引数userId 　戻り値 連想配列　imageId, imageTitle, categoryName
+    public  function creatorWorksList($postData){
+        $pdo = new connectdb();
+        $user_id = $postData[0];
+        $imagesArray = array();
+        $sql = "SELECT
+                image_id, image_title, category_name
+                FROM
+                images AS images
+                LEFT JOIN
+                users AS users
+                ON
+                image_user_id = user_id
+                LEFT JOIN
+                categories AS categories
+                ON
+                image_category_id = category_id
+                WHERE
+                image_user_id = " .$user_id;
+        //echo $sql;
+        $result = $pdo->dbo->query($sql);
+        while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $imagesArray[] = array(
+                'imageId' => $val['image_id'],
+                'imageTitle' => $val['image_title'],
+                'categoryName' => $val['category_name']
+                );
+        };
+        echo json_encode($imagesArray);
 
+    }
 }
 
