@@ -75,6 +75,9 @@ $(document).ready(function(){
 		("<h1>"+ userName +"</h1>")
 	);
 
+	//作品一覧を表示
+	//runSearch();
+
 });
 
 
@@ -222,7 +225,71 @@ $(document).on("click",".storage_btn",function(){
 });
 
 
-///////////////////////////////////////////////////////////////////////////////
+/*
+///////////////////////////////////
+
+*関数 runSearch
+
+*概要 投稿作品を一覧表示
+
+//////////////////////////////////
+*/
+function runSearch(){
+
+	var userId = sessionStorage.getItem('userId');
+	var userName = sessionStorage.getItem('userName');
+	var data = {'model':'images','action':'createrWorksList','data':userId};
+	var $div = $('.lightbox_waku');
+	//表示中の画像を削除
+	$div.empty();
+
+	var imageId = 6;
+	//画像表示
+	$div.append(
+		("<div class='lightbox'id='"+ imageId + "Div'></div>")
+	);
+	var $num = $('#'+imageId+'Div');
+	$num.append(
+
+			$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
+			.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+
+			("<div class='works_hover'id='"+imageId+"Hover'></div>")
+	);
+
+	var $hover = $('#'+imageId+'Hover');
+	$hover.append(
+		("<div class='hover_background'></div>"),
+		("<div class='lightbox_information'id='"+imageId+"Info'></div>")
+	);
+/*
+	//ajax通信
+	$.ajax({
+		url:"../../Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data
+	//ajax通信成功時
+	}).done(function(data){
+
+		console.log(data);
+
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});*/
+};
+
+
+/*
+///////////////////////////////////
+
+*関数 アイコン編集ボタン押下時
+
+*概要 画像を判定し、pngならプレビューに表示
+
+//////////////////////////////////
+*/
 $(".choice_btn").on("change",function(e){
 	var file = e.target.files[0],
     reader = new FileReader(),
@@ -253,8 +320,15 @@ console.log(sessionStorage.getItem('iconImage'));
     reader.readAsDataURL(file);
 });
 
+/*
+///////////////////////////////////
 
-//////////////////////////////////////////////////////////////////
+*関数 画像エンコーダー
+
+*概要 送信する画像をオリジナルサイズでエンコード
+
+//////////////////////////////////
+*/
 var imageToBase64 = function(imgElement, mimeType,naturalWidth,naturalHeight) {
     var canvas       = document.createElement('canvas'),
         context      = canvas.getContext('2d'),
@@ -273,3 +347,65 @@ var imageToBase64 = function(imgElement, mimeType,naturalWidth,naturalHeight) {
 
     return base64String;
 };
+
+
+////////////////////////////////////////////////////////////////////
+$(document).on("click",".lightbox_hover",function(){
+  $('.lightbox_view').fadeIn();
+  $('body').addClass("overflow");
+
+  var $image = $(this).prev('img');
+  var userId = sessionStorage.getItem('userId');
+  var $imageId = $image.attr('id');
+  var $imageWidth = $image.width();
+  var $imageHeight = $image.height();
+
+  var $imageTitle;
+  var $creatorName;
+
+  var $div;
+
+  var param = {
+		  0:/*$imageId*/6,
+		  1:userId
+  };
+  console.log(param);
+  var data = {'model':'images','action':'imageInfo','data':param};
+    //ajax通信
+  $.ajax({
+	url:"../../Api/controller.php",
+	dataType:'json',
+	type:"POST",
+	data:data
+  //ajax通信成功時
+  }).done(function(data){
+	console.log(data);
+/*
+	$imageTitle = data[0]['usersData'][0]['imageTitle'];
+
+	//画像詳細を表示////////////////////
+	var $div = $('.lightbox_left_image');
+	$div.empty();
+	$div.append(
+			$("<img class='view_image'>")
+			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+	);
+	var w,h;
+	if($imageWidth >= $imageHeight){
+		w = 500;
+		h = (500 / $imageWidth) * $imageHeight;
+	}else{
+		w = (600 / $imageHeight) * $imageWidth;
+		h = 600;
+	}
+	$('.lightbox_left_image').css('background','transparent')
+	$('.view_image').css('width',w);
+	$('.view_image').css('height',h);
+*/
+  //ajax通信失敗時
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+	alert("error");
+  });
+
+
+});
