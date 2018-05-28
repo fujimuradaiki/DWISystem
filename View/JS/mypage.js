@@ -76,7 +76,7 @@ $(document).ready(function(){
 	);
 
 	//作品一覧を表示
-	//runSearch();
+	runSearch();
 
 });
 
@@ -104,7 +104,8 @@ $(document).on("click",".Editing_btn",function(){
 		data:data
 	//ajax通信成功時
 	}).done(function(data){
-
+console.log("userInfo = ");
+console.log(data);
 		//テキストボックスに送られてきたデータを投げる
 		$('#sineIn_user_name').val(data['userName']);
 		$('#sineIn_mail').val(data['userMail']);
@@ -237,32 +238,12 @@ $(document).on("click",".storage_btn",function(){
 function runSearch(){
 
 	var userId = sessionStorage.getItem('userId');
+	userId = 1;
 	var userName = sessionStorage.getItem('userName');
-	var data = {'model':'images','action':'createrWorksList','data':userId};
-	var $div = $('.lightbox_waku');
-	//表示中の画像を削除
-	$div.empty();
+	userName = "TestUser";
+	var data = {'model':'images','action':'creatorWorksList','data':userId};
 
-	var imageId = 6;
-	//画像表示
-	$div.append(
-		("<div class='lightbox'id='"+ imageId + "Div'></div>")
-	);
-	var $num = $('#'+imageId+'Div');
-	$num.append(
-
-			$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
-			.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
-
-			("<div class='works_hover'id='"+imageId+"Hover'></div>")
-	);
-
-	var $hover = $('#'+imageId+'Hover');
-	$hover.append(
-		("<div class='hover_background'></div>"),
-		("<div class='lightbox_information'id='"+imageId+"Info'></div>")
-	);
-/*
+console.log(data);
 	//ajax通信
 	$.ajax({
 		url:"../../Api/controller.php",
@@ -274,10 +255,71 @@ function runSearch(){
 
 		console.log(data);
 
+		var $div = $('.lightbox_waku');
+		//表示中の画像を削除
+		$div.empty();
+
+		for(var i = 0;i < data.length;i++){
+
+			var imageId = data[i].imageId;
+			var categoryName = data[i].categoryName;
+			var title = data[i].imageTitle;
+
+			//画像表示
+			$div.append(
+				("<div class='lightbox'id='"+ imageId + "Div'></div>")
+			);
+			var $num = $('#'+imageId+'Div');
+			$num.append(
+
+					$("<img id='"+imageId+"'class='images'value='"+categoryName+"'>")
+					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+
+					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
+			);
+
+			var $hover = $('#'+imageId+'Hover');
+			$hover.append(
+				("<div class='hover_background'></div>"),
+				("<div class='lightbox_information'id='"+imageId+"Info'></div>")
+			);
+
+			var $info = $('#'+imageId+'Info');
+			$info.append(
+				("<div class='lightbox_title'><h1>"+ title +"</h1></div>"),
+				("<div class='lightbox_user_waku'id='"+imageId+"Waku'>")
+			);
+
+			var $waku = $('#'+imageId+'Waku');
+			$waku.append(
+				("<div class='lightbox_user_icon'id='"+ imageId +"Icon'></div>"),
+				("<div class='lightbox_user_name'><h1>illustration by "+ userName +"</h1></div>")
+			);
+
+			var $icon = $('#'+imageId+'Icon');
+			$icon.append(
+					$("<img id='"+imageId+"IconImg'class='icon'>")
+					.attr("src","../../User/"+ userName +"/icon.png")
+			);
+			var $iconImage = $('#'+imageId+'IconImg');
+			$iconImage.css('width',30);
+			$iconImage.css('height',30);
+			$iconImage.css('border-radius','50%');
+
+
+			//トリミング
+			trimmingImage($("#" + imageId),250);
+		}
+
+		//float解除用div
+		$div.append(
+			("<div class='cle'></div>")
+		);
+
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
-	});*/
+	});
 };
 
 
@@ -356,20 +398,23 @@ $(document).on("click",".lightbox_hover",function(){
 
   var $image = $(this).prev('img');
   var userId = sessionStorage.getItem('userId');
+  userId = 1;
+  var userName = sessionStorage.getItem('userName');
+  userName = "TestUser";
   var $imageId = $image.attr('id');
+  var $categoryName = $image.attr('value');
   var $imageWidth = $image.width();
   var $imageHeight = $image.height();
 
   var $imageTitle;
-  var $creatorName;
 
   var $div;
 
   var param = {
-		  0:/*$imageId*/6,
+		  0:$imageId,
 		  1:userId
   };
-  console.log(param);
+  console.log($categoryName);
   var data = {'model':'images','action':'imageInfo','data':param};
     //ajax通信
   $.ajax({
@@ -380,7 +425,7 @@ $(document).on("click",".lightbox_hover",function(){
   //ajax通信成功時
   }).done(function(data){
 	console.log(data);
-/*
+
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 
 	//画像詳細を表示////////////////////
@@ -388,7 +433,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.empty();
 	$div.append(
 			$("<img class='view_image'>")
-			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+			.attr("src","../../User/"+ userName +"/"+ $imageId +".png")
 	);
 	var w,h;
 	if($imageWidth >= $imageHeight){
@@ -401,11 +446,66 @@ $(document).on("click",".lightbox_hover",function(){
 	$('.lightbox_left_image').css('background','transparent')
 	$('.view_image').css('width',w);
 	$('.view_image').css('height',h);
-*/
+
+	$('.title_box').val($imageTitle);
+
+	$('#Genre').val($categoryName);
+
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 	alert("error");
   });
+});
 
+
+/*
+///////////////////////////////////
+
+*関数名 trimmingImage
+
+*概要 渡された画像をトリミングする
+
+*引数 img  : 画像のHTML上での場所
+size : トリミングするサイズ
+
+//////////////////////////////////
+*/
+function trimmingImage(img,size){
+	//トリミング処理
+	var iw,ih;
+
+	var w = img.width();	//横幅取得
+	var h = img.height();	//縦幅取得
+
+	//横幅と縦幅が同じか、横幅の方が長い場合
+	if(w >= h){
+		iw = (size / h * w - size) / 2;
+		img.height(size);
+		img.css("top",0);
+		img.css("left","-" + iw + "px");
+	}
+	//縦幅の方が長い場合
+	else{
+		ih = (size / w * h - size) / 2;
+		img.width(size);
+		img.css("top","-" + ih + "px");
+		img.css("left",0);
+	}
+}
+
+
+/*
+///////////////////////////////////
+
+*関数 画像編集の保存ボタン押下時
+
+*概要 編集された内容を送信する
+
+//////////////////////////////////
+*/
+$(document).on("click",".storage_btn2",function(){
+	alert("hit");
 
 });
+
+

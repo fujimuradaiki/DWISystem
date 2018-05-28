@@ -525,9 +525,7 @@ $(document).on("click",".confirmation_btn",function(){
 		param[0] = name;
 		param[1] = pass1;
 		param[2] = mail;
-		//param[3] = $(".new_image").children('img').attr('name'),//sessionStorage.getItem('iconImage');
 		param[3] = $(".new_image").children('img').attr('src');
-		//sessionStorage.clear('iconImage');
 		var data = {'model':'users','action':'insert','data':param};
 		console.log(data);
 		//ajax通信
@@ -539,7 +537,8 @@ $(document).on("click",".confirmation_btn",function(){
 		//ajax通信成功時
 		}).done(function(data){
 
-			alert(data);
+			console.log(data);
+			alert("新規登録が完了しました。");
 
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
@@ -573,8 +572,6 @@ $(".choice_btn").on("change",function(e){
     		}));
     	};
     })(file);
-sessionStorage.setItem('iconImage',e.target.value);
-console.log(sessionStorage.getItem('iconImage'));
 
     reader.readAsDataURL(file);
 });
@@ -766,7 +763,7 @@ $(document).on("click",".lightbox_hover",function(){
 $(document).on("click",".review_btn",function(){
 	var $imageId = $(this).attr('id');
 	var $createrId = $(this).attr('value');
-	var $commenterId = 1;	//コメントした人物(現在ログイン中のユーザー)のIDを取得せよ
+	var $commenterId = sessionStorage.getItem('userId');
 	var $point = $('#hint').attr('value');
 	var $comment = $('#'+ $imageId + 'ComentErea').val();
 
