@@ -432,7 +432,7 @@ class images{
 //ユーザーの作品 引数userId 　戻り値 連想配列　imageId, imageTitle, categoryName
     public  function creatorWorksList($postData){
         $pdo = new connectdb();
-        $user_id = $postData[0];
+        $user_id = $postData;
         $imagesArray = array();
         $sql = "SELECT
                 image_id, image_title, category_name
