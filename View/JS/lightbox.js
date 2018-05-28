@@ -55,10 +55,10 @@ $('.delete_btn2').click(function(){//.close_btn img���N���b�N��
   $('body').removeClass("overflow");
 });
 
-$('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
-  $('.delete_Completion_view').fadeIn();//view���t�F�[�h�A�E�g����//
-  $('body').removeClass("overflow");
-});
+ // $('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+ //   $('.delete_Completion_view').fadeIn();//view���t�F�[�h�A�E�g����//
+ //   $('body').removeClass("overflow");
+ // });
 
 // close�{�^��//
 
