@@ -164,8 +164,8 @@ class users{
                 echo "true";
              }
         }else{
-            echo json_encode($postData);
-         //echo  "false";
+          //  echo json_encode($postData);
+         echo  "false";
      }
     }
 ////////////////////////////////////////////////////////////////////////
