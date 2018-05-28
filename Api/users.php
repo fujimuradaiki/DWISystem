@@ -207,8 +207,12 @@ class users{
         $directoryName = str_replace("'", "", $userName);
         $directoryPath = '../User/'.$directoryName;
         //echo $directoryPath;
-        system("rm -rf {$directoryPath}");
-        echo "削除されました";
+        //$daleteFlg =  system("rm -rf {$directoryPath}");
+        $daleteFlg = true;
+        if($daleteFlg){
+            return true;
+        }
+            return false;
     }
     //アイコン画像移動(base64)をデコードして画像保存
     public  function icon($userName,$icon){
@@ -352,17 +356,19 @@ class users{
 //////アカウント削除　0:ID 1：対象名
     public  function delete($postData){
         $pdo = new connectdb();
-        //$postData = array(6,"test10");
         $userId = $postData[0];
         $userName = $postData[1];
         $sql = "DELETE FROM users WHERE user_id = ".$postData[0];
-        $stmt=$pdo->dbo->prepare($sql);
-        $resultFlg = $stmt->execute();
-        echo $sql;
+        //$stmt=$pdo->dbo->prepare($sql);
+        //$resultFlg = $stmt->execute();
+        $resultFlg = true;
+        //echo $sql;
         //フォルダが存在したら
         if(!($this->searchDirectory($userName))){
             if($resultFlg){
-            $this->deleteDirectory($userName);
+                if($this->deleteDirectory($userName)){
+                    echo "true";
+                }
             }else{
                 echo "対象のアカウントがありません";
             }
