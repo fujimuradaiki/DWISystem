@@ -10,21 +10,22 @@ $('.login_btn2').click(function(){
   $('body').addClass("overflow");
 });
 
+/*ボタンを押したとき新規登録画面を表示させる*/
 $('.new_btn').click(function(){
   $('.new_view').fadeIn();
   $('body').addClass("overflow");
 });
-
+/*ボタンを押したとき新規登録確認画面を表示させる*/
 $('.confirmation_btn').click(function(){
   $('.new_confirmation_view').fadeIn();
   $('body').addClass("overflow");
 });
-
+/*新規登録確認からもどるぼたんがおされたときに新規登録へ戻る*/
 $('.return_btn').click(function(){
   $('.new_view').fadeIn();
   $('body').addClass("overflow");
 });
-
+/*登録ボタンを押したとき登録完了画面を表示させる*/
 $('.touroku_btn').click(function(){
   $('.new_touroku_view').fadeIn();
   $('body').addClass("overflow");

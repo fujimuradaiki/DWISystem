@@ -1042,9 +1042,9 @@ textarea {
   padding-top:95px;
 }
 
-.choice_btn{
-  width: 56px;
-  height: 26px;
+label{
+	width: 56px;
+  height: 19px;
   position: relative;
   float: right;
   margin-top: -26px;
@@ -1058,8 +1058,18 @@ textarea {
   background: #3F3ACE;
   transition: .4s;
 }
-.choice_btn:hover {
+
+label p{
+	text-align: center;
+  margin-top: 5px;
+}
+
+label:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
 }
 
 .new_images img{
