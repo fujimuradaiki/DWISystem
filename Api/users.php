@@ -165,7 +165,7 @@ class users{
              }
         }else{
           //  echo json_encode($postData);
-         echo  "false";
+            echo  "false";
      }
     }
 ////////////////////////////////////////////////////////////////////////
@@ -207,12 +207,12 @@ class users{
         $directoryName = str_replace("'", "", $userName);
         $directoryPath = '../User/'.$directoryName;
         //echo $directoryPath;
-        //$daleteFlg =  system("rm -rf {$directoryPath}");
-        $daleteFlg = true;
+        $daleteFlg =  system("rm -rf {$directoryPath}");
+        //$daleteFlg = true;
         if($daleteFlg){
             return true;
         }
-            return false;
+           return false;
     }
     //アイコン画像移動(base64)をデコードして画像保存
     public  function icon($userName,$icon){
@@ -277,14 +277,14 @@ class users{
                     $data = array( "userId"=>$updateUserId ,"userName"=>$newName);
                     echo ($data);
                 }else{
-                    echo "編集に失敗しました";
+                    echo json_encode( "編集に失敗しました");
                 }
             }else{
-                echo "passエラー"."\n".$oldpass."\n".$result['password']."\n";
+                echo json_encode( "passエラー"."\n".$oldpass."\n".$result['password']."\n");
 
             }
         }else{
-            echo "入力した名前が使用されています";
+            echo json_encode( "入力した名前が使用されています");
         }
     }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -318,7 +318,7 @@ class users{
         $pdo = new connectdb();
         $sql = "SELECT * FROM users WHERE ";
         $pass = "";
-
+        $userdata = array();
         if($postData[0] != "" && $postData[1] != ""){
             $userPass = $postData[1];
             $pass = md5( $userPass );
@@ -326,13 +326,12 @@ class users{
             if(!(strpos($postData[0],'@'))){
                 $userName = $postData[0];
                 $sql .= "user_name ="."'$userName'";
-                $userdata = array();
+
             }else{
                 $mail =$postData[0];
                 $sql .= "user_mail =  " . "'$mail'";
             }
         }else{
-            echo "名前またはパスワードに問題があります";
             exit();
         }
 
@@ -347,7 +346,6 @@ class users{
                     "user_name"=>$result['user_name']
                 );
             }else{
-                echo "ログインに失敗しました";
                 exit();
             }
             echo json_encode($userdata);
@@ -358,23 +356,34 @@ class users{
         $pdo = new connectdb();
         $userId = $postData[0];
         $userName = $postData[1];
+        $pass = md5( $postData[2] );
+        $passSql = "SELECT password FROM users WHERE user_id = ".$userId;
+        $stmt=$pdo->dbo->prepare($passSql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $sql = "DELETE FROM users WHERE user_id = ".$postData[0];
-        //$stmt=$pdo->dbo->prepare($sql);
-        //$resultFlg = $stmt->execute();
-        $resultFlg = true;
-        //echo $sql;
-        //フォルダが存在したら
-        if(!($this->searchDirectory($userName))){
-            if($resultFlg){
-                if($this->deleteDirectory($userName)){
-                    echo "true";
+
+        //パスワードあってるか？
+         if($result['password'] == $pass){
+             $stmt=$pdo->dbo->prepare($sql);
+             $resultFlg = $stmt->execute();
+             //フォルダが存在したら
+            if(!($this->searchDirectory($userName))){
+                if($resultFlg){
+                    if($this->deleteDirectory($userName)){
+                        echo json_encode( "false");
+                    }else{
+                        echo json_encode("true");
+                    }
+                }else{
+                    echo json_encode("対象のアカウントがありません");
                 }
             }else{
-                echo "対象のアカウントがありません";
-            }
+               echo json_encode("対象のフォルダがありません");
+            };
         }else{
-           echo "対象のフォルダがありません";
-        };
+            echo json_encode("パスワードが間違っています");
+         }
     }
 
 
