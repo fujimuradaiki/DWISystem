@@ -303,7 +303,7 @@ class images{
                      );
                 }
         }else{
-            echo "コメントが追加できなかったです・・・";
+            echo json_encode( "コメントが追加できなかったです・・・");
         }
             echo json_encode($commentData);
     }
@@ -360,12 +360,12 @@ class images{
             $resultFlg = $stmt->execute(array($imageId,$postData[1][$i]["categoryId"],$postData[1][$i]["imgeTitle"]));
             //追加できたか
             if($resultFlg == true){
-                echo $imageId."アップロード成功";
+                echo json_encode( $imageId."アップロード成功");
                 //chmod($directoryPath,0777);
                 //登録IDを進める
                 $imageId++;
             }else{
-                echo "新規追加に失敗";
+                echo json_encode( "新規追加に失敗");
             }
         }
 
@@ -424,7 +424,7 @@ class images{
             $this->moviImage($userName,$base64,$imageId);
             }
         }else{
-            echo "画像のアップデートに失敗しました";
+            echo json_encode( "画像のアップデートに失敗しました");
         }
 
     }
@@ -432,7 +432,7 @@ class images{
 //ユーザーの作品 引数userId 　戻り値 連想配列　imageId, imageTitle, categoryName
     public  function creatorWorksList($postData){
         $pdo = new connectdb();
-        $user_id = $postData[0];
+        $user_id = $postData;
         $imagesArray = array();
         $sql = "SELECT
                 image_id, image_title, category_name
