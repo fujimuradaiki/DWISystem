@@ -45,6 +45,24 @@ $('.toukou_btn').click(function(){
   $('body').addClass("overflow");
 });
 
+<<<<<<< HEAD
+=======
+$('.storage_btn').click(function(){
+  $('.storage_view').fadeIn();
+  $('body').addClass("overflow");
+});
+
+$('.delete_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.delete_view').fadeIn();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+ // $('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+ //   $('.delete_Completion_view').fadeIn();//view���t�F�[�h�A�E�g����//
+ //   $('body').removeClass("overflow");
+ // });
+
+>>>>>>> origin/muraisuzuka
 // close�{�^��//
 
 $('.close_btn img').click(function(){//.close_btn img���N���b�N�����Ƃ�//
@@ -93,4 +111,33 @@ $('.touroku_btn').click(function(){//.close_btn img���N���b�N��
   $('body').removeClass("overflow");
 });
 
+<<<<<<< HEAD
+=======
+$('.close_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.delete_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+$('.delete_close_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.delete_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+$('.delete_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.Editing_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+$('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.delete_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+/*$('.storage_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.Editing_view,.lightbox_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});*/
+
+
+>>>>>>> origin/muraisuzuka
 });

@@ -1,17 +1,17 @@
 /*
 *************************************
 
-*–¼‘O : Top.css
+*ï¿½ï¿½ï¿½O : Top.css
 
-*ŠT—v : Topƒy[ƒW‚ÌCSSƒtƒ@ƒCƒ‹
+*ï¿½Tï¿½v : Topï¿½yï¿½[ï¿½Wï¿½ï¿½CSSï¿½tï¿½@ï¿½Cï¿½ï¿½
 
-*ì¬“ú : 2018/05/09
+*ï¿½ì¬ï¿½ï¿½ : 2018/05/09
 
-*ì¬Ò : “¡‘º ‘å‹P
+*ï¿½ì¬ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½P
 
-*ÅIXV“ú : 2018/05/09
+*ï¿½ÅIï¿½Xï¿½Vï¿½ï¿½ : 2018/05/09
 
-*ÅIXVÒ : “¡‘º ‘å‹P
+*ï¿½ÅIï¿½Xï¿½Vï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½P
 
 *************************************
 */
@@ -24,19 +24,19 @@
 	content:"";
 }
 
-/*ƒXƒNƒ[ƒ‹ƒo[Á‹*/
+/*ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½[ï¿½ï¿½ï¿½ï¿½*/
 ::-webkit-scrollbar{
   width:0px;
 }
 
-/*ƒ‰ƒCƒgƒ{ƒbƒNƒX‚ğŠJ‚¢‚½‚ÉƒXƒNƒ[ƒ‹‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ég—p*/
+/*ï¿½ï¿½ï¿½Cï¿½gï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ß‚Égï¿½p*/
 .overflow{
   overflow:hidden;
 }
 body{
   margin:0;
 }
-/*------------------------------- ƒwƒbƒ_[ŠJn@-------------------------------*/
+/*------------------------------- ï¿½wï¿½bï¿½_ï¿½[ï¿½Jï¿½nï¿½@-------------------------------*/
 header{
   min-width:1360px;
   width:100%;
@@ -65,7 +65,7 @@ header{
   text-decoration: none;
 }
 
-/*ŒÅ’è‚·‚é”wŒi*/
+/*ï¿½Å’è‚·ï¿½ï¿½ï¿½wï¿½i*/
 .parallax-bg, .scrollbox, parallax-bg {
   box-sizing: border-box;
   color: #FFF;
@@ -76,7 +76,7 @@ header{
   padding: 5%;
 }
 
-/*ƒXƒ‰ƒCƒ_[•”•ª*/
+/*ï¿½Xï¿½ï¿½ï¿½Cï¿½_ï¿½[ï¿½ï¿½ï¿½ï¿½*/
 .parallax-bg {
   width:100%;
   height: 100vh;
@@ -91,7 +91,7 @@ header{
   position: fixed;
 }
 
-/*ƒXƒNƒ[ƒ‹‚·‚éƒRƒ“ƒeƒ“ƒc*/
+/*ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½eï¿½ï¿½ï¿½c*/
 .scrollbox {
   height: 150px;
   background-color: rgba(30,30,30,0.75) ;
@@ -170,14 +170,14 @@ header{
   display: none;
   width:170px;
   height:140px;
-  position: relative;
+  position: fixed;
   line-height: 34px;
   padding-left:10px;
   z-index: 1;
   color:#fff;
   background:#B997FF;
   border-radius: 10px;
-  float: right;
+  right:0;
   margin:110px 40px;
 }
 
@@ -315,7 +315,7 @@ header{
   border-left:2px solid #0000ff;
   border-bottom:2px solid #0000ff;
 }
-/*--------------“ä-------------------*/
+/*--------------ï¿½ï¿½-------------------*/
 .scroll1 a span::before {
   content: '';
   animation: sdb 3s infinite;
@@ -350,7 +350,7 @@ header{
     opacity: 0;
   }
 }
-/*--------------------“ä-----------------------*/
+/*--------------------ï¿½ï¿½-----------------------*/
 .icon ul{
   width: 15%;
   margin-top: -10px;
@@ -599,7 +599,7 @@ input[type=checkbox]:checked + .check_btn:before {
 
 .lightbox_user_waku{
   margin-left: 33px;
-}  
+}
 
 .lightbox_user_icon{
   width: 30px;
@@ -624,7 +624,7 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .lightbox_title h1{
-  font-size: 18px; 
+  font-size: 18px;
   color: #fff;
 }
 
@@ -690,7 +690,7 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .work_title h1{
-  font-size: 25px; 
+  font-size: 25px;
   line-height: 42px;
   color: #fff;
 }
@@ -1023,7 +1023,7 @@ textarea {
 
 .new_title h1{
   font-size:25px;
-  margin-top: -42px 
+  margin-top: -42px
 }
 
 .new_images{
@@ -1066,7 +1066,7 @@ textarea {
   width: 200px;
 }
 
-/*V‹K“o˜^ƒtƒH[ƒ€*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½tï¿½Hï¿½[ï¿½ï¿½*/
 
 .new_form_waku{
   width: 670px;
@@ -1102,7 +1102,7 @@ textarea {
   float:right;
 }
 
-/*V‹K“o˜^Šm”F*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½mï¿½F*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -1174,7 +1174,7 @@ textarea {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*“o˜^Š®—¹*/
+/*ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -1217,14 +1217,14 @@ textarea {
 
 
 
-/*ƒy[ƒWƒgƒbƒv‚Ö–ß‚é*/
+/*ï¿½yï¿½[ï¿½Wï¿½gï¿½bï¿½vï¿½Ö–ß‚ï¿½*/
 #pageTop {
   position: fixed;
   bottom: 20px;
   right: 20px;
 }
 
- 
+
 
 footer{
   min-width: 1200px;
@@ -1269,4 +1269,3 @@ footer h2{
   text-decoration: none;
   opacity: 0.7;
 }
-

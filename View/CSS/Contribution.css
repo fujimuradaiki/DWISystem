@@ -76,14 +76,14 @@ header{
   display: none;
   width:170px;
   height:140px;
-  position: relative;
+  position: fixed;
   line-height: 34px;
   padding-left:10px;
   z-index: 1;
   color:#fff;
   background:#B997FF;
   border-radius: 10px;
-  float: right;
+  right:0;
   margin:110px 40px;
 }
 
