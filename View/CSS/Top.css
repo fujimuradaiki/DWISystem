@@ -1042,7 +1042,7 @@ textarea {
   padding-top:95px;
 }
 
-label{
+label p{
 	width: 56px;
   height: 19px;
   position: relative;
@@ -1050,7 +1050,9 @@ label{
   margin-top: -26px;
   display: inline-block;
   font-weight: bold;
+	text-align: center;
   text-decoration: none;
+	line-height: 22px;
   color: #FFF;
   font-size: 12px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
@@ -1059,12 +1061,7 @@ label{
   transition: .4s;
 }
 
-label p{
-	text-align: center;
-  margin-top: 5px;
-}
-
-label:hover {
+label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 

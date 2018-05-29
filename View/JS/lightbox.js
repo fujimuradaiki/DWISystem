@@ -46,8 +46,7 @@ $('.toukou_btn').click(function(){
   $('body').addClass("overflow");
 });
 
-<<<<<<< HEAD
-=======
+
 $('.storage_btn').click(function(){
   $('.storage_view').fadeIn();
   $('body').addClass("overflow");
@@ -63,7 +62,6 @@ $('.delete_btn2').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿
  //   $('body').removeClass("overflow");
  // });
 
->>>>>>> origin/muraisuzuka
 // closeï¿½{ï¿½^ï¿½ï¿½//
 
 $('.close_btn img').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
@@ -112,8 +110,7 @@ $('.touroku_btn').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿
   $('body').removeClass("overflow");
 });
 
-<<<<<<< HEAD
-=======
+
 $('.close_btn2').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
   $('.delete_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   $('body').removeClass("overflow");
@@ -140,5 +137,5 @@ $('.Completion_btn').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿
 });*/
 
 
->>>>>>> origin/muraisuzuka
+
 });
