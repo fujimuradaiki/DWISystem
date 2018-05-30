@@ -391,13 +391,20 @@ class images{
         $pdo = new connectdb();
         $imageId = $postData[0];
         $userName = $postData[1];
+        $userId = $postData[2];
         $imageName = $imageId.".png";
-        $sql = "DELETE FROM images WHERE image_id = ".$imageId;
+        $sql = "DELETE FROM images WHERE image_id = ".$imageId ."AND image_user_id =".$userId;
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
+
         if($resultFlg){
-            unlink("../User/".$userName."/".$imageName);
-            //echo "画像を削除しました";
+            if(unlink("../User/".$userName."/".$imageName)){
+                    echo json_encode("画像を削除しました。");
+                }else{
+                    echo json_encode("削除対象がありません。");
+                }
+            }else{
+                echo json_encode("DBに対象のレコードが存在しません。");
         }
     }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -419,14 +426,14 @@ class images{
         $resultFlg = $stmt->execute();
         if($resultFlg){
             $target = array($imageId,$userName);
-            $this->delete($target);
             if(isset($postData[5])){
+            $this->delete($target);
             $this->moviImage($userName,$base64,$imageId);
             }
         }else{
-            echo json_encode( "画像のアップデートに失敗しました");
+            echo json_encode("変更に失敗しました。");
         }
-
+        echo json_encode( "変更を保存しました。");
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //ユーザーの作品 引数userId 　戻り値 連想配列　imageId, imageTitle, categoryName

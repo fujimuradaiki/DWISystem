@@ -520,6 +520,24 @@ $(document).on("click",".confirmation_btn",function(){
 	if(errorFlag == 1){
 		alert(errorMsg);
 	}else{
+		$('.new_confirmation_view').fadeIn();
+		$('body').addClass("overflow");
+		var name = $('#sineUp_user_name').val();
+		var mail = $('#sineUP_mail').val();
+		var pass1 = $('#sineUp_password1').val();
+		var pass2 = $('#sineUp_password2').val();
+		$('#user_name').val(name);
+		$('#mail').val(mail);
+		$('#password1').val(pass1);
+	}
+});
+
+$(document).on("click",".touroku_btn",function(){
+	var name = $('#sineUp_user_name').val();
+	var mail = $('#sineUP_mail').val();
+	var pass1 = $('#sineUp_password1').val();
+	var pass2 = $('#sineUp_password2').val();
+	$("#new_form_waku").text
 
 		var param = [];
 		param[0] = name;
@@ -536,20 +554,21 @@ $(document).on("click",".confirmation_btn",function(){
 			data:data,
 		//ajax通信成功時
 		}).done(function(data){
-
 			console.log(data);
+			if(data != false){
 			alert("新規登録が完了しました。");
-
+			}else{
+		    alert("登録名がすでに使用されています。");
+			}
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 			alert("error");
 		});
-	}
 });
 
 
 ///////////////////////////////////////////////////////////////////////////////
-$(".choice_btn").on("change",function(e){
+$("#choice_btn").on("change",function(e){
 	var file = e.target.files[0],
     reader = new FileReader(),
     $preview = $(".new_image");
