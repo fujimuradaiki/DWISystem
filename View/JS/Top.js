@@ -904,3 +904,14 @@ $(document).on("click",".review_btn",function(){
 	}
 });
 
+$(document).on("click",".logout",function(){
+	$('.login_user_menu').fadeToggle();
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('userName');
+
+	//マイページと画像投稿ページ以外の時は書く処理 ここから
+		$('.login_btn').css("display","inline-block");
+		$('.new_btn').css("display","inline-block");
+		$('.login_user_icon').css("display","none");
+	//ここまで
+});
