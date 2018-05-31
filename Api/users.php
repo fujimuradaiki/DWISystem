@@ -96,13 +96,19 @@ class users{
         $sql .= $likeSq.$limitSql;
        // echo $sql;
         $result = $pdo->dbo->query($sql);
-
+        $v = $result->fetch(PDO::FETCH_ASSOC);
+        $userData[] = array(
+            "userId"=>$v['user_id'],
+            "userName"=>$v['user_name']
+        );
+        //最初のデータを入れる
+        $imageData[] = array(
+            "imageId"=>$v['image_id'],
+            "imageTitle"=>$v['image_title']
+        );
+        //残りのデータを入れる
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
-            $userData[] = array(
-                "userId"=>$val['user_id'],
-                "userName"=>$val['user_name']
-            );
-            $iamgeData[] = array(
+            $imageData[] = array(
                 "imageId"=>$val['image_id'],
                 "imageTitle"=>$val['image_title']
             );
@@ -110,7 +116,7 @@ class users{
 
         $datas[] = array(
             'userData'=> $userData,
-            'iamgeData'=>$iamgeData
+            'imageData'=>$imageData
         );
 
         $userNullCheck = is_null($datas[0]['userData'][0]['userId'][0]);
