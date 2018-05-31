@@ -633,13 +633,13 @@ label p:hover {
 }
 /*背景*/
 .background{
- width:1920px;
- min-height:877px;
- height:974px;
- position:fixed;
- bottom:0;
- background:url('../Images/background__.png') no-repeat 50% 50% ;
- background-size:cover;
+	min-height: 3145px;
+  width: 1920px;
+  height: 974px;
+  position: fixed;
+  bottom: 0;
+  background: url(../Images/background__.png) no-repeat 50% 50%;
+  background-size: cover;
 }
 
 .left_border{
