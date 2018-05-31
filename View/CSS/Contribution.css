@@ -893,41 +893,46 @@ label p:hover {
   float:left;
 }
 
-.toukou_waku{
+.toukou_waku1{
+	height: 280px;
   float:left;
   margin-left:40px;
 }
 
-.toukou_images{
+.toukou_images1{
   width:200px;
   height:200px;
   background: #fff;
   position: absolute;;
 }
 
-.toukou_title{
+.toukou_title1{
   width: 200px;
   margin-top: 221px;
   position: absolute;
 }
 
-.serect_box{
+.serect_box1{
   position: absolute;
   margin-top: 250px;
 }
 
-.serect_box p{
+.serect_box1 p{
   margin-bottom:20px;
   color:#fff;
   font-size:20px;
 }
 
-#Genre{
+#Genre1{
   height:30px;
   font-size: 12px;
 }
 
-.delete3_btn{
+#choice_btn1{
+	display: none;
+}
+
+.delete3_1_btn{
   width: 55px;
   height: 30px;
   position: relative;
@@ -940,14 +945,54 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-.delete3_btn:hover {
+.delete3_1_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.choice2_btn{
+.toukou_waku2{
+	height: 280px;
+  float:left;
+  margin-left:40px;
+}
+
+.toukou_images2{
+  width:200px;
+  height:200px;
+  background: #fff;
+  position: absolute;;
+}
+
+.toukou_title2{
+  width: 200px;
+  margin-top: 221px;
+  position: absolute;
+}
+
+.serect_box2{
+  position: absolute;
+  margin-top: 250px;
+}
+
+.serect_box2 p{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:20px;
+}
+
+#Genre2{
+  height:30px;
+  font-size: 12px;
+}
+
+#choice_btn2{
+	display: none;
+}
+
+.delete3_2_btn{
   width: 55px;
   height: 30px;
   position: relative;
+  margin: 250px 0 0 85px;
   font-weight: bold;
   text-decoration: none;
   color: #FFF;
@@ -956,8 +1001,93 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-.choice2_btn:hover {
+.delete3_2_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.toukou_waku3{
+	height: 280px;
+  float:left;
+  margin-left:40px;
+}
+
+.toukou_images3{
+  width:200px;
+  height:200px;
+  background: #fff;
+  position: absolute;;
+}
+
+.toukou_title3{
+  width: 200px;
+  margin-top: 221px;
+  position: absolute;
+}
+
+.serect_box3{
+  position: absolute;
+  margin-top: 250px;
+}
+
+.serect_box3 p{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:20px;
+}
+
+#Genre3{
+  height:30px;
+  font-size: 12px;
+}
+
+#choice_btn3{
+	display: none;
+}
+
+.delete3_3_btn{
+  width: 55px;
+  height: 30px;
+  position: relative;
+  margin: 250px 0 0 85px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete3_3_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+
+
+label p{
+	width: 36px;
+  height: 18px;
+  position: relative;
+  margin: 251px 7px;
+  font-weight: bold;
+  line-height: 20px;
+  text-decoration: none;
+  color: #FFF;
+  border-top: 2px solid #eee;
+  border-left: 2px solid #eee;
+  border-bottom: 2px solid #999;
+  border-right: 2px solid #999;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+label p:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
 }
 
 .toukou_Decision{

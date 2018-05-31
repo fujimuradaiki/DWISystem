@@ -56,139 +56,6 @@
             </ul>
           </div>
 
-    <!--ログイン画面 -->
-    <div class="login_view">
-        <div class="login_background"></div>
-        <div class="login_image_container">
-          <div class="close_btn_container">
-            <div class="login_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-            <div class="login_box">
-              <div class="login_header">
-                <div class="login_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
-              </div>
-              <div class="login_word">
-                <div class="login_title"><h1>ログイン</h1></div>
-                ユーザー名<h2>※またはメールアドレス</h2><input class="login_text" type="text" >
-                 パスワード<input class="pass_text" type="text" >
-              </div>
-                <div class="login_btn_content">
-                  <input class="close_btn2" type="button"  value="閉じる">
-                  <input class="login_btn3" type="button"  value="ログイン">
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
-        <!--ログイン画面終わり -->
-
-        <!--新規登録画面 -->
-        <div class="new_view">
-        <div class="new_background"></div>
-        <div class="new_image_container">
-          <div class="close_btn_container">
-            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-            <div class="new_box">
-              <div class="new_header">
-                <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
-              </div>
-              <div class="new_word">
-
-              </div>
-              <div class="new_form_waku">
-              <div class="new_title"><h1>新規登録</h1></div>
-              <div class="new_images">
-                <div class="new_image">
-                	<h1>アイコン画像</h1>
-                </div>
-                <label for="choice_btn">
-                  <p>選択</p>
-                 <input id="choice_btn" type="file">
-                </label>
-              </div>
-                <dl class="new_form">
-                  <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
-                  <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"id="sineUP_mail"></dd>
-                  <dt>パスワード</dt>
-                  <dd><input type="password" name="password1"id="sineUp_password1"></dd>
-                  <dt>※パスワード確認</dt>
-                  <dd><input type="password" name="password2"id="sineUp_password2"></dd>
-                </dl>
-              </div>
-                <div class="new_btn_content">
-                  <input class="close_btn2" type="button"  value="閉じる">
-                  <input class="confirmation_btn" type="button"  value="確認">
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  <!--新規登録画面終わり -->
-
-        <!--新規登録確認画面 -->
-        <div class="new_confirmation_view">
-        <div class="new_background"></div>
-        <div class="new_image_container">
-          <div class="close_btn_container">
-            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-            <div class="new_box">
-              <div class="new_header">
-                <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
-              </div>
-              <div class="new_word">
-
-              </div>
-              <div class="new_form_waku">
-              <div class="new_title"><h1>新規登録内容確認</h1></div>
-              <div class="new_images">
-                <div class="new_image"><h1>アップロードしてー</h1></div>
-              </div>
-
-                <dl class="new_form">
-                  <dt>ユーザー名</dt>
-                  <dd><input type="text" disabled="disabled" name="user_name"></dd>
-                  <dt>メールアドレス</dt>
-                  <dd><input type="text" disabled="disabled" name="mail"></dd>
-                  <dt>パスワード</dt>
-                  <dd><input type="text" disabled="disabled" name="password1"></dd>
-                  <dt>※パスワード確認</dt>
-                  <dd><input type="text" disabled="disabled" name="password2"></dd>
-                </dl>
-              </div>
-                <div class="new_btn_content">
-                  <input class="return_btn" type="button"  value="戻る" >
-                  <input class="touroku_btn" type="button"  value="登録" >
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
-        <!--新規登録確認画面終わり -->
-
-        <!--登録完了画面 -->
-        <div class="new_touroku_view">
-        <div class="new_background"></div>
-        <div class="new_image_container">
-          <div class="close_btn_container">
-            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-            <div class="new_box">
-              <div class="new_header">
-                <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
-              </div>
-              <div class="touroku_text">
-                <h1>登録完了</h1>
-                <h2>ご登録ありがとうございます。</h2>
-              </div>
-                <div class="new_btn_content">
-                  <input class="close_btn2" type="button"  value="閉じる"  >
-                  <input class="mypage_btn" type="button" onclick="location.href='mypage.html'"  value="マイページへ" >
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
-        <!--登録完了画面終わり -->
 
         <!--登録完了画面 -->
         <div class="storage_view">
@@ -284,54 +151,63 @@
             <h1>作品投稿</h1>
           </div>
           <div class="toukou_form">
-            <div class="toukou_waku">
-            <div class="toukou_images"></div>
-            <input class="toukou_title" type="text" name="title">
-            <div class="serect_box">
-              <select name="Genre" id ="Genre" >
+            <div class="toukou_waku1">
+            <div class="toukou_images1"></div>
+            <input class="toukou_title1" type="text" name="title">
+            <div class="serect_box1">
+              <select name="Genre" id ="Genre1" >
                 <option value="">選択</option>
               <option value="">キャラ</option>
               <option value="">背景</option>
               <option value="">アイテム</option>
               </select>
             </div>
-            <div class="toukou_btn_waku">
-              <input class="delete3_btn" type="button"  value="削除">
-              <input class="Choice2_btn" type="button"  value="選択">
+            <div class="toukou_btn_waku1">
+              <input class="delete3_1_btn" type="button"  value="削除">
+              <label for="choice_btn1">
+                <p>選択</p>
+               <input id="choice_btn1" type="file">
+              </label>
             </div>
           </div>
 
-          <div class="toukou_waku">
-          <div class="toukou_images"></div>
-          <input class="toukou_title" type="text" name="title">
-          <div class="serect_box">
-            <select name="Genre" id ="Genre" >
+          <div class="toukou_waku2">
+          <div class="toukou_images2"></div>
+          <input class="toukou_title2" type="text" name="title">
+          <div class="serect_box2">
+            <select name="Genre" id ="Genre2" >
               <option value="">選択</option>
             <option value="">キャラ</option>
             <option value="">背景</option>
             <option value="">アイテム</option>
             </select>
           </div>
-          <div class="toukou_btn_waku">
-            <input class="delete3_btn" type="button"  value="削除">
-            <input class="Choice2_btn" type="button"  value="選択">
+          <div class="toukou_btn_waku2">
+            <input class="delete3_2_btn" type="button"  value="削除">
+            <label for="choice_btn2">
+              <p>選択</p>
+             <input id="choice_btn2" type="file">
+            </label>
           </div>
         </div>
 
-        <div class="toukou_waku">
-        <div class="toukou_images"></div>
-        <input class="toukou_title" type="text" name="title">
-        <div class="serect_box">
-          <select name="Genre" id ="Genre" >
+        <div class="toukou_waku3">
+        <div class="toukou_images3"></div>
+        <input class="toukou_title3" type="text" name="title">
+        <div class="serect_box3">
+          <select name="Genre" id ="Genre3" >
             <option value="">選択</option>
           <option value="">キャラ</option>
           <option value="">背景</option>
           <option value="">アイテム</option>
           </select>
         </div>
-        <div class="toukou_btn_waku">
-          <input class="delete3_btn" type="button"  value="削除">
-          <input class="Choice2_btn" type="button"  value="選択">
+        <div class="toukou_btn_waku3">
+          <input class="delete3_3_btn" type="button"  value="削除">
+          <label for="choice_btn3">
+            <p>選択</p>
+           <input id="choice_btn3" type="file">
+          </label>
         </div>
       </div>
       <div class="toukou_Decision">
