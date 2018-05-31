@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 	//制作者詳細に出すユーザーのID////
 	//デバッグ用に仮指定中////////////
-	sessionStorage.setItem('infoId','1');
+	//sessionStorage.setItem('infoId','1');
 	//////////////////////////////////
 
 	//ログイン中かどうかを取得
@@ -61,7 +61,9 @@ $(document).ready(function(){
 
 	}
 
-	//sessionStorage.clear();
+	sessionStorage.removeItem('pageNum');
+	sessionStorage.setItem('pageNum',1);
+
 	var infoId = sessionStorage.getItem('infoId');
 	var data = {'model':'users','action':'profile','data':infoId};
 
@@ -120,11 +122,13 @@ $(document).ready(function(){
 */
 function runSearch(infoId){
 
+	var pageNum = sessionStorage.getItem('pageNum');
+
 	var searchTitle = $('#searchErea').val();
 
 	var param = {
 			0:infoId,
-			1:/*ページ番号(仮に1を入力中)*/1,
+			1:pageNum,
 			2:searchTitle
 	 	};
 
@@ -146,8 +150,11 @@ function runSearch(infoId){
 	}).done(function(data){
 		var imageData = data[0]['imageData'];
 		var userData = data[0]['userData'][0];
+		var recordCnt = parseInt(userData.imageTotalCount);
+		var maxPage = parseInt(recordCnt);
+	    maxPage = Math.ceil(maxPage / 12);
 
-		console.log(imageData,userData);
+		console.log(imageData,userData,recordCnt,maxPage);
 
 		var userName =  userData.userName;
 		var userId = userData.userId;
@@ -156,6 +163,7 @@ function runSearch(infoId){
 
 			var imageId = imageData[i].imageId;
 			var imageTitle = imageData[i].imageTitle;
+
 
 			//画像表示
 			$div.append(
@@ -202,16 +210,48 @@ function runSearch(infoId){
 		);
 
 
+		$('p.pageNum').text("Page : " + pageNum);
 
+		if(pageNum == 1){
+			$('.before_btn').css("display","none");
+		}else{
+			$('.before_btn').show();
+		}
+		if(pageNum == maxPage){
+			$('.next_btn').hide();
+		}else{
+			$('.next_btn').show();
+		}
 
 
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("検索結果がありません。");
+		alert("作品なし");
 
 	});
 }
 
+
+$(document).on("click",".before_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt - 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});
+
+
+$(document).on("click",".next_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt + 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});
 
 $(document).on("click","#searchButton",function(){
 	var infoId = sessionStorage.getItem('infoId');
@@ -384,6 +424,41 @@ $('#password1').val(pass1);
 });
 
 
+$(document).on("click",".touroku_btn",function(){
+	var name = $('#sineUp_user_name').val();
+	var mail = $('#sineUP_mail').val();
+	var pass1 = $('#sineUp_password1').val();
+	var pass2 = $('#sineUp_password2').val();
+	$("#new_form_waku").text
+
+		var param = [];
+		param[0] = name;
+		param[1] = pass1;
+		param[2] = mail;
+		param[3] = $(".new_image").children('img').attr('src');
+		var data = {'model':'users','action':'insert','data':param};
+		console.log(data);
+		//ajax通信
+		$.ajax({
+			url:"../../Api/controller.php",
+			dataType:'json',
+			type:"POST",
+			data:data,
+		//ajax通信成功時
+		}).done(function(data){
+			console.log(data);
+			if(data != false){
+			alert("新規登録が完了しました。");
+			}else{
+		    alert("登録名がすでに使用されています。");
+			}
+		//ajax通信失敗時
+		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+			alert("error");
+		});
+});
+
+
 ///////////////////////////////////////////////////////////////////////////////
 $("#choice_btn").on("change",function(e){
 	var file = e.target.files[0],
@@ -411,3 +486,311 @@ $("#choice_btn").on("change",function(e){
 
     reader.readAsDataURL(file);
 });
+
+
+////////////////////////////////////////////////////////////////////
+$(document).on("click",".lightbox_hover",function(){
+  $('.lightbox_view').fadeIn();
+  $('body').addClass("overflow");
+
+  var $image = $(this).prev('img');
+  var $imageId = $image.attr('id');
+  var $userId = $image.attr('value');
+  var $imageWidth = $image.width();
+  var $imageHeight = $image.height();
+
+  var $imageTitle;
+  var $creatorName;
+
+  var $div;
+
+  var param = {
+		  0:$imageId,
+		  1:$userId
+  };
+  console.log(param);
+  var data = {'model':'images','action':'imageInfo','data':param};
+  //ajax通信
+  $.ajax({
+	url:"../../Api/controller.php",
+	dataType:'json',
+	type:"POST",
+	data:data
+  //ajax通信成功時
+  }).done(function(data){
+	console.log(data);
+
+	$imageTitle = data[0]['usersData'][0]['imageTitle'];
+	$creatorName = data[0]['usersData'][0]['creatorName'];
+
+	//5段階評価に使う星画像の場所を明示
+	$.fn.raty.defaults.path = "../Lib/images";
+
+	//画像詳細を表示////////////////////
+	var $div = $('.lightbox_left_image');
+	$div.empty();
+	$div.append(
+			$("<img class='view_image'>")
+			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+	);
+	var w,h;
+	if($imageWidth >= $imageHeight){
+		w = 500;
+		h = (500 / $imageWidth) * $imageHeight;
+	}else{
+		w = (600 / $imageHeight) * $imageWidth;
+		h = 600;
+	}
+	$('.lightbox_left_image').css('background','transparent')
+	$('.view_image').css('width',w);
+	$('.view_image').css('height',h);
+	//ユーザーアイコン表示//////////////////
+	$div = $('.user_icon');
+	$div.empty();
+	$div.append(
+			$("<img class='view_icon'>")
+			.attr("src","../../User/"+ $creatorName +"/icon.png")
+	);
+	$('.view_icon').css('width',50);
+	$('.view_icon').css('height',50);
+	$('.view_icon').css('border-radius','50%');
+
+	//作者名表示////////////////////////
+	$div = $('.user_name');
+	$div.empty();
+	$div.append("{{creatorName}}");
+	var drowCreatorName = new Vue({
+		el : '.user_name',
+		data :{
+			creatorName : "illustration by "+ $creatorName
+		}
+	})
+
+
+	//作品タイトル表示////////////////////////
+	$div = $('.work_title');
+	$div.empty();
+	$div.append("{{imageTitle}}");
+	$div.css("color","white");
+	$div.css("fontSize","1.5rem")
+	var drowImageTitle = new Vue({
+		el : '.work_title',
+		data :{
+			imageTitle : $imageTitle
+		}
+	})
+
+	//レビューコメント表示/////////////////////
+	$div = $('.past_coment');
+	$div.empty();
+	$div.append(
+		("<div id='commentPreview' style='overflow: auto; width: 500px; height: 160px'></div>")
+	);
+	var sum = 0;
+	for(var i = 0;i<data[0]['commentData'].length;i++){
+		$('#commentPreview').append(
+			("<div id ='comment"+ i +"'</div>")
+		);
+		$('#comment' + i).raty({
+			readOnly : true,
+			hints: ['', '', '', '', ''],
+			number : 5,
+			score : data[0]['commentData'][i]['rank']
+		});
+
+		if( data[0]['commentData'][i]['userName'] == ""){
+			$('#comment' + i).append(
+				("<br>"),
+				("<p1>(GestUser)</p1>"),
+				("<br>"),
+				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
+				("<br><br><br>")
+			);
+		}else{
+			$('#comment' + i).append(
+				("<br>"),
+				$("<img id='commenter_icon"+i+"'>")
+					.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
+				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+				("<br>"),
+				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
+				("<br><br><br>")
+			);
+			$('#commenter_icon'+i).css('width',20);
+			$('#commenter_icon'+i).css('height',20);
+			$('#commenter_icon'+i).css('border-radius','50%');
+		}
+	sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
+	}
+
+	//レビュー合計表示/////////////////////////////
+	$div = $('.review_all');
+	$div.empty();
+	$div.append(
+		("<h1>レビュー合計 : "+ data[0]['commentData'].length +"件</h1>"),
+		("<div id = 'averageReview'></div>")
+	);
+	$('#averageReview').raty({
+		readOnly : true,
+		number : 5,
+		hints: ['', '', '', '', ''],
+		halfShow : true,
+		score : (sum / data[0]['commentData'].length)
+	});
+
+	//レビューする部分を表示////////////////////////
+	$div = $('.review');
+	$div.empty();
+	$div.append(
+		("<h1>レビューをする</h1>"),
+		("<div id = 'reviewErea'></div>"),
+		("<input id = 'hint'type='hidden'value = '0' readonly>")
+	);
+	$('#reviewErea').raty({
+		number : 5,
+		hints: ['1', '2', '3', '4', '5'],
+		targetScore : '#hint'
+	});
+	$div = $('.review_coment');
+	$div.empty();
+	$div.append(
+		("<h1>コメントをする</h1>"),
+		("<textarea name='comment'id='"+$imageId+"ComentErea' cols='40' rows='8'></textarea>"),
+		("<button class='review_btn' id='"+$imageId+"' value='"+$userId+"'>レビュー</button>")
+	);
+
+
+
+  //ajax通信失敗時
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+	alert("error");
+  });
+});
+
+
+//レビューボタン押下時//////////////////////////////////////////////////////////
+$(document).on("click",".review_btn",function(){
+	var $imageId = $(this).attr('id');
+	var $createrId = $(this).attr('value');
+	var $commenterId = sessionStorage.getItem('userId');
+	var $point = $('#hint').attr('value');
+	var $comment = $('#'+ $imageId + 'ComentErea').val();
+
+	String.prototype.bytes = function () {
+	  return(encodeURIComponent(this).replace(/%../g,"x").length);
+	}
+	console.log("size = "+$comment.bytes());
+
+	if($point == 0){
+		alert("レビュー点数をつけてください。");
+	}else if($comment.bytes() > 600){
+		alert("投稿できるコメントのサイズは600byteまでです。\n文字数を減らしてください。\n" +
+				"現在"+$comment.bytes()+"byteです。");
+	}else{
+
+		$comment = $comment.replace(/\r?\n/g, '<br />');
+		var param = {
+			  0:$imageId,
+			  1:$createrId,
+			  2:$commenterId,
+			  3:$point,
+			  4:$comment
+		};
+		var data = {'model':'images','action':'insertReview','data':param};
+		//ajax通信
+		$.ajax({
+			url:"../../Api/controller.php",
+			dataType:'json',
+			type:"POST",
+			data:data
+		//ajax通信成功時
+		}).done(function(data){
+		  console.log(data);
+
+		var $div;
+		//レビューコメント表示/////////////////////
+			$div = $('.past_coment');
+			$div.empty();
+			$div.append(
+				("<div id='commentPreview' style='overflow: auto; width: 500px; height: 160px'></div>")
+			);
+			var sum = 0;
+			for(var i = 0;i<data.length;i++){
+				$('#commentPreview').append(
+					("<div id ='comment"+ i +"'</div>")
+				);
+				$('#comment' + i).raty({
+					readOnly : true,
+					hints: ['', '', '', '', ''],
+					number : 5,
+					score : data[i]['rank']
+				});
+
+				if( data[i]['userName'] == ""){
+					$('#comment' + i).append(
+						("<br>"),
+						("<p1>(GestUser)</p1>"),
+						("<br>"),
+						("<p2>"+" "+data[i]['comment'] +"</p2>"),
+						("<br><br><br>")
+					);
+				}else{
+					$('#comment' + i).append(
+						("<br>"),
+						$("<img id='commenter_icon"+i+"'>")
+							.attr("src","../../User/"+ data[i]['userName'] +"/icon.png"),
+						("<p1>"+" "+ data[i]['userName'] +"</p1>"),
+						("<br>"),
+						("<p2>"+" "+data[i]['comment'] +"</p2>"),
+						("<br><br><br>")
+					);
+					$('#commenter_icon'+i).css('width',20);
+					$('#commenter_icon'+i).css('height',20);
+					$('#commenter_icon'+i).css('border-radius','50%');
+				}
+				sum = parseInt(sum) +  parseInt(data[i]['rank']);
+			}
+
+			//レビュー合計表示/////////////////////////////
+			$div = $('.review_all');
+			$div.empty();
+			$div.append(
+				("<h1>レビュー合計 : "+ data.length +"件</h1>"),
+				("<div id = 'averageReview'></div>")
+			);
+			$('#averageReview').raty({
+				readOnly : true,
+				number : 5,
+				hints: ['', '', '', '', ''],
+				halfShow : true,
+				score : (sum / data.length)
+			});
+
+			//レビューする部分を表示////////////////////////
+			$div = $('.review');
+			$div.empty();
+			$div.append(
+				("<h1>レビューをする</h1>"),
+				("<div id = 'reviewErea'></div>"),
+				("<input id = 'hint'type='hidden'value = '0' readonly>")
+			);
+			$('#reviewErea').raty({
+				number : 5,
+				hints: ['1', '2', '3', '4', '5'],
+				targetScore : '#hint'
+			});
+			$div = $('.review_coment');
+			$div.empty();
+			$div.append(
+				("<h1>コメントをする</h1>"),
+				("<textarea name='comment'id='"+$imageId+"ComentErea' cols='40' rows='8'></textarea>"),
+				("<button class='review_btn' id='"+$imageId+"' value='"+$createrId+"'>レビュー</button>")
+			);
+
+	  //ajax通信失敗時
+	  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	  });
+	}
+});
+
