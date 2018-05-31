@@ -17,6 +17,7 @@
 }
 body{
   margin:0;
+	overflow-x: hidden;
 }
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
@@ -121,7 +122,7 @@ header{
 .login_user_menu{
   display: none;
   width:170px;
-  height:140px;
+  height: 100px;
   position: fixed;
   line-height: 34px;
   padding-left:10px;
@@ -546,15 +547,17 @@ header{
   padding-top:95px;
 }
 
-.choice_btn{
-  width: 56px;
-  height: 26px;
+label p{
+	width: 56px;
+  height: 19px;
   position: relative;
   float: right;
   margin-top: -26px;
   display: inline-block;
   font-weight: bold;
+	text-align: center;
   text-decoration: none;
+	line-height: 22px;
   color: #FFF;
   font-size: 12px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
@@ -562,8 +565,13 @@ header{
   background: #3F3ACE;
   transition: .4s;
 }
-.choice_btn:hover {
+
+label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
 }
 
 .Editing_images img{
@@ -614,13 +622,14 @@ header{
 }
 
 .background{
- min-height:3145px;
- width:1920px;
- height:974px;
- position:fixed;
- bottom:0;
- background:url('../Images/background__.png') no-repeat 50% 50% ;
- background-size:cover;
+	min-height: 3145px;
+  min-width: 1250px;
+  width: 100%;
+  height: 974px;
+  position: fixed;
+  bottom: 0;
+  background: url(../Images/background__.png) no-repeat;
+  background-size: cover;
 }
 
 .infomation_background{
@@ -634,9 +643,9 @@ header{
 }
 
 .contents{
-	min-width:1200px;
-	width: 1920px;
-	height:auto;
+	min-width: 1200px;
+  width: 100%;
+  height: auto;
   position: absolute;
   top: 0;
   margin-bottom: 10%;
@@ -946,7 +955,6 @@ header{
 }
 
 footer{
-  min-width: 1920px;
   width: 100%;
   height: 80px;
   position: fixed;

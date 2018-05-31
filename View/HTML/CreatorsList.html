@@ -11,6 +11,7 @@
 	<script src="../JS/lightbox.js"></script>
 	<script src="../JS/style.js" type="text/javascript"></script>
 	<script src="../JS/page_top.js" type="text/javascript"></script>
+	<script src="../JS/dropdown.js" type="text/javascript"></script>
 	<script src="../JS/scroll.js" type="text/javascript"></script>
 	<script>
 	  jQuery(function($) {
@@ -44,7 +45,7 @@
 	          <ul>
 	            <li><a href="Top.html">TOP</a></li>
 	            <li><a href="Top.html#works">作品一覧</a></li>
-	            <li><a href="#">制作者一覧</a></li>
+	            <li><a href="CreatorsList.html">制作者一覧</a></li>
 	          </ul>
 	          </div>
 						<!--g-nav終了-->
@@ -57,8 +58,7 @@
             <ul>
               <li><a href="mypage.html">マイページ</a></li>
               <li><a href="Contribution.html">作品投稿</a></li>
-              <li><a href="#">プロフィール編集</a></li>
-              <li><a href="#">ログアウト</a></li>
+              <li><a class="logout">ログアウト</a></li>
             </ul>
           </div>
 		<!--------------------ヘッダー終了-------------------->
@@ -159,16 +159,16 @@
 	                <div class="new_image"><h1>アップロードしてー</h1></div>
 	              </div>
 
-	                <dl class="new_form">
-	                  <dt>ユーザー名</dt>
-	                  <dd><input type="text" disabled="disabled" name="user_name"></dd>
-	                  <dt>メールアドレス</dt>
-	                  <dd><input type="text" disabled="disabled" name="mail"></dd>
-	                  <dt>パスワード</dt>
-	                  <dd><input type="text" disabled="disabled" name="password1"></dd>
-	                  <dt>※パスワード確認</dt>
-	                  <dd><input type="text" disabled="disabled" name="password2"></dd>
-	                </dl>
+								<dl class="new_form">
+									<dt>ユーザー名</dt>
+									<dd><input type="text" disabled="disabled" id="user_name"></dd>
+									<dt>メールアドレス</dt>
+									<dd><input type="text" disabled="disabled" id="mail"></dd>
+									<dt>パスワード</dt>
+									<dd><input type="text" disabled="disabled" id="password1"></dd>
+									<dt>※パスワード確認</dt>
+									<dd><input type="text" disabled="disabled" id="password2"></dd>
+								</dl>
 	              </div>
 	                <div class="new_btn_content">
 	                  <input class="return_btn" type="button"  value="戻る" >
@@ -203,6 +203,47 @@
 	        </div>
 	    </div>
 	        <!--登録完了画面終わり -->
+
+					<!--プロフィール編集画面 -->
+	        <div class="Editing_view">
+	        <div class="Editing_background"></div>
+	        <div class="Editing_image_container">
+	          <div class="close_btn_container">
+	            <div class="Editing_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+	            <div class="Editing_box">
+	              <div class="Editing_header">
+	                <div class="Editing_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	              </div>
+	              <div class="Editing_word">
+
+	              </div>
+	              <div class="Editing_form_waku">
+	              <div class="Editing_title"><h1>プロフィール編集</h1></div>
+	              <div class="Editing_images">
+	                <div class="Editing_image"><h1>アップロードしてー</h1></div>
+	                <input class="choice_btn" type="file"  value="選択">
+	              </div>
+	                <dl class="Editing_form">
+	                  <dt>ユーザー名</dt>
+	                  <dd><input type="text" name="user_name"></dd>
+	                  <dt>メールアドレス</dt>
+	                  <dd><input type="text" name="mail"></dd>
+	                  <dt>旧パスワード</dt>
+	                  <dd><input type="text" name="password1"></dd>
+	                  <dt>新パスワード</dt>
+	                  <dd><input type="text" name="password2"></dd>
+	                </dl>
+	              </div>
+	                <div class="Editing_btn_content">
+	                  <input class="delete_btn2" type="button"  value="アカウントを削除">
+	                  <input class="storage_btn" type="button"  value="保存">
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+	        <!--プロフィール編集画面終わり -->
+
 					<!--------------------コンテンツ部分開始-------------------->
 					<div class="info">
 
@@ -219,8 +260,8 @@
 
 								<!--検索窓開始-->
 								<dl class="kensaku">
-									<dt><input type="text" name="kensaku" value="検索" /></dt>
-									<dd><button>検索</button></dd>
+									<dt><input type="text" name="kensaku" placeholder="制作者名で検索" id ="searchErea"/></dt>
+									<dd><button id ="searchButton">検索</button></dd>
 								</dl>
 								<!--検索窓終了-->
 

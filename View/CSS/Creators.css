@@ -62,7 +62,7 @@ header{
 .login_user_menu{
   display: none;
   width:170px;
-  height:140px;
+  height: 100px;
   position: fixed;
   line-height: 34px;
   padding-left:10px;
@@ -589,6 +589,191 @@ label p:hover {
   left:0;
 }
 
+.Editing_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.Editing_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.Editing_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.Editing_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+.Editing_box{
+  width: 900px;
+  height: 500px;
+  background: #fff;
+  margin-left: -50px;
+}
+
+.Editing_header{
+  width:900px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.Editing_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.Editing_logo img{
+  width:200px;
+}
+
+.Editing_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.delete_btn2{
+  width: 133px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.Editing_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.Editing_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.Editing_btn_content{
+  width: 541px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+  margin-left: 176px;
+}
+
+.Editing_title h1{
+  font-size:25px;
+  margin-top: -42px
+}
+
+.Editing_images{
+  width:200px;
+  margin-top: 40px;
+  border:1px solid #111;
+}
+
+.Editing_image{
+  width:200px;
+  height:200px;
+}
+
+.Editing_image h1{
+  text-align: center;
+  padding-top:95px;
+}
+
+label p{
+	width: 56px;
+  height: 19px;
+  position: relative;
+  float: right;
+  margin-top: -26px;
+  display: inline-block;
+  font-weight: bold;
+	text-align: center;
+  text-decoration: none;
+	line-height: 22px;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+label p:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
+}
+
+.Editing_images img{
+  width: 200px;
+}
+
+/*新規登録フォーム*/
+
+.Editing_form_waku{
+  width: 670px;
+  margin: 0 auto;
+}
+
+.Editing_form{
+  width: 307px;
+  margin-top: -205px;
+  float:right;
+}
+
+.Editing_form dt{
+  width: 128px;
+  height: 30px;
+  line-height: 32px;
+  margin-left: -75px;
+  padding-left: 6px;
+  float:left;
+  font-size: 13px;
+  color:#fff;
+  background:#383474;
+}
+
+.Editing_form dd{
+  height: 20px;
+  margin-bottom: 38.5px;
+}
+
+.Editing_form dd input{
+  width: 244px;
+  height: 30px;
+  float:right;
+}
+
 /*マイページへボタン*/
 .mypage_btn{
   width: 100px;
@@ -633,7 +818,7 @@ label p:hover {
 }
 /*背景*/
 .background{
-	min-height: 3145px;
+	min-height: 3500px;
   width: 1920px;
   height: 974px;
   position: fixed;
@@ -713,7 +898,9 @@ dl.kensaku dd button{
 	height:130px;
 	margin:20px;
 	float: left;
+	overflow : hidden;
 	background:#fff;
+	position: relative;
 }
 
 .creators_box:hover .creators_hover{
@@ -733,18 +920,24 @@ dl.kensaku dd button{
 	opacity: 0.7;
 }
 
+.lightbox_userName h1{
+	width: 100%;
+	position: absolute;
+  margin-top: -70px;
+  color: #fff;
+  text-align: center;
+}
+
 .creator_name{
 	width: 130px;
 	position: absolute;
   text-align: center;
-  margin-top: -70px;
 	color:#fff;
 }
 /*-------------------userアイコンリスト終了--------------------*/
 
 /*-------------------フッター開始--------------------*/
 footer{
-  min-width: 1920px;
   width: 100%;
   height: 80px;
   position: fixed;
