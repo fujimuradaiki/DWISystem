@@ -714,6 +714,7 @@ dl.kensaku dd button{
 	margin:20px;
 	float: left;
 	background:#fff;
+	position: relative;
 }
 
 .creators_box:hover .creators_hover{
@@ -737,7 +738,6 @@ dl.kensaku dd button{
 	width: 130px;
 	position: absolute;
   text-align: center;
-  margin-top: -70px;
 	color:#fff;
 }
 /*-------------------userアイコンリスト終了--------------------*/
