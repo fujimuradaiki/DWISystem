@@ -52,8 +52,7 @@
             <ul>
               <li><a href="mypage.html">マイページ</a></li>
               <li><a href="Contribution.html">作品投稿</a></li>
-              <li><a href="#">プロフィール編集</a></li>
-              <li><a href="#">ログアウト</a></li>
+              <li><a class="logout">ログアウト</a></li>
             </ul>
           </div>
   <!--ログイン画面 -->
@@ -145,16 +144,16 @@
                 <div class="new_image"><h1>アップロードしてー</h1></div>
               </div>
 
-                <dl class="new_form">
-                  <dt>ユーザー名</dt>
-                  <dd><input type="text" disabled="disabled" name="user_name"></dd>
-                  <dt>メールアドレス</dt>
-                  <dd><input type="text" disabled="disabled" name="mail"></dd>
-                  <dt>パスワード</dt>
-                  <dd><input type="text" disabled="disabled" name="password1"></dd>
-                  <dt>※パスワード確認</dt>
-                  <dd><input type="text" disabled="disabled" name="password2"></dd>
-                </dl>
+              <dl class="new_form">
+                <dt>ユーザー名</dt>
+                <dd><input type="text" disabled="disabled" id="user_name"></dd>
+                <dt>メールアドレス</dt>
+                <dd><input type="text" disabled="disabled" id="mail"></dd>
+                <dt>パスワード</dt>
+                <dd><input type="text" disabled="disabled" id="password1"></dd>
+                <dt>※パスワード確認</dt>
+                <dd><input type="text" disabled="disabled" id="password2"></dd>
+              </dl>
               </div>
                 <div class="new_btn_content">
                   <input class="return_btn" type="button"  value="戻る" >
@@ -355,13 +354,13 @@
 		<table>
 			<tr>
 				<td>
-					<input class="before_btn" type="button" value="">
+					<input class="before_btn" type="button" value="戻る">
 				</td>
 				<td>
-					<p class="pageNum">{{pageNum}}</p>
+					<p class="pageNum"></p>
 				</td>
 				<td>
-					<input class="next_btn" type="button" value="">
+					<input class="next_btn" type="button" value="次へ">
 				</td>
 			</tr>
 		</table>

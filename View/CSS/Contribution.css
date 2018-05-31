@@ -75,7 +75,7 @@ header{
 .login_user_menu{
   display: none;
   width:170px;
-  height:140px;
+  height:100px;
   position: fixed;
   line-height: 34px;
   padding-left:10px;

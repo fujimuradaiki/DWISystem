@@ -60,7 +60,7 @@ header{
 .login_user_menu{
   display: none;
   width:170px;
-  height:140px;
+  height:100px;
   position: fixed;
   line-height: 34px;
   padding-left:10px;
@@ -844,11 +844,12 @@ label p:hover {
   width: 38%;
   height: 30px;
   margin: 0 auto;
+	margin-top:20px;
 }
 
 .sns_icon ul li{
   float: left;
-  margin: 40px 0 0 15px;
+  margin-left: 15px;
 }
 
 .sns_icon ul li img{
@@ -898,6 +899,7 @@ dl.kensaku dd button{
 .lightbox_waku{
   width:98%;
   margin: 0 auto;
+	margin-left: 36px;
 	padding-top: 15px;
   position: relative;
 }
@@ -963,12 +965,29 @@ dl.kensaku dd button{
   clear: both;
 }
 
+.before_btn{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+	font-size: 14px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+	padding: 0.3em 0.5em;
+	background: #3F3ACE;
+	transition: .4s;
+}
+
+.before_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 .next_btn{
   width: 80px;
   height: 30px;
   position: relative;
-  float:right;
-  margin:20px 216px;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -981,6 +1000,25 @@ dl.kensaku dd button{
 }
 .next_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+table{
+	width: 265px;
+  margin: 0 auto;
+}
+
+tbody{
+	text-align: center;
+}
+
+td{
+	width: 80px;
+}
+
+td p{
+	width: 66px;
+	float: right;
+	margin-right: 12px;
 }
 
 
@@ -1180,7 +1218,6 @@ textarea {
 }
 
 footer{
-  min-width: 1920px;
   width: 100%;
   height: 80px;
   position: fixed;
