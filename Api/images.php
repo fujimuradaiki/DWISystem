@@ -312,30 +312,15 @@ class images{
     public function insertImage($postData ){
         $pdo = new connectdb();
 
-
-
-//         $postUserData = array('userName',2);
-//         $postImageData = array($image_1,$image_2,$image_3);
-//         $postData = array($postUserData,$images);
-
-        //$pdo = new connectdb();
         //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
-       // $postData = array('userName',2,2,'titleTest');
         $userName = $postData[0][0];
         $imageUserId = $postData[0][1];
-//         echo$userName."\n";
-//         echo$imageUserId."\n";
-//         echo$imageCategoryId."\n";
-//         echo$imageTitle."\n";
-         //echo$imageEncode."\n";
+        $images = count($postData[1]);
         $insert_at=  date("Y/m/d H:i:s");//日時
+        //SQL書こう　IDのやつ
+
         /////画像の最大IDに＋１する DBに登録するimages_idも決める
-        $sql = "select COUNT(*) from images";
-        $stmt=$pdo->dbo->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $imageId =  $result['COUNT(*)'] + 1;
-        //////////////////////////////////
+
         //insertSQL文
         $insertSql = "insert
                       into
@@ -354,10 +339,15 @@ class images{
                       .")";
         //echo $insertSql;
         for($i = 0;$i<count($images);$i++){
-            $this->moviImage($userName,$postData[1][$i]["imageencode"],$imageId);
-            //imageテーブルに画像情報を追加
-            $stmt=$pdo->dbo->prepare($insertSql);
-            $resultFlg = $stmt->execute(array($imageId,$postData[1][$i]["categoryId"],$postData[1][$i]["imgeTitle"]));
+            if($postData[1][$i] != ""){
+
+                //imageテーブルに画像情報を追加
+                $stmt=$pdo->dbo->prepare($insertSql);
+                $resultFlg = $stmt->execute(array($imageId,$postData[0][2][$i],$postData[0][3][$i]));
+//                 $id = $pdo->dbo->lastInsertId();
+//                 $this->moviImage($userName,$postData[1][$i],$id);
+
+                }
             //追加できたか
             if($resultFlg == true){
                 echo json_encode( $imageId."アップロード成功");
@@ -368,7 +358,7 @@ class images{
                 echo json_encode( "新規追加に失敗");
             }
         }
-
+        echo json_encode( "HIT");
     }
 //////////////////////////////////////////////////////////////////////////////////
 //画像保存処理
