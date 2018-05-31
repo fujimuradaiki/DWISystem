@@ -16,10 +16,17 @@ $('.new_btn').click(function(){
   $('body').addClass("overflow");
 });
 /*ボタンを押したとき新規登録確認画面を表示させる*/
+<<<<<<< HEAD
 //$('.confirmation_btn').click(function(){
 //  $('.new_confirmation_view').fadeIn();
 //  $('body').addClass("overflow");
 //});
+=======
+$('.confirmation_btn').click(function(){
+  $('.new_confirmation_view').fadeIn();
+  $('body').addClass("overflow");
+});
+>>>>>>> origin/muraisuzuka
 /*新規登録確認からもどるぼたんがおされたときに新規登録へ戻る*/
 $('.return_btn').click(function(){
   $('.new_view').fadeIn();

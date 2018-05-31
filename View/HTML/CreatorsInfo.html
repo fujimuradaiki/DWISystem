@@ -64,7 +64,7 @@
               </div>
               <div class="login_word">
                 <div class="login_title"><h1>ログイン</h1></div>
-                ユーザー名<input class="login_text" type="text" >
+                ユーザー名<h2>※またはメールアドレス</h2><input class="login_text" type="text" >
                  パスワード<input class="pass_text" type="text" >
               </div>
                 <div class="login_btn_content">
@@ -96,7 +96,10 @@
                 <div class="new_image">
                 	<h1>アイコン画像</h1>
                 </div>
-                <input class="choice_btn" type="file"  value="選択">
+                <label for="choice_btn">
+                  <p>選択</p>
+                 <input id="choice_btn" type="file">
+                </label>
               </div>
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
@@ -140,13 +143,13 @@
 
                 <dl class="new_form">
                   <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"></dd>
+                  <dd><input type="text" disabled="disabled" name="user_name"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"></dd>
+                  <dd><input type="text" disabled="disabled" name="mail"></dd>
                   <dt>パスワード</dt>
-                  <dd><input type="text" name="password1"></dd>
+                  <dd><input type="text" disabled="disabled" name="password1"></dd>
                   <dt>※パスワード確認</dt>
-                  <dd><input type="text" name="password2"></dd>
+                  <dd><input type="text" disabled="disabled" name="password2"></dd>
                 </dl>
               </div>
                 <div class="new_btn_content">

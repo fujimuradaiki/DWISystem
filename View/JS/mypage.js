@@ -9,7 +9,7 @@
 
 *作成者 : 藤村 大輝
 
-*最終更新日 : 2018/05/24
+*最終更新日 : 2018/05/29
 
 *最終更新者 : 藤村 大輝
 
@@ -414,7 +414,7 @@ $(document).on("click",".lightbox_hover",function(){
 		  0:$imageId,
 		  1:userId
   };
-  console.log($categoryName);
+
   var data = {'model':'images','action':'imageInfo','data':param};
     //ajax通信
   $.ajax({
@@ -424,7 +424,6 @@ $(document).on("click",".lightbox_hover",function(){
 	data:data
   //ajax通信成功時
   }).done(function(data){
-	console.log(data);
 
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 
@@ -432,7 +431,7 @@ $(document).on("click",".lightbox_hover",function(){
 	var $div = $('.lightbox_left_image');
 	$div.empty();
 	$div.append(
-			$("<img class='view_image'>")
+			$("<img class='view_image'id='"+ $imageId +"'>")
 			.attr("src","../../User/"+ userName +"/"+ $imageId +".png")
 	);
 	var w,h;
@@ -504,8 +503,77 @@ function trimmingImage(img,size){
 //////////////////////////////////
 */
 $(document).on("click",".storage_btn2",function(){
-	alert("hit");
+runSearch();
+	var $imageId = $('.view_image').attr('id');
+	var categoryId;
+	var userId = sessionStorage.getItem('userId');
+	var $title = $('.title_box').val();
+	var userName = sessionStorage.getItem('userName');
+
+	var errorFlag = 0;
+	var errorMsg = "";
+
+	switch ($('#Genre').val()){
+	case "キャラクター":
+		categoryId = "1";break;
+	case "背景":
+		categoryId = "2";break;
+	case "アイテム":
+		categoryId = "3";break;
+	default:
+		errorFlag = 1;
+		errorMsg = errorMsg + "・ジャンルを選択してください。\n";
+		break;
+	}
+
+	if($title == ""){
+		errorFlag = 1;
+		errorMsg = errorMsg + "・タイトルが未入力です。\n";
+	}else{
+		if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9 　\r\n\t]*$/)){
+			errorFlag = 1;
+			errorMsg = errorMsg + "・タイトルに記号やスペースは使えません。\n";
+		}
+	}
+
+	//デバッグでユーザーidと名を指定中
+	userId = 1;
+	userName = "TestUser";
+	///////////////////////////////////
+
+	if(errorFlag != 0){
+
+		alert(errorMsg);
+
+	}else{
+		var param = {
+			0:$imageId,
+			1:categoryId,
+			2:userId,
+			3:$title,
+			4:userName
+	 	};
+		console.log(param);
+
+		var data = {'model':'images','action':'update','data':param};
+    	//ajax通信
+		$.ajax({
+			url:"../../Api/controller.php",
+			dataType:'json',
+			type:"POST",
+			data:data
+		//ajax通信成功時
+    	}).done(function(data){
+    		alert(data);
+    	//ajax通信失敗時
+    	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+    		alert("error");
+    	});
+	}
+	runSearch();
 
 });
 
-
+$(document).on("click",".close_btn",function(){
+	runSearch();
+});

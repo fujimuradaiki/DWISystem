@@ -1,5 +1,37 @@
+<<<<<<< HEAD
 $(document).ready(function(){
 
+=======
+/*
+*************************************
+
+*名前 : mypage.js
+
+*概要 : mypageのJavaScriptファイル
+
+*作成日 : 2018/05/24
+
+*作成者 : 藤村 大輝
+
+*最終更新日 : 2018/05/29
+
+*最終更新者 : 藤村 大輝
+
+*************************************
+*/
+
+
+/*
+///////////////////////////////////
+
+ *関数名 ready
+
+ *概要 コンストラクタ
+
+//////////////////////////////////
+*/
+$(document).ready(function(){
+>>>>>>> origin/fujimura
 	//ログイン中のユーザーIDとユーザー名を取得
 	//取得できなかった場合、トップページに遷移
 	var userId = sessionStorage.getItem('userId');
@@ -24,6 +56,7 @@ $(document).ready(function(){
 	$headerIcon.css('width',50);
 	$headerIcon.css('height',50);
 	$headerIcon.css('border-radius','50%');
+<<<<<<< HEAD
 
 	$('.mypage_icon').empty();
 	$('.mypage_icon').append(
@@ -176,4 +209,6 @@ $(".toukou_btn").on("click",function(){
 $(".delete3_1_btn").on("click",function(e){
 	console.log("hit");
 	$(".toukou_images1").empty();
+=======
+>>>>>>> origin/fujimura
 });
