@@ -240,7 +240,7 @@ class images{
         $insert_comment = $postData[4];//コメント
         $insert_at=  date("Y/m/d H:i:s");//日時
 
-        //DB追加SQL
+        //DB追加SQL 追加
         $sql = "INSERT
                 INTO
                 comments(
@@ -303,7 +303,8 @@ class images{
                      );
                 }
         }else{
-            echo json_encode( "コメントが追加できなかったです・・・");
+            echo json_encode( "コメントが追加できなかったです。");
+            exit();
         }
             echo json_encode($commentData);
     }
@@ -317,48 +318,45 @@ class images{
         $imageUserId = $postData[0][1];
         $images = count($postData[1]);
         $insert_at=  date("Y/m/d H:i:s");//日時
-        //SQL書こう　IDのやつ
-
+        $str = "insertError";
         /////画像の最大IDに＋１する DBに登録するimages_idも決める
-
+        $strdata = array();
+        $strdata[] = "送信画像数".$images;
         //insertSQL文
         $insertSql = "insert
                       into
                       images(
-                      image_id,
                       image_user_id,
                       image_category_id,
                       image_insert_at,
                       image_title
                       )VALUES("
-                      ."?".","
                       .$imageUserId.","
                       ."?".","
                       ."'$insert_at'".","
                       ."?"
                       .")";
         //echo $insertSql;
-        for($i = 0;$i<count($images);$i++){
+        for($i = 0;$i<$images;$i++){
             if($postData[1][$i] != ""){
 
                 //imageテーブルに画像情報を追加
                 $stmt=$pdo->dbo->prepare($insertSql);
-                $resultFlg = $stmt->execute(array($imageId,$postData[0][2][$i],$postData[0][3][$i]));
-//                 $id = $pdo->dbo->lastInsertId();
-//                 $this->moviImage($userName,$postData[1][$i],$id);
+                $resultFlg = $stmt->execute(array($postData[0][2][$i],$postData[0][3][$i]));
+                $id = $pdo->dbo->lastInsertId();
+                $this->moviImage($userName,$postData[1][$i],$id);
 
-                }
-            //追加できたか
-            if($resultFlg == true){
-                echo json_encode( $imageId."アップロード成功");
-                //chmod($directoryPath,0777);
-                //登録IDを進める
-                $imageId++;
             }else{
-                echo json_encode( "新規追加に失敗");
+                $ $strdata[]="送信された画像がありません";
+            }
+            //追加できたか titleと文字列
+            if($resultFlg == true){
+                $strdata[] = $str =$postData[0][3][$i]."アップロード成功";
+            }else{
+                $strdata[] = $str = $postData[0][3][$i]."新規追加に失敗";
             }
         }
-        echo json_encode( "HIT");
+        echo json_encode($strdata);
     }
 //////////////////////////////////////////////////////////////////////////////////
 //画像保存処理
@@ -372,6 +370,7 @@ class images{
         $fileData = base64_decode($img);
         //拡張子の指定
         $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type;
+
         //echo $fileName;
         file_put_contents($fileName, $fileData);
     }

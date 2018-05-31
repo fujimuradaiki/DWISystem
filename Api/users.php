@@ -92,19 +92,23 @@ class users{
                 WHERE
                 user_id=".
                 $user_id;
-
+        $countSql= "select COUNT(*) from images WHERE image_user_id = ".$user_id;
         $sql .= $likeSq.$limitSql;
        // echo $sql;
         $result = $pdo->dbo->query($sql);
+        $totalCount = $pdo->dbo->query($countSql);
+        $countVal = $totalCount->fetch(PDO::FETCH_ASSOC);
         $v = $result->fetch(PDO::FETCH_ASSOC);
         $userData[] = array(
             "userId"=>$v['user_id'],
-            "userName"=>$v['user_name']
+            "userName"=>$v['user_name'],
+            "imageTotalCount"=>$countVal["COUNT(*)"]
         );
         //最初のデータを入れる
         $imageData[] = array(
             "imageId"=>$v['image_id'],
-            "imageTitle"=>$v['image_title']
+            "imageTitle"=>$v['image_title'],
+
         );
         //残りのデータを入れる
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
@@ -183,16 +187,10 @@ class users{
         $directoryPath = '../User/'.$directoryName;
         //フォルダの存在確認
         if(!(file_exists($directoryPath))){
-           // $result="ディレクトリを作成します\n";
-            //ディレクトリ作成処理
            return true;
         }else{
-            //$result ="そのディレクトリはすでに存在します";
-           // echo $directoryPath;
             return false;
         }
-        //echo $result."\n".$directoryPath;
-
     }
     //フォルダの作成
     public  function createDirectory($userName){
