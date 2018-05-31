@@ -71,10 +71,11 @@ class users{
         $pageNamber = $postData[1];      //ページ番号番号
         $imageSearch = $postData[2];//タイトル名で検索
         $max = $pageNamber * 12;
+        $record = 12;
         $min = $max - 12;
         $likeSq = "";
 
-        $limitSql =  " LIMIT ".$min.",".$max;
+        $limitSql =  " LIMIT ".$min.",".$record;
         if($postData[2] != ""){
             $likeSq = " AND image_title LIKE " ."'%$imageSearch%'";
         }
