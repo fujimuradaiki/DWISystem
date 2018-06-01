@@ -282,7 +282,7 @@ function runSearch(){
 		data:data
 	//ajax通信成功時
 	}).done(function(data){
-
+		console.log(data);
 		var $div = $('.lightbox_waku');
 
 		//表示中の画像を削除
@@ -430,6 +430,8 @@ $(document).on("click",".login_btn3",function(){
 		data:data
 	//ajax通信成功時
 	}).done(function(data){
+
+		if(data != "error"){
 		alert(data['user_name']+"でログインしました");
 
 		//ユーザーidとユーザー名をストレージに保存
@@ -453,6 +455,9 @@ $(document).on("click",".login_btn3",function(){
 
 		$('.login_view').fadeOut();
 		$('body').removeClass("overflow");
+		}else{
+			alert("ログインに失敗しました");
+		}
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert(XMLHttpRequest['responseText']);
@@ -484,7 +489,7 @@ $(document).on("click",".confirmation_btn",function(){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
 	}else{
-		if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+		if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
 		}
@@ -529,6 +534,7 @@ $(document).on("click",".confirmation_btn",function(){
 		$('#user_name').val(name);
 		$('#mail').val(mail);
 		$('#password1').val(pass1);
+
 	}
 });
 
@@ -537,6 +543,7 @@ $(document).on("click",".touroku_btn",function(){
 	var mail = $('#sineUP_mail').val();
 	var pass1 = $('#sineUp_password1').val();
 	var pass2 = $('#sineUp_password2').val();
+	var iconData = $("#choice_btn").val();
 	$("#new_form_waku").text
 
 		var param = [];
@@ -544,6 +551,8 @@ $(document).on("click",".touroku_btn",function(){
 		param[1] = pass1;
 		param[2] = mail;
 		param[3] = $(".new_image").children('img').attr('src');
+
+		console.log(param[3] );
 		var data = {'model':'users','action':'insert','data':param};
 		console.log(data);
 		//ajax通信
@@ -556,6 +565,8 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
+			  $('.new_touroku_view').fadeIn();
+			  $('body').addClass("overflow");
 			alert("新規登録が完了しました。");
 			}else{
 		    alert("登録名がすでに使用されています。");
