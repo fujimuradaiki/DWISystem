@@ -159,48 +159,52 @@ $(document).on("click",".creators_hover",function(){
 */
 $(document).on("click",".login_btn3",function(){
 
-var text = $('.login_text').val();
-var pass = $('.pass_text').val();
-var param = [];
-param[0] = text;
-param[1] = pass;
-var data = {'model':'users','action':'login','data':param};
+	var text = $('.login_text').val();
+	var pass = $('.pass_text').val();
+	var param = [];
+	param[0] = text;
+	param[1] = pass;
+	var data = {'model':'users','action':'login','data':param};
 
-//ajax通信
-$.ajax({
-url:"../../Api/controller.php",
-dataType:'json',
-type:"POST",
-data:data
-//ajax通信成功時
-}).done(function(data){
-alert(data['user_name']+"でログインしました");
+	//ajax通信
+	$.ajax({
+	url:"../../Api/controller.php",
+	dataType:'json',
+	type:"POST",
+	data:data
+	//ajax通信成功時
+	}).done(function(data){
+		if(data != "error"){
+			alert(data['user_name']+"でログインしました");
 
-//ユーザーidとユーザー名をストレージに保存
-sessionStorage.setItem('userId',data['userId']);
-sessionStorage.setItem('userName',data['user_name']);
+			//ユーザーidとユーザー名をストレージに保存
+			sessionStorage.setItem('userId',data['userId']);
+			sessionStorage.setItem('userName',data['user_name']);
 
-//アイコンを表示
-$('.login_btn').css("display","none");
-$('.new_btn').css("display","none");
-$('.login_user_icon').css("display","block");
+			//アイコンを表示
+			$('.login_btn').css("display","none");
+			$('.new_btn').css("display","none");
+			$('.login_user_icon').css("display","block");
 
-$('.login_user_icon').empty();
-$('.login_user_icon').append(
-$("<img id='headerIcon'class='icon'>")
-.attr("src","../../User/"+ data['user_name'] +"/icon.png")
-);
-var $headerIcon = $('#headerIcon');
-$headerIcon.css('width',50);
-$headerIcon.css('height',50);
-$headerIcon.css('border-radius','50%');
+			$('.login_user_icon').empty();
+			$('.login_user_icon').append(
+			$("<img id='headerIcon'class='icon'>")
+			.attr("src","../../User/"+ data['user_name'] +"/icon.png")
+			);
+			var $headerIcon = $('#headerIcon');
+			$headerIcon.css('width',50);
+			$headerIcon.css('height',50);
+			$headerIcon.css('border-radius','50%');
 
-$('.login_view').fadeOut();
-$('body').removeClass("overflow");
-//ajax通信失敗時
-}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-alert(XMLHttpRequest['responseText']);
-});
+			$('.login_view').fadeOut();
+			$('body').removeClass("overflow");
+		}else{
+			alert("ログインに失敗しました");
+		}
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert(XMLHttpRequest['responseText']);
+	});
 });
 
 
@@ -300,7 +304,9 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-			alert("新規登録が完了しました。");
+				alert("新規登録が完了しました。");
+				$('.new_touroku_view').fadeIn();
+				$('body').addClass("overflow");
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
@@ -337,4 +343,19 @@ $("#choice_btn").on("change",function(e){
     })(file);
 
     reader.readAsDataURL(file);
+});
+
+///////////////////////////////////////////////////////////////
+//ログアウト処理
+$(document).on("click",".logout",function(){
+	$('.login_user_menu').fadeToggle();
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('userName');
+
+	//マイページと画像投稿ページ以外の時は書く処理 ここから
+	$('.login_btn').css("display","inline-block");
+	$('.new_btn').css("display","inline-block");
+	$('.login_user_icon').css("display","none");
+//ここまで
+
 });
