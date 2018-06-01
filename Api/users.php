@@ -40,8 +40,8 @@ class users{
         $pdo = new connectdb();
         $sql = "select user_id,user_name from users";
         $data = array();
-        if($postData[0] !="" ){
-            $sql .= " WHERE user_name LIKE "."'%$postData[0]%'";
+        if($postData !="" ){
+            $sql .= " WHERE user_name LIKE "."'%$postData%'";
         }
        //echo $sql;
         $result = $pdo->dbo->query($sql);
