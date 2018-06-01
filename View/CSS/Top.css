@@ -169,7 +169,7 @@ header{
 .login_user_menu{
   display: none;
   width:170px;
-  height:140px;
+  height: 101px;
   position: fixed;
   line-height: 34px;
   padding-left:10px;
@@ -658,7 +658,7 @@ input[type=checkbox]:checked + .check_btn:before {
   width:50px;
   height:50px;
   border-radius:30px;
-  background:#ff0000;
+  background:#fff;
 }
 
 .user_name{
@@ -851,6 +851,27 @@ textarea {
   transition: .4s;
 }
 .login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_btn4{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn4:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 

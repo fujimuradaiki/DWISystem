@@ -10,6 +10,11 @@ $('.login_btn2').click(function(){
   $('body').addClass("overflow");
 });
 
+$('.login_btn4').click(function(){
+  $('.login_view').fadeIn();
+  $('body').addClass("overflow");
+});
+
 /*ボタンを押したとき新規登録画面を表示させる*/
 $('.new_btn').click(function(){
   $('.new_view').fadeIn();
@@ -32,11 +37,11 @@ $('.return_btn').click(function(){
   $('.new_view').fadeIn();
   $('body').addClass("overflow");
 });
-/*登録ボタンを押したとき登録完了画面を表示させる*/
-$('.touroku_btn').click(function(){
-  $('.new_touroku_view').fadeIn();
-  $('body').addClass("overflow");
-});
+// /*登録ボタンを押したとき登録完了画面を表示させる*/
+// $('.touroku_btn').click(function(){
+//   $('.new_touroku_view').fadeIn();
+//   $('body').addClass("overflow");
+// });
 
 $('.Editing_btn').click(function(){
   $('.Editing_view').fadeIn();
@@ -54,10 +59,10 @@ $('.menu_Editing').click(function(){
 //});
 
 
-$('.storage_btn').click(function(){
-  $('.storage_view').fadeIn();
-  $('body').addClass("overflow");
-});
+//$('.storage_btn').click(function(){
+//  $('.storage_view').fadeIn();
+//  $('body').addClass("overflow");
+//});
 
 $('.delete_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
   $('.delete_view').fadeIn();//view���t�F�[�h�A�E�g����//
@@ -135,6 +140,11 @@ $('.delete_btn2').click(function(){//.close_btn img���N���b�N��
 
 $('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
   $('.delete_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+$('.login_btn4').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.new_touroku_view').fadeOut();//view���t�F�[�h�A�E�g����//
   $('body').removeClass("overflow");
 });
 
