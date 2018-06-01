@@ -230,6 +230,27 @@ header{
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.login_btn4{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn4:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 .close_btn2{
   width: 100px;
   height: 35px;
@@ -249,6 +270,29 @@ header{
 .close_btn2:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
+
+
+
+.close_btn_my{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn_my:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 
 .login_close_btn{
   position: absolute;
@@ -900,6 +944,7 @@ label p:hover {
 .toukou_images1{
   width:200px;
   height:200px;
+	overflow: hidden;
   background: #fff;
   position: absolute;;
 }
@@ -956,6 +1001,7 @@ label p:hover {
 .toukou_images2{
   width:200px;
   height:200px;
+	overflow: hidden;
   background: #fff;
   position: absolute;;
 }
@@ -1012,6 +1058,7 @@ label p:hover {
 .toukou_images3{
   width:200px;
   height:200px;
+	overflow: hidden;
   background: #fff;
   position: absolute;;
 }

@@ -1,9 +1,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>マイページ</title>
+<title>作品投稿</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="Images/favicon.ico" href="favicon.ico">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="../JS/jquery.3.3.1.js"></script>
 <script src="../JS/jquery.bgswitcher.js"></script>
@@ -30,12 +31,13 @@
           <input class="new_btn" type="button" value="新規登録">
           <div class="login_user_icon"></div>
            <div class="icon">
-            <ul>
-              <li><img src="../Images/Twitter.png" alt=""></li>
-              <li><img src="../Images/instagram.png" alt=""></li>
-              <li><img src="../Images/facebook.png" alt=""></li>
-            </ul>
+             <ul>
+               <li><a href="https://twitter.com/social_sharing1"><img src="../Images/Twitter.png" alt=""></a></li>
+               <li><a href="#"><img src="../Images/instagram.png" alt=""></a></li>
+               <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/"><img src="../Images/facebook.png" alt=""></a></li>
+             </ul>
           </div>
+
           <div class="menu">
           <ul>
             <li><a href="Top.html">TOP</a></li>
@@ -134,7 +136,7 @@
                 <h2>マイページの投稿作品一覧から確認してください。</h2>
               </div>
                 <div class="new_btn_content">
-                  <input class="close_btn2" type="button"  value="閉じる"  >
+                  <input class="close_btn_my" onClick="location.href='mypage.html'" type="button"  value="マイページへ"  >
                 </div>
             </div>
           </div>
@@ -155,7 +157,7 @@
             <input class="toukou_title1" type="text" name="title">
             <div class="serect_box1">
               <select name="Genre" id ="Genre1" >
-                <option value="0">選択</option>
+              <option value="0">選択</option>
               <option value="1">キャラ</option>
               <option value="2">背景</option>
               <option value="3">アイテム</option>
@@ -175,7 +177,7 @@
           <input class="toukou_title2" type="text" name="title">
           <div class="serect_box2">
             <select name="Genre" id ="Genre2" >
-              <option value="0">選択</option>
+            <option value="0">選択</option>
             <option value="1">キャラ</option>
             <option value="2">背景</option>
             <option value="3">アイテム</option>
@@ -195,7 +197,7 @@
         <input class="toukou_title3" type="text" name="title">
         <div class="serect_box3">
           <select name="Genre" id ="Genre3" >
-            <option value="0">選択</option>
+          <option value="0">選択</option>
           <option value="1">キャラ</option>
           <option value="2">背景</option>
           <option value="3">アイテム</option>
