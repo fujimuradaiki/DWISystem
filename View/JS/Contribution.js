@@ -80,8 +80,9 @@ $("#choice_btn1").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images1");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0){
-	    	alert("png以外のファイルは利用できません。");
+	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    	$("#choice_btn1").val("");
 	    	return false;
 	    }
 	    reader.onload = (function(file) {
@@ -105,8 +106,9 @@ $("#choice_btn2").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images2");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0){
-	    	alert("png以外のファイルは利用できません。");
+	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    	$("#choice_btn2").val("");
 	    	return false;
 	    }
 	    reader.onload = (function(file) {
@@ -129,8 +131,9 @@ $("#choice_btn3").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images3");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0){
-	    	alert("png以外のファイルは利用できません。");
+	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    	$("#choice_btn3").val("");
 	    	return false;
 	    }
 	    reader.onload = (function(file) {
@@ -178,27 +181,37 @@ $(".toukou_btn").on("click",function(){
 		param[1] = images;
     	var data = {'model':'images','action':'insertImage','data':param};
 
-		var errorFlg = true;
+		var errorFlg = false;
+		var imageflg = false;
 		var errorArray = [];
+		errorArray[0] = "送信する画像が選択されていません。";
 		var errorIndex  = 0;
+
 		for(var i = 0;i<images.length;i++){
-			var imageNum = i + 1;
+			var imageNum = i + 1
 			if(param[1][i]){
+				imageflg = true;
 				if(titles[i] == ""){
-					errorFlg = false;
+					errorFlg = true;
 					errorArray[errorIndex] =imageNum +"枚目のタイトルが入力されていません。";
 					errorIndex++;
 				}
 				if(categorys[i] == 0){
-					errorFlg = false;
+					errorFlg = true;
 					errorArray[errorIndex] =imageNum +"枚目のカテゴリーを選択してください。";
 					errorIndex++;
 				}
-			}
+			 }else{
+				 if(titles[i] != "" || categorys[i] != 0){
+					errorFlg = true;
+					errorArray[errorIndex] =imageNum +"枚目の送信する画像が選択されていません。";
+					errorIndex++;
+				}
+			 }
 		}
 
 
-		if(errorFlg){
+		if(!(errorFlg) && imageflg){
 			//ajax通信
 			$.ajax({
 				url:"../../Api/controller.php",
@@ -231,7 +244,7 @@ $(".delete3_1_btn").on("click",function(e){
 	$("#choice_btn1").val("");
 	$(".toukou_images1").children('img').remove();
 	//項目の初期化
-	$('.toukou_title1;').val("");
+	$('.toukou_title1').val("");
 	$('#Genre1').val(0);
 	$("#choice_btn1").val("");
 	$(".toukou_images1").children('img').remove();
