@@ -184,11 +184,13 @@ $(".toukou_btn").on("click",function(){
 		var errorFlg = false;
 		var imageflg = false;
 		var errorArray = [];
+		errorArray[0] = "送信する画像が選択されていません。";
 		var errorIndex  = 0;
 
 		for(var i = 0;i<images.length;i++){
 			var imageNum = i + 1
 			if(param[1][i]){
+				imageflg = true;
 				if(titles[i] == ""){
 					errorFlg = true;
 					errorArray[errorIndex] =imageNum +"枚目のタイトルが入力されていません。";
@@ -200,15 +202,16 @@ $(".toukou_btn").on("click",function(){
 					errorIndex++;
 				}
 			 }else{
-				 errorFlg = true;
-				 errorArray[errorIndex] =imageNum +"枚目の送信する画像が選択されていません。";
-				 errorIndex++;
+				 if(titles[i] != "" || categorys[i] != 0){
+					errorFlg = true;
+					errorArray[errorIndex] =imageNum +"枚目の送信する画像が選択されていません。";
+					errorIndex++;
+				}
 			 }
 		}
 
 
-
-		if(!(errorFlg)){
+		if(!(errorFlg) && imageflg){
 			//ajax通信
 			$.ajax({
 				url:"../../Api/controller.php",
@@ -241,7 +244,7 @@ $(".delete3_1_btn").on("click",function(e){
 	$("#choice_btn1").val("");
 	$(".toukou_images1").children('img').remove();
 	//項目の初期化
-	$('.toukou_title1;').val("");
+	$('.toukou_title1').val("");
 	$('#Genre1').val(0);
 	$("#choice_btn1").val("");
 	$(".toukou_images1").children('img').remove();
