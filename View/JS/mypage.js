@@ -340,8 +340,9 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".Editing_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0){
-    	alert("png以外のファイルは利用できません。");
+    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+    	$("#choice_btn3").val("");
     	return false;
     }
 
@@ -561,6 +562,8 @@ runSearch();
     	}).done(function(data){
     		alert(data);
     		runSearch();
+
+
     	//ajax通信失敗時
     	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
     		alert("error");
@@ -645,7 +648,7 @@ $(document).on("click",".delete_btn",function(){
 	//ajax通信成功時
 	}).done(function(data){
 		alert(data);
-		//runSearch();
+		runSearch();
 		$('.lightbox_view,.login_view,.new_view').fadeOut();
 		$('body').removeClass("overflow");
 	//ajax通信失敗時
