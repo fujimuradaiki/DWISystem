@@ -585,8 +585,9 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".new_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0){
+    if(file.type.indexOf("png") < 0 || file.size > 5500000){
     	alert("png以外のファイルは利用できません。");
+    	$("#choice_btn").val("");
     	return false;
     }
 
@@ -801,9 +802,13 @@ $(document).on("click",".review_btn",function(){
 	  return(encodeURIComponent(this).replace(/%../g,"x").length);
 	}
 	console.log("size = "+$comment.bytes());
-
-	if($point == 0){
-		alert("レビュー点数をつけてください。");
+	if($commenterId == null){}
+	console.log($commenterId);
+	if($commenterId == null){
+		$commenterId = 0;
+	}
+	if($point == 0 || $comment.bytes() == 0){
+		alert("レビュー点数とコメントをつけてください。");
 	}else if($comment.bytes() > 600){
 		alert("投稿できるコメントのサイズは600byteまでです。\n文字数を減らしてください。\n" +
 				"現在"+$comment.bytes()+"byteです。");
