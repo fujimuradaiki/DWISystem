@@ -532,7 +532,6 @@ input[type=checkbox]:checked + .check_btn:before {
   text-align:center;
   cursor:pointer;
   overflow:hidden;
-  background-color:#fff;
   color:#fff;
 }
 
