@@ -145,7 +145,9 @@ class users{
     $pass = md5( $postData[1] );
 
     if(isset($postData[3])){
-    $icon = $postData[3];
+        $icon = $postData[3];
+    }else{
+        $icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT8AAAE/CAIAAAC/xFP8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFHGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE4LTA1LTI4VDEyOjMwOjE3KzA5OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOC0wNS0yOFQxMjozMTozNiswOTowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOC0wNS0yOFQxMjozMTozNiswOTowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpmMDkyZjFmNS05OTc5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";
     }
     $sql = "insert
             into
@@ -169,9 +171,9 @@ class users{
             //$resultFlg = true;
             if($resultFlg == true){
                 $this->createDirectory($postData[0]);
-                if(isset($postData[3])){
-                $this->icon($postData[0],$icon);
-                }
+
+                     $this->icon($postData[0],$icon);
+
                 echo "true";
              }
         }else{
@@ -251,7 +253,7 @@ class users{
         $data = array();
 
         if(isset($postData[5])){
-        $icon = $postData[5];
+            $icon = $postData[5];
         }
 
             //暗号化
@@ -280,7 +282,7 @@ class users{
                 }
                 if($resultFlg == true){
                     $data = array( "userId"=>$updateUserId ,"userName"=>$newName);
-                    echo ($data);
+                    echo json_encode($data);
                 }else{
                     echo json_encode( "編集に失敗しました");
                 }
@@ -351,6 +353,7 @@ class users{
                     "user_name"=>$result['user_name']
                 );
             }else{
+                echo json_encode("error");
                 exit();
             }
             echo json_encode($userdata);
@@ -366,8 +369,18 @@ class users{
         $stmt=$pdo->dbo->prepare($passSql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $sql = "DELETE FROM users WHERE user_id = ".$postData[0];
-
+        $sql = "DELETE
+                users,images,comments
+                FROM
+                images AS images
+                LEFT JOIN users AS users
+                ON
+                image_user_id = user_id
+                LEFT JOIN comments AS comments
+                ON
+                comment_image_id = image_id
+                WHERE
+                image_user_id = ".$postData[0];
         //パスワードあってるか？
          if($result['password'] == $pass){
              $stmt=$pdo->dbo->prepare($sql);
@@ -390,6 +403,7 @@ class users{
             echo json_encode("パスワードが間違っています");
          }
     }
+//////////////////////////////////////////////////////////////////////////////
 
 
 }
