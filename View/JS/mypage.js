@@ -151,7 +151,7 @@ $(document).on("click",".storage_btn",function(){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
 	}else{
-		if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+		if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
 		}
@@ -209,13 +209,17 @@ $(document).on("click",".storage_btn",function(){
 			//ajax通信成功時
 			}).done(function(data){
 
-
 				console.log(data);
 				$('.Editing_view,.lightbox_view').fadeOut();
 				  $('body').removeClass("overflow");
 
 					$('.storage_view').fadeIn();
 					$('body').addClass("overflow");
+					sessionStorage.removeItem('userId');
+					sessionStorage.removeItem('userName');
+					sessionStorage.setItem('userId',user_id);
+					sessionStorage.setItem('userName',name);
+					runSearch();
 
 			//ajax通信失敗時
 			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
@@ -330,7 +334,7 @@ console.log(data);
 
 //////////////////////////////////
 */
-$(".choice_btn").on("change",function(e){
+$("#choice_btn").on("change",function(e){
 	var file = e.target.files[0],
     reader = new FileReader(),
     $preview = $(".Editing_image");
@@ -649,5 +653,18 @@ $(document).on("click",".delete_btn",function(){
 	});
 });
 
+///////////////////////////////////////////////////////////////
+//ログアウト処理
+$(document).on("click",".logout",function(){
+	$('.login_user_menu').fadeToggle();
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('userName');
 
+	//マイページと画像投稿ページの時は書く処理 ここから
+		alert("トップページに戻ります。");
+		window.location.href =  "Top.html";
+	//ここまで
+
+});
+//////////////////////////////////////////////////////////////
 
