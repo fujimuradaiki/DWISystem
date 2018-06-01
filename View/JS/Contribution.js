@@ -254,3 +254,17 @@ $(".delete3_3_btn").on("click",function(e){
 	$("#choice_btn3").val("");
 	$(".toukou_images3").children('img').remove();
 });
+
+///////////////////////////////////////////////////////////////
+//ログアウト処理
+$(document).on("click",".logout",function(){
+	$('.login_user_menu').fadeToggle();
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('userName');
+
+	//マイページと画像投稿ページの時は書く処理 ここから
+		alert("トップページに戻ります。");
+		window.location.href =  "Top.html";
+	//ここまで
+
+});
