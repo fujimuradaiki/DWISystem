@@ -324,8 +324,9 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".new_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0){
-    	alert("png以外のファイルは利用できません。");
+    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+    	$("#choice_btn").val("");
     	return false;
     }
 
@@ -359,3 +360,8 @@ $(document).on("click",".logout",function(){
 //ここまで
 
 });
+
+$(document).on("click","#searchButton",function(){
+	runSearch();
+});
+
