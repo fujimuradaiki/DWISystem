@@ -560,6 +560,7 @@ runSearch();
 		//ajax通信成功時
     	}).done(function(data){
     		alert(data);
+    		runSearch();
     	//ajax通信失敗時
     	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
     		alert("error");
