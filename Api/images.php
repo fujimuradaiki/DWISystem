@@ -382,18 +382,17 @@ class images{
         $userName = $postData[1];
         $userId = $postData[2];
         $imageName = $imageId.".png";
-        $sql = "DELETE FROM images WHERE image_id = ".$imageId ."AND image_user_id =".$userId;
+        $sql = "DELETE FROM images WHERE image_id = ".$imageId ." AND image_user_id =".$userId;
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
-
         if($resultFlg){
             if(unlink("../User/".$userName."/".$imageName)){
                     echo json_encode("画像を削除しました。");
                 }else{
                     echo json_encode("削除対象がありません。");
                 }
-            }else{
-                echo json_encode("DBに対象のレコードが存在しません。");
+        }else{
+           echo json_encode("DBに対象のレコードが存在しません。");
         }
     }
 /////////////////////////////////////////////////////////////////////////////////////////
