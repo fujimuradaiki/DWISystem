@@ -1,3 +1,4 @@
+@charset "utf-8";
 .clearfix:after{
 	display:block;
   height:0;
@@ -32,6 +33,7 @@ header{
 .logo{
   margin: 23px 0 0 20px;
 }
+
 
 /*メニュー*/
 .menu ul{
@@ -315,6 +317,44 @@ i {
   width: 105%;
   height: 22px;
 }
+
+/*----------ログイン完了画面開始----------*/
+.login_Comp_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.mypage_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_Comp_text{
+	text-align: center;
+  margin-top: 155px;
+  font-size: 23px;
+}
+/*----------ログイン完了画面終了----------*/
 
 /*新規登録画面*/
 .new_view{
@@ -842,6 +882,23 @@ label p:hover {
   bottom: 0;
   background: url(../Images/background__.png) no-repeat 50% 50%;
   background-size: cover;
+}
+
+.return_icon{
+	min-width:1200px;
+	position: absolute;
+	margin: 125px 50px;
+	font-size: 40px;
+  color: #fff;
+}
+
+.return_icon h1{
+	margin: -27px 51px;
+	font-size:17px;
+}
+
+.return_icon :hover{
+	text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 .contents{
