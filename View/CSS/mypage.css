@@ -29,10 +29,12 @@ header{
   background-color:#111;
 }
 
+/*ロゴマーク*/
 .logo{
   margin: 23px 0 0 20px;
 }
 
+/*メニュー*/
 .menu ul{
   float: right;
   margin-right:80px;
@@ -48,6 +50,7 @@ header{
   text-decoration: none;
 }
 
+/*ログイン後ユーザーアイコン*/
 .login_user_icon{
   width:50px;
   height:50px;
@@ -58,6 +61,7 @@ header{
   border-radius: 30px;
 }
 
+/*ログイン後ユーザーアイコンをクリックしたときに出るメニュー*/
 .login_user_menu{
   display: none;
   width:170px;
@@ -94,6 +98,7 @@ header{
   color:#ff0000;
 }
 
+/*SNSアイコン*/
 .icon ul{
   width: 15%;
 	margin:-10px -20px;
@@ -108,52 +113,6 @@ header{
 
 i {
 	color:#fff;
-}
-
-.login_user_icon{
-  width:50px;
-  height:50px;
-  position: relative;
-  float:right;
-  margin:20px 20px;
-  background: #fff;
-  border-radius: 30px;
-}
-
-.login_user_menu{
-  display: none;
-  width:170px;
-  height: 100px;
-  position: fixed;
-  line-height: 34px;
-  padding-left:10px;
-  z-index: 1;
-  color:#fff;
-  background:#B997FF;
-  border-radius: 10px;
-  right:0;
-  margin:110px 40px;
-}
-
-.login_user_menu:before{
-  content: "";
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  margin-left: 59px;
-  border: 15px solid transparent;
-  border-bottom: 15px solid #B997FF;
-  z-index: 0;
-
-}
-
-.login_user_menu ul li a{
-  color:#fff;
-  text-decoration: none;
-}
-
-.login_user_menu ul li a:hover{
-  color:#ff0000;
 }
 
 /*保存完了*/
@@ -450,6 +409,7 @@ i {
 .delete_Completion_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
+
 /*アカウント削除完了画面終了*/
 .Editing_view{
   display:none;
@@ -522,6 +482,7 @@ i {
   background: #3F3ACE;
   transition: .4s;
 }
+
 .delete_btn2:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -643,6 +604,7 @@ label p:hover {
 	position: absolute;
 }
 
+/*背景*/
 .background{
 	min-height: 3145px;
   min-width: 1250px;
@@ -654,6 +616,7 @@ label p:hover {
   background-size: cover;
 }
 
+/*ユーザーアイコンと２つのボタンが入っているところの背景*/
 .infomation_background{
   min-width:1920px;
   width:100%;
@@ -694,6 +657,7 @@ label p:hover {
   text-align: center;
 }
 
+/*作品投稿ページボタン*/
 .works_btn{
   width: 120px;
   height: 40px;
@@ -707,10 +671,12 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*作品投稿ページボタン　ホバー*/
 .works_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*プロフィール編集ボタン*/
 .Editing_btn{
   width: 120px;
   height: 40px;
@@ -724,6 +690,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*プロフィール編集ボタン　ホバー*/
 .Editing_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -742,6 +709,7 @@ label p:hover {
   border-bottom: 2px solid;
 }
 
+/*項目タイトル*/
 .title{
 	width:25%;
 	margin: 0 auto;
@@ -754,6 +722,7 @@ label p:hover {
   font-size:25px;
 }
 
+/*ライトボックス（作品編集）*/
 .lightbox_waku{
   width:98%;
   margin: 0 auto;
@@ -821,6 +790,7 @@ label p:hover {
   clear: both;
 }
 
+/*作品編集中身*/
 .lightbox_view{
   display:none;
   width:100%;
@@ -849,14 +819,10 @@ label p:hover {
 }
 
 .lightbox_user_name{
-  color:#fff;
-}
-
-.lightbox_user_name{
   width: 250px;
   margin: -15px 0 0 -20px;
+	color:#fff;
 }
-
 
 .lightbox_title{
   width: 250px;
@@ -924,6 +890,7 @@ label p:hover {
   font-size: 18px;
 }
 
+/*削除ボタン*/
 .delete_btn{
   width: 120px;
   height: 40px;
@@ -937,10 +904,12 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*削除ボタン　ホバー*/
 .delete_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*保存ボタン*/
 .storage_btn{
   width: 120px;
   height: 40px;
@@ -954,6 +923,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*保存ボタン　ホバー*/
 .storage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -975,6 +945,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*----------------------- フッター ---------------------------*/
 footer{
   width: 100%;
   height: 80px;

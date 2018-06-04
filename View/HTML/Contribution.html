@@ -24,6 +24,7 @@
 </script>
 </head>
 <body>
+  <!---------- ヘッダー開始 ---------->
   <header class="clearfix">
       <div class="nav">
         <nav>
@@ -49,6 +50,9 @@
       </div>
     <div class="logo"><a href=Top.html><img src="../Images/logo.png"></a></div>
   </header>
+  <!---------- ヘッダー終了 ---------->
+
+  <!-- ログイン後ユーザーメニュー -->
   <div class="login_user_menu">
             <ul>
               <li><a href="mypage.html">マイページ</a></li>
@@ -56,6 +60,7 @@
               <li><a class="logout">ログアウト</a></li>
             </ul>
           </div>
+  <!-- ログイン後ユーザーメニュー -->
 
 
         <!--登録完了画面 -->
@@ -143,15 +148,21 @@
         </div>
     </div>
         <!--投稿完了画面終わり -->
+
+      <!---------- コンテンツ開始 ---------->
         <div id="toukou">
         <div class="toukou">
           <div class="background"></div>
           <div class="toukou_form">
+            <!-- 項目タイトル -->
             <div class="title">
               <div class="left_border"></div>
               <div class="right_border"></div>
               <h1>作品投稿</h1>
             </div>
+            <!-- 項目タイトル -->
+
+            <!-- 作品登録フォーム -->
             <div class="toukou_waku1">
             <div class="toukou_images1"></div>
             <input class="toukou_title1" type="text" name="title">
@@ -211,14 +222,21 @@
           </label>
         </div>
       </div>
+      <!-- 作品登録フォーム -->
+
+    <!-- 作品登録ボタン -->
       <div class="toukou_Decision">
         <input class="back_btn" type="button" onclick="location.href='mypage.html'"  value="戻る">
         <input class="toukou_btn" type="button"  value="投稿">
       </div>
+　　<!-- 作品登録ボタン -->
         </div>
         </div>
       </div>
       </div>
+      <!---------- コンテンツ開始 ---------->
+
+      <!---------- フッター開始 ---------->
       <footer>
         <div class="footer">
         <div class="footer_logo">
@@ -227,6 +245,7 @@
           <h2>©social_sharing_×××××××××××</h2>
         </div>
       </footer>
+      <!---------- フッター終了 ---------->
       <script type="text/javascript" src="../JS/Contribution.js"></script>
 </body>
 </html>

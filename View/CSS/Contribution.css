@@ -28,10 +28,12 @@ header{
   background-color:#111;
 }
 
+/*ロゴ*/
 .logo{
   margin: 23px 0 0 20px;
 }
 
+/*メニュー*/
 .menu ul{
   float: right;
   margin-right:80px;
@@ -47,6 +49,7 @@ header{
   text-decoration: none;
 }
 
+/*SNSアイコン*/
 .icon ul{
   width: 15%;
 	margin:-10px -20px;
@@ -63,6 +66,7 @@ i {
 	color:#fff;
 }
 
+/*ログイン後のユーザーアイコン*/
 .login_user_icon{
   width:50px;
   height:50px;
@@ -73,6 +77,7 @@ i {
   border-radius: 30px;
 }
 
+/*ログイン後のユーザーアイコンをクリックしたときに出る*/
 .login_user_menu{
   display: none;
   width:170px;
@@ -109,6 +114,7 @@ i {
   color:#ff0000;
 }
 
+/*ログインボタン*/
 .login_btn{
   display:none;
   width: 120px;
@@ -124,10 +130,12 @@ i {
   background: #3F3ACE;
   transition: .4s;
 }
+/*ログインボタン　ホバー*/
 .login_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*新規登録ボタン*/
 .new_btn{
   display:none;
   width: 120px;
@@ -144,6 +152,7 @@ i {
   background: #3F3ACE;
   transition: .4s;
 }
+/*新規登録ボタン　ホバー*/
 .new_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -179,6 +188,7 @@ i {
   margin:0 auto;
 }
 
+/*ログイン画面中身*/
 .login_view{
   display:none;
   width:100%;
@@ -272,8 +282,6 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-
-
 .close_btn_my{
   width: 100px;
   height: 35px;
@@ -293,7 +301,6 @@ i {
 .close_btn_my:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-
 
 .login_close_btn{
   position: absolute;
@@ -330,6 +337,7 @@ i {
   height: 22px;
 }
 
+/*新規登録画面*/
 .new_view{
   display:none;
   width:100%;
@@ -566,6 +574,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*登録ボタン*/
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -583,10 +592,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*登録ボタン　ホバー*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-
+/*戻るボタン*/
 .return_btn{
   width: 100px;
   height: 35px;
@@ -603,6 +613,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*戻るボタン　ホバー*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -616,7 +627,7 @@ label p:hover {
   top:0;
   left:0;
 }
-
+/*マイページボタン*/
 .mypage_btn{
   width: 100px;
   height: 35px;

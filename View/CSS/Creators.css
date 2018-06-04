@@ -557,6 +557,7 @@ label p:hover {
 .confirmation_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
+
 /*登録ボタン*/
 .touroku_btn{
   width: 100px;
@@ -575,6 +576,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*登録ボタン　ホバー*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -595,6 +597,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*戻るボタン　ホバー*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -814,6 +817,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*マイページへボタン　ホバー*/
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
