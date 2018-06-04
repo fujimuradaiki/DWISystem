@@ -531,7 +531,7 @@ runSearch();
 		errorFlag = 1;
 		errorMsg = errorMsg + "・タイトルが未入力です。\n";
 	}else{
-		if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9 　\r\n\t]*$/)){
+		if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・タイトルに記号やスペースは使えません。\n";
 		}
@@ -626,6 +626,8 @@ $(document).on("click",".Completion_btn",function(){
 //////////////////////////////////////////////////////////
 //画像削除
 $(document).on("click",".delete_btn",function(){
+	if(window.confirm( "本当に削除してよろしいですか？")){
+
 	var imageId = $(".view_image").attr("id");
 	var userName = sessionStorage.getItem('userName');
 	var userId = sessionStorage.getItem('userId');
@@ -655,6 +657,9 @@ $(document).on("click",".delete_btn",function(){
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error : " + textStatus);
 	});
+	}else{
+		alert("削除をキャンセルされました");
+	}
 });
 
 ///////////////////////////////////////////////////////////////
