@@ -1,11 +1,16 @@
 <?php
-
+$pdo  = new connectdb();
 class connectdb{
     //データーベース接続のための変数宣言
     private $DBuser ='root';
     private $DBpass ='tgoda100100';
     private $DBhost ='192.168.63.128';
     private $DBname ='DWISystem_testdb';
+
+//     private $DBuser ='server0531_user';
+//     private $DBpass ='tgoda100100';
+//     private $DBhost ='mysql1.php.xdomain.ne.jp';
+//     private $DBname ='server0531_dwisystem';
 
     public  $dbo;
 
