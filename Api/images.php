@@ -10,7 +10,7 @@ class images{
                 $this->imageList($postData);
                 break;
             case "imageInfo":
-                $this->imegeInfo($postData);
+                $this->imageInfo($postData);
                 break;
             case "insertReview":
                 $this->insertReview($postData);
@@ -123,7 +123,7 @@ class images{
     //詳細情報の表示処理
     //ユーザー情報(全て)　画像情報(タイトル、画像ID、)　カテゴリー　コメント
     //送信されてくる値　1:画像ID 2:userID
-    public function imegeInfo($postData){
+    public function imageInfo($postData){
        // $postData = array(8,1);
         //送るとき配列
         $datas = array();
@@ -218,7 +218,7 @@ class images{
        // echo count($commentData) ."\n";
 
         //連想配列に格納
-        $datas[] = array(
+        $datas = array(
             'usersData'=> $creatorData,
             'commentData'=>$commentData
         );
