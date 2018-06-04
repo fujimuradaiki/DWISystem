@@ -3,26 +3,17 @@
 <head>
 	<title>制作者一覧</title>
 	<meta charset="utf-8">
+  <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 	<link href="../CSS/Creators.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<script src="../JS/jquery.3.3.1.js"></script>
-	<script src="../JS/jquery.bgswitcher.js"></script>
-	<script src="../JS/lightbox.js"></script>
-	<script src="../JS/style.js" type="text/javascript"></script>
-	<script src="../JS/page_top.js" type="text/javascript"></script>
-	<script src="../JS/dropdown.js" type="text/javascript"></script>
-	<script src="../JS/scroll.js" type="text/javascript"></script>
-	<script>
-	  jQuery(function($) {
-	      $('.bg-slider').bgSwitcher({
-	          images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
-	      });
-	  });
-	</script>
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<script src="../JS/jquery.3.3.1.js" charset="uft-8"></script>
+	<script src="../JS/lightbox.js" charset="uft-8"></script>
+	<script src="../JS/style.js" type="text/javascript" charset="uft-8"></script>
+	<script src="../JS/dropdown.js" type="text/javascript" charset="uft-8"></script>
 	</head>
 	<body>
-		<!--------------------ヘッダー開始-------------------->
+		<!---------- ヘッダー開始 ---------->
 		<header class="clearfix">
 	      <div class="nav">
 	        <nav>
@@ -33,11 +24,11 @@
 						<div class="login_user_icon"></div>
 						<!--SNS開始-->
 	           <div class="icon">
-							 <ul>
- 	              <li><a href="https://twitter.com/social_sharing1"><img src="../Images/Twitter.png" alt=""></a></li>
- 	              <li><a href="#"><img src="../Images/instagram.png" alt=""></a></li>
- 	              <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/"><img src="../Images/facebook.png" alt=""></a></li>
- 	            </ul>
+               <ul>
+                 <li><a href="https://twitter.com/social_sharing1" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                 <li><a href="#"><i class="fab fa-instagram" target="_blank"></i></a></li>
+                 <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+               </ul>
 	          </div>
 						<!--SNS終了-->
 						<!--g-nav開始-->
@@ -54,6 +45,9 @@
 				<!--ロゴ-->
 	    <div class="logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
 	  </header>
+    <!----------ヘッダー終了---------->
+
+    <!-- ログイン後ユーザーメニュー -->
     <div class="login_user_menu">
             <ul>
               <li><a href="mypage.html">マイページ</a></li>
@@ -61,7 +55,7 @@
               <li><a class="logout">ログアウト</a></li>
             </ul>
           </div>
-		<!--------------------ヘッダー終了-------------------->
+
 
 	  <!--ログイン画面 -->
 	    <div class="login_view">
@@ -94,6 +88,28 @@
 	        </div>
 	    </div>
 	        <!--ログイン画面終わり -->
+          <!--ログイン完了画面 -->
+          <div class="login_Comp_view">
+          <div class="new_background"></div>
+          <div class="new_image_container">
+            <div class="close_btn_container">
+              <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+              <div class="new_box">
+                <div class="new_header">
+                  <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+                </div>
+                <div class="login_Comp_text">
+                  <h1>ログインしました。</h1>
+                </div>
+                  <div class="new_btn_content">
+                    <input class="close_btn2" type="button"  value="閉じる"  >
+                    <input class="mypage_btn" type="button" onclick="location.href='mypage.html'" value="マイページへ" >
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!--ログイン完了画面終わり -->
 
 					<!--新規登録画面 -->
         <div class="new_view">
@@ -106,7 +122,6 @@
                 <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
               </div>
               <div class="new_word">
-
               </div>
               <div class="new_form_waku">
               <div class="new_title"><h1>新規登録</h1></div>
@@ -202,19 +217,22 @@
 	    </div>
 	        <!--登録完了画面終わり -->
 
-					<!--------------------コンテンツ部分開始-------------------->
+					<!----------コンテンツ開始---------->
 					<div class="info">
 
 						<!--背景-->
 							<div class="background"></div>
+            <!--背景-->
 
 							<div class="contents">
+
 								<!--タイトル-->
 								<div class="title">
 									<div class="left_border"></div>
 									<div class="right_border"></div>
 									<h1>制作者一覧</h1>
 								</div>
+                <!--タイトル-->
 
 								<!--検索窓開始-->
 								<dl class="kensaku">
@@ -238,9 +256,9 @@
 
 						</div>
 					</div>
-					<!--------------------コンテンツ部分終了-------------------->
+					<!---------- コンテンツ部分終了 ---------->
 
-		<!--------------------フッター開始------------------->
+		<!---------- フッター開始 ---------->
 		<footer>
 			<div class="footer">
       <div class="footer_logo">
@@ -249,7 +267,8 @@
         <h2>©social_sharing_×××××××××××</h2>
 			</div>
     </footer>
-		<!--------------------フッター終了-------------------->
-		<script type="text/javascript" src="../JS/CreatorsList.js"></script>
+		<!---------- フッター終了 ---------->
+
+		<script type="text/javascript" src="../JS/CreatorsList.js" charset="uft-8"></script>
 </body>
 </html>

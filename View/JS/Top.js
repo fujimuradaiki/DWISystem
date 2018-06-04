@@ -27,8 +27,11 @@
 
 //////////////////////////////////
 */
+
+
+
 $(document).ready(function(){
-	$('.NEW_btn').css("background-color","rgb(226, 49, 49)");
+	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
 	//画像表示実行
 	runSearch();
 
@@ -75,7 +78,7 @@ $(document).ready(function(){
 */
 $('.NEW_btn').on("click",function(){
 	if($(this).css("background-color") == "rgb(63, 58, 206)"){
-		$(this).css("background-color","rgb(226, 49, 49)");
+		$(this).css("background-color","rgb(46, 204, 250)");
 		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
 		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
 
@@ -95,7 +98,7 @@ $('.NEW_btn').on("click",function(){
 */
 $('.OLD_btn').on("click",function(){
 	if($(this).css("background-color") == "rgb(63, 58, 206)"){
-		$(this).css("background-color","rgb(226, 49, 49)");
+		$(this).css("background-color","rgb(46, 204, 250)");
 		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
 		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
 
@@ -115,7 +118,7 @@ $('.OLD_btn').on("click",function(){
 */
 $('.POPULARTY_btn').on("click",function(){
 	if($(this).css("background-color") == "rgb(63, 58, 206)"){
-		$(this).css("background-color","rgb(226, 49, 49)");
+		$(this).css("background-color","rgb(46, 204, 250)");
 		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
 		$('.OLD_btn').css("background-color","rgb(63, 58, 206)");
 
@@ -226,13 +229,13 @@ $('#item').on("click",function(){
 function getForm(){
 
 	var sortType;
-	if($('.NEW_btn').css("background-color") == "rgb(226, 49, 49)"){
+	if($('.NEW_btn').css("background-color") == "rgb(46, 204, 250)"){
 		sortType = 'insert_at:DESC';
 	}else{
-		if($('.OLD_btn').css("background-color") == "rgb(226, 49, 49)"){
+		if($('.OLD_btn').css("background-color") == "rgb(46, 204, 250)"){
 			sortType = "insert_at:ASC";
 		}else{
-			if($('.POPULARTY_btn').css("background-color") == "rgb(226, 49, 49)"){
+			if($('.POPULARTY_btn').css("background-color") == "rgb(46, 204, 250)"){
 				sortType = "rank:DESC";
 			}
 		}
@@ -432,8 +435,9 @@ $(document).on("click",".login_btn3",function(){
 	}).done(function(data){
 
 		if(data != "error"){
-		alert(data['user_name']+"でログインしました");
-
+	//	alert(data['user_name']+"でログインしました");
+	$('.login_Comp_view').fadeIn();
+	$('body').removeClass("overflow");
 		//ユーザーidとユーザー名をストレージに保存
 		sessionStorage.setItem('userId',data['userId']);
 		sessionStorage.setItem('userName',data['user_name']);

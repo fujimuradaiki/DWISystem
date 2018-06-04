@@ -1,3 +1,4 @@
+@charset "utf-8";
 .clearfix:after{
 	display:block;
   height:0;
@@ -100,17 +101,18 @@ header{
 /*----------SNS開始----------*/
 .icon ul{
   width: 15%;
-  margin-top: -10px;
+	margin:-10px -20px;
+	font-size:30px;
   float: right;
 }
 
 .icon ul li{
   float: left;
-  margin:45px 0 0 20px;
+  margin:45px 0 0 30px;
 }
 
-.icon ul li img{
-  width:30px;
+i {
+	color:#fff;
 }
 /*----------SNS終了----------*/
 
@@ -359,6 +361,44 @@ header{
 
 /*----------ログイン画面終了----------*/
 
+/*----------ログイン完了画面開始----------*/
+.login_Comp_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.mypage_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_Comp_text{
+	text-align: center;
+  margin-top: 155px;
+  font-size: 23px;
+}
+/*----------ログイン完了画面終了----------*/
+
 /*----------新規登録画面開始----------*/
 .new_view{
   display:none;
@@ -556,6 +596,7 @@ label p:hover {
 .confirmation_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
+
 /*登録ボタン*/
 .touroku_btn{
   width: 100px;
@@ -574,6 +615,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*登録ボタン　ホバー*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -594,6 +636,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*戻るボタン　ホバー*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -813,6 +856,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*マイページへボタン　ホバー*/
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }

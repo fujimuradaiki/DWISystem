@@ -1,29 +1,20 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
 <title>作品投稿</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="Images/favicon.ico" href="favicon.ico">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script src="../JS/jquery.3.3.1.js"></script>
-<script src="../JS/jquery.bgswitcher.js"></script>
-<script src="../JS/lightbox.js"></script>
-<script src="../JS/style.js" type="text/javascript"></script>
-<script src="../JS/page_top.js" type="text/javascript"></script>
-<script src="../JS/dropdown.js" type="text/javascript"></script>
-<script src="../JS/scroll.js" type="text/javascript"></script>
-<script type="text/javascript" src="../Lib/jquery.raty.js"></script>
-<script type="text/javascript" src="../Lib/vue.js"></script>
-<script>
-  jQuery(function($) {
-      $('.bg-slider').bgSwitcher({
-          images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
-      });
-  });
-</script>
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<script src="../JS/jquery.3.3.1.js" charset="uft-8"></script>
+<script src="../JS/lightbox.js" charset="uft-8"></script>
+<script src="../JS/style.js" type="text/javascript" charset="uft-8"></script>
+<script src="../JS/dropdown.js" type="text/javascript" charset="uft-8"></script>
+<script type="text/javascript" src="../Lib/jquery.raty.js" charset="uft-8"></script>
+<script type="text/javascript" src="../Lib/vue.js" charset="uft-8"></script>
 </head>
 <body>
+  <!---------- ヘッダー開始 ---------->
   <header class="clearfix">
       <div class="nav">
         <nav>
@@ -32,9 +23,9 @@
           <div class="login_user_icon"></div>
            <div class="icon">
              <ul>
-               <li><a href="https://twitter.com/social_sharing1"><img src="../Images/Twitter.png" alt=""></a></li>
-               <li><a href="#"><img src="../Images/instagram.png" alt=""></a></li>
-               <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/"><img src="../Images/facebook.png" alt=""></a></li>
+               <li><a href="https://twitter.com/social_sharing1" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+               <li><a href="#"><i class="fab fa-instagram" target="_blank"></i></a></li>
+               <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
              </ul>
           </div>
 
@@ -49,6 +40,9 @@
       </div>
     <div class="logo"><a href=Top.html><img src="../Images/logo.png"></a></div>
   </header>
+  <!---------- ヘッダー終了 ---------->
+
+  <!-- ログイン後ユーザーメニュー -->
   <div class="login_user_menu">
             <ul>
               <li><a href="mypage.html">マイページ</a></li>
@@ -56,6 +50,7 @@
               <li><a class="logout">ログアウト</a></li>
             </ul>
           </div>
+  <!-- ログイン後ユーザーメニュー -->
 
 
         <!--登録完了画面 -->
@@ -143,15 +138,21 @@
         </div>
     </div>
         <!--投稿完了画面終わり -->
+
+      <!---------- コンテンツ開始 ---------->
         <div id="toukou">
         <div class="toukou">
           <div class="background"></div>
           <div class="toukou_form">
+            <!-- 項目タイトル -->
             <div class="title">
               <div class="left_border"></div>
               <div class="right_border"></div>
               <h1>作品投稿</h1>
             </div>
+            <!-- 項目タイトル -->
+
+            <!-- 作品登録フォーム -->
             <div class="toukou_waku1">
             <div class="toukou_images1"></div>
             <input class="toukou_title1" type="text" name="title">
@@ -211,14 +212,21 @@
           </label>
         </div>
       </div>
+      <!-- 作品登録フォーム -->
+
+    <!-- 作品登録ボタン -->
       <div class="toukou_Decision">
         <input class="back_btn" type="button" onclick="location.href='mypage.html'"  value="戻る">
         <input class="toukou_btn" type="button"  value="投稿">
       </div>
+　　<!-- 作品登録ボタン -->
         </div>
         </div>
       </div>
       </div>
+      <!---------- コンテンツ開始 ---------->
+
+      <!---------- フッター開始 ---------->
       <footer>
         <div class="footer">
         <div class="footer_logo">
@@ -227,6 +235,7 @@
           <h2>©social_sharing_×××××××××××</h2>
         </div>
       </footer>
-      <script type="text/javascript" src="../JS/Contribution.js"></script>
+      <!---------- フッター終了 ---------->
+      <script type="text/javascript" src="../JS/Contribution.js" charset="uft-8"></script>
 </body>
 </html>

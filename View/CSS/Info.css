@@ -1,3 +1,4 @@
+@charset "utf-8";
 .clearfix:after{
 	display:block;
   height:0;
@@ -28,10 +29,13 @@ header{
   background-color:#111;
 }
 
+/*ロゴ*/
 .logo{
   margin: 23px 0 0 20px;
 }
 
+
+/*メニュー*/
 .menu ul{
   float: right;
   margin-right:80px;
@@ -47,6 +51,7 @@ header{
   text-decoration: none;
 }
 
+/*ログイン後ユーザーアイコン*/
 .login_user_icon{
   width:50px;
   height:50px;
@@ -57,6 +62,7 @@ header{
   border-radius: 30px;
 }
 
+/*ログイン後ユーザーアイコンをクリックしたときに出るメニュー*/
 .login_user_menu{
   display: none;
   width:170px;
@@ -93,21 +99,24 @@ header{
   color:#ff0000;
 }
 
+/*SNSアイコン*/
 .icon ul{
   width: 15%;
-  margin-top: -10px;
+	margin:-10px -20px;
+	font-size:30px;
   float: right;
 }
 
 .icon ul li{
   float: left;
-  margin:45px 0 0 20px;
+  margin:45px 0 0 30px;
 }
 
-.icon ul li img{
-  width:30px;
+i {
+	color:#fff;
 }
 
+/*ログインボタン*/
 .login_btn{
   width: 120px;
   height: 40px;
@@ -123,10 +132,12 @@ header{
   background: #3F3ACE;
   transition: .4s;
 }
+/*ログインボタン　ホバー*/
 .login_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*新規登録ボタン*/
 .new_btn{
   width: 120px;
   height: 40px;
@@ -143,6 +154,7 @@ header{
   background: #3F3ACE;
   transition: .4s;
 }
+/*新規登録ボタン　ホバー*/
 .new_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -306,6 +318,45 @@ header{
   height: 22px;
 }
 
+/*----------ログイン完了画面開始----------*/
+.login_Comp_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.mypage_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_Comp_text{
+	text-align: center;
+  margin-top: 155px;
+  font-size: 23px;
+}
+/*----------ログイン完了画面終了----------*/
+
+/*新規登録画面*/
 .new_view{
   display:none;
   width:100%;
@@ -511,7 +562,7 @@ label p:hover {
   float:right;
 }
 
-/*新規登録確認*/
+/*新規登録内容確認*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -542,6 +593,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*登録ボタン*/
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -559,10 +611,12 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*登録ボタン　ホバー*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*戻るボタン*/
 .return_btn{
   width: 100px;
   height: 35px;
@@ -579,6 +633,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*戻るボタン　ホバー*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -593,6 +648,7 @@ label p:hover {
   left:0;
 }
 
+/*マイページボタン*/
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -610,6 +666,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
+/*マイページボタン　ホバー*/
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -624,6 +681,7 @@ label p:hover {
   font-size: 25px;
 }
 
+/*プロフィール編集*/
 .Editing_view{
   display:none;
   width:100%;
@@ -826,6 +884,23 @@ label p:hover {
   background-size: cover;
 }
 
+.return_icon{
+	min-width:1200px;
+	position: absolute;
+	margin: 125px 50px;
+	font-size: 40px;
+  color: #fff;
+}
+
+.return_icon h1{
+	margin: -27px 51px;
+	font-size:17px;
+}
+
+.return_icon :hover{
+	text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 .contents{
 	width: 96%;
 	height:61%;
@@ -861,22 +936,6 @@ label p:hover {
   text-align: center;
 }
 
-.sns_icon ul{
-  width: 38%;
-  height: 30px;
-  margin: 0 auto;
-	margin-top:20px;
-}
-
-.sns_icon ul li{
-  float: left;
-  margin-left: 15px;
-}
-
-.sns_icon ul li img{
-  width:30px;
-}
-
 .right{
 	min-width: 645px;
 	width: 44%;
@@ -884,6 +943,7 @@ label p:hover {
   float: right;
 }
 
+/*検索窓*/
 dl.kensaku{
 	position:relative;
 	margin-left:20px;
@@ -916,7 +976,7 @@ dl.kensaku dd button{
 	background-color:#f66;
 	border:1px solid #c66;
 }
-
+/*ライトボックス*/
 .lightbox_waku{
   width:98%;
 	height: 440px;
@@ -1043,7 +1103,7 @@ td p{
 	margin-right: 12px;
 }
 
-
+/*ライトボックス*/
 .lightbox_view{
   display:none;
   width:100%;
@@ -1113,10 +1173,12 @@ td p{
   float:right;
 }
 
+/*ユーザー情報*/
 .user_information{
   width:400px;
 }
 
+/*ユーザーアイコン*/
 .user_icon{
   width:50px;
   height:50px;
@@ -1124,26 +1186,10 @@ td p{
   background:#ff0000;
 }
 
-.user_name{
-  color:#fff;
-}
-
+/*ユーザーネーム*/
 .user_name{
   margin: -15px 0 0 60px;
-}
-
-.user_sns_icon ul{
-  margin-top: -70px;
-  float: right;
-}
-
-.user_sns_icon ul li{
-  float: left;
-  margin:45px 0 0 20px;
-}
-
-.user_sns_icon ul li img{
-  width:30px;
+	color:#fff;
 }
 
 .work_title{
@@ -1158,6 +1204,7 @@ td p{
   color: #fff;
 }
 
+/*レビュー*/
 .review{
   width:200px;
   height:30px;
@@ -1184,6 +1231,7 @@ td p{
   color:#fff;
 }
 
+/*レビュー記入欄*/
 textarea {
   resize: none;
   width:400px;
@@ -1191,6 +1239,7 @@ textarea {
   margin-top:5px;
 }
 
+/*レビュー送信ボタン*/
 .review_btn{
   width: 70px;
   height: 30px;
@@ -1208,10 +1257,12 @@ textarea {
   background: #3F3ACE;
   transition: .4s;
 }
+/*レビュー送信ボタン　ホバー*/
 .review_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+/*総レビュー*/
 .review_all{
   margin-top:30px;
 }
@@ -1226,7 +1277,7 @@ textarea {
   margin-top: 10px;
   color: #FFBF00;
 }
-
+/*レビュー表示欄*/
 .past_coment{
   width: 500px;
   height: 160px;
@@ -1239,6 +1290,7 @@ textarea {
   margin:0 auto;
 }
 
+/*--------------------レビュー表示欄----------------------*/
 footer{
   width: 100%;
   height: 80px;
