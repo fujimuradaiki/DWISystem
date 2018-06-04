@@ -668,20 +668,6 @@ input[type=checkbox]:checked + .check_btn:before {
   margin: -15px 0 0 60px;
 }
 
-.user_sns_icon ul{
-  margin-top: -70px;
-  float: right;
-}
-
-.user_sns_icon ul li{
-  float: left;
-  margin:45px 0 0 20px;
-}
-
-.user_sns_icon ul li img{
-  width:30px;
-}
-
 .work_title{
   width:400px;
   height:40px;

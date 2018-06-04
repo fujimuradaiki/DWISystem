@@ -861,22 +861,6 @@ label p:hover {
   text-align: center;
 }
 
-.sns_icon ul{
-  width: 38%;
-  height: 30px;
-  margin: 0 auto;
-	margin-top:20px;
-}
-
-.sns_icon ul li{
-  float: left;
-  margin-left: 15px;
-}
-
-.sns_icon ul li img{
-  width:30px;
-}
-
 .right{
 	min-width: 645px;
 	width: 44%;
@@ -1130,20 +1114,6 @@ td p{
 
 .user_name{
   margin: -15px 0 0 60px;
-}
-
-.user_sns_icon ul{
-  margin-top: -70px;
-  float: right;
-}
-
-.user_sns_icon ul li{
-  float: left;
-  margin:45px 0 0 20px;
-}
-
-.user_sns_icon ul li img{
-  width:30px;
 }
 
 .work_title{
