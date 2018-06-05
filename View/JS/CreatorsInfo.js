@@ -106,8 +106,23 @@ $(document).ready(function(){
 
 
 });
+//ログアウト処理//
+$(document).on("click",".logout",function(){
+	$('.login_user_menu').fadeToggle();
+	sessionStorage.removeItem('userId');
+	sessionStorage.removeItem('userName');
 
+	//マイページと画像投稿ページの時は書く処理 ここから
+		alert("トップページに戻ります。");
+		window.location.href =  "Top.html";
+	//ここまで
 
+	//マイページと画像投稿ページ以外の時は書く処理 ここから
+		$('.login_btn').css("display","inline-block");
+		$('.new_btn').css("display","inline-block");
+		$('.login_user_icon').css("display","none");
+	//ここまで
+});
 
 /*
 ///////////////////////////////////
@@ -793,4 +808,3 @@ $(document).on("click",".review_btn",function(){
 	  });
 	}
 });
-

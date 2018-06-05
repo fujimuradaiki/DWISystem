@@ -93,6 +93,7 @@ header{
 .login_user_menu ul li a{
   color:#fff;
   text-decoration: none;
+	cursor: hand;
 }
 
 .login_user_menu ul li a:hover{

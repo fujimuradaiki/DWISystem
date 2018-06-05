@@ -204,6 +204,7 @@ header{
 .login_user_menu ul li a{
   color:#fff;
   text-decoration: none;
+	cursor: hand;
 }
 
 .login_user_menu ul li a:hover{
@@ -535,6 +536,10 @@ i {
 .login_word h2{
 	font-size:11px;
 	line-height: 15px;
+}
+
+.login_word p{
+	font-size: 11px;
 }
 
 .login_btn_content{
@@ -955,6 +960,7 @@ label p:hover {
 }
 
 .NEW_btn{
+outline: none;
 border-radius: 30px;
 background: #3F3ACE;
 color:#fff;
@@ -962,6 +968,7 @@ color:#fff;
 
 .OLD_btn{
 margin-left:20px;
+outline: none;
 border-radius: 30px;
 background: #3F3ACE;
 color:#fff;
@@ -969,6 +976,7 @@ color:#fff;
 
 .POPULARTY_btn{
 margin-left:20px;
+outline: none;
 border-radius: 30px;
 background: #3F3ACE;
 color:#fff;
@@ -1068,6 +1076,7 @@ input[type=checkbox]:checked + .check_btn:before {
   margin: 31px;
   text-align:center;
   cursor:pointer;
+	border-radius: 20px;
   overflow:hidden;
   color:#fff;
 }
@@ -1079,6 +1088,7 @@ input[type=checkbox]:checked + .check_btn:before {
   position:absolute;
   top:0;
   z-index:0;
+	border-radius: 20px;
   transition:all .5s ease;
   font-size:11px;
 }
@@ -1136,9 +1146,9 @@ input[type=checkbox]:checked + .check_btn:before {
 /*ユーザーアイコン*/
 .lightbox_user_icon{
   width: 30px;
-   height: 30px;
+  height: 30px;
   border-radius:30px;
-  background:#ff0000;
+  background:#fff;
 }
 
 /*ユーザーネーム*/

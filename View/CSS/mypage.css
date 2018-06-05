@@ -1,4 +1,6 @@
 @charset "utf-8";
+@import url(https://fonts.googleapis.com/earlyaccess/hannari.css);
+
 .clearfix:after{
 	display:block;
   height:0;
@@ -65,17 +67,17 @@ header{
 /*ログイン後ユーザーアイコンをクリックしたときに出るメニュー*/
 .login_user_menu{
   display: none;
-  width:170px;
-  height: 101px;
-  position: relative;
+	width: 170px;
+	height: 101px;
+  position: fixed;
   line-height: 34px;
-  padding-left:10px;
+  padding-left: 10px;
   z-index: 1;
-  color:#fff;
-  background:#B997FF;
+  color: #fff;
+  background: #B997FF;
   border-radius: 10px;
-  float: right;
-  margin:110px 40px;
+  right: 0;
+  margin: 110px 40px;
 }
 
 .login_user_menu:before{
@@ -93,6 +95,7 @@ header{
 .login_user_menu ul li a{
   color:#fff;
   text-decoration: none;
+	cursor: hand;
 }
 
 .login_user_menu ul li a:hover{
@@ -696,31 +699,122 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.left_border{
-  width: 50px;
-	margin-top: 13px;
-	float: left;
-  border-bottom: 2px solid;
-}
-
-.right_border{
-  width: 50px;
-	margin-top: 13px;
-	float: right;
-  border-bottom: 2px solid;
-}
-
 /*項目タイトル*/
 .title{
-	width:25%;
-	margin: 0 auto;
-  margin-top: 100px;
-  color:#fff;
+	width: 100%;
+  height: 140px;
+  margin: 0 auto;
+  margin-top: 29px;
+  color: #fff;
+  background: #111;
 }
 
 .title h1{
+	padding-top: 65px;
 	text-align: center;
   font-size:25px;
+}
+
+/*ソートボタン*/
+.myworks_menu{
+  width:100%;
+  height:100px;
+  background: #333;
+}
+
+.mymenu_btn{
+  width: 680px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.myNEW_btn{
+	outline: none;
+	border-radius: 30px;
+	background: #3F3ACE;
+	color:#fff;
+}
+
+.myOLD_btn{
+	margin-left:20px;
+	outline: none;
+	border-radius: 30px;
+	background: #3F3ACE;
+	color:#fff;
+}
+
+.myPOPULARTY_btn{
+	margin-left:20px;
+	outline: none;
+	border-radius: 30px;
+	background: #3F3ACE;
+	color:#fff;
+}
+
+.mycheck_btn_waku{
+  margin: 4px 0 0 20px;
+  float:right;
+}
+
+.mycheck_btn{
+  margin-left: 13px;
+  float:left;
+  color:#fff;
+}
+
+.mycheck_btn_waku input{
+  float:left;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+.mycheck_btn {
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 42px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.mycheck_btn:hover:after {
+  border-color: #0171bd;
+}
+.mycheck_btn:after {
+  -webkit-transition: border-color 0.2s linear;
+  transition: border-color 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  display: block;
+  margin-top: -10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  content: '';
+}
+.mycheck_btn:before {
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 21px;
+  display: block;
+  margin-top: -7px;
+  width: 5px;
+  height: 9px;
+  border-right: 3px solid #0171bd;
+  border-bottom: 3px solid #0171bd;
+  content: '';
+  opacity: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=checkbox]:checked + .mycheck_btn:before {
+  opacity: 1;
 }
 
 /*ライトボックス（作品編集）*/
@@ -749,6 +843,7 @@ label p:hover {
   float:left;
   margin: 31px;
   text-align:center;
+	border-radius: 20px;
   cursor:pointer;
   overflow:hidden;
   color:#fff;
@@ -761,6 +856,7 @@ label p:hover {
   position:absolute;
   top:0;
   z-index:0;
+	border-radius: 20px;
   transition:all .5s ease;
   font-size:11px;
 }

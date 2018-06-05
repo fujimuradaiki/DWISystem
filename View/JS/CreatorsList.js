@@ -28,6 +28,10 @@ $(document).ready(function(){
 	runSearch();
 });
 
+// $(".login_close_btn").click(function () {
+//   $(".login_text,.pass_text").remove();
+// });
+
 /*
 ///////////////////////////////////
 
@@ -364,4 +368,3 @@ $(document).on("click",".logout",function(){
 $(document).on("click","#searchButton",function(){
 	runSearch();
 });
-

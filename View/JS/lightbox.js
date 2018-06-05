@@ -43,15 +43,12 @@ $('.return_btn').click(function(){
 //   $('body').addClass("overflow");
 // });
 
-$('.Editing_btn').click(function(){
-  $('.Editing_view').fadeIn();
-  $('body').addClass("overflow");
-});
+ $('.Editing_btn').click(function(){
+   $('.Editing_view').fadeIn();
+   $('body').addClass("overflow");
+ });
 
-$('.menu_Editing').click(function(){
-  $('.Editing_view').fadeIn();
-  $('body').addClass("overflow");
-});
+
 
 //$('.toukou_btn').click(function(){
 //  $('.toukou_view').fadeIn();

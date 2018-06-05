@@ -90,6 +90,7 @@ header{
 .login_user_menu ul li a{
   color:#fff;
   text-decoration: none;
+	cursor: hand;
 }
 
 .login_user_menu ul li a:hover{
@@ -965,6 +966,7 @@ dl.kensaku dd button{
 	float: left;
 	overflow : hidden;
 	background:#fff;
+	border-radius: 20px;
 	position: relative;
 }
 
