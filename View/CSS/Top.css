@@ -1068,17 +1068,17 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .lightbox {
-  width:250px;
-  height:250px;
-  position:relative;
-  z-index:0;
-  float:left;
+	width: 250px;
+  height: 250px;
+  position: relative;
+	z-index: 0;
+  float: left;
   margin: 31px;
-  text-align:center;
-  cursor:pointer;
-	border-radius: 20px;
-  overflow:hidden;
-  color:#fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
 }
 
 .lightbox_hover{
