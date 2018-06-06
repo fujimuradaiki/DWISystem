@@ -6,12 +6,12 @@
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-<script src="../JS/jquery.3.3.1.js" charset="uft-8"></script>
-<script src="../JS/lightbox.js" charset="uft-8"></script>
-<script src="../JS/style.js" type="text/javascript" charset="uft-8"></script>
-<script src="../JS/dropdown.js" type="text/javascript" charset="uft-8"></script>
-<script type="text/javascript" src="../Lib/jquery.raty.js" charset="uft-8"></script>
-<script type="text/javascript" src="../Lib/vue.js" charset="uft-8"></script>
+<script src="../JS/jquery.3.3.1.js"></script>
+<script src="../JS/lightbox.js"></script>
+<script src="../JS/style.js" type="text/javascript"></script>
+<script src="../JS/dropdown.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Lib/jquery.raty.js"></script>
+<script type="text/javascript" src="../Lib/vue.js"></script>
 </head>
 <body>
   <!---------- ヘッダー開始 ---------->
@@ -31,7 +31,7 @@
 
           <div class="menu">
           <ul>
-            <li><a href="Top.html">TOP</a></li>
+            <li><a href="Top.html">トップ</a></li>
             <li><a href="Top.html#works">作品一覧</a></li>
             <li><a href="CreatorsList.html">制作者一覧</a></li>
           </ul>
@@ -143,6 +143,7 @@
         <div id="toukou">
         <div class="toukou">
           <div class="background"></div>
+          <div class="contents">
           <div class="toukou_form">
             <!-- 項目タイトル -->
             <div class="title">
@@ -154,8 +155,8 @@
 
             <!-- 作品登録フォーム -->
             <div class="toukou_waku1">
-            <div class="toukou_images1"></div>
-            <input class="toukou_title1" type="text" name="title">
+            <div class="toukou_images1"><i class="far fa-images"></i><h1>選択ボタンから<br>作品を選択してください。</h1></div>
+            <input class="toukou_title1" type="text" placeholder="タイトルを入力してください" name="title">
             <div class="serect_box1">
               <select name="Genre" id ="Genre1" >
               <option value="0">選択</option>
@@ -174,8 +175,8 @@
           </div>
 
           <div class="toukou_waku2">
-          <div class="toukou_images2"></div>
-          <input class="toukou_title2" type="text" name="title">
+          <div class="toukou_images2"><i class="far fa-images"></i><h1>選択ボタンから<br>作品を選択してください。</h1></div>
+          <input class="toukou_title2" type="text" placeholder="タイトルを入力してください" name="title">
           <div class="serect_box2">
             <select name="Genre" id ="Genre2" >
             <option value="0">選択</option>
@@ -194,8 +195,8 @@
         </div>
 
         <div class="toukou_waku3">
-        <div class="toukou_images3"></div>
-        <input class="toukou_title3" type="text" name="title">
+        <div class="toukou_images3"><i class="far fa-images"></i><h1>選択ボタンから<br>作品を選択してください。</h1></div>
+        <input class="toukou_title3" type="text" placeholder="タイトルを入力してください" name="title">
         <div class="serect_box3">
           <select name="Genre" id ="Genre3" >
           <option value="0">選択</option>
@@ -224,6 +225,7 @@
         </div>
       </div>
       </div>
+    </div>
       <!---------- コンテンツ開始 ---------->
 
       <!---------- フッター開始 ---------->
@@ -236,6 +238,6 @@
         </div>
       </footer>
       <!---------- フッター終了 ---------->
-      <script type="text/javascript" src="../JS/Contribution.js" charset="uft-8"></script>
+      <script type="text/javascript" src="../JS/Contribution.js"></script>
 </body>
 </html>

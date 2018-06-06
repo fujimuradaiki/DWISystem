@@ -109,6 +109,7 @@ i {
 .login_user_menu ul li a{
   color:#fff;
   text-decoration: none;
+	cursor: hand;
 }
 
 .login_user_menu ul li a:hover{
@@ -914,6 +915,12 @@ label p:hover {
  background-size:cover;
 }
 
+.contents{
+  width: 71%;
+  height: auto;
+  position: absolute;
+  margin-bottom: 10%;
+}
 .left_border{
   width: 50px;
 	margin-top: 13px;
@@ -929,7 +936,7 @@ label p:hover {
 }
 
 .title{
-	width:25%;
+	width:38%;
   position: absolute;
   margin: -90px 240px;
   color:#fff;
@@ -941,11 +948,11 @@ label p:hover {
 }
 
 .toukou_form{
-  width:100%;
-  height:400px;
+	width: 91%;
+  height: 400px;
   position: absolute;
-  margin-top:320px;
-  left: 50%;
+  margin-top: 320px;
+	left: 565px;
 }
 
 .toukou_waku1{
@@ -957,8 +964,9 @@ label p:hover {
 .toukou_images1{
   width:200px;
   height:200px;
+	text-align:center;
 	overflow: hidden;
-  background: #fff;
+  background: #666;
   position: absolute;;
 }
 
@@ -1005,6 +1013,18 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.toukou_images1 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
+
+.toukou_images1 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
 .toukou_waku2{
 	height: 280px;
   float:left;
@@ -1015,7 +1035,8 @@ label p:hover {
   width:200px;
   height:200px;
 	overflow: hidden;
-  background: #fff;
+	text-align: center;
+  background: #666;
   position: absolute;;
 }
 
@@ -1062,6 +1083,18 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.toukou_images2 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
+
+.toukou_images2 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
 .toukou_waku3{
 	height: 280px;
   float:left;
@@ -1072,7 +1105,8 @@ label p:hover {
   width:200px;
   height:200px;
 	overflow: hidden;
-  background: #fff;
+	text-align: center;
+  background: #666;
   position: absolute;;
 }
 
@@ -1119,7 +1153,17 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.toukou_images3 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
 
+.toukou_images3 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
 
 label p{
 	width: 36px;

@@ -128,107 +128,258 @@ console.log(data);
 
 *関数 編集画面の保存ボタン押下時
 
-*概要
+*概要  pass_old = 新しいパスワード
+      Pass_new = 確認パスワード
 
 //////////////////////////////////
 */
 $(document).on("click",".storage_btn",function(){
+	if($pass = window.prompt('パスワードを入力してください')){
+		var user_id = sessionStorage.getItem('userId');
+		var name = $('#sineIn_user_name').val();
+		var mail = $('#sineIn_mail').val();
+		var pass_old = $('#sineIn_pass_old').val();
+		var pass_new = $('#sineIn_pass_new').val();
 
-	var user_id = sessionStorage.getItem('userId');
-	var name = $('#sineIn_user_name').val();
-	var mail = $('#sineIn_mail').val();
-	var pass_old = $('#sineIn_pass_old').val();
-	var pass_new = $('#sineIn_pass_new').val();
+		var errorFlag = 0;
+		var errorMsg = "入力内容に不備があります。\n\n";
 
-	var errorFlag = 0;
-	var errorMsg = "入力内容に不備があります。\n\n";
+		var obj = document.getElementById("editingIcon");
+		var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
 
-	var obj = document.getElementById("editingIcon");
-	var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
-
-	//ユーザー名バリデーション
-	if(name == ""){
-		errorFlag = 1;
-		errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
-	}else{
-		if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+		//ユーザー名バリデーション
+		if(name == ""){
 			errorFlag = 1;
-			errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
+			errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
+		}else{
+			if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+				errorFlag = 1;
+				errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
+			}
+		}
+
+		//メールアドレスバリデーション
+		if(mail == ""){
+			errorFlag = 1;
+			errorMsg = errorMsg + "・メールアドレスが未入力です。\n";
+		}else{
+			if(!mail.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
+				errorFlag = 1;
+				errorMsg = errorMsg + "・メールアドレスの形式が間違っています。\n";
+			}
+		}
+
+		//旧パスワードバリデーション
+		if(pass_old == ""){
+			pass_old = $pass;
+		}else{
+			if(!pass_old.match(/^[a-zA-Z0-9]+$/)){
+			 		errorFlag = 1;
+			 		errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
+		}
+
+		//新パスワードバリデーション
+		// if(pass_new == ""){
+		// 	errorFlag = 1;
+		// 	errorMsg = errorMsg + "・新パスワードが未入力です。\n";
+		// }else{
+		// 	if(!pass_new.match(/^[a-zA-Z0-9]+$/)){
+		// 		errorFlag = 1;
+		// 		errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
+		// 	}
+		if(pass_old != pass_new){
+			errorFlag = 1;
+			errorMsg = errorMsg + "・確認パスワードが一致しません。\n";
 		}
 	}
 
-	//メールアドレスバリデーション
-	if(mail == ""){
-		errorFlag = 1;
-		errorMsg = errorMsg + "・メールアドレスが未入力です。\n";
-	}else{
-		if(!mail.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
-			errorFlag = 1;
-			errorMsg = errorMsg + "・メールアドレスの形式が間違っています。\n";
+		if(errorFlag == 1){
+			alert(errorMsg);
+		}else{
+			//ajax通信で入力されている情報をPHPに渡す
+
+			 var param = [];
+			param[0] = user_id;
+			param[1] = name;
+			param[2] = $pass;
+			param[3] = pass_new;
+			param[4] = mail;
+			param[5] = bace64;
+			param[6] = sessionStorage.getItem('userName');
+			 var data = {'model':'users','action':'update','data':param};
+			 console.log(data);
+			 //ajax通信
+				$.ajax({
+					url:"../../Api/controller.php",
+					dataType:'json',
+					type:"POST",
+					data:data
+				//ajax通信成功時
+				}).done(function(data){
+
+					console.log(data);
+					$('.Editing_view,.lightbox_view').fadeOut();
+					  $('body').removeClass("overflow");
+
+						$('.storage_view').fadeIn();
+						$('body').addClass("overflow");
+						sessionStorage.removeItem('userId');
+						sessionStorage.removeItem('userName');
+						sessionStorage.setItem('userId',user_id);
+						sessionStorage.setItem('userName',name);
+						runSearch();
+
+				//ajax通信失敗時
+				}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+					alert("error : \n" + XMLHttpRequest['responseText']);
+				});
 		}
-	}
-
-	//旧パスワードバリデーション
-	if(pass_old == ""){
-		errorFlag = 1;
-		errorMsg = errorMsg + "・旧パスワードが未入力です。\n";
-	}
-
-	//新パスワードバリデーション
-	if(pass_new == ""){
-		errorFlag = 1;
-		errorMsg = errorMsg + "・新パスワードが未入力です。\n";
 	}else{
-		if(!pass_new.match(/^[a-zA-Z0-9]+$/)){
-			errorFlag = 1;
-			errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
-		}
-	}
-
-	if(errorFlag == 1){
-		alert(errorMsg);
-	}else{
-		//ajax通信で入力されている情報をPHPに渡す
-
-		 var param = [];
-		param[0] = user_id;
-		param[1] = name;
-		param[2] = pass_old;
-		param[3] = pass_new;
-		param[4] = mail;
-		param[5] = bace64;
-		param[6] = sessionStorage.getItem('userName');
-		 var data = {'model':'users','action':'update','data':param};
-		 console.log(data);
-		 //ajax通信
-			$.ajax({
-				url:"../../Api/controller.php",
-				dataType:'json',
-				type:"POST",
-				data:data
-			//ajax通信成功時
-			}).done(function(data){
-
-				console.log(data);
-				$('.Editing_view,.lightbox_view').fadeOut();
-				  $('body').removeClass("overflow");
-
-					$('.storage_view').fadeIn();
-					$('body').addClass("overflow");
-					sessionStorage.removeItem('userId');
-					sessionStorage.removeItem('userName');
-					sessionStorage.setItem('userId',user_id);
-					sessionStorage.setItem('userName',name);
-					runSearch();
-
-			//ajax通信失敗時
-			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-				alert("error : \n" + XMLHttpRequest['responseText']);
-			});
-
+			window.alert('キャンセルされました'); // 警告ダイアログを表示
 	}
 });
 
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(新しい順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
+$('.myNEW_btn').on("click",function(){
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(46, 204, 250)");
+		$('.myOLD_btn').css("background-color","rgb(63, 58, 206)");
+		$('.myPOPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+
+		runSearch();
+	}
+});
+
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(古い順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
+$('.myOLD_btn').on("click",function(){
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(46, 204, 250)");
+		 $('.myNEW_btn').css("background-color","rgb(63, 58, 206)");
+		 $('.myPOPULARTY_btn').css("background-color","rgb(63, 58, 206)");
+		runSearch();
+	}
+});
+/*
+///////////////////////////////////
+
+*関数 ソートボタン(人気順)押下時
+
+*概要 ソートボタンの色変更
+
+//////////////////////////////////
+*/
+$('.myPOPULARTY_btn').on("click",function(){
+	if($(this).css("background-color") == "rgb(63, 58, 206)"){
+		$(this).css("background-color","rgb(46, 204, 250)");
+		$('.myNEW_btn').css("background-color","rgb(63, 58, 206)");
+		$('.myOLD_btn').css("background-color","rgb(63, 58, 206)");
+
+		runSearch();
+	}
+});
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(全て)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#myall').on("click",function(){
+
+	if($("#myall").prop("checked")){
+		$("#mychara").prop("checked",true);
+		$("#mybackGround").prop("checked",true);
+		$("#myitem").prop("checked",true);
+	}else{
+		$("#mychara").prop("checked",false);
+		$("#mybackGround").prop("checked",false);
+		$("#myitem").prop("checked",false);
+	}
+
+	runSearch();
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(キャラクター)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#mychara').on("click",function(){
+	$("#myall").prop("checked",false);
+	if($("#mychara").prop("checked") &&
+	  $("#mybackGround").prop("checked") &&
+	  $("#myitem").prop("checked")){
+		$("#myall").prop("checked",true);
+	}
+
+	runSearch();
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(背景)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#mybackGround').on("click",function(){
+	$("#myall").prop("checked",false);
+	if($("#mychara").prop("checked") &&
+	  $("#mybackGround").prop("checked") &&
+	  $("#myitem").prop("checked")){
+		$("#myall").prop("checked",true);
+	}
+
+	runSearch();
+});
+
+
+/*
+///////////////////////////////////
+
+*関数 フィルタチェックボックス(アイテム)押下時
+
+*概要 フィルタチェックボックスの状態変更
+
+//////////////////////////////////
+*/
+$('#myitem').on("click",function(){
+	$("#myall").prop("checked",false);
+	if($("#mychara").prop("checked") &&
+	  $("#mybackGround").prop("checked") &&
+	  $("#myitem").prop("checked")){
+		$("#myall").prop("checked",true);
+	}
+
+	runSearch();
+});
 
 /*
 ///////////////////////////////////
@@ -239,10 +390,12 @@ $(document).on("click",".storage_btn",function(){
 
 //////////////////////////////////
 */
+
 function runSearch(){
 
 	var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
+
 	var data = {'model':'images','action':'creatorWorksList','data':userId};
 
 console.log(data);
@@ -324,6 +477,37 @@ console.log(data);
 	});
 };
 
+// function getForm(){
+//
+// 	var sortType;
+// 	if($('.NEW_btn1').css("background-color") == "rgb(46, 204, 250)"){
+// 		sortType = 'insert_at:DESC';
+// 	}else{
+// 		if($('.OLD_btn').css("background-color") == "rgb(46, 204, 250)"){
+// 			sortType = "insert_at:ASC";
+// 		}else{
+// 			if($('.POPULARTY_btn').css("background-color") == "rgb(46, 204, 250)"){
+// 				sortType = "rank:DESC";
+// 			}
+// 		}
+// 	}
+//
+// 	var $category1 = $("#chara").prop("checked");
+// 	var $category2 = $("#backGround").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
+// 	var $category3 = $("#item").prop("checked");
+//
+// 	//取得したフォーム情報を連想配列に格納
+// 	var param = {
+// 		0:{name:'sortType',value:sortType},
+// 		1:{category1:{name:'charactor',value:$category1},
+// 		   category2:{name:'backGround',value:$category2},
+// 		   category3:{name:'item',value:$category3}
+//
+// 		}
+// 	};
+//
+// 	return param;
+// }
 
 /*
 ///////////////////////////////////
@@ -577,11 +761,12 @@ $(document).on("click",".close_btn",function(){
 	runSearch();
 });
 ///////////////////////////////////////////////////////////////////
-///アカウント削除
+///プロフィール削除
 $(document).on("click",".Completion_btn",function(){
 	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
 	if($pass = window.prompt('パスワードを入力してください')){
 		//ajax通信で登録されている内容をテキストボックスに表示する
+
 		var userId = sessionStorage.getItem('userId');
 		var userName = sessionStorage.getItem('userName');
 		console.log(userId,userName);
@@ -606,7 +791,6 @@ $(document).on("click",".Completion_btn",function(){
 			$('body').removeClass("overflow");
 			sessionStorage.removeItem('userId');
 			sessionStorage.removeItem('userName');
-
 			}else{
 
 
@@ -623,6 +807,7 @@ $(document).on("click",".Completion_btn",function(){
 	}
 });
 
+<<<<<<< HEAD
 //////////////////////////////////////////////////////////
 //画像削除
 $(document).on("click",".delete_btn",function(){
@@ -675,5 +860,6 @@ $(document).on("click",".logout",function(){
 	//ここまで
 
 });
+=======
+>>>>>>> origin/muraisuzuka
 //////////////////////////////////////////////////////////////
-
