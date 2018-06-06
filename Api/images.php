@@ -27,6 +27,9 @@ class images{
             case"creatorWorksList":
                 $this->creatorWorksList($postData);
                 break;
+            case"mypageWorksList":
+                $this->mypageWorksList($postData);
+                break;
             default:
                 echo "images.php ユーザー定義関数に該当しませんでした";
                 break;
@@ -140,7 +143,8 @@ class images{
                     image_id,
                     image_title,
                     user_name,
-                    user_id
+                    user_id,
+                    category_name
                     FROM
                     images AS images
                     LEFT JOIN
@@ -183,7 +187,8 @@ class images{
                 'imageId' => $val['image_id'],
                 'imageTitle'=>$val['image_title'],
                 'creatorName'=> $val['user_name'],
-                'creatorId' => $val['user_id']
+                'creatorId' => $val['user_id'],
+                'categoryName'=>$val['category_name']
             );
         }
 
@@ -218,7 +223,7 @@ class images{
        // echo count($commentData) ."\n";
 
         //連想配列に格納
-        $datas = array(
+        $datas[] = array(
             'usersData'=> $creatorData,
             'commentData'=>$commentData
         );
@@ -454,6 +459,95 @@ class images{
         };
         echo json_encode($imagesArray);
 
+    }
+
+    public function mypageWorksList($postData){
+        //格納配列
+        $imagesArray = array();
+        //DBへの接続関数
+        $pdo = new connectdb();
+        //追加のsql文作成
+        $addSql ="";
+        $addSortSql = "";
+        $user_id = $postData[1];
+
+        if($postData != ""){
+            //文字列 分割 (配列)　ソート 0:対象 1:ソート種類
+            $pieces = explode(":", $postData[0][0]['value']);
+
+            //カテゴリーの検索フィルタ
+            //  echo $postData[1]['category1']['value'];
+            if($postData[0][1]['category1']['value'] == 'true'){
+                $addSql .= "( category_id = 1";
+            }
+            if($postData[0][1]['category2']['value'] == 'true'){
+                if($addSql != ""){
+                    $addSql .= " OR";
+                }else{
+                    $addSql .= "(";
+                }
+                $addSql .= " category_id = 2";
+            }
+            if($postData[0][1]['category3']['value'] == 'true'){
+                if($addSql != ""){
+                    $addSql .= " OR";
+                }else{
+                    $addSql .= "(";
+                }
+                $addSql .= " category_id = 3";
+            }
+            //ソート種類
+            if($pieces[0] != ""){
+                if($pieces[0] != "rank"){
+                    $addSortSql .= " ORDER BY image_$pieces[0] $pieces[1]";
+                }else{
+                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , image_insert_at ASC";
+                }
+            }
+        }
+        //sqlの発行
+        $sql = "SELECT
+                image_id,
+                image_title,
+                category_name,
+                user_name,
+                user_id
+                FROM
+                images AS images
+                LEFT JOIN
+                users AS users
+                ON
+                image_user_id = user_id
+                LEFT JOIN
+                categories AS categories
+                ON
+                image_category_id = category_id
+                WHERE
+                image_user_id = " .$user_id;
+        //検索フィルタSQL作成
+
+        //チェックボックスがすべて押されなかった場合
+        if($addSql != ""){
+            $sql .= " AND ".$addSql.")";
+            //検索フィルターSQLの結合
+            $sql .= $categorySql;
+        }
+        //ソートSQLの結合
+        $sql .= " GROUP BY  image_id ". $addSortSql;
+        //  echo $sql . "\n";
+        //SQL実行
+        $result = $pdo->dbo->query($sql);
+
+        while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            $imagesArray[] = array(
+                'Id' => $val['image_id'],
+                'Title' => $val['image_title'],
+                'UserName' => $val['user_name'],
+                'userId'=>$val['user_id'],
+                'categoryName' => $val['category_name']
+            );
+        };
+        echo json_encode($imagesArray);
     }
 }
 
