@@ -27,7 +27,7 @@
 //////////////////////////////////
 */
 $(document).ready(function(){
-
+	$('.myNEW_btn').css("background-color","rgb(46, 204, 250)");
 
 	/*Debug用・仮でユーザーID、名を指定中//////////////
 	sessionStorage.clear();////////////////////////
@@ -138,17 +138,16 @@ $(document).on("click",".storage_btn",function(){
 		var user_id = sessionStorage.getItem('userId');
 		var name = $('#sineIn_user_name').val();
 		var mail = $('#sineIn_mail').val();
-		var pass_old = $('#sineIn_pass_old').val();
-		var pass_new = $('#sineIn_pass_new').val();
+		var pass_new = $('#sineIn_pass_old').val();
+		var passAgain = $('#sineIn_pass_new').val();
 
 		var errorFlag = 0;
 		var errorMsg = "入力内容に不備があります。\n\n";
 
 		var obj = document.getElementById("editingIcon");
 		var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
-
 		//ユーザー名バリデーション
-		if(name == ""){
+		if(name == "pass_old"){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
 		}else{
@@ -170,24 +169,16 @@ $(document).on("click",".storage_btn",function(){
 		}
 
 		//旧パスワードバリデーション
-		if(pass_old == ""){
-			pass_old = $pass;
+		if(pass_new == ""){
+			pass_new = $pass;
 		}else{
-			if(!pass_old.match(/^[a-zA-Z0-9]+$/)){
+			if(!pass_new.match(/^[a-zA-Z0-9]+$/)){
 			 		errorFlag = 1;
 			 		errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
 		}
 
-		//新パスワードバリデーション
-		// if(pass_new == ""){
-		// 	errorFlag = 1;
-		// 	errorMsg = errorMsg + "・新パスワードが未入力です。\n";
-		// }else{
-		// 	if(!pass_new.match(/^[a-zA-Z0-9]+$/)){
-		// 		errorFlag = 1;
-		// 		errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
-		// 	}
-		if(pass_old != pass_new){
+
+		if(pass_new != passAgain){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・確認パスワードが一致しません。\n";
 		}
@@ -218,6 +209,7 @@ $(document).on("click",".storage_btn",function(){
 				}).done(function(data){
 
 					console.log(data);
+					if(data == "true"){
 					$('.Editing_view,.lightbox_view').fadeOut();
 					  $('body').removeClass("overflow");
 
@@ -228,9 +220,12 @@ $(document).on("click",".storage_btn",function(){
 						sessionStorage.setItem('userId',user_id);
 						sessionStorage.setItem('userName',name);
 						runSearch();
-
+					}else{
+						alert(data);
+					}
 				//ajax通信失敗時
 				}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+					//
 					alert("error : \n" + XMLHttpRequest['responseText']);
 				});
 		}
@@ -392,13 +387,19 @@ $('#myitem').on("click",function(){
 */
 
 function runSearch(){
-
 	var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
 
-	var data = {'model':'images','action':'creatorWorksList','data':userId};
+	var datas = [];
+	datas[0] = getForm();
+	datas[1] = userId;
 
-console.log(data);
+	var data = {'model':'images','action':'mypageWorksList','data':datas};
+
+	/*デバッグ用表示//////
+	*/console.log(data);/*
+	////////////////////*/
+
 	//ajax通信
 	$.ajax({
 		url:"../../Api/controller.php",
@@ -407,18 +408,20 @@ console.log(data);
 		data:data
 	//ajax通信成功時
 	}).done(function(data){
-
 		console.log(data);
-
 		var $div = $('.lightbox_waku');
+
 		//表示中の画像を削除
 		$div.empty();
 
 		for(var i = 0;i < data.length;i++){
 
-			var imageId = data[i].imageId;
+			var userName = data[i].UserName;
+			var userId = data[i].userId;
+			var imageId = data[i].Id;
 			var categoryName = data[i].categoryName;
-			var title = data[i].imageTitle;
+			var title = data[i].Title;
+			var insert_at = data[i].Insert_at;
 
 			//画像表示
 			$div.append(
@@ -427,7 +430,7 @@ console.log(data);
 			var $num = $('#'+imageId+'Div');
 			$num.append(
 
-					$("<img id='"+imageId+"'class='images'value='"+categoryName+"'>")
+					$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
 					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
 
 					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
@@ -475,39 +478,41 @@ console.log(data);
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
+
+
 };
 
-// function getForm(){
-//
-// 	var sortType;
-// 	if($('.NEW_btn1').css("background-color") == "rgb(46, 204, 250)"){
-// 		sortType = 'insert_at:DESC';
-// 	}else{
-// 		if($('.OLD_btn').css("background-color") == "rgb(46, 204, 250)"){
-// 			sortType = "insert_at:ASC";
-// 		}else{
-// 			if($('.POPULARTY_btn').css("background-color") == "rgb(46, 204, 250)"){
-// 				sortType = "rank:DESC";
-// 			}
-// 		}
-// 	}
-//
-// 	var $category1 = $("#chara").prop("checked");
-// 	var $category2 = $("#backGround").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
-// 	var $category3 = $("#item").prop("checked");
-//
-// 	//取得したフォーム情報を連想配列に格納
-// 	var param = {
-// 		0:{name:'sortType',value:sortType},
-// 		1:{category1:{name:'charactor',value:$category1},
-// 		   category2:{name:'backGround',value:$category2},
-// 		   category3:{name:'item',value:$category3}
-//
-// 		}
-// 	};
-//
-// 	return param;
-// }
+ function getForm(){
+
+ 	var sortType;
+ 	if($('.myNEW_btn').css("background-color") == "rgb(46, 204, 250)"){
+ 		sortType = 'insert_at:DESC';
+ 	}else{
+ 		if($('.myOLD_btn').css("background-color") == "rgb(46, 204, 250)"){
+ 			sortType = "insert_at:ASC";
+ 		}else{
+ 			if($('.myPOPULARTY_btn').css("background-color") == "rgb(46, 204, 250)"){
+ 				sortType = "rank:DESC";
+ 			}
+ 		}
+ 	}
+
+ 	var $category1 = $("#mychara").prop("checked");
+ 	var $category2 = $("#mybackGround").prop("checked");				  //チェックの状態を取得し、True or falseを入れる
+ 	var $category3 = $("#myitem").prop("checked");
+
+ 	//取得したフォーム情報を連想配列に格納
+ 	var param = {
+ 		0:{name:'sortType',value:sortType},
+ 		1:{category1:{name:'charactor',value:$category1},
+ 		   category2:{name:'backGround',value:$category2},
+ 		   category3:{name:'item',value:$category3}
+
+ 		}
+ 	};
+
+ 	return param;
+ }
 
 /*
 ///////////////////////////////////
@@ -609,7 +614,6 @@ $(document).on("click",".lightbox_hover",function(){
 	data:data
   //ajax通信成功時
   }).done(function(data){
-
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 
 	//画像詳細を表示////////////////////
@@ -633,7 +637,7 @@ $(document).on("click",".lightbox_hover",function(){
 
 	$('.title_box').val($imageTitle);
 
-	$('#Genre').val($categoryName);
+	$('#Genre').val(data[0]['usersData'][0]['categoryName']);
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
@@ -715,7 +719,7 @@ runSearch();
 		errorFlag = 1;
 		errorMsg = errorMsg + "・タイトルが未入力です。\n";
 	}else{
-		if(!name.match(/^[ぁ-んー　ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+		if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9 　\r\n\t]*$/)){
 			errorFlag = 1;
 			errorMsg = errorMsg + "・タイトルに記号やスペースは使えません。\n";
 		}
@@ -785,15 +789,14 @@ $(document).on("click",".Completion_btn",function(){
 			data:data
 		//ajax通信成功時
 		}).done(function(data){
-
+			console.log(data);
 			if(data == 'true'){
 			$('.delete_Completion_view').fadeIn();
 			$('body').removeClass("overflow");
 			sessionStorage.removeItem('userId');
 			sessionStorage.removeItem('userName');
 			}else{
-
-
+				alert(data);
 			}
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
@@ -801,54 +804,13 @@ $(document).on("click",".Completion_btn",function(){
 		});
 
 
-	}
-	else{
+
+	}else{
 		window.alert('キャンセルされました'); // 警告ダイアログを表示
 	}
 });
 
-<<<<<<< HEAD
-//////////////////////////////////////////////////////////
-//画像削除
-$(document).on("click",".delete_btn",function(){
-	if(window.confirm( "本当に削除してよろしいですか？")){
-
-	var imageId = $(".view_image").attr("id");
-	var userName = sessionStorage.getItem('userName');
-	var userId = sessionStorage.getItem('userId');
-
-	console.log(imageId,userName,userId);
-
-	var param = [];
-	param[0] = imageId;
-	param[1] = userName;
-	param[2] = userId;
-	var data = {'model':'images','action':'delete','data':param};
-	console.log(data);
-
-//	//ajax通信
-	$.ajax({
-		url:"../../Api/controller.php",
-		dataType:'json',
-		type:"POST",
-		data:data
-	//ajax通信成功時
-	}).done(function(data){
-		alert(data);
-		runSearch();
-		$('.lightbox_view,.login_view,.new_view').fadeOut();
-		$('body').removeClass("overflow");
-	//ajax通信失敗時
-	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("error : " + textStatus);
-	});
-	}else{
-		alert("削除をキャンセルされました");
-	}
-});
-
-///////////////////////////////////////////////////////////////
-//ログアウト処理
+//ログアウト
 $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
@@ -859,7 +821,42 @@ $(document).on("click",".logout",function(){
 		window.location.href =  "Top.html";
 	//ここまで
 
+
 });
-=======
->>>>>>> origin/muraisuzuka
 //////////////////////////////////////////////////////////////
+//画像削除
+$(document).on("click",".delete_btn",function(){
+	if(window.confirm( "本当に画像を削除してよろしいですか？" )){
+			var imageId = $(".view_image").attr("id");
+			var userName = sessionStorage.getItem('userName');
+			var userId = sessionStorage.getItem('userId');
+
+			console.log(imageId,userName,userId);
+
+			var param = [];
+			param[0] = imageId;
+			param[1] = userName;
+			param[2] = userId;
+			var data = {'model':'images','action':'delete','data':param};
+			console.log(data);
+
+		//	//ajax通信
+			$.ajax({
+				url:"../../Api/controller.php",
+				dataType:'json',
+				type:"POST",
+				data:data
+			//ajax通信成功時
+			}).done(function(data){
+				alert(data);
+				runSearch();
+				$('.lightbox_view,.login_view,.new_view').fadeOut();
+				$('body').removeClass("overflow");
+			//ajax通信失敗時
+			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+				alert("error : " + textStatus);
+			});
+	}else{
+		alert('削除をキャンセルしました。');
+	}
+});
