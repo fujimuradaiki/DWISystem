@@ -729,6 +729,7 @@ label p:hover {
 }
 
 .myNEW_btn{
+	margin-left: 65px;
 	outline: none;
 	border-radius: 30px;
 	background: #3F3ACE;
@@ -736,14 +737,6 @@ label p:hover {
 }
 
 .myOLD_btn{
-	margin-left:20px;
-	outline: none;
-	border-radius: 30px;
-	background: #3F3ACE;
-	color:#fff;
-}
-
-.myPOPULARTY_btn{
 	margin-left:20px;
 	outline: none;
 	border-radius: 30px;

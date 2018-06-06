@@ -241,7 +241,10 @@ function runSearch(infoId){
 
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("作品なし");
+		// alert("作品なし");
+		$('.next_btn').hide();
+		$('.before_btn').css("display","none");
+		$('.no_works').css("display","block");
 
 	});
 }

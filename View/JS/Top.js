@@ -101,7 +101,6 @@ $('.OLD_btn').on("click",function(){
 		$(this).css("background-color","rgb(46, 204, 250)");
 		$('.NEW_btn').css("background-color","rgb(63, 58, 206)");
 		$('.POPULARTY_btn').css("background-color","rgb(63, 58, 206)");
-
 		runSearch();
 	}
 });
@@ -271,6 +270,7 @@ function getForm(){
 //////////////////////////////////
 */
 function runSearch(){
+
 	var data = {'model':'images','action':'imageList','data':getForm()};
 
 	/*デバッグ用表示//////
@@ -410,7 +410,7 @@ $(document).on("click",".close_btn",function(){
 /*
 ///////////////////////////////////
 
-*関数 ログインフォームのログインボタン押下時
+*関数 insertフォームのログインボタン押下時
 
 *概要 バリデーションを行い、問題なければログイン状態に
 
@@ -541,6 +541,27 @@ $(document).on("click",".confirmation_btn",function(){
 
 	}
 });
+$(document).on("click",".new_close_btn",function(){
+	var name = $('#sineUp_user_name').val('');
+	var mail = $('#sineUP_mail').val('');
+	var pass1 = $('#sineUp_password1').val('');
+	var pass2 = $('#sineUp_password2').val('');
+	var iconData = $("#choice_btn").val('');
+	$('.new_image').children('img').remove();
+
+});
+
+$(document).on("click",".login_close_btn",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
+});
+
+$(document).on("click",".close_btn2",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
+});
 
 $(document).on("click",".touroku_btn",function(){
 	var name = $('#sineUp_user_name').val();
@@ -572,6 +593,11 @@ $(document).on("click",".touroku_btn",function(){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
 			alert("新規登録が完了しました。");
+			$('#sineUp_user_name').val('');
+			$('#sineUP_mail').val('');
+			$('#sineUp_password1').val('');
+			$('#sineUp_password2').val('');
+			$("#choice_btn").val('');
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
@@ -725,11 +751,16 @@ $(document).on("click",".lightbox_hover",function(){
 		if( data[0]['commentData'][i]['userName'] == ""){
 			$('#comment' + i).append(
 				("<br>"),
-				("<p1>(GestUser)</p1>"),
+				("<img src='../Images/user.png' class='gest'><p1>GestUser</p1>"),
 				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
 				("<br><br><br>")
 			);
+			$('.gest').css('width',20);
+			$('.gest').css('height',20);
+			$('.gest').css('margin-right','5px');
+			$('.gest').css('border-radius','50%');
+
 		}else{
 			$('#comment' + i).append(
 				("<br>"),
@@ -747,11 +778,13 @@ $(document).on("click",".lightbox_hover",function(){
 	sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
 	}
 
-	//レビュー合計表示/////////////////////////////
+
+
+	//合計表示/////////////////////////////
 	$div = $('.review_all');
 	$div.empty();
 	$div.append(
-		("<h1>レビュー合計 : "+ data[0]['commentData'].length +"件</h1>"),
+		("<h1>合計 : "+ data[0]['commentData'].length +"件</h1>"),
 		("<div id = 'averageReview'></div>")
 	);
 	$('#averageReview').raty({
@@ -859,11 +892,15 @@ $(document).on("click",".review_btn",function(){
 				if( data[i]['userName'] == ""){
 					$('#comment' + i).append(
 						("<br>"),
-						("<p1>(GestUser)</p1>"),
+						("<img src='../Images/user.png' class='gest'><p1>GestUser</p1>"),
 						("<br>"),
 						("<p2>"+" "+data[i]['comment'] +"</p2>"),
 						("<br><br><br>")
 					);
+					$('.gest').css('width',20);
+					$('.gest').css('height',20);
+					$('.gest').css('margin-right','5px');
+					$('.gest').css('border-radius','50%');
 				}else{
 					$('#comment' + i).append(
 						("<br>"),

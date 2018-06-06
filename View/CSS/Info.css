@@ -994,6 +994,14 @@ dl.kensaku dd button{
   cursor:pointer;
 }
 
+.no_works{
+	display: none;
+	color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 250px;
+}
+
 .lightbox_contents{
   width:90%;
 }

@@ -909,7 +909,7 @@ label p:hover {
  min-height:3467px;
  width:1920px;
  height:974px;
- position:fixed;
+ position:relative;
  bottom:0;
  background:url('../Images/background__.png') no-repeat 50% 50% ;
  background-size:cover;
@@ -919,7 +919,7 @@ label p:hover {
   width: 71%;
   height: auto;
   position: absolute;
-  margin-bottom: 10%;
+  top:0;
 }
 .left_border{
   width: 50px;
@@ -948,11 +948,11 @@ label p:hover {
 }
 
 .toukou_form{
-	width: 91%;
+	width: 57%;
   height: 400px;
   position: absolute;
-  margin-top: 320px;
-	left: 565px;
+  top:325px;
+	left: 575px;
 }
 
 .toukou_waku1{
