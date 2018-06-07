@@ -245,7 +245,7 @@ class users{
         //$postData = array(12,'v','w','w','aaaa@aaaa.aa.aa');
         $directoryPath = '../User/';
         $updateUserId = $postData[0];
-        $folderName = $postData[6];
+        $olderName = $postData[6];
         $newName = $postData[1];
         $pass    = $postData[2];
         $newPass = $postData[3];
@@ -259,68 +259,76 @@ class users{
         $pass = md5($pass);
         $newPass = md5($newPass);
         $sql = "select * from users WHERE user_id =".$updateUserId;
-        $usersql = "select * from users";
+        $usersql = "select * from users WHERE user_id=".$updateUserId;
+        $userList = "select + from users";
         $stmt=$pdo->dbo->prepare($sql);
         $userStmt=$pdo->dbo->prepare($usersql);
+        $userListStmt=$pdo->dbo->prepare($userList);
+
         $stmt->execute();
         $userStmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $userResult = $userStmt->fetch(PDO::FETCH_ASSOC);
+        $userListResult = $userListStmt->fetch(PDO::FETCH_ASSOC);
         $updateFlg = false;
         //DBに同じ名前があっても登録できる
-        if($pass == $result['password'] ){
-         if($newName != $userResult['user_name']){
-             $updateFlg = true;
-            if($result['user_name'] != $newName){
-                $updateSpl .= "user_name ="."'$newName'";
-            }
-            if($result['password'] != $newPass){
-                $updateFlg = true;
-                if($updateSpl != ""){
-                    $updateSpl.=  ",";
-                }
-                $updateSpl .= "password  = "."'$newPass'";
-            }
-            if($result['user_mail'] != $newMail){
-                $updateFlg = true;
-                if($updateSpl != ""){
-                    $updateSpl.=  ",";
-                }
-                $updateSpl .= "user_mail = "."'$newMail'";
-            }
 
-            if($updateSpl != ""){
-                $updateSpl.= ",";
-            }
-            $updateSpl.= "user_update_at = "."'$update_at'";
-            $updateSpl .= " WHERE user_id = ".$updateUserId;
-            $sql = "UPDATE users SET ".$updateSpl;
-            //echo json_encode($sel);
-            //update実行
-            if($updateFlg){
-                $stmt=$pdo->dbo->prepare($sql);
-                $resultFlg = $stmt->execute();
-                rename( $directoryPath.$result['user_name'], $directoryPath.$newName );
-                if(isset($postData[5])){
-                    unlink("../User/".$newName."/icon.png");
-                    $this->icon($newName,$icon);
-                }
-                if($resultFlg == true){
-                    echo json_encode("true");
+        if($pass == $result['password'] ){
+            if($olderName == $userResult['user_name']){
+                $updateFlg = true;
+                if($result['user_name'] != $newName && $userListResult['user_name'] != $newName){
+                    $updateSpl .= "user_name ="."'$newName'";
                 }else{
-                    echo json_encode($sql);
-                   // echo json_encode( "編集に失敗しました");
+                    echo json_encode( "入力された名前は現在使用されています。");
+                }
+                if($result['password'] != $newPass){
+                    $updateFlg = true;
+                    if($updateSpl != ""){
+                        $updateSpl.=  ",";
+                    }
+                    $updateSpl .= "password  = "."'$newPass'";
+                }
+                if($result['user_mail'] != $newMail){
+                    $updateFlg = true;
+                    if($updateSpl != ""){
+                        $updateSpl.=  ",";
+                    }
+                    $updateSpl .= "user_mail = "."'$newMail'";
+                }
+
+                if($updateSpl != ""){
+                    $updateSpl.= ",";
+                }
+                $updateSpl.= "user_update_at = "."'$update_at'";
+                $updateSpl .= " WHERE user_id = ".$updateUserId;
+                $sql = "UPDATE users SET ".$updateSpl;
+                //$updateFlg = true;
+                //update実行
+                if($updateFlg){
+                     $stmt=$pdo->dbo->prepare($sql);
+                     $resultFlg = $stmt->execute();
+                    rename($directoryPath.$userResult['user_name'], $directoryPath.$newName );
+                   // echo json_encode($directoryPath.$userResult['user_name']. $directoryPath.$newName );
+                   // exit();
+                    if(isset($postData[5])){
+                        unlink("../User/".$newName."/icon.png");
+                        $this->icon($newName,$icon);
+                    }
+                    if($resultFlg == true){
+                        echo json_encode("true");
+                    }else{
+                        echo json_encode($sql);
+                        // echo json_encode( "編集に失敗しました");
+                    }
+                }else{
+                    echo json_encode( "passエラー"."\n".$oldpass."\n".$result['password']."\n");
                 }
             }else{
-                    echo json_encode( "passエラー"."\n".$oldpass."\n".$result['password']."\n");
+                echo json_encode( "入力した名前が間違っています");
             }
-          }else{
-            echo json_encode( "入力した名前が使用されています");
-          }
         }else{
             echo json_encode("パスワードが違います");
         }
-//
     }
 ////////////////////////////////////////////////////////////////////////////////////
 //プロフィール表示 0 ユーザーID
