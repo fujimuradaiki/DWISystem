@@ -589,7 +589,7 @@ $(document).on("click",".touroku_btn",function(){
 		//ajax通信成功時
 		}).done(function(data){
 			console.log(data);
-			if(data != false){
+			if(data == "true"){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
 			// alert("新規登録が完了しました。");
