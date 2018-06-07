@@ -308,7 +308,7 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-				alert("新規登録が完了しました。");
+				// alert("新規登録が完了しました。");
 				$('.new_touroku_view').fadeIn();
 				$('body').addClass("overflow");
 			}else{

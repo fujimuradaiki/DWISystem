@@ -592,7 +592,7 @@ $(document).on("click",".touroku_btn",function(){
 			if(data != false){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
-			alert("新規登録が完了しました。");
+			// alert("新規登録が完了しました。");
 			$('#sineUp_user_name').val('');
 			$('#sineUP_mail').val('');
 			$('#sineUp_password1').val('');

@@ -466,7 +466,7 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-			alert("新規登録が完了しました。");
+			// alert("新規登録が完了しました。");
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
@@ -619,11 +619,15 @@ $(document).on("click",".lightbox_hover",function(){
 		if( data[0]['commentData'][i]['userName'] == ""){
 			$('#comment' + i).append(
 				("<br>"),
-				("<p1>(GestUser)</p1>"),
+				("<img src='../Images/user.png' class='gest'><p1>GestUser</p1>"),
 				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
 				("<br><br><br>")
 			);
+			$('.gest').css('width',20);
+			$('.gest').css('height',20);
+			$('.gest').css('margin-right','5px');
+			$('.gest').css('border-radius','50%');
 		}else{
 			$('#comment' + i).append(
 				("<br>"),
@@ -698,9 +702,13 @@ $(document).on("click",".review_btn",function(){
 	  return(encodeURIComponent(this).replace(/%../g,"x").length);
 	}
 	console.log("size = "+$comment.bytes());
+	console.log($commenterId);
+	if($commenterId == null){
+		$commenterId = 0;
+	}
 
-	if($point == 0){
-		alert("レビュー点数をつけてください。");
+	if($point == 0 || $comment.bytes() == 0){
+		alert("レビュー点数とコメントをつけてください。");
 	}else if($comment.bytes() > 600){
 		alert("投稿できるコメントのサイズは600byteまでです。\n文字数を減らしてください。\n" +
 				"現在"+$comment.bytes()+"byteです。");
@@ -747,11 +755,15 @@ $(document).on("click",".review_btn",function(){
 				if( data[i]['userName'] == ""){
 					$('#comment' + i).append(
 						("<br>"),
-						("<p1>(GestUser)</p1>"),
+						("<img src='../Images/user.png' class='gest'><p1>GestUser</p1>"),
 						("<br>"),
 						("<p2>"+" "+data[i]['comment'] +"</p2>"),
 						("<br><br><br>")
 					);
+					$('.gest').css('width',20);
+					$('.gest').css('height',20);
+					$('.gest').css('margin-right','5px');
+					$('.gest').css('border-radius','50%');
 				}else{
 					$('#comment' + i).append(
 						("<br>"),
