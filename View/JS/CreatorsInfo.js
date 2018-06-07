@@ -466,7 +466,7 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-			alert("新規登録が完了しました。");
+			// alert("新規登録が完了しました。");
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
