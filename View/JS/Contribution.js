@@ -239,9 +239,9 @@ $(".toukou_btn").on("click",function(){
 		}
 });
 
-
 $(".delete3_1_btn").on("click",function(e){
 	$("#choice_btn1").val("");
+	$(".about_text").css("display","block");
 	$(".toukou_images1").children('img').remove();
 	//項目の初期化
 	$('.toukou_title1').val("");
