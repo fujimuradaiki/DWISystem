@@ -259,7 +259,7 @@ class users{
         $pass = md5($pass);
         $newPass = md5($newPass);
         $sql = "select * from users WHERE user_id =".$updateUserId;
-        $usersql = "select * from users WHERE user_id=".$updateUserId;
+        $usersql = "select COUNT(*) from users WHERE user_name LIKE "."'%$newName%'";
         $userList = "select + from users";
         $stmt=$pdo->dbo->prepare($sql);
         $userStmt=$pdo->dbo->prepare($usersql);
@@ -271,15 +271,18 @@ class users{
         $userResult = $userStmt->fetch(PDO::FETCH_ASSOC);
         $userListResult = $userListStmt->fetch(PDO::FETCH_ASSOC);
         $updateFlg = false;
+        $errorStr = "";
         //DBに同じ名前があっても登録できる
-
+       // echo json_encode($userResult['COUNT(*)']);
         if($pass == $result['password'] ){
-            if($olderName == $userResult['user_name']){
+            if($olderName == $result['user_name']){
                 $updateFlg = true;
-                if($result['user_name'] != $newName && $userListResult['user_name'] != $newName){
+                if($result['user_name'] != $newName && $userResult['COUNT(*)'] == 0){
                     $updateSpl .= "user_name ="."'$newName'";
+                }else if($result['user_name'] == $newName){
+
                 }else{
-                    echo json_encode( "入力された名前は現在使用されています。");
+                    $errorStr .= "新しい名前は使われています。\n名前を登録できませんでした";
                 }
                 if($result['password'] != $newPass){
                     $updateFlg = true;
@@ -307,7 +310,7 @@ class users{
                 if($updateFlg){
                      $stmt=$pdo->dbo->prepare($sql);
                      $resultFlg = $stmt->execute();
-                    rename($directoryPath.$userResult['user_name'], $directoryPath.$newName );
+                     rename($directoryPath.$result['user_name'], $directoryPath.$newName );
                    // echo json_encode($directoryPath.$userResult['user_name']. $directoryPath.$newName );
                    // exit();
                     if(isset($postData[5])){
@@ -315,9 +318,11 @@ class users{
                         $this->icon($newName,$icon);
                     }
                     if($resultFlg == true){
-                        echo json_encode("true");
+                        echo json_encode("true".$errorStr);
+                       exit();
                     }else{
                         echo json_encode($sql);
+                        exit();
                         // echo json_encode( "編集に失敗しました");
                     }
                 }else{
