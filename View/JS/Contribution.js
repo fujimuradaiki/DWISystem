@@ -155,88 +155,42 @@ $("#choice_btn3").on("change",function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 
 $(".toukou_btn").on("click",function(){
-		var userId = sessionStorage.getItem('userId');
-		var userName = sessionStorage.getItem('userName');
 
-		var titles = [];
-		titles[0] =$('.toukou_title1').val();
-		titles[1] =$('.toukou_title2').val();
-		titles[2] =$('.toukou_title3').val();
-		var categorys = []
-		categorys[0] =$('#Genre1').val();
-		categorys[1] =$('#Genre2').val();
-		categorys[2] =$('#Genre3').val();
-		//配列に格納
-		var imageInfo = [];
-		imageInfo[0] = userName;
-		imageInfo[1] = userId;
-		imageInfo[2] = categorys;
-		imageInfo[3] = titles;
-		var images = [];
-		images[0] = $(".toukou_images1").children('img').attr('src');
-		images[1] = $(".toukou_images2").children('img').attr('src');
-		images[2] = $(".toukou_images3").children('img').attr('src');
-		var param = [];
-		param[0] = imageInfo;
-		param[1] = images;
-    	var data = {'model':'images','action':'insertImage','data':param};
+    var userId = sessionStorage.getItem('userId');
+	var userName = sessionStorage.getItem('userName');
+	var data  = [userId,userName];
+	var param = new FormData($('[name="contribution"]').get(0));
+	param.append('model'  , 'images');
+	param.append('action' , 'insertImage');
+	param.append('data'   ,  data)
+	//console.log(JSON.stringify(param));
+	console.log(param);
 
-		var errorFlg = false;
-		var imageflg = false;
-		var errorArray = [];
-		errorArray[0] = "送信する画像が選択されていません。";
-		var errorIndex  = 0;
-
-		for(var i = 0;i<images.length;i++){
-			var imageNum = i + 1
-			if(param[1][i]){
-				imageflg = true;
-				if(titles[i] == ""){
-					errorFlg = true;
-					errorArray[errorIndex] =imageNum +"枚目のタイトルが入力されていません。";
-					errorIndex++;
-				}
-				if(categorys[i] == 0){
-					errorFlg = true;
-					errorArray[errorIndex] =imageNum +"枚目のカテゴリーを選択してください。";
-					errorIndex++;
-				}
-			 }else{
-				 if(titles[i] != "" || categorys[i] != 0){
-					errorFlg = true;
-					errorArray[errorIndex] =imageNum +"枚目の送信する画像が選択されていません。";
-					errorIndex++;
-				}
-			 }
+	//ajax通信
+	$.ajax({
+		url         :'../../Api/controller.php',
+		dataType    :'json',
+		type        :'POST',
+		processData : false,
+	    contentType : false,
+		data        : param,
+		timeout     : 1000
+	//ajax通信成功時
+	}).done(function(data){
+		console.log(data);
+		$('.toukou_view').fadeIn();
+		$('body').addClass("overflow");
+		for(var i = 1;i <= 3;i++){
+			console.log(i);
+			$('.toukou_title'+i).val("");
+			$('#Genre'+i).val(0);
+			$("#choice_btn"+i).val("");
+			$(".toukou_images"+i).children('img').remove();
 		}
-
-
-		if(!(errorFlg) && imageflg){
-			//ajax通信
-			$.ajax({
-				url:"../../Api/controller.php",
-				dataType:'json',
-				type:"POST",
-				data:data,
-			//ajax通信成功時
-			}).done(function(data){
-				console.log(data);
-				$('.toukou_view').fadeIn();
-				$('body').addClass("overflow");
-				for(var i = 1;i <= 3;i++){
-					console.log(i);
-					$('.toukou_title'+i).val("");
-					$('#Genre'+i).val(0);
-					$("#choice_btn"+i).val("");
-					$(".toukou_images"+i).children('img').remove();
-				}
-			//ajax通信失敗時
-			}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-				alert("error");
-			});
-		}else{
-			alert(errorArray);
-		}
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});
 });
 
 $(".delete3_1_btn").on("click",function(e){
