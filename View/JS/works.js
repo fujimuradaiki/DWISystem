@@ -1,4 +1,11 @@
-﻿/*
+$('.slider-wrapper').slick({
+  adaptiveHeight: false,
+  // 自動再生するか [初期値:false]
+  autoplay: true
+  // 自動再生で切り替えする時間(ミリ秒) [初期値:3000]
+});
+
+/*
 *************************************
 
 *名前 : Top.js
@@ -31,8 +38,6 @@
 
 
 $(document).ready(function(){
-	var s = "横幅 = " + window.parent.screen.width + " / 高さ = " + window.parent.screen.height;
-	//alert(s)
 	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
 	//画像表示実行
 	runSearch();
@@ -594,7 +599,7 @@ $(document).on("click",".touroku_btn",function(){
 			if(data != false){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
-			//alert("新規登録が完了しました。");
+			// alert("新規登録が完了しました。");
 			$('#sineUp_user_name').val('');
 			$('#sineUP_mail').val('');
 			$('#sineUp_password1').val('');

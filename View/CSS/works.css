@@ -20,6 +20,7 @@ body{
   margin:0;
 }
 /*------------------------------- ヘッダー開始　-------------------------------*/
+@media screen and ( min-width:641px ){
 header{
   min-width:1360px;
   width:100%;
@@ -883,6 +884,29 @@ label p:hover {
   margin-bottom: 10%;
 
 }
+
+/*-------------------- 作品一覧 ----------------------*/
+.works{
+  width:100%;
+  position: absolute;
+  margin-bottom:100px;
+}
+
+/*項目タイトル*/
+.works_title{
+  min-width:1200px;
+  width:100%;
+  height:260px;
+  background:#111;
+}
+
+.works_title p{
+  font-size:30px;
+  color:#fff;
+  text-align: center;
+  padding-top:65px;
+}
+
 /*背景*/
 .background{
 	min-height: 3500px;
@@ -894,115 +918,391 @@ label p:hover {
   background-size: cover;
 }
 
-.left_border{
-  width: 50px;
-	margin-top: 13px;
-	float: left;
-  border-bottom: 2px solid;
+.slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+  background: #99ffff;
 }
 
-.right_border{
-  width: 50px;
-	margin-top: 13px;
-	float: right;
-  border-bottom: 2px solid;
+.slider-item {
+  width: 100%;
+  height: 600px;
 }
 
-.title{
-	width:25%;
-	margin: 0 auto;
+.slider-item img {
+  width: 100%;
+}
+
+/*ソートボタン*/
+.works_menu{
+  width:100%;
+  height:100px;
+  margin-top: 65px;
+  background: #333;
+  position: absolute;
+}
+
+.menu_btn{
+  width: 680px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.NEW_btn{
+outline: none;
+border-radius: 30px;
+background: #3F3ACE;
+color:#fff;
+}
+
+.OLD_btn{
+margin-left:20px;
+outline: none;
+border-radius: 30px;
+background: #3F3ACE;
+color:#fff;
+}
+
+.POPULARTY_btn{
+margin-left:20px;
+outline: none;
+border-radius: 30px;
+background: #3F3ACE;
+color:#fff;
+}
+
+.check_btn_waku{
+  margin: 4px 0 0 20px;
+  float:right;
+}
+
+.check_btn{
+  margin-left: 13px;
+  float:left;
   color:#fff;
 }
 
-.title h1{
-	text-align: center;
-  font-size:25px;
+.check_btn_waku input{
+  float:left;
 }
 
-/*検索フォーム*/
-dl.kensaku{
-	width: 625px;
-	position:relative;
-	margin: 20px;
+input[type=checkbox] {
+  display: none;
 }
-dl.kensaku dt{
-	margin-right:367px;
-	padding:3px;
-	background-color:#fff;
-	border:1px solid #aaa;
+.check_btn {
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 42px;
+  vertical-align: middle;
+  cursor: pointer;
 }
-dl.kensaku dt input{
-	width:100%;
-	height:24px;
-	line-height:24px;
-	background:none;
-	border:none;
+.check_btn:hover:after {
+  border-color: #0171bd;
 }
-dl.kensaku dd{
-	position:absolute;
-	top:0;
-	right:43%;
+.check_btn:after {
+  -webkit-transition: border-color 0.2s linear;
+  transition: border-color 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  display: block;
+  margin-top: -10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  content: '';
 }
-dl.kensaku dd button{
-	display:block;
-	width:100px;
-	height:34px;
-	color:#fff;
-	line-height:32px;
-	text-align:center;
-	background-color:#f66;
-	border:1px solid #c66;
+.check_btn:before {
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 21px;
+  display: block;
+  margin-top: -7px;
+  width: 5px;
+  height: 9px;
+  border-right: 3px solid #0171bd;
+  border-bottom: 3px solid #0171bd;
+  content: '';
+  opacity: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=checkbox]:checked + .check_btn:before {
+  opacity: 1;
 }
 
-/*-------------------userアイコンリスト--------------------*/
-
-.creators_box_waku{
-	margin-top:30px;
+/*ライトボックス*/
+.lightbox_waku{
+  width:98%;
+  margin: 0 auto;
+  margin-top: 195px;
+  position: relative;
 }
 
-.creators_box{
-	width:130px;
-	height:130px;
-	margin:20px;
-	float: left;
-	overflow : hidden;
-	background:#fff;
+/*×ボタン*/
+.close_btn{
+  position:absolute;
+  top: -55px;
+  left: 80%;
+  cursor:pointer;
+}
+
+.lightbox_contents{
+  width:90%;
+}
+
+.lightbox {
+	width: 250px;
+  height: 250px;
+  position: relative;
+	z-index: 0;
+  float: left;
+  margin: 31px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  background: #fff;
+}
+
+.lightbox_hover{
+  display: none;
+  width:250px;
+  height:250px;
+  position:absolute;
+  top:0;
+  z-index:0;
 	border-radius: 20px;
-	position: relative;
+  transition:all .5s ease;
+  font-size:11px;
 }
 
-.creators_box:hover .creators_hover{
+/*ホバーしたときの背景*/
+.hover_background{
+  width:250px;
+  height:250px;
+  opacity: 0.7;
+  background:#000;
+}
+
+/*ホバーしたときに出るユーザー情報*/
+.lightbox_information {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+}
+
+.lightbox:hover .lightbox_hover{
   display: block;
 }
 
-.creators_hover{
-	display: none;
-	width:130px;
-	height:130px;
+.lightbox img {
+  position:relative;
 }
 
-.hover_background{
-	width:130px;
-	height:130px;
-	background:#000;
-	opacity: 0.7;
+.cle {
+  clear: both;
 }
 
-.lightbox_userName h1{
-	width: 100%;
-	position: absolute;
-  margin-top: -70px;
+/*ライトボックス中身*/
+.lightbox_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+/*中身背景*/
+.lightbox_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.9);
+}
+
+.lightbox_user_waku{
+  margin-left: 33px;
+}
+
+/*ユーザーアイコン*/
+.lightbox_user_icon{
+  width: 30px;
+  height: 30px;
+  border-radius:30px;
+  background:#fff;
+}
+
+/*ユーザーネーム*/
+.lightbox_user_name{
+  color:#fff;
+}
+
+.lightbox_user_name{
+  width: 250px;
+  margin: -15px 0 0 -20px;
+}
+
+
+.lightbox_title{
+  width: 250px;
+  height: 40px;
+  margin-top: 90px;
+}
+
+.lightbox_title h1{
+  font-size: 18px;
   color: #fff;
-  text-align: center;
 }
 
-.creator_name{
-	width: 130px;
-	position: absolute;
-  text-align: center;
-	color:#fff;
+/*作品*/
+.lightbox_image_container{
+  min-width: 1400px;
+  width: 72%;
+  position: absolute;
+  top: 50%;
+  left:21%;
+  margin-top: -275px;
 }
-/*-------------------userアイコンリスト終了--------------------*/
+
+.lightbox_left_image{
+  width:500px;
+  height:600px;
+  float: left;
+  background:#fff;
+}
+
+.lightbox_right{
+  width: 58%;
+  height: 600px;
+  float:right;
+}
+
+/*ユーザー情報*/
+.user_information{
+  width:400px;
+}
+
+/*ユーザーアイコン*/
+.user_icon{
+  width:50px;
+  height:50px;
+  border-radius:30px;
+  background:#fff;
+}
+
+/*ユーザーネーム*/
+.user_name{
+	color:#fff;
+  margin: -15px 0 0 60px;
+}
+
+/*作品タイトル*/
+.work_title{
+  width:400px;
+  height:40px;
+  margin-top: 30px;
+}
+
+.work_title h1{
+  font-size: 25px;
+  line-height: 42px;
+  color: #fff;
+}
+
+/*レビュー*/
+.review{
+  width:200px;
+  height:30px;
+  margin-top: 20px;
+}
+
+.review h1{
+  font-size:13px;
+  color:#fff;
+}
+
+.review h2{
+  font-size: 30px;
+  margin-top: 10px;
+  color: #FFBF00;
+}
+
+.review_coment{
+  margin-top: 40px;
+}
+
+.review_coment h1{
+  font-size:13px;
+  color:#fff;
+}
+
+/*レビュー記入*/
+textarea {
+  resize: none;
+  width:400px;
+  height:120px;
+  margin-top:5px;
+}
+
+/*レビュー投稿ボタン*/
+.review_btn{
+  width: 70px;
+  height: 30px;
+  position: relative;
+  left: 25%;
+  margin-top: -33px;
+  float: right;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+/*レビュー投稿ボタン　ホバー*/
+.review_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*レビュー合計表示*/
+.review_all{
+  margin-top:30px;
+}
+
+.review_all h1{
+  font-size:13px;
+  color:#fff;
+}
+
+.review_all h2{
+  font-size: 20px;
+  margin-top: 10px;
+  color: #FFBF00;
+}
+
+/*過去レビューコメント表示場所*/
+.past_coment{
+  width: 500px;
+  height: 160px;
+  background: #fff;
+  margin-top: 9px;
+}
+
 
 /*-------------------フッター開始--------------------*/
 footer{
@@ -1022,3 +1322,23 @@ footer h2{
   padding-top: 25px;
 }
 /*-------------------フッター終了--------------------*/
+}
+
+@media screen and ( max-width:641px ){
+  header{
+    width:100%;
+    height:80px;
+    position:fixed;
+    z-index:1;
+    background-color:#111;
+  }
+
+
+
+
+
+
+
+
+
+}

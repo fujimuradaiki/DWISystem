@@ -2,13 +2,13 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>作品投稿</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <script src="../JS/jquery.3.3.1.js"></script>
 <script src="../JS/lightbox.js"></script>
-<script src="../JS/style.js" type="text/javascript"></script>
 <script src="../JS/dropdown.js" type="text/javascript"></script>
 <script type="text/javascript" src="../Lib/jquery.raty.js"></script>
 <script type="text/javascript" src="../Lib/vue.js"></script>
@@ -154,6 +154,9 @@
             <!-- 項目タイトル -->
 
             <!-- 作品登録フォーム -->
+            <form id="send" name="contribution" method="POST" enctype="multipart/form-data">
+
+            <!-- 作品登録フォーム -->
             <div class="toukou_waku1">
             <div class="toukou_images1">
               <div class="about_text">
@@ -173,7 +176,7 @@
               <input class="delete3_1_btn" type="button"  value="削除">
               <label for="choice_btn1">
                 <p>選択</p>
-               <input id="choice_btn1" type="file">
+               <input id="choice_btn1" type="file" name="testimg[]">
               </label>
             </div>
           </div>
@@ -193,7 +196,7 @@
             <input class="delete3_2_btn" type="button"  value="削除">
             <label for="choice_btn2">
               <p>選択</p>
-             <input id="choice_btn2" type="file">
+             <input id="choice_btn2" type="file" name="testimg[]">
             </label>
           </div>
         </div>
@@ -213,10 +216,12 @@
           <input class="delete3_3_btn" type="button"  value="削除">
           <label for="choice_btn3">
             <p>選択</p>
-           <input id="choice_btn3" type="file">
+           <input id="choice_btn3" type="file" name="testimg[]">
           </label>
         </div>
       </div>
+
+      </form>
       <!-- 作品登録フォーム -->
 
     <!-- 作品登録ボタン -->

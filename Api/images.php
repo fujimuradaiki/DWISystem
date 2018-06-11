@@ -72,7 +72,7 @@ class images{
                 if($pieces[0] != "rank"){
                     $addSortSql .= " ORDER BY image_$pieces[0] $pieces[1]";
                 }else{
-                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , image_insert_at ASC";
+                    $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
             }
         }
@@ -177,7 +177,7 @@ class images{
                        ON
                        comment_image_id = image_id
                        WHERE
-                       image_id =".$imageId."  ORDER BY comment_insert_at ASC";
+                       image_id =".$imageId."  ORDER BY comment_insert_at DESC";
 
         // echo  $userSql ."\n";
         // echo  $commentSql;
@@ -280,7 +280,7 @@ class images{
                        ON
                        comment_image_id = image_id
                        WHERE
-                       image_id =".$imageId."  ORDER BY comment_insert_at ASC";
+                       image_id =".$imageId."  ORDER BY comment_insert_at DESC";
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
         if($resultFlg == true){
