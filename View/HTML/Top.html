@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
-<title>デザイン紹介システム</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DESIGN INTRODUCTION</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Top.css" rel="stylesheet" type="text/css"/>
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -19,7 +20,15 @@
 <script>
   jQuery(function($) {
       $('.bg-slider').bgSwitcher({
-          Images: ['../Images/background1.jpg','../Images/background2.png','../Images/background3.jpg'], // 切り替える背景画像を指定
+          Images: [
+          // '../Images/background1.jpg',
+          '../Images/background2.png',
+          '../Images/background3.jpg',
+          '../Images/02.png',
+          '../Images/05.png',
+          '../Images/06.png',
+          '../Images/051.png',
+        ], // 切り替える背景画像を指定
       });
   });
 </script>
@@ -43,7 +52,8 @@
           <div class="menu">
             <ul>
               <li><a href="#Top">トップ</a></li>
-              <li><a href="#works">作品一覧</a></li>
+              <li><a href="#works">新着作品一覧</a></li>
+              <li><a href="works.html">作品一覧</a></li>
               <li><a href="CreatorsList.html">制作者一覧</a></li>
             </ul>
           </div>
@@ -89,7 +99,7 @@
   <!-- トップ文字 -->
     <div class="bg-slider__title">
       <img src="../Images/logo_.png">
-      <p>DESING</p>
+      <p>DESIGN</p>
       <p>INTRODUCTION<p>
     </div>
   <!-- トップ文字 -->
@@ -257,15 +267,15 @@
     <div class="works">
 
       <!-- 項目タイトル -->
-      <div class="works_title"><p><a name="works">作品一覧</a></p>
+      <div class="works_title"><p><a name="works">新着作品一覧</a></p>
       <!-- 項目タイトル -->
 
       <!-- ソートボタン -->
           <div class="works_menu">
             <div class="menu_btn">
-              <input class="NEW_btn" type="button"  value="新しい順" >
+              <!-- <input class="NEW_btn" type="button"  value="新しい順" >
               <input class="OLD_btn" type="button"  value="古い順">
-              <input class="POPULARTY_btn" type="button"  value="人気順" >
+              <input class="POPULARTY_btn" type="button"  value="人気順" > -->
                 <div class="check_btn_waku">
 
                   <input type="checkbox" id="all" checked />
