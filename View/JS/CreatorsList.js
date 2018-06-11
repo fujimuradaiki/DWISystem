@@ -179,8 +179,9 @@ $(document).on("click",".login_btn3",function(){
 	//ajax通信成功時
 	}).done(function(data){
 		if(data != "error"){
-			alert(data['user_name']+"でログインしました");
-
+			//alert(data['user_name']+"でログインしました");
+			$('.login_Comp_view').fadeIn();
+			$('body').removeClass("overflow");
 			//ユーザーidとユーザー名をストレージに保存
 			sessionStorage.setItem('userId',data['userId']);
 			sessionStorage.setItem('userName',data['user_name']);

@@ -339,29 +339,37 @@ type:"POST",
 data:data
 //ajax通信成功時
 }).done(function(data){
-alert(data['user_name']+"でログインしました");
+//alert(data['user_name']+"でログインしました");
 
-//ユーザーidとユーザー名をストレージに保存
-sessionStorage.setItem('userId',data['userId']);
-sessionStorage.setItem('userName',data['user_name']);
-
-//アイコンを表示
-$('.login_btn').css("display","none");
-$('.new_btn').css("display","none");
-$('.login_user_icon').css("display","block");
-
-$('.login_user_icon').empty();
-$('.login_user_icon').append(
-$("<img id='headerIcon'class='icon'>")
-.attr("src","../../User/"+ data['user_name'] +"/icon.png")
-);
-var $headerIcon = $('#headerIcon');
-$headerIcon.css('width',50);
-$headerIcon.css('height',50);
-$headerIcon.css('border-radius','50%');
-
-$('.login_view').fadeOut();
+	if(data != "error"){
+//	alert(data['user_name']+"でログインしました");
+$('.login_Comp_view').fadeIn();
 $('body').removeClass("overflow");
+	//ユーザーidとユーザー名をストレージに保存
+	sessionStorage.setItem('userId',data['userId']);
+	sessionStorage.setItem('userName',data['user_name']);
+
+	//アイコンを表示
+	$('.login_btn').css("display","none");
+	$('.new_btn').css("display","none");
+	$('.login_user_icon').css("display","block");
+
+	$('.login_user_icon').empty();
+	$('.login_user_icon').append(
+			$("<img id='headerIcon'class='icon'>")
+			.attr("src","../../User/"+ data['user_name'] +"/icon.png")
+	);
+	var $headerIcon = $('#headerIcon');
+	$headerIcon.css('width',50);
+	$headerIcon.css('height',50);
+	$headerIcon.css('border-radius','50%');
+
+	$('.login_view').fadeOut();
+	$('body').removeClass("overflow");
+	}else{
+		alert("ログインに失敗しました");
+	}
+
 //ajax通信失敗時
 }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 alert(XMLHttpRequest['responseText']);
@@ -466,10 +474,17 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-			// alert("新規登録が完了しました。");
-			}else{
-		    alert("登録名がすでに使用されています。");
-			}
+				  $('.new_touroku_view').fadeIn();
+				  $('body').addClass("overflow");
+				//alert("新規登録が完了しました。");
+				$('#sineUp_user_name').val('');
+				$('#sineUP_mail').val('');
+				$('#sineUp_password1').val('');
+				$('#sineUp_password2').val('');
+				$("#choice_btn").val('');
+				}else{
+			    alert("登録名がすでに使用されています。");
+				}
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 			alert("error");
@@ -822,4 +837,26 @@ $(document).on("click",".review_btn",function(){
 		alert("error");
 	  });
 	}
+});
+
+$(document).on("click",".new_close_btn",function(){
+	var name = $('#sineUp_user_name').val('');
+	var mail = $('#sineUP_mail').val('');
+	var pass1 = $('#sineUp_password1').val('');
+	var pass2 = $('#sineUp_password2').val('');
+	var iconData = $("#choice_btn").val('');
+	$('.new_image').children('img').remove();
+
+});
+
+$(document).on("click",".login_close_btn",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
+});
+
+$(document).on("click",".close_btn2",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
 });
