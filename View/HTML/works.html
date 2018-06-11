@@ -1,17 +1,20 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>制作者一覧</title>
+	<title>作品一覧</title>
 	<meta charset="utf-8">
   <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
-	<link href="../CSS/Creators.css" rel="stylesheet" type="text/css"/>
+	<link href="../CSS/works.css" rel="stylesheet" type="text/css"/>
+  <link href="../CSS/slick-theme.css" rel="stylesheet" type="text/css"/>
+  <link href="../CSS/slick.css" rel="stylesheet" type="text/css"/>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 	<script src="../JS/jquery.3.3.1.js"></script>
 	<script src="../JS/lightbox.js"></script>
 	<script src="../JS/style.js" type="text/javascript"></script>
 	<script src="../JS/dropdown.js" type="text/javascript"></script>
+  <script src="../JS/slick.min.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<!---------- ヘッダー開始 ---------->
@@ -36,6 +39,7 @@
 	        <div class="menu">
 	          <ul>
 	            <li><a href="Top.html">トップ</a></li>
+              <li><a href="#works">新着作品一覧</a></li>
 	            <li><a href="Top.html#works">作品一覧</a></li>
 	            <li><a href="CreatorsList.html">制作者一覧</a></li>
 	          </ul>
@@ -215,48 +219,118 @@
 	    </div>
 	        <!--登録完了画面終わり -->
 
-					<!----------コンテンツ開始---------->
-					<div class="info">
-
+          <div class="">
 						<!--背景-->
 							<div class="background"></div>
             <!--背景-->
+            <!------トップスライダー----->
+      <div class="slider-wrapper">
+          <div class="slider-item">
+            <img src="../Images/02.png" alt=""/>
+          </div>
+          <div class="slider-item">
+            <img src="../Images/05.png" alt=""/>
+          </div>
+          <div class="slider-item">
+            <img src="../Images/background1.jpg" alt=""/>
+          </div>
+      </div>
+      <!------------コンテンツ部分------------>
+      <!---------- 作品投稿開始 ---------->
+        <div id="works"></div>
+          <div class="works">
 
-							<div class="contents">
+            <!-- 項目タイトル -->
+            <div class="works_title"><p><a name="works">作品一覧</a></p>
+            <!-- 項目タイトル -->
 
-								<!--タイトル-->
-								<div class="title">
-									<div class="left_border"></div>
-									<div class="right_border"></div>
-									<h1>制作者一覧</h1>
-								</div>
-                <!--タイトル-->
+            <!-- ソートボタン -->
+                <div class="works_menu">
+                  <div class="menu_btn">
+                    <input class="NEW_btn" type="button"  value="新しい順" >
+                    <input class="OLD_btn" type="button"  value="古い順">
+                    <input class="POPULARTY_btn" type="button"  value="人気順" >
+                      <div class="check_btn_waku">
 
-								<!--検索窓開始-->
-								<dl class="kensaku">
-									<dt><input type="text" name="kensaku" placeholder="制作者名で検索" id ="searchErea"/></dt>
-									<dd><button id ="searchButton">検索</button></dd>
-								</dl>
-								<!--検索窓終了-->
+                        <input type="checkbox" id="all" checked />
+                        <label for="all" class="check_btn">すべて</label>
 
-								<!--クリエイターアイコン表示部分-->
-								<div class="creators_box_waku">
-									<div class="creators_box">
-										<div class="creators_hover">
-										<div class="hover_background"></div>
-                    <div class="creator_name">
-                      <h1>首絞めハム太郎</h1>
-										</div>
-										</div>
-									</div>
-						  </div>
-							<!--クリエイターアイコン表示部分終了-->
 
-						</div>
-					</div>
-					<!---------- コンテンツ部分終了 ---------->
+                        <input type="checkbox" id="chara" checked />
+                        <label for="chara" class="check_btn">キャラ</label>
 
-		<!---------- フッター開始 ---------->
+
+                        <input type="checkbox" id="backGround" checked />
+                        <label for="backGround" class="check_btn">背景</label>
+
+
+                        <input type="checkbox" id="item" checked />
+                        <label for="item" class="check_btn">アイテム</label>
+
+                      </div>
+                  </div>
+                </div>
+              <!-- ソートボタン -->
+
+              <div class="works_contents"></div>
+                <!-- ライトボックス -->
+                  <div class="lightbox_waku">
+                      <div class="lightbox">
+                        <div class="lightbox_hover">
+                          <div class="hover_background"></div>
+                          <div class="lightbox_information">
+                            <div class="lightbox_title"><h1></h1></div>
+                             <div class="lightbox_user_waku">
+                              <div class="lightbox_user_icon"></div>
+                              <div class="lightbox_user_name"><h1>illustration by 〇〇〇〇〇</h1></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <!-- ライトボックス -->
+
+            <!-- ライトボックス中身 -->
+              <div class="lightbox_view">
+                <div class="lightbox_background"></div>
+                <div class="lightbox_image_container">
+                  <div class="close_btn_container">
+                    <div class="close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+                  </div>
+                  <div class="lightbox_left_image"></div>
+                  <div class="lightbox_right">
+                    <div class="user_information">
+                      <div class="user_icon"></div>
+                      <div class="user_name"><h1>illustration by 〇〇〇〇〇</h1></div>
+                      <div class="work_title"><h1></h1></div>
+                      <div class="review">
+                        <h1>レビューをする</h1>
+                        <h2>★★★★★</h2>
+                      </div>
+                      <div class="review_coment">
+                        <h1>コメントをする</h1>
+                        <textarea name="comment" cols="40" rows="8"></textarea>
+                        <input class="review_btn" type="button"  value="レビュー" >
+                      </div>
+                      <div class="review_all">
+                        <h1>レビュー合計</h1>
+                        <h2>★★★★★</h2>
+                      </div>
+                      <div class="past_coment"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- ライトボックス中身 -->
+
+            </div>
+      <!---------- 作品投稿終了 ---------->
+
+
+      <!------------コンテンツ部分------------>
+          </div>
+
+          <!---------- フッター開始 ---------->
 		<footer>
 			<div class="footer">
       <div class="footer_logo">
@@ -267,6 +341,6 @@
     </footer>
 		<!---------- フッター終了 ---------->
 
-		<script type="text/javascript" src="../JS/CreatorsList.js" ></script>
+		<script type="text/javascript" src="../JS/works.js" ></script>
 </body>
 </html>

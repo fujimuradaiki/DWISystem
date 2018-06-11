@@ -179,8 +179,9 @@ $(document).on("click",".login_btn3",function(){
 	//ajax通信成功時
 	}).done(function(data){
 		if(data != "error"){
-			alert(data['user_name']+"でログインしました");
-
+			//alert(data['user_name']+"でログインしました");
+			$('.login_Comp_view').fadeIn();
+			$('body').removeClass("overflow");
 			//ユーザーidとユーザー名をストレージに保存
 			sessionStorage.setItem('userId',data['userId']);
 			sessionStorage.setItem('userName',data['user_name']);
@@ -202,6 +203,7 @@ $(document).on("click",".login_btn3",function(){
 
 			$('.login_view').fadeOut();
 			$('body').removeClass("overflow");
+			runSearch();
 		}else{
 			alert("ログインに失敗しました");
 		}
@@ -311,6 +313,7 @@ $(document).on("click",".touroku_btn",function(){
 				// alert("新規登録が完了しました。");
 				$('.new_touroku_view').fadeIn();
 				$('body').addClass("overflow");
+				runSearch();
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
@@ -367,4 +370,26 @@ $(document).on("click",".logout",function(){
 
 $(document).on("click","#searchButton",function(){
 	runSearch();
+});
+
+$(document).on("click",".new_close_btn",function(){
+	var name = $('#sineUp_user_name').val('');
+	var mail = $('#sineUP_mail').val('');
+	var pass1 = $('#sineUp_password1').val('');
+	var pass2 = $('#sineUp_password2').val('');
+	var iconData = $("#choice_btn").val('');
+	$('.new_image').children('img').remove();
+
+});
+
+$(document).on("click",".login_close_btn",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
+});
+
+$(document).on("click",".close_btn2",function(){
+	var name = $('.login_text').val('');
+	var pass1 = $('.pass_text').val('');
+
 });

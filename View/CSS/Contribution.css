@@ -88,7 +88,8 @@ i {
   padding-left:10px;
   z-index: 1;
   color:#fff;
-  background:#B997FF;
+	/* background:#B997FF; */
+	background:#0000ff;
   border-radius: 10px;
   right:0;
   margin:110px 40px;
@@ -101,7 +102,7 @@ i {
   left: 50%;
   margin-left: 59px;
   border: 15px solid transparent;
-  border-bottom: 15px solid #B997FF;
+  border-bottom: 15px solid #0000ff;
   z-index: 0;
 
 }
