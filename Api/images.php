@@ -72,7 +72,7 @@ class images{
                 if($pieces[0] != "rank"){
                     $addSortSql .= " ORDER BY image_$pieces[0] $pieces[1]";
                 }else{
-                    $addSortSql .= " ORDER BY COUNT(*) $pieces[1] , image_insert_at ASC";
+                    $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
             }
         }
