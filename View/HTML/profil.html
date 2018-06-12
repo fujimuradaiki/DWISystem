@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>制作者一覧</title>
+	<title>プロフィール編集</title>
 	<meta charset="utf-8">
   <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
@@ -222,44 +222,53 @@
 
           <div class="">
 						<!--背景-->
-<!--							<div class="background"></div>-->
+							<div class="background"></div>
             <!--背景-->
 
       <!------------コンテンツ部分------------>
-      <!--プロフィール編集画面開始-->   
-    
-          <div class="editing_box">
-              <div class="editing_title"><h1>プロフィール編集</h1></div>
-              <div class="editing_leftbox">
-                <div class="editing_images">
-                  <div class="editing_image"></div>
-                  <label for="choice_btn">
-                    <p>選択</p>
-                    <input id="choice_btn" type="file">
-                  </label>
-                </div>
+      <!--プロフィール編集画面開始-->         
+      <div class="Editing_contents">
+        <div class="Editing_title">
+          <div class="left_border"></div>
+          <div class="right_border"></div>
+          <h1>プロフィール編集</h1>
+        </div>
+        <div class="Editing_box">
+<!--          <div class="Editing_left_content">
+            <div class="Editing_images">
+                <div class="Editing_image"></div>
+                <label for="choice_btn">
+                  <p>選択</p>
+                  <input id="choice_btn" type="file">
+                </label>
               </div>
-              <div class="editing_rightbox">
-                <dl class="editing_form">
-                  <dt>ユーザー名</dt>
-                  <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>
-                  <dt>メールアドレス</dt>
-                  <dd><input type="text" name="mail"id="sineIn_mail"></dd>
-                  <dt>アカウント名</dt>
-                  <dd><input type="text" name="account_name"id="sineIn_acconut_name"></dd>
-                  <dt>新しいパスワード</dt>
-                  <dd><input type="password" name="password1"id="sineIn_pass_old"></dd>
-                  <dt>新パスワードの確認</dt>
-                  <dd><input type="password" name="password2"id="sineIn_pass_new"></dd>
-                </dl>
-           
-                <div class="editing_btn_content">
-                  <input class="delete_btn2" type="button"  value="アカウント消去">
-                  <input class="storage_btn" type="button"  value="保存">
-                </div>
-                </div>
+          </div>-->
+          <div class="Editing_right_content">
+            <dl class="Editing_form">
+<!--              <dt>ユーザー名</dt>
+              <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>-->
+              <dt>メールアドレス</dt>
+              <dd><input type="text" name="mail"id="sineIn_mail"></dd>
+<!--              <dt>アカウント名</dt>
+              <dd><input type="text" name="user_name"id="sineIn_account_name"></dd>-->
+              <dt>新パスワード</dt>
+              <dd><input type="password" name="password1"id="sineIn_pass_old"></dd>
+              <dt>確認パスワード</dt>
+              <dd><input type="password" name="password2"id="sineIn_pass_new"></dd>
+            </dl>
           </div>
-
+          <div class="Editing_btn_content">
+            <input class="delete_btn2" type="button"  value="アカウント消去">
+            <input class="storage_btn" type="button"  value="保存">
+          </div>
+      </div>
+      </div>  
+      
+      
+      
+      
+      
+      
         
       <!--プロフィール編集画面終了-->
       
