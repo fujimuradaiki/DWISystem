@@ -16,7 +16,7 @@
 
 *************************************
 */
-@media screen and ( min-width:414px ){
+@media screen and ( min-width:376px ){
 .clearfix:after{
 	display:block;
   height:0;
@@ -631,14 +631,14 @@ i {
   margin-left:-400px;
 }
 .new_box{
-  width: 900px;
+	width: 400px;
   height: 500px;
   background: #fff;
-  margin-left: -50px;
+  margin-left: 200px;
 }
 
 .new_header{
-  width:900px;
+  width:400px;
   height:80px;
   background: #3F3ACE;
 }
@@ -720,24 +720,9 @@ i {
 }
 
 .new_title h1{
+	text-align: center;
   font-size:25px;
   margin-top: -42px
-}
-
-.new_images{
-  width:200px;
-  margin-top: 40px;
-  border:1px solid #111;
-}
-
-.new_image{
-  width:200px;
-  height:200px;
-}
-
-.new_image h1{
-  text-align: center;
-  padding-top:95px;
 }
 
 label p{
@@ -774,14 +759,13 @@ label p:hover {
 /*新規登録フォーム*/
 
 .new_form_waku{
-  width: 670px;
+  width: 400px;
   margin: 0 auto;
 }
 
 .new_form{
-  width: 307px;
-  margin-top: -205px;
-  float:right;
+	width: 307px;
+	margin: 82px 150px;
 }
 
 .new_form dt{
@@ -804,6 +788,7 @@ label p:hover {
 .new_form dd input{
   width: 244px;
   height: 24px;
+	margin: 0 134px;
   float:right;
 }
 
@@ -1371,7 +1356,7 @@ footer h2{
 }
 }
 
-@media screen and ( max-width:414px ){
+@media screen and ( max-width:375px ){
 
 
 	.clearfix:after{
@@ -1399,7 +1384,7 @@ footer h2{
 	/*------------------------------- ヘッダー -------------------------------*/
 	header{
 	  /* min-width:1360px; */
-	  width:414px;
+	  width:375px;
 	  height:80px;
 	  position:fixed;
 	  z-index:1;
@@ -1407,7 +1392,8 @@ footer h2{
 	}
 
 	.logo{
-	  width:414px;
+		display: none;
+	  width:375px;
 	}
 
 	.menu ul{
@@ -1438,7 +1424,7 @@ footer h2{
 	}
 
 	.parallax-bg {
-	  width:414px;
+	  width:375px;
 	  height: 100vh;
 	  background-attachment: fixed;
 	  background-position: center;
@@ -1447,7 +1433,7 @@ footer h2{
 	}
 
 	#container{
-	  width:414px;
+	  width:375px;
 	  position: fixed;
 	}
 
@@ -1464,17 +1450,17 @@ footer h2{
 
 	.top{
 	  /* min-width:1200px; */
-	  width:414px;
+	  width:375px;
 	  height:974px;
 	}
 
 	/*トップ中央にある文字の枠*/
 	.top_btn{
 	  /* min-width: 1200px; */
-	  width:414px;
+	  width:375px;
 	  position: absolute;
 	  text-align: center;
-	  top: 32%;
+	  top: 29%;
 	}
 
 	/*ログインボタン*/
@@ -1484,7 +1470,7 @@ footer h2{
 	  height: 40px;
 	  position: relative;
 	  float:right;
-	  margin:20px 20px;
+	  margin: 20px 57px;
 	  font-weight: bold;
 	  text-decoration: none;
 	  color: #FFF;
@@ -1528,7 +1514,8 @@ footer h2{
 	  height:50px;
 	  position: relative;
 	  float:right;
-	  margin:20px 20px;
+	  /* margin:20px 20px; */
+		margin: 20px 185px;
 	  background: #fff;
 	  border-radius: 30px;
 	}
@@ -1575,19 +1562,19 @@ footer h2{
 	/*新規登録ボタン*/
 	.new_btn{
 	  display: none;
-	  width: 120px;
-	  height: 40px;
-	  position: relative;
-	  float:right;
-	  margin:20px 20px;
-	  font-weight: bold;
-	  text-decoration: none;
-	  color: #FFF;
-	  font-size: 14px;
-	  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-	  padding: 0.3em 0.5em;
-	  background: #3F3ACE;
-	  transition: .4s;
+		width: 120px;
+    height: 40px;
+    position: relative;
+    float: right;
+    margin: 20px -35px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+    padding: 0.3em 0.5em;
+    background: #3F3ACE;
+    transition: .4s;
 	}
 
 	/*新規登録ボタン　ホバーしたとき*/
@@ -1756,6 +1743,10 @@ footer h2{
 	  width:175px;
 	}
 
+	.scroll1{
+		display: none;
+	}
+
 	/*ログイン画面*/
 	.login_contents{
 	  width:800px;
@@ -1763,7 +1754,7 @@ footer h2{
 	}
 
 	.login_background{
-	  width:414px;
+	  width:375px;
 	  height:983px;
 	  z-index:1;
 	  background:rgba(0,0,000,0.6);
@@ -1790,7 +1781,7 @@ footer h2{
 
 	.login_view{
 	  display:none;
-	  width:414px;
+	  width:375px;
 	  position:fixed;
 	  z-index:1;
 	  top:0;
@@ -1801,7 +1792,7 @@ footer h2{
 	  width: 400px;
 	  height: 500px;
 	  background: #fff;
-	  margin-left: 200px;
+	  margin: -138px 200px;
 	}
 
 	.login_header{
@@ -1922,7 +1913,7 @@ footer h2{
 
 	.login_Comp_view{
 	  display:none;
-		width:414px;
+		width:375px;
 
 	  position:fixed;
 	  z-index:1;
@@ -1960,8 +1951,7 @@ footer h2{
 	/*新規登録画面*/
 	.new_view{
 	  display:none;
-		width:414px;
-
+	  width:100%;
 	  position:fixed;
 	  z-index:1;
 	  top:0;
@@ -1974,7 +1964,7 @@ footer h2{
 	}
 
 	.new_background{
-		width:414px;
+	  width:100%;
 	  height:983px;
 	  z-index:1;
 	  background:rgba(0,0,000,0.6);
@@ -1988,14 +1978,14 @@ footer h2{
 	  margin-left:-400px;
 	}
 	.new_box{
-	  width: 900px;
+		width: 400px;
 	  height: 500px;
 	  background: #fff;
-	  margin-left: -50px;
+	  margin: -138px 200px;
 	}
 
 	.new_header{
-	  width:900px;
+	  width:400px;
 	  height:80px;
 	  background: #3F3ACE;
 	}
@@ -2077,24 +2067,9 @@ footer h2{
 	}
 
 	.new_title h1{
+		text-align: center;
 	  font-size:25px;
 	  margin-top: -42px
-	}
-
-	.new_images{
-	  width:200px;
-	  margin-top: 40px;
-	  border:1px solid #111;
-	}
-
-	.new_image{
-	  width:200px;
-	  height:200px;
-	}
-
-	.new_image h1{
-	  text-align: center;
-	  padding-top:95px;
 	}
 
 	label p{
@@ -2131,26 +2106,22 @@ footer h2{
 	/*新規登録フォーム*/
 
 	.new_form_waku{
-	  width: 670px;
+	  width: 400px;
 	  margin: 0 auto;
 	}
 
 	.new_form{
-	  width: 307px;
-	  margin-top: -205px;
-	  float:right;
+		width: 307px;
+		margin: 82px 150px;
 	}
 
 	.new_form dt{
-	  width: 128px;
-	  height: 30px;
-	  line-height: 32px;
-	  margin-left: -75px;
-	  padding-left: 6px;
-	  float:left;
-	  font-size: 13px;
-	  color:#fff;
-	  background:#383474;
+		width: 128px;
+    height: 30px;
+    line-height: 20px;
+    margin-left: -78px;
+    float: left;
+    font-size: 13px;
 	}
 
 	.new_form dd{
@@ -2161,13 +2132,15 @@ footer h2{
 	.new_form dd input{
 	  width: 244px;
 	  height: 24px;
+		margin: 0 134px;
 	  float:right;
 	}
+
 
 	/*新規登録内容確認画面*/
 	.new_confirmation_view{
 	  display:none;
-	  width:414px;
+	  width:375px;
 	  position:fixed;
 	  z-index:1;
 	  top:0;
@@ -2239,7 +2212,7 @@ footer h2{
 	/*登録完了画面*/
 	.new_touroku_view{
 	  display:none;
-	  width:414px;
+	  width:375px;
 	  position:fixed;
 	  z-index:1;
 	  top:0;
@@ -2279,7 +2252,7 @@ footer h2{
 
 	/*-------------------- 作品一覧 ----------------------*/
 	.works{
-	  width:414px;
+	  width:375px;
 	  position: absolute;
 	  top:108%;
 	}
@@ -2287,7 +2260,7 @@ footer h2{
 	.works_contents{
 	  display: block;
 	  /* min-width: 1200px; */
-	  width:414px;
+	  width:375px;
 	  height:100%;
 	  background:#000;
 	  opacity:0.7;
@@ -2297,7 +2270,7 @@ footer h2{
 	/*項目タイトル*/
 	.works_title{
 	  /* min-width:1200px; */
-	  width:414px;
+	  width:375px;
 	  height:260px;
 	  background:#111;
 	}
@@ -2311,14 +2284,14 @@ footer h2{
 
 	/*ソートボタン*/
 	.works_menu{
-	  width:414px;
+	  width:375px;
 	  height:100px;
 	  margin-top: 65px;
 	  background: #333;
 	}
 
 	.check_btn_waku{
-		margin: 4px 0 0 13px;
+		margin: 4px 0 0 -3px;
     padding-top: 45px;
 	}
 
@@ -2340,7 +2313,7 @@ footer h2{
 	  transition: background-color 0.2s linear;
 	  position: relative;
 	  display: inline-block;
-	  padding: 0 0 0 40px;
+	  padding: 0 0 0 38px;
 	  vertical-align: middle;
 	  cursor: pointer;
 	}
@@ -2403,50 +2376,24 @@ footer h2{
 	}
 
 	.lightbox {
-		width: 250px;
-	  height: 250px;
-	  position: relative;
-		z-index: 0;
-	  float: left;
-	  margin: 78px;
-	  text-align: center;
-	  cursor: pointer;
-	  border-radius: 20px;
-	  overflow: hidden;
-	  color: #fff;
+		width: 150px;
+    height: 150px;
+    position: relative;
+    z-index: 0;
+    float: left;
+    margin: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #fff;
+    background: #fff;
 	}
 
 	.lightbox_hover{
-	  display: none;
-	  width:250px;
-	  height:250px;
-	  position:absolute;
-	  top:0;
-	  z-index:0;
-		border-radius: 20px;
-	  transition:all .5s ease;
-	  font-size:11px;
+		display: none;
 	}
 
-	/*ホバーしたときの背景*/
-	.hover_background{
-	  width:250px;
-	  height:250px;
-	  opacity: 0.7;
-	  background:#000;
-	}
-
-	/*ホバーしたときに出るユーザー情報*/
-	.lightbox_information {
-	    width: 250px;
-	    height: 250px;
-	    position: absolute;
-	    top: 0;
-	}
-
-	.lightbox:hover .lightbox_hover{
-	  display: block;
-	}
 
 	.lightbox img {
 	  position:relative;
@@ -2456,10 +2403,20 @@ footer h2{
 	  clear: both;
 	}
 
+	.sp_information{
+		width:150px;
+		height:40px;
+	}
+
+	.sp_background{
+		background:#000;
+		opacity: 0.7;
+	}
+
 	/*ライトボックス中身*/
 	.lightbox_view{
 	  display:none;
-	  width:414px;
+	  width:375px;
 	  position:fixed;
 	  z-index:1;
 	  top:0;
@@ -2468,7 +2425,7 @@ footer h2{
 
 	/*中身背景*/
 	.lightbox_background{
-	  width:414px;
+	  width:375px;
 	  height:983px;
 	  z-index:1;
 	  background:rgba(0,0,000,0.9);
@@ -2649,7 +2606,7 @@ footer h2{
 	/*-------------------- フッター ----------------------*/
 	footer{
 	  /* min-width: 1200px; */
-	  width:414px;
+	  width:375px;
 	  height: 200px;
 	  position: absolute;
 	  bottom: -260px;
@@ -2669,6 +2626,7 @@ footer h2{
 
 	/*ページトップへ戻る*/
 	#pageTop {
+		width: 140px;
 	  position: fixed;
 	  bottom: 20px;
 	  right: 20px;
