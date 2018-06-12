@@ -68,8 +68,6 @@ $(document).ready(function(){
 		$mypageName.append(
 			("<h1>"+ userName +"</h1>")
 		);
-
-
 });
 
 /////////////////////////////////////////////////////////////////////////
@@ -93,12 +91,52 @@ $("#choice_btn1").on("change",function(e){
 	    			width: "200px",
 	    			class: "preview",
 	    			title: file.name,
-	    			name:"upload_file"
+	    			id:"img1",
+	    			//name:"upload_file",
 	    		}));
 	    	};
 	    })(file);
 
 	    reader.readAsDataURL(file);
+});
+
+/***************************/
+/*        ※注意点
+画像のサイズがトリミングする枠の
+サイズの移動可能域になる。
+例)
+    縦・・・1000
+    横・・・500
+
+枠の開く最大サイズは500,
+一番右下へ移動した場合、
+画像のサイズと等しい値になる
+                           */
+/***************************/
+
+// トリミング開始ボタン(一番左の画像)
+$('#triming_btn1').on('click', function(){
+	var image = $('.toukou_images1 > img'),replaced;
+    $('#img1').cropper({
+    	aspectRatio: 4 / 4
+    });
+});
+
+// トリミング確定ボタン(一番左の画像)
+$('#enter_btn1').on('click', function(){
+	var data = $('#img1').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+	alert(JSON.stringify(image));
 });
 
 $("#choice_btn2").on("change",function(e){
@@ -119,19 +157,46 @@ $("#choice_btn2").on("change",function(e){
 	    			width: "200px",
 	    			class: "preview",
 	    			title: file.name,
-	    			name:"upload_file"
+	    			id:"img2",
+	    			//name:"upload_file"
 	    		}));
 	    	};
 	    })(file);
 
 	    reader.readAsDataURL(file);
 });
+
+//トリミング開始ボタン(中央の画像)
+$('#triming_btn2').on('click', function(){
+	var image = $('.toukou_images2 > img'),replaced;
+    $('#img2').cropper({
+    	aspectRatio: 4 / 4
+    });
+});
+
+// トリミング確定ボタン(中央の画像)
+$('#enter_btn2').on('click', function(){
+	var data = $('#img2').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+	alert(JSON.stringify(image));
+});
+
 $("#choice_btn3").on("change",function(e){
 		var file = e.target.files[0],
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images3");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
+	    if(file.type.indejjghuxOf("png") < 0 || file.size > 5500000){
 	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
 	    	$("#choice_btn3").val("");
 	    	return false;
@@ -144,12 +209,38 @@ $("#choice_btn3").on("change",function(e){
 	    			width: "200px",
 	    			class: "preview",
 	    			title: file.name,
-	    			name:"upload_file"
+	    			id:"img3",
+	    			//name:"upload_file"
 	    		}));
 	    	};
 	    })(file);
 
 	    reader.readAsDataURL(file);
+});
+
+//トリミング開始ボタン(中央の画像)
+$('#triming_btn3').on('click', function(){
+	var image = $('.toukou_images3 > img'),replaced;
+    $('#img3').cropper({
+    	aspectRatio: 4 / 4
+    });
+});
+
+// トリミング確定ボタン(中央の画像)
+$('#enter_btn3').on('click', function(){
+	var data = $('#img3').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+	alert(JSON.stringify(image));
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -158,7 +249,12 @@ $(".toukou_btn").on("click",function(){
 
     var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
-	var data  = [userId,userName];
+	//var imageInfo = $('[name="contribution"]').serializeArray();
+	var categoryArray = new Array($('#Genre1').val(), $('#Genre2').val(), $('#Genre3').val());
+	var titleArray = new Array($('.toukou_title1').val(), $('.toukou_title2').val(),$('.toukou_title3').val());
+	alert(titleArray);
+	var data  = [ userName, userId, categoryArray, titleArray ];
+
 	var param = new FormData($('[name="contribution"]').get(0));
 	param.append('model'  , 'images');
 	param.append('action' , 'insertImage');
