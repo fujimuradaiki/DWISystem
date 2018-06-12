@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>プロフィール編集</title>
+	<meta charset="utf-8">
+  <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
+	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
+	<link href="../CSS/profil.css" rel="stylesheet" type="text/css"/>
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<script src="../JS/jquery.3.3.1.js"></script>
+	<script src="../JS/lightbox.js"></script>
+	<script src="../JS/style.js" type="text/javascript"></script>
+	<script src="../JS/dropdown.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!---------- ヘッダー開始 ---------->
+		<header class="clearfix">
+	    <div class="nav">
+	      <nav>
+				<!--ログインボタン-->
+	        <input class="login_btn" type="button" value="ログイン">
+				<!--新規登録ボタン-->
+	        <input class="new_btn" type="button" value="新規登録">
+				  <div class="login_user_icon"></div>
+				<!--SNS開始-->
+	        <div class="icon">
+            <ul>
+              <li><a href="https://twitter.com/social_sharing1" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram" target="_blank"></i></a></li>
+              <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+            </ul>
+	        </div>
+			  <!--SNS終了-->
+				<!--g-nav開始-->
+	        <div class="menu">
+	          <ul>
+	            <li><a href="Top.html">トップ</a></li>
+	            <li><a href="Top.html#works">作品一覧</a></li>
+	            <li><a href="CreatorsList.html">制作者一覧</a></li>
+	          </ul>
+	        </div>
+				<!--g-nav終了-->
+	      </nav>
+	    </div>
+			<!--ロゴ-->
+        <div class="logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	  </header>
+    <!----------ヘッダー終了---------->
+
+    <!-- ログイン後ユーザーメニュー -->
+    <div class="login_user_menu">
+      <ul>
+        <li><a href="mypage.html">マイページ</a></li>
+        <li><a href="Contribution.html">作品投稿</a></li>
+        <li><a class="logout">ログアウト</a></li>
+      </ul>
+    </div>
+
+
+	  <!--ログイン画面 -->
+	    <div class="login_view">
+	      <div class="login_background"></div>
+	      <div class="login_image_container">
+	        <div class="close_btn_container">
+					<!--閉じるボタン-->
+	          <div class="login_close_btn"><img src="../Images/close.png"  alt="閉じるボタン"/></div>
+	          <div class="login_box">
+	            <div class="login_header">
+                <div class="login_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	            </div>
+	            <div class="login_word">
+                <!--タイトル-->
+	              <div class="login_title"><h1>ログイン</h1></div>
+
+							  <!--入力フォーム-->
+	              ユーザー名<h2>※またはメールアドレス</h2><input class="login_text" type="text" >
+	              パスワード<input class="pass_text" type="password" >
+	            </div>
+
+	            <div class="login_btn_content">
+								<!--閉じるボタン-->
+	                <input class="close_btn2" type="button"  value="閉じる">
+								<!--ログインボタン-->
+	                <input class="login_btn3" type="button"  value="ログイン">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  <!--ログイン画面終わり -->
+    <!--ログイン完了画面 -->
+    <div class="login_Comp_view">
+      <div class="new_background"></div>
+      <div class="new_image_container">
+        <div class="close_btn_container">
+          <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+          <div class="new_box">
+            <div class="new_header">
+              <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+            </div>
+            <div class="login_Comp_text">
+              <h1>ログインしました。</h1>
+            </div>
+            <div class="new_btn_content">
+              <input class="close_btn2" type="button"  value="閉じる"  >
+              <input class="mypage_btn" type="button" onclick="location.href='mypage.html'" value="マイページへ" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--ログイン完了画面終わり -->
+
+	　<!--新規登録画面 -->
+      <div class="new_view">
+        <div class="new_background"></div>
+        <div class="new_image_container">
+          <div class="close_btn_container">
+            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+            <div class="new_box">
+              <div class="new_header">
+                <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+              </div>
+              <div class="new_word">  </div>
+              <div class="new_form_waku">
+                <div class="new_title"><h1>新規登録</h1></div>
+                <div class="new_images">
+                  <div class="new_image">
+                    <h1>アイコン画像</h1>
+                  </div>
+                  <label for="choice_btn">
+                    <p>選択</p>
+                    <input id="choice_btn" type="file">
+                  </label>
+                </div>
+                <dl class="new_form">
+                  <dt>ユーザー名</dt>
+                  <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
+                  <dt>メールアドレス</dt>
+                  <dd><input type="text" name="mail"id="sineUP_mail"></dd>
+                  <dt>パスワード</dt>
+                  <dd><input type="password" name="password1"id="sineUp_password1"></dd>
+									<dt>※パスワード確認</dt>
+                  <dd><input type="password" name="password2"id="sineUp_password2"></dd>
+                </dl>
+              </div>
+              <div class="new_btn_content">
+                <input class="close_btn2" type="button"  value="閉じる">
+                <input class="confirmation_btn" type="button"  value="確認">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!--新規登録画面終わり -->
+
+	<!--新規登録確認画面 -->
+	  <div class="new_confirmation_view">
+	    <div class="new_background"></div>
+	      <div class="new_image_container">
+	        <div class="close_btn_container">
+	          <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+	          <div class="new_box">
+	            <div class="new_header">
+                <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	            </div>
+	            <div class="new_word"></div>
+	              <div class="new_form_waku">
+	              <div class="new_title"><h1>新規登録内容確認</h1></div>
+	              <div class="new_images">
+	                <div class="new_image"><h1>アップロードしてー</h1></div>
+	              </div>
+
+								<dl class="new_form">
+									<dt>ユーザー名</dt>
+									<dd><input type="text" disabled="disabled" id="user_name"></dd>
+									<dt>メールアドレス</dt>
+									<dd><input type="text" disabled="disabled" id="mail"></dd>
+									<dt>パスワード</dt>
+									<dd><input type="text" disabled="disabled" id="password1"></dd>
+								</dl>
+	              </div>
+	                <div class="new_btn_content">
+	                  <input class="return_btn" type="button"  value="戻る" >
+	                  <input class="touroku_btn" type="button"  value="登録" >
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+	        <!--新規登録確認画面終わり -->
+
+	        <!--登録完了画面 -->
+	        <div class="new_touroku_view">
+	        <div class="new_background"></div>
+	        <div class="new_image_container">
+	          <div class="close_btn_container">
+	            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+	            <div class="new_box">
+	              <div class="new_header">
+                  <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	              </div>
+	              <div class="touroku_text">
+	                <h1>登録完了</h1>
+	                <h2>ご登録ありがとうございます。</h2>
+	              </div>
+	                <div class="new_btn_content">
+	                  <input class="close_btn2" type="button"  value="閉じる"  >
+	                  <input class="login_btn4" type="button"  value="ログイン" >
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+	        <!--登録完了画面終わり -->
+          
+          
+          
+          
+      
+
+
+          <div class="">
+						<!--背景-->
+							<div class="background"></div>
+            <!--背景-->
+
+      <!------------コンテンツ部分------------>
+      <!--プロフィール編集画面開始-->         
+      <div class="Editing_contents">
+        <div class="Editing_title">
+          <div class="left_border"></div>
+          <div class="right_border"></div>
+          <h1>プロフィール編集</h1>
+        </div>
+        <div class="Editing_box">
+<!--          <div class="Editing_left_content">
+            <div class="Editing_images">
+                <div class="Editing_image"></div>
+                <label for="choice_btn">
+                  <p>選択</p>
+                  <input id="choice_btn" type="file">
+                </label>
+              </div>
+          </div>-->
+          <div class="Editing_right_content">
+            <dl class="Editing_form">
+<!--              <dt>ユーザー名</dt>
+              <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>-->
+              <dt>メールアドレス</dt>
+              <dd><input type="text" name="mail"id="sineIn_mail"></dd>
+<!--              <dt>アカウント名</dt>
+              <dd><input type="text" name="user_name"id="sineIn_account_name"></dd>-->
+              <dt>新パスワード</dt>
+              <dd><input type="password" name="password1"id="sineIn_pass_old"></dd>
+              <dt>確認パスワード</dt>
+              <dd><input type="password" name="password2"id="sineIn_pass_new"></dd>
+            </dl>
+          </div>
+          <div class="Editing_btn_content">
+            <input class="delete_btn2" type="button"  value="アカウント消去">
+            <input class="storage_btn" type="button"  value="保存">
+          </div>
+      </div>
+      </div>  
+      
+      
+      
+      
+      
+      
+        
+      <!--プロフィール編集画面終了-->
+      
+      <!------------コンテンツ部分------------>
+          </div>
+
+          <!---------- フッター開始 ---------->
+		<footer>
+			<div class="footer">
+      <div class="footer_logo">
+        <a href="Top.html"><img src="../Images/logo.png"></a>
+      </div>
+        <h2>©social_sharing_×××××××××××</h2>
+			</div>
+    </footer>
+		<!---------- フッター終了 ---------->
+
+		<script type="text/javascript" src="../JS/CreatorsList.js" ></script>
+</body>
+</html>
