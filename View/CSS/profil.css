@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@media screen and ( min-width:414px ){
+
 .clearfix:after{
 	display:block;
   height:0;
@@ -21,6 +21,8 @@
 body{
   margin:0;
 }
+
+@media screen and ( min-width:414px ){
 
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
@@ -772,12 +774,12 @@ label p:hover {
 }
 
 .Editing_btn_content{
-  float: left;
+/*  float: left;*/
   width: 541px;
   text-align: center;
   margin: 0 auto;
   padding-top: 30px;
-  margin-left: 186px;
+/*  margin-left: 186px;*/
 }
 
 
@@ -802,10 +804,6 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-
-.storage_btn {
-  margin-left: 26px;
-}
 
 /*プロフィール編集画面終了*/
 
@@ -848,30 +846,9 @@ footer h2{
 
 @media screen and ( max-width:414px ){
 
-.clearfix:after{
-	display:block;
-  height:0;
-	visibility:hidden;
-	clear:both;
-	content:"";
-}
-
-/*スクロールバー消去*/
-::-webkit-scrollbar{
-  width:0px;
-}
-
-/*ライトボックスを開いた時にスクロールできないようにするために使用*/
-.overflow{
-  overflow:hidden;
-}
-body{
-  margin:0;
-}
-
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
-/*  min-width:1360px;*/
+  min-width:320px;
   width:100%;
   height:80px;
   position:fixed;
@@ -880,14 +857,16 @@ header{
 }
 
 .logo{
+  display: none;
   margin: 23px 0 0 20px;
 }
 
 /*----------g-nav開始----------*/
 
-/*.menu ul{
-  float: right;
-  margin-right:80px;
+.menu ul{
+/*  float: right;
+  margin-right:80px;*/
+  display: none;
 }
 
 .menu ul li{
@@ -898,7 +877,7 @@ header{
 .menu ul li a{
   color:#fff;
   text-decoration: none;
-}*/
+}
 
 .login_user_icon{
   width:50px;
@@ -951,7 +930,8 @@ header{
 /*----------g-nav終了----------*/
 
 /*----------SNS開始----------*/
-/*.icon ul{
+.icon ul{
+  display: none;
   width: 15%;
 	margin:-10px -20px;
 	font-size:30px;
@@ -966,12 +946,13 @@ header{
 i {
 	color:#fff;
 }
-----------SNS終了----------*/
+/*----------SNS終了----------*/
 
 /*--------------------ヘッダー終了--------------------*/
 
 /*ログインボタン*/
 .login_btn{
+  display: none;
   width: 120px;
   height: 40px;
   position: relative;
@@ -991,6 +972,7 @@ i {
 }
 /*新規登録ボタン*/
 .new_btn{
+  display: none;
   width: 120px;
   height: 40px;
   position: relative;
@@ -1010,7 +992,7 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*----------ログイン画面開始----------
+/*----------ログイン画面開始----------*/
 .login_contents{
   width:800px;
   margin:0 auto;
@@ -1211,9 +1193,9 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-----------ログイン画面終了----------
+/*----------ログイン画面終了----------
 
-----------ログイン完了画面開始----------
+----------ログイン完了画面開始----------*/
 .login_Comp_view{
   display:none;
   width:100%;
@@ -1249,9 +1231,9 @@ i {
   margin-top: 155px;
   font-size: 23px;
 }
-----------ログイン完了画面終了----------
+/*----------ログイン完了画面終了----------*/
 
-----------新規登録画面開始----------
+/*----------新規登録画面開始----------*/
 .new_view{
   display:none;
   width:100%;
@@ -1380,7 +1362,7 @@ label p:hover {
   width: 200px;
 }
 
-新規登録フォーム
+/*新規登録フォーム*/
 
 .new_form_waku{
   width: 670px;
@@ -1416,9 +1398,9 @@ label p:hover {
   float:right;
 }
 
-新規登録画面終了
+/*新規登録画面終了
 
-新規登録内容確認画面開始
+新規登録内容確認画面開始*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -1449,7 +1431,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-登録ボタン
+/*登録ボタン*/
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -1467,11 +1449,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-登録ボタン　ホバー
+/*登録ボタン　ホバー*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-戻るボタン
+/*戻るボタン*/
 .return_btn{
   width: 100px;
   height: 35px;
@@ -1488,14 +1470,14 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-戻るボタン　ホバー
+/*戻るボタン　ホバー*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-新規登録内容確認ページ終了
+/*新規登録内容確認ページ終了
 
-登録完了
+登録完了*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -1503,7 +1485,7 @@ label p:hover {
   z-index:1;
   top:0;
   left:0;
-}*/
+}
 
 
 
@@ -1513,36 +1495,38 @@ label p:hover {
 .Editing_contents {
   position: absolute;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 14px;
 /*  margin: 0 auto;*/
 }
 
 .Editing_title {
-  width: 37%;
-  margin: 160px auto 0;
+  width: 71%;
+  margin: 110px auto 0;
   color: #000;
 }
 
 .left_border {
-  width: 50px;
-  margin-top: 13px;
+  width: 35px;
+  margin-top: 7px;
   float: left;
   border-bottom: 2px solid;
 }
 
 .right_border {
-    width: 50px;
-    margin-top: 13px;
+    width: 35px;
+    margin-top: 7px;
     float: right;
     border-bottom: 2px solid;
 }
 
 .Editing_title h1 {
     text-align: center;
-    font-size: 25px;
+    font-size: 21px;
 }
 
 .Editing_box {
-  width: 400px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1591,15 +1575,15 @@ label p:hover {
 
 
 .Editing_right_content {
-  width: 383px;
+  width: 100%;
 /*  float: left;*/
-  margin: 140px auto 90px;
+  margin: 50px auto 60px;
 }
 
 .Editing_form dt{
-  width: 128px;
-  height: 30px;
-  line-height: 32px;
+  width: 100px;
+  height: 27px;
+  line-height: 29px;
 /*  margin-left: -75px;*/
   padding-left: 6px;
   float:left;
@@ -1609,23 +1593,25 @@ label p:hover {
 }
 
 .Editing_form dd{
-  height: 20px;
-  margin-bottom: 38.5px;
+  height: 27px;
+  margin-bottom: 74.5px;
 }
 
 .Editing_form dd input{
-  width: 244px;
-  height: 24px;
+  display: block;
+  width: 99%;
+  height: 35px;
 /*  float:right;*/
 }
 
 .Editing_btn_content{
-  float: left;
-  width: 541px;
+/*  float: left;*/
+  width: 100%;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 100px;
   padding-top: 30px;
-  margin-left: 186px;
+/*  margin-left: 186px;*/
 }
 
 
@@ -1651,16 +1637,13 @@ label p:hover {
 }
 
 
-.storage_btn {
-  margin-left: 26px;
-}
 
 /*プロフィール編集画面終了（SP）*/
 
 /*背景*/
 .background{
-	min-height: 800px;
-  width: 414px;
+/*	min-height: 800px;*/
+  width: 100%;
   height: 736px;
   position: fixed;
   bottom: 0;
