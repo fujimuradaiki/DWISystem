@@ -19,7 +19,7 @@
 		     -o-user-select: none;
 		        user-select: none;
  	}
-	.zoomer { background: #eee url(jquery.fs.zoomer-loading.gif) no-repeat center; height: 100%; overflow: hidden; position: relative; width: 100%;
+	.zoomer { background:  url(jquery.fs.zoomer-loading.gif) no-repeat center; height: 100%; overflow: hidden; position: relative; width: 100%;
 		-webkit-transition: none;
 		   -moz-transition: none;
 		   	-ms-transition: none;
@@ -45,7 +45,7 @@
 	.zoomer .zoomer-tile { height: auto; position: absolute; width: auto; }
 
 	/* CONTROLS */
-	.zoomer .zoomer-controls { background: rgba(0, 0, 0, 0.8); box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); border-radius: 3px; padding: 5px; position: absolute;
+	.zoomer .zoomer-controls { background: #b997ff;; box-shadow: 0 0 5px #b997ff;; border-radius: 3px; padding: 5px; position: absolute;
 		-webkit-transition: opacity 0.25 linear;
 		   -moz-transition: opacity 0.25 linear;
 		   	-ms-transition: opacity 0.25 linear;
