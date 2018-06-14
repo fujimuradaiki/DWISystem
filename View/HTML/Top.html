@@ -7,10 +7,18 @@
 <title>DESIGN INTRODUCTION</title>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Top.css" rel="stylesheet" type="text/css"/>
+<link href="../CSS/jquery.fs.zoomer.css" rel="stylesheet" />
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-<script src="../JS/jquery.3.3.1.js"></script>
+<script src="../JS/jquery.3.3.1.min.js"></script>
 <script src="../JS/jquery.bgswitcher.js"></script>
 <script src="../JS/lightbox.js"></script>
+<!-- <script src="../JS/jquery.min.js"></script> -->
+<script src="../JS/jquery.fs.zoomer.js"></script>
+<script>
+    $(window).load(function(){
+        $('#Zoomer').zoomer();
+    });
+</script>
 <script src="../JS/style.js" type="text/javascript"></script>
 <script src="../JS/page_top.js" type="text/javascript"></script>
 <script src="../JS/scroll.js" type="text/javascript"></script>
@@ -313,28 +321,41 @@
             <div class="close_btn_container">
               <div class="close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
             </div>
-            <div class="lightbox_left_image"></div>
-            <div class="lightbox_right">
+            <div class="lightbox_image">
+              <div id="Zoomer" class="zoomer_wrapper">
+                <img src="../Images/05.png">
+              </div>
+            </div>
+            <div class="lightbox_title">
               <div class="user_information">
                 <div class="user_icon"></div>
                 <div class="user_name"><h1>illustration by 〇〇〇〇〇</h1></div>
-                <div class="work_title"><h1></h1></div>
-                <div class="review">
-                  <h1>レビューをする</h1>
-                  <h2>★★★★★</h2>
-                </div>
-                <div class="review_coment">
-                  <h1>コメントをする</h1>
-                  <textarea name="comment" cols="40" rows="8"></textarea>
-                  <input class="review_btn" type="button"  value="レビュー" >
-                </div>
-                <div class="review_all">
-                  <h1>レビュー合計</h1>
-                  <h2>★★★★★</h2>
-                </div>
-                <div class="past_coment"></div>
+                <div class="work_title"><h1>タイトルはないよ</h1></div>
               </div>
             </div>
+          </div>
+          <div class="review_box">
+            <input id="review_btn" type="button" value="レビュー">
+          <div class="review_box_inner">
+            <div class="review_title">
+              <!-- <button id="review_btn" ><h2>レビュー</h2></button> -->
+            </div>
+            <div class="review_title_h1"><h1>評価投稿</h1></div>
+            <div class="review">
+             <h1>レビューをする</h1>
+             <h2>★★★★★</h2>
+           </div>
+           <div class="review_coment">
+             <h1>コメントをする</h1>
+             <textarea name="comment" cols="40" rows="8"></textarea>
+             <input class="review_btn" type="button"  value="レビュー" >
+           </div>
+           <div class="all_h1"><h1>評価一覧</h1></div>
+           <div class="review_all">
+             <h1>レビュー合計</h1>
+             <h2>★★★★★</h2>
+           </div>
+           <div class="past_coment"></div>
           </div>
         </div>
       <!-- ライトボックス中身 -->
@@ -356,5 +377,6 @@
 
     <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
     <script type="text/javascript" src="../JS/Top.js"></script>
+
 </body>
 </html>

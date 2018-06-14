@@ -732,6 +732,24 @@ $(document).on("click",".lightbox_hover",function(){
 		}
 	})
 
+	//レビューボックス表示////////////////////////
+	$div = $('.review_box');
+	$div.empty();
+	$div.append("{{imageTitle}}");
+	$div.css("color","#000");
+	$div.css("fontSize","1.5rem")
+	var drowImageTitle = new Vue({
+		el : '.review_box',
+		data :{
+			imageTitle : $imageTitle
+		}
+	})
+
+	// クリックイベントの定義
+// $('.review_title','#review_btn').on('click', function() {
+//   alert('クリックされました');
+// });
+
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
 	$div.empty();
@@ -828,6 +846,14 @@ $(document).on("click",".lightbox_hover",function(){
 
 });
 
+$('#review_btn').on('click', function(){
+$('.review_box').toggleClass("right0");
+});
+
+
+// $('#review_btn').on('click', function(){
+// $('.review_box').css({"right":"0"});
+// });
 
 //レビューボタン押下時//////////////////////////////////////////////////////////
 $(document).on("click",".review_btn",function(){
