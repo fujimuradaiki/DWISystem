@@ -1115,7 +1115,7 @@ input[type=checkbox]:checked + .check_btn:before {
 
 /*ライトボックス中身*/
 .lightbox_view{
-  /* display:none; */
+  display:none;
   width:100%;
   position:fixed;
   z-index:1;
@@ -1234,24 +1234,24 @@ input[type=checkbox]:checked + .check_btn:before {
 .review_box{
 	width: 394px;
   height: 900px;
+	z-index: 0;
   top: 0;
-  right: -391px;
+  right: -395px;
   position: absolute;
 	transition: 1s;
 }
 
-.right0 {
-	right: 0px;
+.review_right0 {
+	right: -1px;
 }
 
 .review_box_inner{
 	width: 370px;
 	height: 983px;
 	position: absolute;
-	padding-left: 20px;
+	padding:0 5px 0 20px;
 	top: 0;
-	right: 0;
-	background: #fff;
+	background: #F6E3CE;
 }
 
 .review_title{
@@ -1263,8 +1263,8 @@ input[type=checkbox]:checked + .check_btn:before {
 #review_btn{
 	width: 70px;
   position: absolute;
-  top: 0;
-  right: 390px;
+  top: 280px;
+  right: 394px;
   border: none;
   background: #FFBF00;
   color: #fff;
@@ -1359,10 +1359,120 @@ textarea {
 /*過去レビューコメント表示場所*/
 .past_coment{
   width: 350px;
-  height: 345px;
+  height: 330px;
   background: #fff;
   margin-top: 9px;
 	border: 1px solid #999;
+}
+
+/*------------------- 制作者コメント ------------------*/
+
+.creator_box{
+	width: 394px;
+  height: 900px;
+  top: 0;
+  right: -395px;
+  position: absolute;
+	transition: 1s;
+}
+
+.creator_box_inner{
+	/* width: 370px; */
+	width: 394px;
+	height: 983px;
+	z-index: 1;
+	position: absolute;
+	/* padding-left: 20px; */
+	top: 0;
+	background: #F8E0E6;
+}
+
+.creator_info{
+	margin-top: 100px;
+}
+
+.creator_info h2{
+	font-size: 20px;
+  font-weight: bold;
+  margin: -50px 0 50px 30px;
+}
+
+.creator_icon{
+	width:200px;
+	height:200px;
+	margin: 0 auto;
+	background:#000;
+}
+
+.creator_icon img{
+	width:200px;
+}
+
+.creator_name h1{
+	text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.creator_sns ul{
+	width: 38%;
+	margin: 0 auto;
+	margin-top:-30px;
+	font-size: 30px;
+}
+
+.creator_sns ul li{
+	float: left;
+	margin: 45px 0 0 18px;
+}
+
+i {
+	color:#000;
+}
+
+.creator_coment{
+	width:300px;
+	height:100px;
+	background: #000;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+.work_coment_title h1{
+	font-size: 20px;
+  font-weight: bold;
+  margin: 100px 0 0 40px;
+}
+
+.work_coment{
+	width: 315px;
+  height: 270px;
+	margin: 0 auto;
+  margin-top: 20px;
+  background: #000;
+}
+
+.creator_title{
+	width:70px;
+	height:50px;
+	margin: 150px -90px;
+}
+
+#creator_btn{
+	width: 70px;
+  position: absolute;
+  top: 200px;
+  right: 394px;
+  border: none;
+  background: #FE2E64;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+}
+
+ .creator_right0 {
+	right: -1px;
 }
 
 /*-------------------- フッター ----------------------*/

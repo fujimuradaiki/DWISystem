@@ -648,6 +648,9 @@ $("#choice_btn").on("change",function(e){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
+    $(window).ready(function(){
+  			$('#Zoomer').zoomer();
+  	});
   $('body').addClass("overflow");
 
   var $image = $(this).prev('img');
