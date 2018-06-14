@@ -290,22 +290,30 @@ $(document).on("click",".touroku_btn",function(){
 	var name = $('#sineUp_user_name').val();
 	var mail = $('#sineUP_mail').val();
 	var pass1 = $('#sineUp_password1').val();
-	var pass2 = $('#sineUp_password2').val();
+	//var pass2 = $('#sineUp_password2').val();
 	$("#new_form_waku").text
 
-		var param = [];
-		param[0] = name;
+	    var data = [name, pass1, mail];
+		var param = new FormData($('#send').get(0));
+	    param.append('model'  , 'users');
+	    param.append('action' , 'insert');
+	    param.append('data'   ,  data);
+		/*param[0] = name;
 		param[1] = pass1;
 		param[2] = mail;
 		param[3] = $(".new_image").children('img').attr('src');
-		var data = {'model':'users','action':'insert','data':param};
-		console.log(data);
+		var data = {'model':'users','action':'insert','data':param};*/
+		console.log(param);
 		//ajax通信
 		$.ajax({
-			url:"../../Api/controller.php",
-			dataType:'json',
-			type:"POST",
-			data:data,
+			url         :'../../Api/controller.php',
+			dataType    :'json',
+			type        :'POST',
+			processData : false,
+		    contentType : false,
+			data        : param,
+			timeout     : 1000
+
 		//ajax通信成功時
 		}).done(function(data){
 			console.log(data);

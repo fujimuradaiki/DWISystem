@@ -36,17 +36,21 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 ///////////////////////////////////////
     $classname = new $_POST['model'];
     $data = $_POST['data'];
+
+   //echo json_encode("OK");
     //画像データが送信されているか？
      if(isset($_FILES) && $_FILES['testimg']['name'] != ""){
 
          $dataArray= explode(",", $data);
-        // echo json_encode($dataArray);
-        //$classname->controller($_POST['action'],$dataArray);
+     //    echo json_encode($dataArray);
+     //   $classname->controller($_POST['action'],$dataArray);
          $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else{
-       //  $classname->controller($_POST['action'],$_POST['data']);
-
-
+         if($data != ""){
+             $data= explode(",", $data);
+             $classname->controller($_POST['action'],$data);
+         }
+         $classname->controller($_POST['action'],$data);
      }
 }else{
     echo "controller.php:::エラー";

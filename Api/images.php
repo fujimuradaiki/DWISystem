@@ -378,10 +378,10 @@ class images{
  //              //imageテーブルに画像情報を追加
                $stmt=$pdo->dbo->prepare($insertSql);
                $resultFlg = $stmt->execute();
-//               $resultFlg = $stmt->execute(array($categoryArray[$i],$titleArray[$i]));
-//               $id = $pdo->dbo->lastInsertId();
-//               $this->moviImage($userName,$postFiles,$id);
-//              // $resultFlg = true;
+               $resultFlg = $stmt->execute(array($categoryArray[$i],$titleArray[$i]));
+               $id = $pdo->dbo->lastInsertId();
+               $this->moviImage($userName,$postFiles,$id);
+              // $resultFlg = true;
 // //             //追加できたか titleと文字列
              if($resultFlg == true){
                  $str =$titleArray[$i]."アップロード成功";
