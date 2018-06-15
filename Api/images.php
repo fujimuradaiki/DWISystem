@@ -75,6 +75,8 @@ class images{
                 }else{
                     $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
+            }else{
+                $addSortSql .= " ORDER BY image_insert_at ASC ";
             }
         }
         //sqlの発行

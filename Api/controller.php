@@ -46,11 +46,8 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
      //   $classname->controller($_POST['action'],$dataArray);
          $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else{
-         if($data != ""){
-             $data= explode(",", $data);
-             $classname->controller($_POST['action'],$data);
-         }
-         $classname->controller($_POST['action'],$data);
+          //echo json_encode($data);
+          $classname->controller($_POST['action'],$data);
      }
 }else{
     echo "controller.php:::エラー";

@@ -28,12 +28,15 @@ class users{
             case "delete":
                 $this->delete($postData);
                 break;
+            case"mail":
+                $this->mail($postData);
+                break;
             default:
                 echo "users.php ユーザー定義関数に該当しませんでした";
                 break;
         }
 
-    }
+    } 
 ///////////////////////////////////////////////////////////////////////////////////
     //ユーザーリスト
     public  function userList($postData){
@@ -462,7 +465,28 @@ class users{
             echo json_encode("パスワードが間違っています");
          }
     }
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+    public function mail($postData){
+        $result = "";
+        if($postData != ""){
+            $to = $postData;
+            $subject = "デザイナー紹介 アカウント作成のご案内";
+            $message = "
+                新規登録URL
+                http://192.168.63.130/DWISystem_test_imaizumi/View/HTML/Top.html
+                上記のURLから新規登録をお願いします。
+                ";
+            $message = "PHP";
+            $headers = "From: from@imaizumihome.com";
 
-
+            if(mail($to, $subject, $message, $headers)){
+                $result = "メールを送信しました";
+            }else{
+                $result = "メール送信に失敗しました";
+            }
+        }else{
+            $result = "メールアドレスが入力されていません。";
+        }
+        echo json_encode($result);
+    }
 }
