@@ -1251,7 +1251,7 @@ input[type=checkbox]:checked + .check_btn:before {
 	position: absolute;
 	padding:0 5px 0 20px;
 	top: 0;
-	background: #F6E3CE;
+	background: url(../Images/background_left.png) 50% 50%;
 }
 
 .review_title{
@@ -1280,8 +1280,9 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
 .review h2{
@@ -1295,18 +1296,103 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review_coment h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
-.review_title_h1 h1{
+/* .review_title_h1 h1{
 	margin: -300px 0 76px;
 	font-size: 25px;
+} */
+
+.review_title_h1 h1{
+		width: 314px;
+		height: 20px;
+    position: relative;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+    margin: -300px 0 76px;
+    padding: 0.5em 0.5em 0.5em 1.4em;
+    border-bottom: 3px solid #B92A2C;
 }
 
-.all_h1 h1{
+.review_title_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d48789;
+    top: 0;
+    left: 0.4em;
+    height: 15px;
+    width: 15px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.review_title_h1 h1:after{
+    content: "";
+    position: absolute;
+    background:#d26466;
+    top: 1.0em;
+    left: 0;
+    height: 11px;
+    width: 11px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+}
+
+/* .all_h1 h1{
 	margin: 100px 0 70px 0;
 	font-size: 25px;
+} */
+
+.all_h1 h1{
+		width: 314px;
+		height: 20px;
+    position: relative;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 90px 0 70px 0;
+    padding: 0.5em 0.5em 0.5em 1.4em;
+    border-bottom: 3px solid #d8a32d;
+}
+
+.all_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d4a887;
+    top: 0;
+    left: 0.4em;
+    height: 15px;
+    width: 15px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.all_h1 h1:after{
+    content: "";
+    position: absolute;
+    background: #dc8749;
+    top: 1.0em;
+    left: 0;
+    height: 11px;
+    width: 11px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
 }
 
 /*レビュー記入*/
@@ -1346,8 +1432,9 @@ textarea {
 }
 
 .review_all h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
 .review_all h2{
@@ -1356,10 +1443,20 @@ textarea {
   color: #FFBF00;
 }
 
+#reviewErea img{
+	width:20px;
+	height:20px;
+}
+
+#averageReview img{
+	width:20px;
+	height:20px;
+}
+
 /*過去レビューコメント表示場所*/
 .past_coment{
   width: 350px;
-  height: 330px;
+  height: 307px;
   background: #fff;
   margin-top: 9px;
 	border: 1px solid #999;
@@ -1384,7 +1481,7 @@ textarea {
 	position: absolute;
 	/* padding-left: 20px; */
 	top: 0;
-	background: #F8E0E6;
+	background: url(../Images/background_left.png) 50% 50%;
 }
 
 .creator_info{
