@@ -1,7 +1,12 @@
 $(document).ready(function(){
   
-  var h = $('.lightbox').height();
+//  ‰¡‚Ì’·‚³‚ðŽæ“¾
+  var widthBox = $(".lightbox").width();
   
-  console.log(h);
+  console.log(widthBox);
+  
+  $(".lightbox_waku .lightbox").css("height",widthBox);
+  
+  
 });
 
