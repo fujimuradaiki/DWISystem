@@ -7,7 +7,7 @@
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 <link href="../CSS/Contribution.css" rel="stylesheet" type="text/css"/>
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-<script src="../JS/jquery.3.3.1.js"></script>
+<script src="../JS/jquery.3.3.1.min.js"></script>
 <script src="../JS/lightbox.js"></script>
 <script src="../JS/dropdown.js" type="text/javascript"></script>
 <script type="text/javascript" src="../Lib/jquery.raty.js"></script>
@@ -153,6 +153,23 @@
             </div>
             <!-- 項目タイトル -->
 
+            <!-- 切り取りライトボックス中身 -->
+              <div class="trimming_view">
+                <div class="trimming_background"></div>
+                <div class="trimming_image_container">
+                  <div class="trimming_close_btn_container">
+                    <div class="trimming_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+                  </div>
+                  <div class="trimming_image">
+                      <!-- イメージが入るところ -->
+                  </div>
+                </div>
+                <div class="trimming_btns">
+                <input class="trimming_delete_btn" type="button"  value="閉じる">
+                <input class="trimming_view_btn" type="button"  value="トリミング">
+              </div>
+              </div>
+
             <!-- 作品登録フォーム -->
             <form id="send" name="contribution" method="POST" enctype="multipart/form-data">
 
@@ -179,6 +196,7 @@
                <input id="choice_btn1" type="file" name="testimg[]">
               </label>
             </div>
+            <input class="trimming_btn" type="button"  value="サムネをトリミング">
           </div>
 
           <div class="toukou_waku2">
@@ -199,6 +217,7 @@
              <input id="choice_btn2" type="file" name="testimg[]">
             </label>
           </div>
+          <input class="trimming_btn" type="button"  value="サムネをトリミング">
         </div>
 
         <div class="toukou_waku3">
@@ -219,6 +238,7 @@
            <input id="choice_btn3" type="file" name="testimg[]">
           </label>
         </div>
+        <input class="trimming_btn" type="button"  value="サムネをトリミング">
       </div>
 
       </form>

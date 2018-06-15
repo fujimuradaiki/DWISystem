@@ -1022,3 +1022,58 @@ footer h2{
   padding-top: 25px;
 }
 /*-------------------フッター終了--------------------*/
+@media screen and ( max-width:375px ){
+
+
+	.clearfix:after{
+		display:block;
+	  height:0;
+		visibility:hidden;
+		clear:both;
+		content:"";
+	}
+
+	/*スクロールバー消去*/
+	::-webkit-scrollbar{
+	  width:0px;
+	}
+
+	/*ライトボックスを開いた時にスクロールできないようにするために使用*/
+	.overflow{
+	  overflow:hidden;
+	}
+
+	body{
+	  margin:0;
+	}
+
+	/*------------------------------- ヘッダー -------------------------------*/
+	header{
+	  /* min-width:1360px; */
+	  width:375px;
+	  height:80px;
+	  position:fixed;
+	  z-index:1;
+	  background-color:#111;
+	}
+
+	.logo{
+		display: none;
+	  width:375px;
+	}
+
+	.menu ul{
+		display: none;
+	  float: right;
+	  margin-right:80px;
+	}
+
+	.menu ul li{
+	  float: left;
+	  margin:45px 0 0 100px;
+	}
+
+	.menu ul li a{
+	  color:#fff;
+	  text-decoration: none;
+	}
