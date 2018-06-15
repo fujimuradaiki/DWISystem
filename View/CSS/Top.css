@@ -1098,7 +1098,7 @@ input[type=checkbox]:checked + .check_btn:before {
     width: 250px;
     height: 250px;
     position: absolute;
-    top: 0;
+    top: 155px;
 }
 
 .lightbox:hover .lightbox_hover{
@@ -1194,7 +1194,7 @@ input[type=checkbox]:checked + .check_btn:before {
 .lightbox_title{
 	width:100%;
 	position: absolute;
-	margin: -115px 45px;
+	margin: -50px 0px;
 	float: right;
 }
 
