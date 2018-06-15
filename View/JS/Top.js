@@ -64,7 +64,8 @@ $(document).ready(function(){
 	}
 
 	//sessionStorage.clear();
-
+	//$('.lightbox_view').fadeOut();//view���t�F�[�h�A�E�g����//
+	$('body').removeClass("overflow");
 
 });
 
@@ -643,7 +644,11 @@ $("#choice_btn").on("change",function(e){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
+	$(window).ready(function(){
+			$('#Zoomer').zoomer();
+	});
   $('body').addClass("overflow");
+  //$('.zoomer_holder').append($('<img>').attr({'class':'zoomer-image','src':'../Images/05.png'}));
 
   var $image = $(this).prev('img');
   var $imageId = $image.attr('id');
@@ -732,23 +737,6 @@ $(document).on("click",".lightbox_hover",function(){
 		}
 	})
 
-	//レビューボックス表示////////////////////////
-	$div = $('.review_box');
-	$div.empty();
-	$div.append("{{imageTitle}}");
-	$div.css("color","#000");
-	$div.css("fontSize","1.5rem")
-	var drowImageTitle = new Vue({
-		el : '.review_box',
-		data :{
-			imageTitle : $imageTitle
-		}
-	})
-
-	// クリックイベントの定義
-// $('.review_title','#review_btn').on('click', function() {
-//   alert('クリックされました');
-// });
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -845,9 +833,13 @@ $(document).on("click",".lightbox_hover",function(){
 
 
 });
-
+//レビューボックス//
 $('#review_btn').on('click', function(){
-$('.review_box').toggleClass("right0");
+$('.review_box').toggleClass("review_right0");
+});
+//制作者コメントボックス//
+$('#creator_btn').on('click', function(){
+$('.creator_box').toggleClass("creator_right0");
 });
 
 
