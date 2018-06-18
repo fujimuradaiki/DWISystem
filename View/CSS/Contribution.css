@@ -1,4 +1,5 @@
 @charset "utf-8";
+@media screen and ( min-width:415px ){
 .clearfix:after{
 	display:block;
   height:0;
@@ -1258,7 +1259,7 @@ label p:hover {
 
 /*切り取りライトボックス中身*/
 .trimming_view{
-  display:none; 
+  display:none;
   width:100%;
   position:fixed;
   z-index:1;
@@ -1357,4 +1358,1407 @@ footer h2{
 .footer_logo{
   text-align: center;
   padding-top: 25px;
+}
+}
+
+@media screen and ( max-width:414px ){
+.clearfix:after{
+	display:block;
+  height:0;
+	visibility:hidden;
+	clear:both;
+	content:"";
+}
+
+/*スクロールバー消去*/
+::-webkit-scrollbar{
+  width:0px;
+}
+
+/*ライトボックスを開いた時にスクロールできないようにするために使用*/
+.overflow{
+  overflow:hidden;
+}
+body{
+  margin:0;
+}
+/*------------------------------- ヘッダー開始　-------------------------------*/
+header{
+  width:100%;
+  height:80px;
+  position:fixed;
+  z-index:1;
+  background-color:#111;
+}
+
+/*ロゴ*/
+.logo{
+	display: none;
+  margin: 23px 0 0 20px;
+}
+
+/*メニュー*/
+.menu ul{
+	display: none;
+  float: right;
+  margin-right:80px;
+}
+
+.menu ul li{
+  float: left;
+  margin:45px 0 0 100px;
+}
+
+.menu ul li a{
+  color:#fff;
+  text-decoration: none;
+}
+
+/*SNSアイコン*/
+.icon ul{
+	display: none;
+  width: 15%;
+	margin:-10px -20px;
+	font-size:30px;
+  float: right;
+}
+
+.icon ul li{
+  float: left;
+  margin:45px 0 0 30px;
+}
+
+i {
+	color:#fff;
+}
+
+/*ログイン後のユーザーアイコン*/
+.login_user_icon{
+  width:50px;
+  height:50px;
+  position: relative;
+  float:right;
+  margin:20px 20px;
+  background: #fff;
+  border-radius: 30px;
+}
+
+/*ログイン後のユーザーアイコンをクリックしたときに出る*/
+.login_user_menu{
+  display: none;
+  width:170px;
+  height:100px;
+  position: fixed;
+  line-height: 34px;
+  padding-left:10px;
+  z-index: 1;
+  color:#fff;
+	/* background:#B997FF; */
+	background:#0000ff;
+  border-radius: 10px;
+  right:0;
+  margin:110px 40px;
+}
+
+.login_user_menu:before{
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  margin-left: 59px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #0000ff;
+  z-index: 0;
+
+}
+
+.login_user_menu ul li a{
+  color:#fff;
+  text-decoration: none;
+	cursor: hand;
+}
+
+.login_user_menu ul li a:hover{
+  color:#ff0000;
+}
+
+/*ログインボタン*/
+.login_btn{
+  display:none;
+  width: 120px;
+  height: 40px;
+  position: relative;
+  float:right;
+  margin:20px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+/*ログインボタン　ホバー*/
+.login_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*新規登録ボタン*/
+.new_btn{
+  display:none;
+  width: 120px;
+  height: 40px;
+  position: relative;
+  float:right;
+  margin:20px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+/*新規登録ボタン　ホバー*/
+.new_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.login_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.login_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.login_title h1{
+  text-align: center;
+  font-size:25px;
+  margin: -60px 0 33px;
+}
+
+.login_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+/*ログイン画面中身*/
+.login_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.login_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+  margin-left: 200px;
+}
+
+.login_header{
+  width:400px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.login_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.login_logo img{
+  width:200px;
+}
+
+.login_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_btn4{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn4:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn_my{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn_my:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.login_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.login_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.login_word h2{
+	font-size:11px;
+	line-height: 15px;
+}
+
+.login_btn_content{
+  width: 400px;
+  text-align: center;
+  margin: 70px 0 0 5px;
+}
+
+.login_text{
+  width: 105%;
+  height: 22px;
+}
+
+.pass_text{
+  width: 105%;
+  height: 22px;
+}
+
+/*新規登録画面*/
+.new_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.new_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.new_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.new_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+.new_box{
+  width: 900px;
+  height: 500px;
+  background: #fff;
+  margin-left: -50px;
+}
+
+.new_header{
+  width:900px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.new_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.new_logo img{
+  width:200px;
+}
+
+.new_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.login_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.new_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.new_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.new_btn_content{
+  width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.new_title h1{
+  font-size:25px;
+  margin-top: -42px
+}
+
+.new_images{
+  width:200px;
+  margin-top: 40px;
+  border:1px solid #111;
+}
+
+.new_image{
+  width:200px;
+  height:200px;
+}
+
+.new_image h1{
+  text-align: center;
+  padding-top:95px;
+}
+
+label p{
+	width: 56px;
+  height: 19px;
+  position: relative;
+  float: right;
+  margin-top: -26px;
+  display: inline-block;
+  font-weight: bold;
+	text-align: center;
+  text-decoration: none;
+	line-height: 22px;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+label p:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
+}
+
+.new_images img{
+  width: 200px;
+}
+
+/*新規登録フォーム*/
+
+.new_form_waku{
+  width: 670px;
+  margin: 0 auto;
+}
+
+.new_form{
+  width: 307px;
+  margin-top: -205px;
+  float:right;
+}
+
+.new_form dt{
+  width: 128px;
+  height: 30px;
+  line-height: 32px;
+  margin-left: -75px;
+  padding-left: 6px;
+  float:left;
+  font-size: 13px;
+  color:#fff;
+  background:#383474;
+}
+
+.new_form dd{
+  height: 20px;
+  margin-bottom: 38.5px;
+}
+
+.new_form dd input{
+  width: 244px;
+  height: 24px;
+  float:right;
+}
+
+/*新規登録確認*/
+.new_confirmation_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.confirmation_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.confirmation_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*登録ボタン*/
+.touroku_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+/*登録ボタン　ホバー*/
+.touroku_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+/*戻るボタン*/
+.return_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+/*戻るボタン　ホバー*/
+.return_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*登録完了*/
+.new_touroku_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+/*マイページボタン*/
+.mypage_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.touroku_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.touroku_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+/*保存完了*/
+.storage_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.storage_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.storage_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+/*投稿画面*/
+.toukou_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.toukou_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.toukou_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+/*投稿画面終了*/
+
+/*プロフィール編集画面開始*/
+
+.Editing_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.Editing_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.Editing_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.Editing_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+.Editing_box{
+  width: 900px;
+  height: 500px;
+  background: #fff;
+  margin-left: -50px;
+}
+
+.Editing_header{
+  width:900px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.Editing_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.Editing_logo img{
+  width:200px;
+}
+
+.Editing_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.delete_btn2{
+  width: 133px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.storage_btn{
+  width: 120px;
+  height: 40px;
+  position: relative;
+  margin:20px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.storage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.Editing_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.Editing_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.Editing_btn_content{
+  width: 541px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+  margin-left: 176px;
+}
+
+.Editing_title h1{
+  font-size:25px;
+  margin-top: -42px
+}
+
+.Editing_images{
+  width:200px;
+  margin-top: 40px;
+  border:1px solid #111;
+}
+
+.Editing_image{
+  width:200px;
+  height:200px;
+}
+
+.Editing_image h1{
+  text-align: center;
+  padding-top:95px;
+}
+
+.choice_btn{
+  width: 56px;
+  height: 26px;
+  position: relative;
+  float: right;
+  margin-top: -26px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.choice_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.Editing_images img{
+  width: 200px;
+}
+
+.Editing_form_waku{
+  width: 670px;
+  margin: 0 auto;
+}
+
+.Editing_form{
+  width: 307px;
+  margin-top: -205px;
+  float:right;
+}
+
+.Editing_form dt{
+  width: 128px;
+  height: 30px;
+  line-height: 32px;
+  margin-left: -75px;
+  padding-left: 6px;
+  float:left;
+  font-size: 13px;
+  color:#fff;
+  background:#383474;
+}
+
+.Editing_form dd{
+  height: 20px;
+  margin-bottom: 38.5px;
+}
+
+.Editing_form dd input{
+  width: 244px;
+  height: 30px;
+  float:right;
+}
+
+/*プロフィール編集終了*/
+
+/*コンテンツ内容*/
+.toukou{
+	position: absolute;
+}
+
+.background{
+ width: 100%;
+ height: 1400px;
+ position:fixed;
+ bottom:0;
+ background:url('../Images/background__.png') no-repeat 50% 50% ;
+ background-size:cover;
+}
+
+.contents{
+  width: 71%;
+  height: auto;
+  position: absolute;
+  top: -110px;
+	margin-left: 41px;
+}
+.left_border{
+  width: 50px;
+	margin-top: 13px;
+	float: left;
+  border-bottom: 2px solid;
+}
+
+.right_border{
+  width: 50px;
+	margin-top: 13px;
+	float: right;
+  border-bottom: 2px solid;
+}
+
+.title{
+	width: 235px;
+  height: 20px;
+  position: absolute;
+  margin: -90px 30px;
+  color: #fff;
+}
+
+.title h1{
+	text-align: center;
+  font-size:25px;
+}
+
+.toukou_form{
+	width: 100%;
+  height: 400px;
+  position: absolute;
+  top:325px;
+}
+
+.toukou_waku1{
+	height: 280px;
+  float:left;
+  margin:0 0 50px 46px;
+}
+
+.toukou_images1{
+  width:200px;
+  height:200px;
+	text-align:center;
+	overflow: hidden;
+  background: #666;
+  position: absolute;;
+}
+
+.toukou_title1{
+  width: 200px;
+  margin-top: 221px;
+  position: absolute;
+}
+
+.serect_box1{
+  position: absolute;
+  margin-top: 250px;
+}
+
+.serect_box1 p{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:20px;
+}
+
+#Genre1{
+  height:30px;
+  font-size: 12px;
+}
+
+#choice_btn1{
+	display: none;
+}
+
+.delete3_1_btn{
+  width: 55px;
+  height: 30px;
+  position: relative;
+  margin: 250px 0 0 85px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete3_1_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.trimming_btn1{
+	width: 200px;
+  top: 288px;
+  position: absolute;
+	font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_btn1:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.trimming_btn2{
+	width: 200px;
+  top: 154%;
+  position: absolute;
+	font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+
+.trimming_btn3{
+	width: 200px;
+  top: 237%;
+  position: absolute;
+	font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+
+
+.toukou_images1 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
+
+.toukou_images1 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.toukou_waku2{
+	height: 280px;
+  float:left;
+  margin:0 0 50px 46px;
+}
+
+.toukou_images2{
+  width:200px;
+  height:200px;
+	overflow: hidden;
+	text-align: center;
+  background: #666;
+  position: absolute;;
+}
+
+.toukou_title2{
+  width: 200px;
+  margin-top: 221px;
+  position: absolute;
+}
+
+.serect_box2{
+  position: absolute;
+  margin-top: 250px;
+}
+
+.serect_box2 p{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:20px;
+}
+
+#Genre2{
+  height:30px;
+  font-size: 12px;
+}
+
+#choice_btn2{
+	display: none;
+}
+
+.delete3_2_btn{
+  width: 55px;
+  height: 30px;
+  position: relative;
+  margin: 250px 0 0 85px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete3_2_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.toukou_images2 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
+
+.toukou_images2 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.toukou_waku3{
+	height: 280px;
+  float:left;
+  margin:0 0 50px 46px;
+}
+
+.toukou_images3{
+  width:200px;
+  height:200px;
+	overflow: hidden;
+	text-align: center;
+  background: #666;
+  position: absolute;;
+}
+
+.toukou_title3{
+  width: 200px;
+  margin-top: 221px;
+  position: absolute;
+}
+
+.serect_box3{
+  position: absolute;
+  margin-top: 250px;
+}
+
+.serect_box3 p{
+  margin-bottom:20px;
+  color:#fff;
+  font-size:20px;
+}
+
+#Genre3{
+  height:30px;
+  font-size: 12px;
+}
+
+#choice_btn3{
+	display: none;
+}
+
+.delete3_3_btn{
+  width: 55px;
+  height: 30px;
+  position: relative;
+  margin: 250px 0 0 85px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.delete3_3_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.toukou_images3 i{
+	font-size: 70px;
+  margin-top: 50px;
+}
+
+.toukou_images3 h1{
+	color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+label p{
+	width: 36px;
+  height: 18px;
+  position: relative;
+  margin: -30px -60px;
+  font-weight: bold;
+  line-height: 20px;
+  text-decoration: none;
+  color: #FFF;
+  border-top: 2px solid #eee;
+  border-left: 2px solid #eee;
+  border-bottom: 2px solid #999;
+  border-right: 2px solid #999;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+label p:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display: none;
+}
+
+.toukou_Decision{
+	width: 246px;
+  height: 44px;
+}
+
+.back_btn{
+  width: 120px;
+  height: 40px;
+  position: relative;
+  margin-top:100px;
+	right:-35%;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.back_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.toukou_btn{
+	width: 120px;
+  height: 40px;
+  position: absolute;
+  margin-top: 85px;
+  top: 235%;
+  left: 86px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.toukou_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+/*切り取りライトボックス中身*/
+.trimming_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+/*中身背景*/
+.trimming_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.9);
+}
+
+.trimming_close_btn{
+	float:right;
+	margin-top:-140px;
+}
+/*作品*/
+.trimming_image_container{
+  width: 72%;
+  position: absolute;
+	top: 45%;
+  left: 460px;
+  margin-top: -275px;
+
+}
+
+.trimming_image{
+	width: 1000px;
+  height: 600px;
+  float: left;
+	background: #fff;
+}
+
+.trimming_btns{
+	width:100%;
+	position: absolute;
+  top: 750px;
+	left: 825px;
+}
+
+.trimming_view_btn{
+	width: 120px;
+  height: 40px;
+  position: relative;
+  margin:70px 0 0 20px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_view_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.trimming_delete_btn{
+	width: 120px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_delete_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+footer{
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  bottom: -655px;
+  background: #000;
+}
+
+footer h2{
+	text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.footer_logo{
+  text-align: center;
+  padding-top: 20px;
+}
 }
