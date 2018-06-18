@@ -1,4 +1,6 @@
 @charset "utf-8";
+
+
 .clearfix:after{
 	display:block;
   height:0;
@@ -19,7 +21,9 @@
 body{
   margin:0;
 }
+
 @media screen and ( min-width:415px ){
+
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
   min-width:1360px;
@@ -656,122 +660,60 @@ label p:hover {
   left:0;
 }
 
-.Editing_view{
-  display:none;
-  width:100%;
-  position:fixed;
-  z-index:1;
-  top:0;
-  left:0;
-}
 
-.Editing_contents{
-  width:800px;
-  margin:0 auto;
-}
+/*プロフィール編集画面開始*/
 
-.Editing_background{
-  width:100%;
-  height:983px;
-  z-index:1;
-  background:rgba(0,0,000,0.6);
-}
 
-.Editing_image_container{
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-top:-275px;
-  margin-left:-400px;
-}
-.Editing_box{
-  width: 900px;
-  height: 500px;
-  background: #fff;
-  margin-left: -50px;
-}
-
-.Editing_header{
-  width:900px;
-  height:80px;
-  background: #3F3ACE;
-}
-
-.Editing_logo{
-  text-align: center;
-  padding-top: 28px;
-}
-
-.Editing_logo img{
-  width:200px;
-}
-
-.Editing_contents{
-  width:800px;
-  margin:0 auto;
-}
-
-.delete_btn2{
-  width: 133px;
-  height: 35px;
-  position: relative;
-  right: 2%;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-.delete_btn2:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
-}
-
-.Editing_close_btn{
+.Editing_contents {
   position: absolute;
-  left: 110%;
-  top: -55px;
-  cursor: pointer;
+  width: 100%;
+/*  margin: 0 auto;*/
 }
 
-.Editing_word{
-  width: 48%;
+.Editing_title {
+  width: 23%;
+  margin: 160px auto 0;
+  color: #000;
+}
+
+.left_border {
+    width: 50px;
+    margin-top: 13px;
+    float: left;
+    border-bottom: 2px solid;
+}
+
+.right_border {
+    width: 50px;
+    margin-top: 13px;
+    float: right;
+    border-bottom: 2px solid;
+}
+
+.Editing_title h1 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.Editing_box {
+  width: 900px;
   margin: 0 auto;
-  margin-top: 90px;
-  line-height: 35px;
 }
 
-.Editing_btn_content{
-  width: 541px;
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 30px;
-  margin-left: 176px;
+.Editing_left_content {
+  width: 200px;
+  margin: 110px 80px 0 120px ;
+  float: left;
 }
 
-.Editing_title h1{
-  font-size:25px;
-  margin-top: -42px
+.Editing_images {
+  width: 200px;
+  border: 1px #000 solid;
 }
 
-.Editing_images{
-  width:200px;
-  margin-top: 40px;
-  border:1px solid #111;
-}
-
-.Editing_image{
-  width:200px;
-  height:200px;
-}
-
-.Editing_image h1{
-  text-align: center;
-  padding-top:95px;
+.Editing_image {
+  width: 200px;
+  height: 200px;
 }
 
 label p{
@@ -801,28 +743,18 @@ label p:hover {
   display: none;
 }
 
-.Editing_images img{
-  width: 200px;
-}
 
-/*新規登録フォーム*/
-
-.Editing_form_waku{
-  width: 670px;
-  margin: 0 auto;
-}
-
-.Editing_form{
-  width: 307px;
-  margin-top: -205px;
-  float:right;
+.Editing_right_content {
+  width: 383px;
+  float: left;
+  margin: 110px auto 50px;
 }
 
 .Editing_form dt{
   width: 128px;
   height: 30px;
   line-height: 32px;
-  margin-left: -75px;
+/*  margin-left: -75px;*/
   padding-left: 6px;
   float:left;
   font-size: 13px;
@@ -837,17 +769,25 @@ label p:hover {
 
 .Editing_form dd input{
   width: 244px;
-  height: 30px;
-  float:right;
+  height: 24px;
+/*  float:right;*/
 }
 
-/*マイページへボタン*/
-.mypage_btn{
-  width: 100px;
+.Editing_btn_content{
+/*  float: left;*/
+  width: 541px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+
+.storage_btn ,.delete_btn2{
+  width: 133px;
   height: 35px;
   position: relative;
   right: 2%;
-  margin-left: 20px;
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -859,31 +799,15 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*マイページへボタン　ホバー*/
-.mypage_btn:hover {
+
+.storage_btn:hover ,.delete_btn2:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.touroku_text{
-  margin-top: 160px;
-  text-align: center;
-}
 
-.touroku_text h1{
-  margin-bottom: 20px;
-  font-size: 25px;
-}
+/*プロフィール編集画面終了*/
 
-.contents{
-	min-width: 1200px;
-  width: 80%;
-  height: auto;
-  position: absolute;
-  top: 137px;
-  left: 10%;
-  margin-bottom: 10%;
 
-}
 /*背景*/
 .background{
 	min-height: 3500px;
@@ -894,116 +818,6 @@ label p:hover {
   background: url(../Images/background__.png) no-repeat 50% 50%;
   background-size: cover;
 }
-
-.left_border{
-  width: 50px;
-	margin-top: 13px;
-	float: left;
-  border-bottom: 2px solid;
-}
-
-.right_border{
-  width: 50px;
-	margin-top: 13px;
-	float: right;
-  border-bottom: 2px solid;
-}
-
-.title{
-	width:25%;
-	margin: 0 auto;
-  color:#fff;
-}
-
-.title h1{
-	text-align: center;
-  font-size:25px;
-}
-
-/*検索フォーム*/
-dl.kensaku{
-	width: 625px;
-	position:relative;
-	margin: 20px;
-}
-dl.kensaku dt{
-	margin-right:367px;
-	padding:3px;
-	background-color:#fff;
-	border:1px solid #aaa;
-}
-dl.kensaku dt input{
-	width:100%;
-	height:24px;
-	line-height:24px;
-	background:none;
-	border:none;
-}
-dl.kensaku dd{
-	position:absolute;
-	top:0;
-	right:43%;
-}
-dl.kensaku dd button{
-	display:block;
-	width:100px;
-	height:34px;
-	color:#fff;
-	line-height:32px;
-	text-align:center;
-	background-color:#f66;
-	border:1px solid #c66;
-}
-
-/*-------------------userアイコンリスト--------------------*/
-
-.creators_box_waku{
-	margin-top:30px;
-}
-
-.creators_box{
-	width:130px;
-	height:130px;
-	margin:20px;
-	float: left;
-	overflow : hidden;
-	background:#fff;
-	border-radius: 20px;
-	position: relative;
-}
-
-.creators_box:hover .creators_hover{
-  display: block;
-}
-
-.creators_hover{
-	display: none;
-	width:130px;
-	height:130px;
-}
-
-.hover_background{
-	width:130px;
-	height:130px;
-	background:#000;
-	opacity: 0.7;
-}
-
-.lightbox_userName h1{
-	width: 100%;
-	position: absolute;
-  margin-top: -70px;
-  color: #fff;
-  text-align: center;
-}
-
-.creator_name{
-	width: 130px;
-	position: absolute;
-  text-align: center;
-	color:#fff;
-}
-/*-------------------userアイコンリスト終了--------------------*/
 
 /*-------------------フッター開始--------------------*/
 footer{
@@ -1022,72 +836,19 @@ footer h2{
   text-align: center;
   padding-top: 25px;
 }
-<<<<<<< HEAD
-/*-------------------繝輔ャ繧ｿ繝ｼ邨ゆｺ�--------------------*/
-@media screen and ( max-width:375px ){
-
-
-	.clearfix:after{
-		display:block;
-	  height:0;
-		visibility:hidden;
-		clear:both;
-		content:"";
-	}
-
-	/*繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌�ｼ豸亥悉*/
-	::-webkit-scrollbar{
-	  width:0px;
-	}
-
-	/*繝ｩ繧､繝医�懊ャ繧ｯ繧ｹ繧帝幕縺�縺滓凾縺ｫ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ縺ｧ縺阪↑縺�繧医≧縺ｫ縺吶ｋ縺溘ａ縺ｫ菴ｿ逕ｨ*/
-	.overflow{
-	  overflow:hidden;
-	}
-
-	body{
-	  margin:0;
-	}
-
-	/*------------------------------- 繝倥ャ繝繝ｼ -------------------------------*/
-	header{
-	  /* min-width:1360px; */
-	  width:375px;
-	  height:80px;
-	  position:fixed;
-	  z-index:1;
-	  background-color:#111;
-	}
-
-	.logo{
-		display: none;
-	  width:375px;
-	}
-
-	.menu ul{
-		display: none;
-	  float: right;
-	  margin-right:80px;
-	}
-
-	.menu ul li{
-	  float: left;
-	  margin:45px 0 0 100px;
-	}
-
-	.menu ul li a{
-	  color:#fff;
-	  text-decoration: none;
-	}
-=======
 /*-------------------フッター終了--------------------*/
 
 }
 
+
+
+/*プロフィール編集画面開始（SP）*/
+
 @media screen and ( max-width:414px ){
-  
-  header{
-/*  min-width:1360px;*/
+
+/*------------------------------- ヘッダー開始　-------------------------------*/
+header{
+  min-width:320px;
   width:100%;
   height:80px;
   position:fixed;
@@ -1103,9 +864,9 @@ footer h2{
 /*----------g-nav開始----------*/
 
 .menu ul{
+/*  float: right;
+  margin-right:80px;*/
   display: none;
-  float: right;
-  margin-right:80px;
 }
 
 .menu ul li{
@@ -1436,9 +1197,9 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*----------ログイン画面終了----------*/
+/*----------ログイン画面終了----------
 
-/*----------ログイン完了画面開始----------*/
+----------ログイン完了画面開始----------*/
 .login_Comp_view{
   display:none;
   width:100%;
@@ -1641,9 +1402,9 @@ label p:hover {
   float:right;
 }
 
-/*新規登録画面終了*/
+/*新規登録画面終了
 
-/*新規登録内容確認画面開始*/
+新規登録内容確認画面開始*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -1718,9 +1479,9 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*新規登録内容確認ページ終了*/
+/*新規登録内容確認ページ終了
 
-/*登録完了*/
+登録完了*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -1730,122 +1491,63 @@ label p:hover {
   left:0;
 }
 
-.Editing_view{
-  display:none;
-  width:100%;
-  position:fixed;
-  z-index:1;
-  top:0;
-  left:0;
-}
 
-.Editing_contents{
-  width:800px;
-  margin:0 auto;
-}
 
-.Editing_background{
-  width:100%;
-  height:983px;
-  z-index:1;
-  background:rgba(0,0,000,0.6);
-}
+/*プロフィール編集画面開始*/
 
-.Editing_image_container{
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-top:-275px;
-  margin-left:-400px;
-}
-.Editing_box{
-  width: 900px;
-  height: 500px;
-  background: #fff;
-  margin-left: -50px;
-}
 
-.Editing_header{
-  width:900px;
-  height:80px;
-  background: #3F3ACE;
-}
-
-.Editing_logo{
-  text-align: center;
-  padding-top: 28px;
-}
-
-.Editing_logo img{
-  width:200px;
-}
-
-.Editing_contents{
-  width:800px;
-  margin:0 auto;
-}
-
-.delete_btn2{
-  width: 133px;
-  height: 35px;
-  position: relative;
-  right: 2%;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-.delete_btn2:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
-}
-
-.Editing_close_btn{
+.Editing_contents {
   position: absolute;
-  left: 110%;
-  top: -55px;
-  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 14px;
+/*  margin: 0 auto;*/
 }
 
-.Editing_word{
-  width: 48%;
+.Editing_title {
+  width: 71%;
+  margin: 110px auto 0;
+  color: #000;
+}
+
+.left_border {
+  width: 35px;
+  margin-top: 7px;
+  float: left;
+  border-bottom: 2px solid;
+}
+
+.right_border {
+    width: 35px;
+    margin-top: 7px;
+    float: right;
+    border-bottom: 2px solid;
+}
+
+.Editing_title h1 {
+    text-align: center;
+    font-size: 21px;
+}
+
+.Editing_box {
+  width: 100%;
   margin: 0 auto;
-  margin-top: 90px;
-  line-height: 35px;
 }
 
-.Editing_btn_content{
-  width: 541px;
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 30px;
-  margin-left: 176px;
+.Editing_left_content {
+  width: 200px;
+  margin: 80px auto 20px ;
+/*  float: left;*/
 }
 
-.Editing_title h1{
-  font-size:25px;
-  margin-top: -42px
+.Editing_images {
+  width: 200px;
+  border: 1px #000 solid;
 }
 
-.Editing_images{
-  width:200px;
-  margin-top: 40px;
-  border:1px solid #111;
-}
-
-.Editing_image{
-  width:200px;
-  height:200px;
-}
-
-.Editing_image h1{
-  text-align: center;
-  padding-top:95px;
+.Editing_image {
+  width: 200px;
+  height: 200px;
 }
 
 label p{
@@ -1875,28 +1577,18 @@ label p:hover {
   display: none;
 }
 
-.Editing_images img{
-  width: 200px;
-}
 
-/*新規登録フォーム*/
-
-.Editing_form_waku{
-  width: 670px;
-  margin: 0 auto;
-}
-
-.Editing_form{
-  width: 307px;
-  margin-top: -205px;
-  float:right;
+.Editing_right_content {
+  width: 100%;
+  float: left;
+  margin: 50px auto 20px;
 }
 
 .Editing_form dt{
-  width: 128px;
-  height: 30px;
-  line-height: 32px;
-  margin-left: -75px;
+  width: 100px;
+  height: 27px;
+  line-height: 29px;
+/*  margin-left: -75px;*/
   padding-left: 6px;
   float:left;
   font-size: 13px;
@@ -1905,23 +1597,33 @@ label p:hover {
 }
 
 .Editing_form dd{
-  height: 20px;
-  margin-bottom: 38.5px;
+  height: 27px;
+  margin-bottom: 74.5px;
 }
 
 .Editing_form dd input{
-  width: 244px;
-  height: 30px;
-  float:right;
+  display: block;
+  width: 99%;
+  height: 35px;
+/*  float:right;*/
 }
 
-/*マイページへボタン*/
-.mypage_btn{
-  width: 100px;
+.Editing_btn_content{
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+
+.storage_btn ,.delete_btn2{
+  width: 133px;
   height: 35px;
   position: relative;
   right: 2%;
-  margin-left: 20px;
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -1933,177 +1635,51 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*マイページへボタン　ホバー*/
-.mypage_btn:hover {
+
+.storage_btn:hover ,.delete_btn2:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.touroku_text{
-  margin-top: 160px;
-  text-align: center;
-}
 
-.touroku_text h1{
-  margin-bottom: 20px;
-  font-size: 25px;
-}
 
-.contents{
-/*	min-width: 1200px;*/
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 137px;
-/*  left: 10%;*/
-  margin-bottom: 10%;
+/*プロフィール編集画面終了（SP）*/
 
-}
 /*背景*/
 .background{
-	min-height: 3500px;
+/*	min-height: 800px;*/
   width: 100%;
-  height: 100vh;
+  height: 736px;
   position: fixed;
   bottom: 0;
   background: url(../Images/background__.png) no-repeat 50% 50%;
   background-size: cover;
 }
 
-.left_border{
-  width: 50px;
-	margin-top: 13px;
-	float: left;
-  border-bottom: 2px solid;
-}
-
-.right_border{
-  width: 50px;
-	margin-top: 13px;
-	float: right;
-  border-bottom: 2px solid;
-}
-
-.title{
-	width:85%;
-	margin: 0 auto;
-  color:#fff;
-}
-
-.title h1{
-	text-align: center;
-  font-size:25px;
-}
-
-/*検索フォーム*/
-dl.kensaku{
-  display: none;
-	width: 625px;
-	position:relative;
-	margin: 20px;
-}
-dl.kensaku dt{
-	margin-right:367px;
-	padding:3px;
-	background-color:#fff;
-	border:1px solid #aaa;
-}
-dl.kensaku dt input{
-	width:100%;
-	height:24px;
-	line-height:24px;
-	background:none;
-	border:none;
-}
-dl.kensaku dd{
-	position:absolute;
-	top:0;
-	right:43%;
-}
-dl.kensaku dd button{
-	display:block;
-	width:100px;
-	height:34px;
-	color:#fff;
-	line-height:32px;
-	text-align:center;
-	background-color:#f66;
-	border:1px solid #c66;
-}
-
-/*-------------------userアイコンリスト--------------------*/
-
-.creators_box_waku{
-  width: 340px;
-	margin-top:30px;
-  margin: 0 auto;
-}
-
-.creators_box{
-	width:130px;
-	height:130px;
-	margin:20px;
-	float: left;
-	overflow : hidden;
-	background:#fff;
-	border-radius: 20px;
-	position: relative;
-}
-
-/*.creators_box:hover .creators_hover{
-  display: block;
-}
-
-.creators_hover{
-	display: none;
-	width:130px;
-	height:130px;
-}
-
-.hover_background{
-	width:130px;
-	height:130px;
-	background:#000;
-	opacity: 0.7;
-}*/
-
-.lightbox_userName h1{
-	width: 100%;
-	position: absolute;
-  margin-top: -70px;
-  color: #fff;
-  text-align: center;
-}
-
-.creator_name{
-	width: 130px;
-	position: absolute;
-  text-align: center;
-	color:#fff;
-  border-radius: 20px;
-}
-
-
-/*-------------------userアイコンリスト終了--------------------*/
-
 /*-------------------フッター開始--------------------*/
 footer{
   width: 100%;
-  height: 80px;
-  position: fixed;
-  bottom: 0;
+  height: 200px;
+  position: absolute;
+  bottom: -600px;
   background: #000;
 }
 
 footer h2{
+  margin-top: 52px;
+  text-align: center;
   color: #fff;
 }
 
 .footer_logo{
   text-align: center;
-  padding-top: 25px;
+  padding-top: 70px;
 }
 /*-------------------フッター終了--------------------*/
 
-  
+
 }
->>>>>>> origin/inouesaki
+
+
+
+
+

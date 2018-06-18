@@ -16,7 +16,7 @@
 
 *************************************
 */
-@media screen and ( min-width:376px ){
+@media screen and ( min-width:415px ){
 .clearfix:after{
 	display:block;
   height:0;
@@ -1708,7 +1708,7 @@ footer h2{
 }
 }
 
-@media screen and ( max-width:375px ){
+@media screen and ( max-width:414px ){
 
 
 	.clearfix:after{
@@ -2144,7 +2144,7 @@ footer h2{
 	  width: 400px;
 	  height: 500px;
 	  background: #fff;
-	  margin: -138px 200px;
+	  margin: -215px 200px;
 	}
 
 	.login_header{
@@ -2333,7 +2333,7 @@ footer h2{
 		width: 400px;
 	  height: 500px;
 	  background: #fff;
-	  margin: -138px 200px;
+	  margin: -215px 200px;
 	}
 
 	.new_header{

@@ -44,6 +44,7 @@
     <ul>
       <li><a href="mypage.html">マイページ</a></li>
       <li><a href="Contribution.html">作品投稿</a></li>
+      <li><a href="Contribution.html">登録情報・変更</a></li>
       <li><a class="logout">ログアウト</a></li>
     </ul>
   </div>
@@ -86,13 +87,6 @@
             <div class="Editing_word"></div>
              <div class="Editing_form_waku">
               <div class="Editing_title"><h1>プロフィール編集</h1></div>
-              <div class="Editing_images">
-                <div class="Editing_image"></div>
-                <label for="choice_btn">
-                  <p>選択</p>
-                  <input id="choice_btn" type="file">
-                </label>
-              </div>
                 <dl class="Editing_form">
                   <dt>ユーザー名</dt>
                   <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>
@@ -160,7 +154,7 @@
   <!--アカウント削除完了画面終わり -->
 
   <!---------- コンテンツ開始 ---------->
-    <div id="mypage">
+    <div id="mypage"></div>
       <div class="mypage">
         <div class="background"></div>
         <div class="infomation_background"></div>
@@ -168,6 +162,7 @@
             <div class="user_information">
               <div class="mypage_icon"></div>
               <div class="mypage_name"><h1></h1></div>
+              <div class="my_introduction"></div>
               <div class="btn_mypage">
                 <input class="works_btn" type="button" onclick="location.href='Contribution.html'" value="作品投稿">
                 <input class="Editing_btn" type="button" value="プロフィール編集">
@@ -254,10 +249,10 @@
                 </div>
               </div>
             <!--ライトボックス中身 -->
-            </div>
+
           </div>
-      </div>
-    </div>
+
+
   <!---------- コンテンツ開始 ---------->
 
   <!---------- フッター開始 ---------->
@@ -269,8 +264,9 @@
         <h2>©social_sharing_×××××××××××</h2>
     	</div>
     </footer>
+    </div>
   <!---------- フッター終了 ---------->
-
   <script type="text/javascript" src="../JS/mypage.js"></script>
+  </div>
   </body>
   </html>

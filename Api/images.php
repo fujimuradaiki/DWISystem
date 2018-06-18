@@ -1,9 +1,10 @@
 <?php
 require_once('connectdb.php');
 header('Content-type: application/json');
+date_default_timezone_set('Asia/Tokyo');
 
 class images{
-    public function controller($postAction,$postData){
+    public function controller($postAction,$postData,$postFiles = null){
 
         switch ($postAction){
             case "imageList":
@@ -16,7 +17,7 @@ class images{
                 $this->insertReview($postData);
                 break;
             case "insertImage":
-                $this->insertImage($postData);
+                $this->insertImage($postData,$postFiles);
                 break;
             case"delete":
                 $this->delete($postData);
@@ -74,6 +75,8 @@ class images{
                 }else{
                     $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
+            }else{
+                $addSortSql .= " ORDER BY image_insert_at ASC ";
             }
         }
         //sqlの発行
@@ -315,70 +318,110 @@ class images{
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////
     //画像保存
-    public function insertImage($postData ){
+    public function insertImage($postData,$postFiles){
         $pdo = new connectdb();
 
-        //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
-        $userName = $postData[0][0];
-        $imageUserId = $postData[0][1];
-        $images = count($postData[1]);
-        $insert_at=  date("Y/m/d H:i:s");//日時
-        $str = "insertError";
-        /////画像の最大IDに＋１する DBに登録するimages_idも決める
-        $strdata = array();
-        $strdata[] = "送信画像数".$images;
-        //insertSQL文
-        $insertSql = "insert
+        $postArray = array();
+        $endPostArray = array();
+        $insert_at = date("Y/m/d H:i:s");
+        $categoryArray = array();
+        $titleArray = array();
+         for($count = 0; $count<count($postData);$count++){
+             if(!(empty($postData[$count]))){
+               $postArray[] = $postData[$count];
+             }
+         }
+         //送信画像数
+         $images = 0;
+         for($count = 0; $count<count($postFiles['name']);$count++){
+             if($postFiles['name'][$count] != null){
+                 $images++;
+             }
+         }
+
+         $categoryindex = 2;
+         $titleindex= 2 + $images ;
+         for($count = 0; $count<$images;$count++){
+             $categoryArray[] = $postArray[$categoryindex];
+             $titleArray[] =$postArray[$titleindex];
+             $categoryindex++;
+             $titleindex++;
+         }
+//         //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
+         $userName = $postArray[0];
+          //echo json_encode($userName);
+         $imageUserId = $postArray[1];
+//         $insert_at=  date("Y/m/d H:i:s");//日時
+         $str = "insertError";
+//         /////画像の最大IDに＋１する DBに登録するimages_idも決める
+         $strdata = array();
+       //  $strdata = "送信画像数".$images;
+//         //insertSQL文
+
+
+          for($i = 0;$i<$images;$i++){
+              $insertSql = "insert
                       into
                       images(
                       image_user_id,
                       image_category_id,
                       image_insert_at,
-                      image_title
+                      image_title,
+                      image_open
                       )VALUES("
-                      .$imageUserId.","
-                      ."?".","
-                      ."'$insert_at'".","
-                      ."?"
-                      .")";
-        //echo $insertSql;
-        for($i = 0;$i<$images;$i++){
-            if($postData[1][$i] != ""){
+                  .$imageUserId.","
+                  .$categoryArray[$i].","
+                  ."'$insert_at'".","
+                  ."'$titleArray[$i]'".","
+                  .true
+                 .")";
 
-                //imageテーブルに画像情報を追加
-                $stmt=$pdo->dbo->prepare($insertSql);
-                $resultFlg = $stmt->execute(array($postData[0][2][$i],$postData[0][3][$i]));
-                $id = $pdo->dbo->lastInsertId();
-                $this->moviImage($userName,$postData[1][$i],$id);
 
-            }else{
-                $ $strdata[]="送信された画像がありません";
-            }
-            //追加できたか titleと文字列
-            if($resultFlg == true){
-                $strdata[] = $str =$postData[0][3][$i]."アップロード成功";
-            }else{
-                $strdata[] = $str = $postData[0][3][$i]."新規追加に失敗";
-            }
-        }
-        echo json_encode($strdata);
+ //              //imageテーブルに画像情報を追加
+               $stmt=$pdo->dbo->prepare($insertSql);
+               $resultFlg = $stmt->execute();
+               $resultFlg = $stmt->execute(array($categoryArray[$i],$titleArray[$i]));
+               $id = $pdo->dbo->lastInsertId();
+               $this->moviImage($userName,$postFiles,$id);
+              // $resultFlg = true;
+// //             //追加できたか titleと文字列
+             if($resultFlg == true){
+                 $str =$titleArray[$i]."アップロード成功";
+                 $strdata[] =$str;
+             }else{
+                 $str = $titleArray[$i]."新規追加に失敗";
+                 $strdata[] = $str;
+              }
+           }
+          echo json_encode($resultFlg);
+
     }
 //////////////////////////////////////////////////////////////////////////////////
 //画像保存処理
-    public  function moviImage($userName,$encode,$imageName){
+    public  function moviImage($userName,$imageData,$imageName,$imageindex){
         $directoryName = str_replace("'", "", $userName);
-        $img = $encode;
-        $type = str_replace('data:image/', '', $encode);
-        $type = substr($type, 0, strpos($type,";"));
-        $img = str_replace('data:image/'.$type.';base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $fileData = base64_decode($img);
+        $type = explode("/", $imageData['type'][$imageindex]);
         //拡張子の指定
-        $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type;
+        $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type[1];
+        move_uploaded_file($imageData['tmp_name'][$imageindex], $fileName);
 
-        //echo $fileName;
-        file_put_contents($fileName, $fileData);
+
     }
+
+//     public  function moviImage($userName,$encode,$imageName){
+//         $directoryName = str_replace("'", "", $userName);
+//         $img = $encode;
+//         $type = str_replace('data:image/', '', $encode);
+//         $type = substr($type, 0, strpos($type,";"));
+//         $img = str_replace('data:image/'.$type.';base64,', '', $img);
+//         $img = str_replace(' ', '+', $img);
+//         $fileData = base64_decode($img);
+//         //拡張子の指定
+//         $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type;
+
+//         //echo $fileName;
+//         file_put_contents($fileName, $fileData);
+//     }
 ////////////////////////////////////////////////////////////////////////////////////
 //画像削除
     public function delete($postData){
