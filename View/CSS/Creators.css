@@ -1938,13 +1938,14 @@ label p:hover {
 
 /*検索フォーム*/
 dl.kensaku{
-  display: none;
-	width: 625px;
+/*  display: none;*/
+	width: 320px;
 	position:relative;
-	margin: 20px;
+	margin: 50px auto 30px;
 }
 dl.kensaku dt{
-	margin-right:367px;
+/*	margin-right:367px;*/
+  width: 250px;
 	padding:3px;
 	background-color:#fff;
 	border:1px solid #aaa;
@@ -1959,11 +1960,11 @@ dl.kensaku dt input{
 dl.kensaku dd{
 	position:absolute;
 	top:0;
-	right:43%;
+	right:0%;
 }
 dl.kensaku dd button{
 	display:block;
-	width:100px;
+	width:64px;
 	height:34px;
 	color:#fff;
 	line-height:32px;
@@ -2030,19 +2031,21 @@ dl.kensaku dd button{
 /*-------------------フッター開始--------------------*/
 footer{
   width: 100%;
-  height: 80px;
-  position: fixed;
-  bottom: 0;
+  height: 200px;
+  position: absolute;
+  bottom: -260px;
   background: #000;
 }
 
 footer h2{
+  margin-top: 52px;
+  text-align: center;
   color: #fff;
 }
 
 .footer_logo{
   text-align: center;
-  padding-top: 25px;
+  padding-top: 70px;
 }
 /*-------------------フッター終了--------------------*/
 

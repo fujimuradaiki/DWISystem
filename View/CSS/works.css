@@ -2572,6 +2572,7 @@ font-size: 15px;
 /*ライトボックス*/
 .lightbox_waku{
 /*  width:98%;*/
+  width: 340px;
   margin: 0 auto;
   margin-top: 195px;
   position: relative;
