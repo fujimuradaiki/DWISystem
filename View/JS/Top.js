@@ -138,7 +138,7 @@ $('.POPULARTY_btn').on("click",function(){
 
 //////////////////////////////////
 */
-$('#all').on("click",function(){
+$('#all').on("click", function(){
 
 	if($("#all").prop("checked")){
 		$("#chara").prop("checked",true);
@@ -517,6 +517,9 @@ $(document).on("click",".confirmation_btn",function(){
 	if(pass1 == "" || pass2 == ""){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・パスワードが未入力です。\n";
+	}else if(pass1.length < 8 || pass2.length < 8){
+		errorFlag = 1;
+		errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
 	}else{
 		if(pass1 == pass2){
 			if(!pass1.match(/^[a-zA-Z0-9]+$/)){
@@ -644,9 +647,6 @@ $("#choice_btn").on("change",function(e){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
-	$(window).ready(function(){
-			$('#Zoomer').zoomer();
-	});
   $('body').addClass("overflow");
   //$('.zoomer_holder').append($('<img>').attr({'class':'zoomer-image','src':'../Images/05.png'}));
 
@@ -680,16 +680,26 @@ $(document).on("click",".lightbox_hover",function(){
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
 
+
 	//5段階評価に使う星画像の場所を明示
 	$.fn.raty.defaults.path = "../Lib/images";
 
 	//画像詳細を表示////////////////////
-	var $div = $('.lightbox_left_image');
+	//var $div = $('.zoomer_wrapper');
+	//alert(JSON.stringify($div));
+	var $div = $('.lightbox_image');
 	$div.empty();
-	$div.append(
-			$("<img class='view_image'>")
+	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
+	//alert('ddd');
+	$('.zoomer_wrapper').append(
+			$("<img>")
 			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
 	);
+	$(window).ready(function(){
+		$('#Zoomer').zoomer();
+    });
+	/*$div.append($('<img>').$('.view_image').attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png"));*/
+
 	var w,h;
 	if($imageWidth >= $imageHeight){
 		w = 500;

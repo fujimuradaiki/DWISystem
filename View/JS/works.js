@@ -521,6 +521,9 @@ $(document).on("click",".confirmation_btn",function(){
 	if(pass1 == "" || pass2 == ""){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・パスワードが未入力です。\n";
+	}else if(pass1.length < 8 || pass2.length < 8){
+		errorFlag = 1;
+		errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
 	}else{
 		if(pass1 == pass2){
 			if(!pass1.match(/^[a-zA-Z0-9]+$/)){
