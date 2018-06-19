@@ -353,12 +353,15 @@ $("#choice_btn").on("change",function(e){
     		$preview.append($('<img>').attr({
     			src: e.target.result,
     			width: "200px",
+    			height : "200px",
     			class: "preview",
     			title: file.name,
     			name:"upload_file"
     		}));
     	};
     })(file);
+
+    // 画像のトリミング
 
     reader.readAsDataURL(file);
 });

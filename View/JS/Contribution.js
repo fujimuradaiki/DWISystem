@@ -92,6 +92,7 @@ $("#choice_btn1").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img1",
+	    			name:'upload_file',
 	    		}));
 	    	};
 	    })(file);
@@ -115,6 +116,13 @@ $("#choice_btn1").on("change",function(e){
 
 // トリミング開始ボタン(一番左の画像)
 $('#trimming_btn1').on('click', function(){
+    var imageId = $('.toukou_images1').children('img').attr('id');
+	alert(imageId);
+	if(imageId != 'img1'){
+		alert('No');
+		return;
+	}
+
 	$('.trimming_view').fadeIn();
 	$('body').addClass("overflow");
 	$('.trimming_image').append($('<img>').attr({'src':$('#img1').attr('src'), 'id':'trimming_img1'}));
@@ -158,7 +166,7 @@ $('.trimming_view_btn').on('click', function(){
 	$('#trimming_view_img1').remove();
 	$('#trimming_img1').remove();
 	$('.trimming_image').empty();
-	$('.toukou_images1').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img1' , 'width':200,'height':200}));
+	$('.toukou_images1').append($('<img>').attr({'src':dataURI, 'title':$('#img1').attr('title'), 'name':'trimming_file', 'id':'trimming_view_img1' , 'width':200,'height':200}));
 	$('#canvasimg1').remove();
 	document.getElementById('img1').style.display = "none";
 
@@ -184,6 +192,7 @@ $("#choice_btn2").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img2",
+	    			name:'upload_file',
 	    		}));
 	    	};
 	    })(file);
@@ -193,6 +202,10 @@ $("#choice_btn2").on("change",function(e){
 
 //トリミング開始ボタン(中央の画像)
 $('#trimming_btn2').on('click', function(){
+    var imageId = $('.toukou_images2').children('img').attr('id');
+	if(imageId != 'img2')
+		return;
+
 	$('.trimming_view').fadeIn();
 	$('body').addClass("overflow");
 	$('.trimming_image').append($('<img>').attr({'src':$('#img2').attr('src'), 'id':'trimming_img2'}));
@@ -236,7 +249,7 @@ $('.trimming_view_btn').on('click', function(){
 	$('#trimming_view_img2').remove();
 	$('#trimming_img2').remove();
 	$('.trimming_image').empty();
-	$('.toukou_images2').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img2' , 'width':200,'height':200}));
+	$('.toukou_images2').append($('<img>').attr({'src':dataURI, 'title':$('#img2').attr('title'), 'name':'trimming_file', 'id':'trimming_view_img2' , 'width':200,'height':200}));
 	$('#canvasimg2').remove();
 	document.getElementById('img2').style.display = "none";
 
@@ -262,6 +275,7 @@ $("#choice_btn3").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img3",
+	    			name:'upload_file',
 	    		}));
 	    	};
 	    })(file);
@@ -271,6 +285,10 @@ $("#choice_btn3").on("change",function(e){
 
 //トリミング開始ボタン(右の画像)
 $('#trimming_btn3').on('click', function(){
+    var imageId = $('.toukou_images3').children('img').attr('id');
+	if(imageId != 'img3')
+		return;
+
 	$('.trimming_view').fadeIn();
 	$('body').addClass("overflow");
 	$('.trimming_image').append($('<img>').attr({'src':$('#img3').attr('src'), 'id':'trimming_img3'}));
@@ -314,7 +332,7 @@ $('.trimming_view_btn').on('click', function(){
 	$('#trimming_view_img3').remove();
 	$('#trimming_img3').remove();
 	$('.trimming_image').empty();
-	$('.toukou_images3').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img3' , 'width':200,'height':200}));
+	$('.toukou_images3').append($('<img>').attr({'src':dataURI, 'title':$('#img3').attr('title'), 'name':'trimming_file', 'id':'trimming_view_img3' , 'width':200,'height':200}));
 	$('#canvasimg3').remove();
 	document.getElementById('img3').style.display = "none";
 
@@ -329,14 +347,39 @@ $(".toukou_btn").on("click",function(){
 	var userName = sessionStorage.getItem('userName');
 	var categoryArray = new Array($('#Genre1').val(), $('#Genre2').val(), $('#Genre3').val());
 	var titleArray = new Array($('.toukou_title1').val(), $('.toukou_title2').val(),$('.toukou_title3').val());
-	var data  = [ userName, userId, categoryArray, titleArray ];
+	var trimming_view_img1 = $('#trimming_view_img1').attr('src');
+	var trimming_view_img2 = $('#trimming_view_img2').attr('src');
+	var trimming_view_img3 = $('#trimming_view_img3').attr('src');
+
+
+	var trimmingArray =[];
+	var trimmingIndex = 0;
+
+	for(var count = 0; count < 3;count++){
+		if( count == 0 && trimming_view_img1 === undefined){
+			trimmingArray[count] = "";
+		}else if(count == 0){
+			trimmingArray[count] = trimming_view_img1;
+		}
+		if( count == 1 && trimming_view_img2 === undefined){
+			trimmingArray[count] = "";
+		}else if(count == 1){
+			trimmingArray[count] = trimming_view_img2;
+		}
+		if( count == 2 && trimming_view_img3 === undefined){
+			trimmingArray[count] = "";
+		}else if(count == 2){
+			trimmingArray[count] = trimming_view_img3;
+		}
+	}
+	var data  = [ userName, userId, categoryArray, titleArray, trimmingArray];
 
 	var param = new FormData($('[name="contribution"]').get(0));
 	param.append('model'  , 'images');
 	param.append('action' , 'insertImage');
 	param.append('data'   ,  data)
 	//console.log(JSON.stringify(param));
-	console.log(param);
+	console.log(trimmingArray);
 
 	//ajax通信
 	$.ajax({

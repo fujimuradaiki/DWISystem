@@ -648,7 +648,7 @@ $("#choice_btn").on("change",function(e){
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
-  //$('.zoomer_holder').append($('<img>').attr({'class':'zoomer-image','src':'../Images/05.png'}));
+
 
   var $image = $(this).prev('img');
   var $imageId = $image.attr('id');
@@ -685,12 +685,9 @@ $(document).on("click",".lightbox_hover",function(){
 	$.fn.raty.defaults.path = "../Lib/images";
 
 	//画像詳細を表示////////////////////
-	//var $div = $('.zoomer_wrapper');
-	//alert(JSON.stringify($div));
 	var $div = $('.lightbox_image');
 	$div.empty();
 	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
-	//alert('ddd');
 	$('.zoomer_wrapper').append(
 			$("<img>")
 			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
@@ -708,6 +705,7 @@ $(document).on("click",".lightbox_hover",function(){
 		w = (600 / $imageHeight) * $imageWidth;
 		h = 600;
 	}
+
 	$('.lightbox_left_image').css('background','transparent')
 	$('.view_image').css('width',w);
 	$('.view_image').css('height',h);
@@ -745,8 +743,12 @@ $(document).on("click",".lightbox_hover",function(){
 		data :{
 			imageTitle : $imageTitle
 		}
-	})
+	});
 
+	$('.creator_icon').append($('<img>').attr("src","../../User/"+ $creatorName +"/icon.png"));
+	$('.creator_name').append($('<h1>'+data[0]['usersData'][0]['creatorName']+'</h1>'));       // アカウント名
+	$('.creator_coment').append($('<pre>'+data[0]['usersData'][0]['Introduction']+'</pre>'));  // 自己紹介
+	$('.work_coment').append($('<pre>'+data[0]['usersData'][0]['imageSummary']+'</pre>'));
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -784,7 +786,7 @@ $(document).on("click",".lightbox_hover",function(){
 				("<br>"),
 				$("<img id='commenter_icon"+i+"'>")
 					.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
-				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"&emsp;&emsp;"+data[0]['commentData'][i]['commentInsertAt']+"</p1>"),
 				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
 				("<br><br><br>")
