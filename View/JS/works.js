@@ -1,24 +1,24 @@
 $('.slider-wrapper').slick({
   adaptiveHeight: false,
-  // ©“®Ä¶‚·‚é‚© [‰Šú’l:false]
+  // è‡ªå‹•å†ç”Ÿã™ã‚‹ã‹ [åˆæœŸå€¤:false]
   autoplay: true
-  // ©“®Ä¶‚ÅØ‚è‘Ö‚¦‚·‚éŠÔ(ƒ~ƒŠ•b) [‰Šú’l:3000]
+  // è‡ªå‹•å†ç”Ÿã§åˆ‡ã‚Šæ›¿ãˆã™ã‚‹æ™‚é–“(ãƒŸãƒªç§’) [åˆæœŸå€¤:3000]
 });
 
 /*
 *************************************
 
-*–¼‘O : Top.js
+*åå‰ : Top.js
 
-*ŠT—v : Topƒy[ƒW‚ÌJavaScriptƒtƒ@ƒCƒ‹
+*æ¦‚è¦ : Topãƒšãƒ¼ã‚¸ã®JavaScriptãƒ•ã‚¡ã‚¤ãƒ«
 
-*ì¬“ú : 2018/05/09
+*ä½œæˆæ—¥ : 2018/05/09
 
-*ì¬Ò : “¡‘º ‘å‹P
+*ä½œæˆè€… : è—¤æ‘ å¤§è¼
 
-*ÅIXV“ú : 2018/05/23
+*æœ€çµ‚æ›´æ–°æ—¥ : 2018/05/23
 
-*ÅIXVÒ : “¡‘º ‘å‹P
+*æœ€çµ‚æ›´æ–°è€… : è—¤æ‘ å¤§è¼
 
 *************************************
 */
@@ -28,9 +28,9 @@ $('.slider-wrapper').slick({
 /*
 ///////////////////////////////////
 
- *ŠÖ”–¼ ready
+ *é–¢æ•°å ready
 
- *ŠT—v ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+ *æ¦‚è¦ ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 //////////////////////////////////
 */
@@ -39,10 +39,10 @@ $('.slider-wrapper').slick({
 
 $(document).ready(function(){
 	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
-	//‰æ‘œ•\¦Às
+	//ç”»åƒè¡¨ç¤ºå®Ÿè¡Œ
 	runSearch();
 
-	//ƒƒOƒCƒ“’†‚©‚Ç‚¤‚©‚ğæ“¾
+	//ãƒ­ã‚°ã‚¤ãƒ³ä¸­ã‹ã©ã†ã‹ã‚’å–å¾—
 	if(sessionStorage.getItem('userId') == null){
 		$('.login_btn').css("display","inline-block");
 		$('.new_btn').css("display","inline-block");
@@ -77,9 +77,9 @@ $(document).ready(function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒ\[ƒgƒ{ƒ^ƒ“(V‚µ‚¢‡)‰Ÿ‰º
+*é–¢æ•° ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³(æ–°ã—ã„é †)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒ\[ƒgƒ{ƒ^ƒ“‚ÌF•ÏX
+*æ¦‚è¦ ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®è‰²å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -97,9 +97,9 @@ $('.NEW_btn').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒ\[ƒgƒ{ƒ^ƒ“(ŒÃ‚¢‡)‰Ÿ‰º
+*é–¢æ•° ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³(å¤ã„é †)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒ\[ƒgƒ{ƒ^ƒ“‚ÌF•ÏX
+*æ¦‚è¦ ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®è‰²å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -116,9 +116,9 @@ $('.OLD_btn').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒ\[ƒgƒ{ƒ^ƒ“(l‹C‡)‰Ÿ‰º
+*é–¢æ•° ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³(äººæ°—é †)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒ\[ƒgƒ{ƒ^ƒ“‚ÌF•ÏX
+*æ¦‚è¦ ã‚½ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®è‰²å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -136,9 +136,9 @@ $('.POPULARTY_btn').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX(‘S‚Ä)‰Ÿ‰º
+*é–¢æ•° ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹(å…¨ã¦)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô•ÏX
+*æ¦‚è¦ ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -161,9 +161,9 @@ $('#all').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX(ƒLƒƒƒ‰ƒNƒ^[)‰Ÿ‰º
+*é–¢æ•° ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹(ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô•ÏX
+*æ¦‚è¦ ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -182,9 +182,9 @@ $('#chara').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX(”wŒi)‰Ÿ‰º
+*é–¢æ•° ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹(èƒŒæ™¯)æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô•ÏX
+*æ¦‚è¦ ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -203,9 +203,9 @@ $('#backGround').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX(ƒAƒCƒeƒ€)‰Ÿ‰º
+*é–¢æ•° ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹(ã‚¢ã‚¤ãƒ†ãƒ )æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒtƒBƒ‹ƒ^ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô•ÏX
+*æ¦‚è¦ ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹å¤‰æ›´
 
 //////////////////////////////////
 */
@@ -224,11 +224,11 @@ $('#item').on("click",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ”–¼ getForm
+*é–¢æ•°å getForm
 
-*ŠT—v ƒtƒH[ƒ€î•ñæ“¾
+*æ¦‚è¦ ãƒ•ã‚©ãƒ¼ãƒ æƒ…å ±å–å¾—
 
-*–ß‚è’l ƒtƒH[ƒ€î•ñ‚ğŠi”[‚µ‚½˜A‘z”z—ñ
+*æˆ»ã‚Šå€¤ ãƒ•ã‚©ãƒ¼ãƒ æƒ…å ±ã‚’æ ¼ç´ã—ãŸé€£æƒ³é…åˆ—
 
 //////////////////////////////////
 */
@@ -248,10 +248,10 @@ function getForm(){
 	}
 
 	var $category1 = $("#chara").prop("checked");
-	var $category2 = $("#backGround").prop("checked");				  //ƒ`ƒFƒbƒN‚Ìó‘Ô‚ğæ“¾‚µATrue or false‚ğ“ü‚ê‚é
+	var $category2 = $("#backGround").prop("checked");				  //ãƒã‚§ãƒƒã‚¯ã®çŠ¶æ…‹ã‚’å–å¾—ã—ã€True or falseã‚’å…¥ã‚Œã‚‹
 	var $category3 = $("#item").prop("checked");
 
-	//æ“¾‚µ‚½ƒtƒH[ƒ€î•ñ‚ğ˜A‘z”z—ñ‚ÉŠi”[
+	//å–å¾—ã—ãŸãƒ•ã‚©ãƒ¼ãƒ æƒ…å ±ã‚’é€£æƒ³é…åˆ—ã«æ ¼ç´
 	var param = {
 		0:{name:'sortType',value:sortType},
 		1:{category1:{name:'charactor',value:$category1},
@@ -268,11 +268,11 @@ function getForm(){
 /*
 ///////////////////////////////////
 
-*ŠÖ”–¼ runSearch
+*é–¢æ•°å runSearch
 
-*ŠT—v ƒtƒH[ƒ€î•ñ‚ğPHP‚É“n‚µ‚Ä
-      PHP‚©‚ç•Ô‚Á‚Ä‚«‚½î•ñ‚ğ‚à‚Æ‚É
-      ‰æ‘œ•\¦
+*æ¦‚è¦ ãƒ•ã‚©ãƒ¼ãƒ æƒ…å ±ã‚’PHPã«æ¸¡ã—ã¦
+      PHPã‹ã‚‰è¿”ã£ã¦ããŸæƒ…å ±ã‚’ã‚‚ã¨ã«
+      ç”»åƒè¡¨ç¤º
 
 //////////////////////////////////
 */
@@ -280,22 +280,22 @@ function runSearch(){
 
 	var data = {'model':'images','action':'imageList','data':getForm()};
 
-	/*ƒfƒoƒbƒO—p•\¦//////
+	/*ãƒ‡ãƒãƒƒã‚°ç”¨è¡¨ç¤º//////
 	*/console.log(data);/*
 	////////////////////*/
 
-	//ajax’ÊM
+	//ajaxé€šä¿¡
 	$.ajax({
 		url:"../../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
-	//ajax’ÊM¬Œ÷
+	//ajaxé€šä¿¡æˆåŠŸæ™‚
 	}).done(function(data){
 		console.log(data);
 		var $div = $('.lightbox_waku');
 
-		//•\¦’†‚Ì‰æ‘œ‚ğíœ
+		//è¡¨ç¤ºä¸­ã®ç”»åƒã‚’å‰Šé™¤
 		$div.empty();
 
 		for(var i = 0;i < data.length;i++){
@@ -307,7 +307,7 @@ function runSearch(){
 			var title = data[i].Title;
 			var insert_at = data[i].Insert_at;
 
-			//‰æ‘œ•\¦
+			//ç”»åƒè¡¨ç¤º
 			$div.append(
 				("<div class='lightbox'id='"+ imageId + "Div'></div>")
 			);
@@ -349,26 +349,16 @@ function runSearch(){
 			$iconImage.css('border-radius','50%');
 
 
-      if (window.matchMedia( "(max-width: 768px)" ).matches) {
-      /* ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ª 768pxˆÈ‰º‚Ìê‡‚ÌƒR[ƒh‚ğ‚±‚±‚É */
-      //  ‰¡‚Ì’·‚³‚ğæ“¾
-      var widthBox = $(".lightbox").width();
-      console.log(widthBox);
-      $(".lightbox_waku .lightbox").css("height",widthBox);
-      
-      } else {
-      /* ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ª 768pxˆÈã‚Ìê‡‚ÌƒR[ƒh‚ğ‚±‚±‚É */
-      //ƒgƒŠƒ~ƒ“ƒO
+			//ãƒˆãƒªãƒŸãƒ³ã‚°
 			trimmingImage($("#" + imageId),250);
-      }
 		}
 
-		//float‰ğœ—pdiv
+		//floatè§£é™¤ç”¨div
 		$div.append(
 			("<div class='cle'></div>")
 		);
 
-	//ajax’ÊM¸”s
+	//ajaxé€šä¿¡å¤±æ•—æ™‚
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
@@ -377,30 +367,30 @@ function runSearch(){
 /*
 ///////////////////////////////////
 
-*ŠÖ”–¼ trimmingImage
+*é–¢æ•°å trimmingImage
 
-*ŠT—v “n‚³‚ê‚½‰æ‘œ‚ğƒgƒŠƒ~ƒ“ƒO‚·‚é
+*æ¦‚è¦ æ¸¡ã•ã‚ŒãŸç”»åƒã‚’ãƒˆãƒªãƒŸãƒ³ã‚°ã™ã‚‹
 
-*ˆø” img  : ‰æ‘œ‚ÌHTMLã‚Å‚ÌêŠ
-	  size : ƒgƒŠƒ~ƒ“ƒO‚·‚éƒTƒCƒY
+*å¼•æ•° img  : ç”»åƒã®HTMLä¸Šã§ã®å ´æ‰€
+	  size : ãƒˆãƒªãƒŸãƒ³ã‚°ã™ã‚‹ã‚µã‚¤ã‚º
 
 //////////////////////////////////
 */
 function trimmingImage(img,size){
-	//ƒgƒŠƒ~ƒ“ƒOˆ—
+	//ãƒˆãƒªãƒŸãƒ³ã‚°å‡¦ç†
 	var iw,ih;
 
-	var w = img.width();	//‰¡•æ“¾
-	var h = img.height();	//c•æ“¾
+	var w = img.width();	//æ¨ªå¹…å–å¾—
+	var h = img.height();	//ç¸¦å¹…å–å¾—
 
-	//‰¡•‚Æc•‚ª“¯‚¶‚©A‰¡•‚Ì•û‚ª’·‚¢ê‡
+	//æ¨ªå¹…ã¨ç¸¦å¹…ãŒåŒã˜ã‹ã€æ¨ªå¹…ã®æ–¹ãŒé•·ã„å ´åˆ
 	if(w >= h){
 		iw = (size / h * w - size) / 2;
 		img.height(size);
 		img.css("top",0);
 		img.css("left","-" + iw + "px");
 	}
-	//c•‚Ì•û‚ª’·‚¢ê‡
+	//ç¸¦å¹…ã®æ–¹ãŒé•·ã„å ´åˆ
 	else{
 		ih = (size / w * h - size) / 2;
 		img.width(size);
@@ -413,9 +403,9 @@ function trimmingImage(img,size){
 /*
 ///////////////////////////////////
 
-*ŠÖ” ‰æ‘œÚ×ƒtƒH[ƒ€‚Ì•Â‚¶‚éƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½
+*é–¢æ•° ç”»åƒè©³ç´°ãƒ•ã‚©ãƒ¼ãƒ ã®é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚
 
-*ŠT—v Ä“xŒŸõ‚ğ‚©‚¯‚é
+*æ¦‚è¦ å†åº¦æ¤œç´¢ã‚’ã‹ã‘ã‚‹
 
 //////////////////////////////////
 */
@@ -427,9 +417,9 @@ $(document).on("click",".close_btn",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” insertƒtƒH[ƒ€‚ÌƒƒOƒCƒ“ƒ{ƒ^ƒ“‰Ÿ‰º
+*é–¢æ•° insertãƒ•ã‚©ãƒ¼ãƒ ã®ãƒ­ã‚°ã‚¤ãƒ³ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒoƒŠƒf[ƒVƒ‡ƒ“‚ğs‚¢A–â‘è‚È‚¯‚ê‚ÎƒƒOƒCƒ“ó‘Ô‚É
+*æ¦‚è¦ ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’è¡Œã„ã€å•é¡Œãªã‘ã‚Œã°ãƒ­ã‚°ã‚¤ãƒ³çŠ¶æ…‹ã«
 
 //////////////////////////////////
 */
@@ -442,24 +432,24 @@ $(document).on("click",".login_btn3",function(){
 	param[1] = pass;
 	var data = {'model':'users','action':'login','data':param};
 
-	//ajax’ÊM
+	//ajaxé€šä¿¡
 	$.ajax({
 		url:"../../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data
-	//ajax’ÊM¬Œ÷
+	//ajaxé€šä¿¡æˆåŠŸæ™‚
 	}).done(function(data){
 
 		if(data != "error"){
-	//	alert(data['user_name']+"‚ÅƒƒOƒCƒ“‚µ‚Ü‚µ‚½");
+	//	alert(data['user_name']+"ã§ãƒ­ã‚°ã‚¤ãƒ³ã—ã¾ã—ãŸ");
 	$('.login_Comp_view').fadeIn();
 	$('body').removeClass("overflow");
-		//ƒ†[ƒU[id‚Æƒ†[ƒU[–¼‚ğƒXƒgƒŒ[ƒW‚É•Û‘¶
+		//ãƒ¦ãƒ¼ã‚¶ãƒ¼idã¨ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã«ä¿å­˜
 		sessionStorage.setItem('userId',data['userId']);
 		sessionStorage.setItem('userName',data['user_name']);
 
-		//ƒAƒCƒRƒ“‚ğ•\¦
+		//ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¡¨ç¤º
 		$('.login_btn').css("display","none");
 		$('.new_btn').css("display","none");
 		$('.login_user_icon').css("display","block");
@@ -477,9 +467,9 @@ $(document).on("click",".login_btn3",function(){
 		$('.login_view').fadeOut();
 		$('body').removeClass("overflow");
 		}else{
-			alert("ƒƒOƒCƒ“‚É¸”s‚µ‚Ü‚µ‚½");
+			alert("ãƒ­ã‚°ã‚¤ãƒ³ã«å¤±æ•—ã—ã¾ã—ãŸ");
 		}
-	//ajax’ÊM¸”s
+	//ajaxé€šä¿¡å¤±æ•—æ™‚
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert(XMLHttpRequest['responseText']);
 	});
@@ -489,9 +479,9 @@ $(document).on("click",".login_btn3",function(){
 /*
 ///////////////////////////////////
 
-*ŠÖ” V‹K“o˜^ƒtƒH[ƒ€‚ÌŠm”Fƒ{ƒ^ƒ“‰Ÿ‰º
+*é–¢æ•° æ–°è¦ç™»éŒ²ãƒ•ã‚©ãƒ¼ãƒ ã®ç¢ºèªãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
 
-*ŠT—v ƒoƒŠƒf[ƒVƒ‡ƒ“‚ğs‚¢A–â‘è‚È‚¯‚ê‚ÎV‹K“o˜^
+*æ¦‚è¦ ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’è¡Œã„ã€å•é¡Œãªã‘ã‚Œã°æ–°è¦ç™»éŒ²
 
 //////////////////////////////////
 */
@@ -503,50 +493,46 @@ $(document).on("click",".confirmation_btn",function(){
 	var pass2 = $('#sineUp_password2').val();
 
 	var errorFlag = 0;
-	var errorMsg = "“ü—Í“à—e‚É•s”õ‚ª‚ ‚è‚Ü‚·B\n\n";
+	var errorMsg = "å…¥åŠ›å†…å®¹ã«ä¸å‚™ãŒã‚ã‚Šã¾ã™ã€‚\n\n";
 
-	//ƒ†[ƒU[–¼ƒoƒŠƒf[ƒVƒ‡ƒ“
+	//ãƒ¦ãƒ¼ã‚¶ãƒ¼åãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
 	if(name == ""){
 		errorFlag = 1;
-		errorMsg = errorMsg + "Eƒ†[ƒU[–¼‚ª–¢“ü—Í‚Å‚·B\n";
+		errorMsg = errorMsg + "ãƒ»ãƒ¦ãƒ¼ã‚¶ãƒ¼åãŒæœªå…¥åŠ›ã§ã™ã€‚\n";
 	}else{
-		if(!name.match(/^[‚Ÿ-‚ñ[@ƒ@-ƒƒƒ’ƒ“[ˆê-êa-zA-Z0-9\r\n\t]*$/)){
+		if(!name.match(/^[ã-ã‚“ãƒ¼ã€€ã‚¡-ãƒ­ãƒ¯ãƒ²ãƒ³ãƒ¼ä¸€-é¾ a-zA-Z0-9\r\n\t]*$/)){
 			errorFlag = 1;
-			errorMsg = errorMsg + "Eƒ†[ƒU[–¼‚É‹L†‚âƒXƒy[ƒX‚Íg‚¦‚Ü‚¹‚ñB\n";
+			errorMsg = errorMsg + "ãƒ»ãƒ¦ãƒ¼ã‚¶ãƒ¼åã«è¨˜å·ã‚„ã‚¹ãƒšãƒ¼ã‚¹ã¯ä½¿ãˆã¾ã›ã‚“ã€‚\n";
 		}
 	}
 
-	//ƒ[ƒ‹ƒAƒhƒŒƒXƒoƒŠƒf[ƒVƒ‡ƒ“
+	//ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
 	if(mail == ""){
 		errorFlag = 1;
-		errorMsg = errorMsg + "Eƒ[ƒ‹ƒAƒhƒŒƒX‚ª–¢“ü—Í‚Å‚·B\n";
+		errorMsg = errorMsg + "ãƒ»ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒæœªå…¥åŠ›ã§ã™ã€‚\n";
 	}else{
 		if(!mail.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
 			errorFlag = 1;
-			errorMsg = errorMsg + "Eƒ[ƒ‹ƒAƒhƒŒƒX‚ÌŒ`®‚ªŠÔˆá‚Á‚Ä‚¢‚Ü‚·B\n";
+			errorMsg = errorMsg + "ãƒ»ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã®å½¢å¼ãŒé–“é•ã£ã¦ã„ã¾ã™ã€‚\n";
 		}
 	}
 
-	//ƒpƒXƒ[ƒhƒoƒŠƒf[ƒVƒ‡ƒ“
+	//ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
 	if(pass1 == "" || pass2 == ""){
 		errorFlag = 1;
-<<<<<<< HEAD
-		errorMsg = errorMsg + "EƒpƒXƒ[ƒh‚ª–¢“ü—Í‚Å‚·B\n";
-=======
 		errorMsg = errorMsg + "ãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒæœªå…¥åŠ›ã§ã™ã€‚\n";
 	}else if(pass1.length < 8 || pass2.length < 8){
 		errorFlag = 1;
 		errorMsg = errorMsg + "ãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯8æ–‡å­—ä»¥ä¸Šã€16æ–‡å­—ä»¥å†…ã§è¨­å®šã—ã¦ãã ã•ã„ã€‚\n";
->>>>>>> origin/akiyama
 	}else{
 		if(pass1 == pass2){
 			if(!pass1.match(/^[a-zA-Z0-9]+$/)){
 				errorFlag = 1;
-				errorMsg = errorMsg + "EƒpƒXƒ[ƒh‚Í”¼Šz‰p”š‚Ì‚İ‚Å‚·B\n";
+				errorMsg = errorMsg + "ãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯åŠé¡è‹±æ•°å­—ã®ã¿ã§ã™ã€‚\n";
 			}
 		}else{
 			errorFlag = 1;
-			errorMsg = errorMsg + "E“ü—Í‚³‚ê‚½ƒpƒXƒ[ƒh‚ÆƒpƒXƒ[ƒhÄŠm”F‚ªˆê’v‚µ‚Ü‚¹‚ñB\n";
+			errorMsg = errorMsg + "ãƒ»å…¥åŠ›ã•ã‚ŒãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å†ç¢ºèªãŒä¸€è‡´ã—ã¾ã›ã‚“ã€‚\n";
 		}
 	}
 
@@ -604,28 +590,28 @@ $(document).on("click",".touroku_btn",function(){
 		console.log(param[3] );
 		var data = {'model':'users','action':'insert','data':param};
 		console.log(data);
-		//ajax’ÊM
+		//ajaxé€šä¿¡
 		$.ajax({
 			url:"../../Api/controller.php",
 			dataType:'json',
 			type:"POST",
 			data:data,
-		//ajax’ÊM¬Œ÷
+		//ajaxé€šä¿¡æˆåŠŸæ™‚
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
-			// alert("V‹K“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+			// alert("æ–°è¦ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
 			$('#sineUp_user_name').val('');
 			$('#sineUP_mail').val('');
 			$('#sineUp_password1').val('');
 			$('#sineUp_password2').val('');
 			$("#choice_btn").val('');
 			}else{
-		    alert("“o˜^–¼‚ª‚·‚Å‚Ég—p‚³‚ê‚Ä‚¢‚Ü‚·B");
+		    alert("ç™»éŒ²åãŒã™ã§ã«ä½¿ç”¨ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 			}
-		//ajax’ÊM¸”s
+		//ajaxé€šä¿¡å¤±æ•—æ™‚
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 			alert("error");
 		});
@@ -638,9 +624,9 @@ $("#choice_btn").on("change",function(e){
     reader = new FileReader(),
     $preview = $(".new_image");
 
-    // pngƒtƒ@ƒCƒ‹ˆÈŠO‚Ìê‡‚Í‰½‚à‚µ‚È‚¢
+    // pngãƒ•ã‚¡ã‚¤ãƒ«ä»¥å¤–ã®å ´åˆã¯ä½•ã‚‚ã—ãªã„
     if(file.type.indexOf("png") < 0 || file.size > 5500000){
-    	alert("pngˆÈŠO‚Ìƒtƒ@ƒCƒ‹‚Í—˜—p‚Å‚«‚Ü‚¹‚ñB");
+    	alert("pngä»¥å¤–ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯åˆ©ç”¨ã§ãã¾ã›ã‚“ã€‚");
     	$("#choice_btn").val("");
     	return false;
     }
@@ -687,29 +673,36 @@ $(document).on("click",".lightbox_hover",function(){
   };
   console.log(param);
   var data = {'model':'images','action':'imageInfo','data':param};
-  //ajax’ÊM
+  //ajaxé€šä¿¡
   $.ajax({
 	url:"../../Api/controller.php",
 	dataType:'json',
 	type:"POST",
 	data:data
-  //ajax’ÊM¬Œ÷
+  //ajaxé€šä¿¡æˆåŠŸæ™‚
   }).done(function(data){
 	console.log(data);
 
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
 
-	//5’iŠK•]‰¿‚Ég‚¤¯‰æ‘œ‚ÌêŠ‚ğ–¾¦
+	//5æ®µéšè©•ä¾¡ã«ä½¿ã†æ˜Ÿç”»åƒã®å ´æ‰€ã‚’æ˜ç¤º
 	$.fn.raty.defaults.path = "../Lib/images";
 
-	//‰æ‘œÚ×‚ğ•\¦////////////////////
-	var $div = $('.lightbox_left_image');
+	//ç”»åƒè©³ç´°ã‚’è¡¨ç¤º////////////////////
+	//var $div = $('.lightbox_left_image');
+	var $div = $('.lightbox_image');
 	$div.empty();
-	$div.append(
-			$("<img class='view_image'>")
+	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
+	$('.zoomer_wrapper').append(
+			$("<img>")
 			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
 	);
+	// class='view_image'
+	$(window).ready(function(){
+		$('#Zoomer').zoomer();
+    });
+
 	var w,h;
 	if($imageWidth >= $imageHeight){
 		w = 500;
@@ -721,7 +714,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$('.lightbox_left_image').css('background','transparent')
 	$('.view_image').css('width',w);
 	$('.view_image').css('height',h);
-	//ƒ†[ƒU[ƒAƒCƒRƒ“•\¦//////////////////
+	//ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º//////////////////
 	$div = $('.user_icon');
 	$div.empty();
 	$div.append(
@@ -732,7 +725,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$('.view_icon').css('height',50);
 	$('.view_icon').css('border-radius','50%');
 
-	//ìÒ–¼•\¦////////////////////////
+	//ä½œè€…åè¡¨ç¤º////////////////////////
 	$div = $('.user_name');
 	$div.empty();
 	$div.append("{{creatorName}}");
@@ -744,7 +737,7 @@ $(document).on("click",".lightbox_hover",function(){
 	})
 
 
-	//ì•iƒ^ƒCƒgƒ‹•\¦////////////////////////
+	//ä½œå“ã‚¿ã‚¤ãƒˆãƒ«è¡¨ç¤º////////////////////////
 	$div = $('.work_title');
 	$div.empty();
 	$div.append("{{imageTitle}}");
@@ -757,7 +750,7 @@ $(document).on("click",".lightbox_hover",function(){
 		}
 	})
 
-	//ƒŒƒrƒ…[ƒRƒƒ“ƒg•\¦/////////////////////
+	//ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚³ãƒ¡ãƒ³ãƒˆè¡¨ç¤º/////////////////////
 	$div = $('.past_coment');
 	$div.empty();
 	$div.append(
@@ -807,11 +800,11 @@ $(document).on("click",".lightbox_hover",function(){
 
 
 
-	//‡Œv•\¦/////////////////////////////
+	//åˆè¨ˆè¡¨ç¤º/////////////////////////////
 	$div = $('.review_all');
 	$div.empty();
 	$div.append(
-		("<h1>‡Œv : "+ data[0]['commentData'].length +"Œ</h1>"),
+		("<h1>åˆè¨ˆ : "+ data[0]['commentData'].length +"ä»¶</h1>"),
 		("<div id = 'averageReview'></div>")
 	);
 	$('#averageReview').raty({
@@ -822,11 +815,11 @@ $(document).on("click",".lightbox_hover",function(){
 		score : (sum / data[0]['commentData'].length)
 	});
 
-	//ƒŒƒrƒ…[‚·‚é•”•ª‚ğ•\¦////////////////////////
+	//ãƒ¬ãƒ“ãƒ¥ãƒ¼ã™ã‚‹éƒ¨åˆ†ã‚’è¡¨ç¤º////////////////////////
 	$div = $('.review');
 	$div.empty();
 	$div.append(
-		("<h1>ƒŒƒrƒ…[‚ğ‚·‚é</h1>"),
+		("<h1>ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚’ã™ã‚‹</h1>"),
 		("<div id = 'reviewErea'></div>"),
 		("<input id = 'hint'type='hidden'value = '0' readonly>")
 	);
@@ -838,14 +831,14 @@ $(document).on("click",".lightbox_hover",function(){
 	$div = $('.review_coment');
 	$div.empty();
 	$div.append(
-		("<h1>ƒRƒƒ“ƒg‚ğ‚·‚é</h1>"),
+		("<h1>ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã™ã‚‹</h1>"),
 		("<textarea name='comment'id='"+$imageId+"ComentErea' cols='40' rows='8'></textarea>"),
-		("<button class='review_btn' id='"+$imageId+"' value='"+$userId+"'>ƒŒƒrƒ…[</button>")
+		("<button class='review_btn' id='"+$imageId+"' value='"+$userId+"'>ãƒ¬ãƒ“ãƒ¥ãƒ¼</button>")
 	);
 
 
 
-  //ajax’ÊM¸”s
+  //ajaxé€šä¿¡å¤±æ•—æ™‚
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 	alert("error");
   });
@@ -854,7 +847,7 @@ $(document).on("click",".lightbox_hover",function(){
 });
 
 
-//ƒŒƒrƒ…[ƒ{ƒ^ƒ“‰Ÿ‰º//////////////////////////////////////////////////////////
+//ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚//////////////////////////////////////////////////////////
 $(document).on("click",".review_btn",function(){
 	var $imageId = $(this).attr('id');
 	var $createrId = $(this).attr('value');
@@ -872,10 +865,10 @@ $(document).on("click",".review_btn",function(){
 		$commenterId = 0;
 	}
 	if($point == 0 || $comment.bytes() == 0){
-		alert("ƒŒƒrƒ…[“_”‚ÆƒRƒƒ“ƒg‚ğ‚Â‚¯‚Ä‚­‚¾‚³‚¢B");
+		alert("ãƒ¬ãƒ“ãƒ¥ãƒ¼ç‚¹æ•°ã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã¤ã‘ã¦ãã ã•ã„ã€‚");
 	}else if($comment.bytes() > 600){
-		alert("“Še‚Å‚«‚éƒRƒƒ“ƒg‚ÌƒTƒCƒY‚Í600byte‚Ü‚Å‚Å‚·B\n•¶š”‚ğŒ¸‚ç‚µ‚Ä‚­‚¾‚³‚¢B\n" +
-				"Œ»İ"+$comment.bytes()+"byte‚Å‚·B");
+		alert("æŠ•ç¨¿ã§ãã‚‹ã‚³ãƒ¡ãƒ³ãƒˆã®ã‚µã‚¤ã‚ºã¯600byteã¾ã§ã§ã™ã€‚\næ–‡å­—æ•°ã‚’æ¸›ã‚‰ã—ã¦ãã ã•ã„ã€‚\n" +
+				"ç¾åœ¨"+$comment.bytes()+"byteã§ã™ã€‚");
 	}else{
 
 		$comment = $comment.replace(/\r?\n/g, '<br />');
@@ -887,18 +880,18 @@ $(document).on("click",".review_btn",function(){
 			  4:$comment
 		};
 		var data = {'model':'images','action':'insertReview','data':param};
-		//ajax’ÊM
+		//ajaxé€šä¿¡
 		$.ajax({
 			url:"../../Api/controller.php",
 			dataType:'json',
 			type:"POST",
 			data:data
-		//ajax’ÊM¬Œ÷
+		//ajaxé€šä¿¡æˆåŠŸæ™‚
 		}).done(function(data){
 		  console.log(data);
 
 		var $div;
-		//ƒŒƒrƒ…[ƒRƒƒ“ƒg•\¦/////////////////////
+		//ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚³ãƒ¡ãƒ³ãƒˆè¡¨ç¤º/////////////////////
 			$div = $('.past_coment');
 			$div.empty();
 			$div.append(
@@ -945,11 +938,11 @@ $(document).on("click",".review_btn",function(){
 				sum = parseInt(sum) +  parseInt(data[i]['rank']);
 			}
 
-			//ƒŒƒrƒ…[‡Œv•\¦/////////////////////////////
+			//ãƒ¬ãƒ“ãƒ¥ãƒ¼åˆè¨ˆè¡¨ç¤º/////////////////////////////
 			$div = $('.review_all');
 			$div.empty();
 			$div.append(
-				("<h1>ƒŒƒrƒ…[‡Œv : "+ data.length +"Œ</h1>"),
+				("<h1>ãƒ¬ãƒ“ãƒ¥ãƒ¼åˆè¨ˆ : "+ data.length +"ä»¶</h1>"),
 				("<div id = 'averageReview'></div>")
 			);
 			$('#averageReview').raty({
@@ -960,11 +953,11 @@ $(document).on("click",".review_btn",function(){
 				score : (sum / data.length)
 			});
 
-			//ƒŒƒrƒ…[‚·‚é•”•ª‚ğ•\¦////////////////////////
+			//ãƒ¬ãƒ“ãƒ¥ãƒ¼ã™ã‚‹éƒ¨åˆ†ã‚’è¡¨ç¤º////////////////////////
 			$div = $('.review');
 			$div.empty();
 			$div.append(
-				("<h1>ƒŒƒrƒ…[‚ğ‚·‚é</h1>"),
+				("<h1>ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚’ã™ã‚‹</h1>"),
 				("<div id = 'reviewErea'></div>"),
 				("<input id = 'hint'type='hidden'value = '0' readonly>")
 			);
@@ -976,12 +969,12 @@ $(document).on("click",".review_btn",function(){
 			$div = $('.review_coment');
 			$div.empty();
 			$div.append(
-				("<h1>ƒRƒƒ“ƒg‚ğ‚·‚é</h1>"),
+				("<h1>ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã™ã‚‹</h1>"),
 				("<textarea name='comment'id='"+$imageId+"ComentErea' cols='40' rows='8'></textarea>"),
-				("<button class='review_btn' id='"+$imageId+"' value='"+$createrId+"'>ƒŒƒrƒ…[</button>")
+				("<button class='review_btn' id='"+$imageId+"' value='"+$createrId+"'>ãƒ¬ãƒ“ãƒ¥ãƒ¼</button>")
 			);
 
-	  //ajax’ÊM¸”s
+	  //ajaxé€šä¿¡å¤±æ•—æ™‚
 	  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	  });
@@ -993,9 +986,9 @@ $(document).on("click",".logout",function(){
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
 
-	//ƒ}ƒCƒy[ƒW‚Æ‰æ‘œ“Šeƒy[ƒWˆÈŠO‚Ì‚Í‘‚­ˆ— ‚±‚±‚©‚ç
+	//ãƒã‚¤ãƒšãƒ¼ã‚¸ã¨ç”»åƒæŠ•ç¨¿ãƒšãƒ¼ã‚¸ä»¥å¤–ã®æ™‚ã¯æ›¸ãå‡¦ç† ã“ã“ã‹ã‚‰
 		$('.login_btn').css("display","inline-block");
 		$('.new_btn').css("display","inline-block");
 		$('.login_user_icon').css("display","none");
-	//‚±‚±‚Ü‚Å
+	//ã“ã“ã¾ã§
 });

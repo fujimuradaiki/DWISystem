@@ -43,10 +43,10 @@ $('.return_btn').click(function(){
 //   $('body').addClass("overflow");
 // });
 
- $('.Editing_btn').click(function(){
-   $('.Editing_view').fadeIn();
-   $('body').addClass("overflow");
- });
+// $('.Editing_btn').click(function(){
+//   $('.Editing_view').fadeIn();
+//   $('body').addClass("overflow");
+// });
 
 
 
@@ -67,8 +67,8 @@ $('.delete_btn2').click(function(){//.close_btn img���N���b�N��
 });
 
 $('.trimming_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
-  $('.trimming_view').fadeIn();//view���t�F�[�h�A�E�g����//
-  $('body').removeClass("overflow");
+  //$('.trimming_view').fadeIn();//view���t�F�[�h�A�E�g����//
+  //$('body').removeClass("overflow");
 });
 
  // $('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
