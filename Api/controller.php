@@ -40,11 +40,12 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
    //echo json_encode("OK");
     //画像データが送信されているか？
      if(isset($_FILES) && $_FILES['testimg']['name'] != ""){
-
+         $data = str_replace('data:image/png;base64,', '', $data);
          $dataArray= explode(",", $data);
-     //    echo json_encode($dataArray);
+      //   echo json_encode($dataArray);
+      //   echo json_encode($dataArray);
      //   $classname->controller($_POST['action'],$dataArray);
-         $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
+       $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else{
           //echo json_encode($data);
           $classname->controller($_POST['action'],$data);
