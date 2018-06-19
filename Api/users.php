@@ -36,16 +36,20 @@ class users{
                 break;
         }
 
-    } 
+    }
 ///////////////////////////////////////////////////////////////////////////////////
     //ユーザーリスト
     public  function userList($postData){
         $pdo = new connectdb();
-        $sql = "select user_id,user_name from users";
+    //    $sql = "select user_id,user_name from users";
+        $sql = "select user_id,user_name FROM images AS images
+                LEFT JOIN users AS users ON user_id = image_user_id
+                ";
         $data = array();
         if($postData !="" ){
             $sql .= " WHERE user_name LIKE "."'%$postData%'";
         }
+        $sql .=" GROUP BY image_user_id";
        //echo $sql;
         $result = $pdo->dbo->query($sql);
         while ($val = $result->fetch(PDO::FETCH_ASSOC)){

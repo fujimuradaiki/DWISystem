@@ -60,6 +60,8 @@ class images{
                 if($addSql != ""){
                     $addSql .= " OR";
                 }
+
+
                 $addSql .= " category_id = 2";
             }
             if($postData[1]['category3']['value'] == 'true'){
@@ -76,7 +78,7 @@ class images{
                     $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
             }else{
-                $addSortSql .= " ORDER BY image_insert_at ASC ";
+                $addSortSql .= " ORDER BY image_id DESC limit 0,50 ";
             }
         }
         //sqlの発行
@@ -147,7 +149,9 @@ class images{
                     image_title,
                     user_name,
                     user_id,
-                    category_name
+                    Introduction,
+                    category_name,
+                    summary_text
                     FROM
                     images AS images
                     LEFT JOIN
@@ -158,6 +162,10 @@ class images{
                     categories AS categories
                     ON
                     image_category_id = category_id
+                    LEFT JOIN
+                    summary AS summary
+                    ON
+                    summary_image_id = image_id
                     WHERE
                     image_id = " .$imageId
                     ." AND user_id = " .$creatorId;
@@ -185,13 +193,26 @@ class images{
         // echo  $userSql ."\n";
         // echo  $commentSql;
         $result= $pdo->dbo->query($userSql);
+        $introductionStr = "";
+        $imageSummaryStr ="";
+
+
+
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
+            if(!(is_null($val['Introduction']))){
+                $introductionStr = $val['Introduction'];
+            }
+            if(!(is_null($val['summary_text']))){
+                $imageSummaryStr =$val['summary_text'];
+            }
             $creatorData[] = array(
                 'imageId' => $val['image_id'],
                 'imageTitle'=>$val['image_title'],
                 'creatorName'=> $val['user_name'],
                 'creatorId' => $val['user_id'],
-                'categoryName'=>$val['category_name']
+                'categoryName'=>$val['category_name'],
+                'Introduction'=>$introductionStr,
+                'imageSummary'=>$imageSummaryStr
             );
         }
 
@@ -321,16 +342,18 @@ class images{
     public function insertImage($postData,$postFiles){
         $pdo = new connectdb();
 
-        $postArray = array();
+        $postArray = $postData;
         $endPostArray = array();
         $insert_at = date("Y/m/d H:i:s");
         $categoryArray = array();
         $titleArray = array();
-         for($count = 0; $count<count($postData);$count++){
-             if(!(empty($postData[$count]))){
-               $postArray[] = $postData[$count];
-             }
-         }
+        $trimmingArray = array();
+//         for($count = 0; $count<count($postData);$count++){
+//              if(!(empty($postData[$count]))){
+//                $postArray[] = $postData[$count];
+//              }
+//          }
+
          //送信画像数
          $images = 0;
          for($count = 0; $count<count($postFiles['name']);$count++){
@@ -340,14 +363,23 @@ class images{
          }
 
          $categoryindex = 2;
-         $titleindex= 2 + $images ;
-         for($count = 0; $count<$images;$count++){
+         $titleindex= 5 ;
+         $trimmingindex = 8;
+         for($count = 0; $count < 3;$count++){
              $categoryArray[] = $postArray[$categoryindex];
              $titleArray[] =$postArray[$titleindex];
+             if($postArray[$trimmingindex] != ""){
+                 $trimmingArray[] = $postArray[$trimmingindex];
+             }else{
+                 $trimmingArray[] = "";
+             }
              $categoryindex++;
              $titleindex++;
-         }
-//         //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
+             $trimmingindex++;
+          }
+         // echo json_encode($trimmingArray);
+
+// //         //ユーザー名（フォルダー検索用）ユーザーID カテゴリーID insert タイトル
          $userName = $postArray[0];
           //echo json_encode($userName);
          $imageUserId = $postArray[1];
@@ -358,8 +390,8 @@ class images{
        //  $strdata = "送信画像数".$images;
 //         //insertSQL文
 
-
-          for($i = 0;$i<$images;$i++){
+           for($i = 0;$i<3;$i++){
+               if($postFiles['name'][$i] != null){
               $insertSql = "insert
                       into
                       images(
@@ -377,23 +409,32 @@ class images{
                  .")";
 
 
- //              //imageテーブルに画像情報を追加
-               $stmt=$pdo->dbo->prepare($insertSql);
-               $resultFlg = $stmt->execute();
-               $resultFlg = $stmt->execute(array($categoryArray[$i],$titleArray[$i]));
-               $id = $pdo->dbo->lastInsertId();
-               $this->moviImage($userName,$postFiles,$id);
-              // $resultFlg = true;
-// //             //追加できたか titleと文字列
-             if($resultFlg == true){
-                 $str =$titleArray[$i]."アップロード成功";
-                 $strdata[] =$str;
-             }else{
-                 $str = $titleArray[$i]."新規追加に失敗";
-                 $strdata[] = $str;
-              }
+                  //imageテーブルに画像情報を追加
+                   $stmt=$pdo->dbo->prepare($insertSql);
+                   $resultFlg = $stmt->execute();
+                   $id = $pdo->dbo->lastInsertId();
+                   //$id=300 + $id;
+
+                   if($trimmingArray[$i] != ""){
+                      $this->moviImage($userName,$postFiles,$id,$i);
+                      $this->samneMoviImage($userName,$trimmingArray[$i],$id);
+                   }else if($postFiles['name'][$i] != null){
+                      $this->moviImage($userName,$postFiles,$id,$i);
+                   }
+                   //$id++;
+                   //$resultFlg = true;
+    // //             //追加できたか titleと文字列
+                 if($resultFlg == true){
+                     $str =$titleArray[$i]."アップロード成功";
+                     $strdata[] =$str;
+                 }else{
+                     $str = $titleArray[$i]."新規追加に失敗";
+                     $strdata[] = $str;
+
+                 }
+               }
            }
-          echo json_encode($resultFlg);
+           echo json_encode($postArray);
 
     }
 //////////////////////////////////////////////////////////////////////////////////
@@ -408,20 +449,22 @@ class images{
 
     }
 
-//     public  function moviImage($userName,$encode,$imageName){
-//         $directoryName = str_replace("'", "", $userName);
-//         $img = $encode;
-//         $type = str_replace('data:image/', '', $encode);
-//         $type = substr($type, 0, strpos($type,";"));
-//         $img = str_replace('data:image/'.$type.';base64,', '', $img);
-//         $img = str_replace(' ', '+', $img);
-//         $fileData = base64_decode($img);
-//         //拡張子の指定
-//         $fileName = '../User/'.$directoryName.'/'.$imageName.'.'.$type;
+    public  function samneMoviImage($userName,$encode,$imageName){
+        $directoryName = str_replace("'", "", $userName);
+        $img = $encode;
+        //$type = str_replace('data:image/', '', $encode);
+        //$type = substr($type, 0, strpos($type,";"));
+        //$img = str_replace('data:image/'.$type.';base64', '', $img);
+        //$img = str_replace('data:image/'.$type.';base64,', '', $img)
+        //$img = str_replace(' ', '+', $img);
+        //echo json_encode($img);
+        $fileData = base64_decode($img);
+        //拡張子の指定
+        $fileName = '../User/'.$directoryName.'/'.'samne_'.$imageName.'.'.png;
 
-//         //echo $fileName;
-//         file_put_contents($fileName, $fileData);
-//     }
+        //echo $fileName;
+        file_put_contents($fileName, $fileData);
+    }
 ////////////////////////////////////////////////////////////////////////////////////
 //画像削除
     public function delete($postData){
