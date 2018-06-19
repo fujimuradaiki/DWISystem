@@ -27,6 +27,12 @@
 //////////////////////////////////
 */
 $(document).ready(function(){
+
+	$('.Editing').click(function(){
+		$('.Editing_view').fadeIn();
+		$('body').addClass("overflow");
+	});
+
 	$('.myNEW_btn').css("background-color","rgb(46, 204, 250)");
 
 	/*Debug用・仮でユーザーID、名を指定中//////////////

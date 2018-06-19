@@ -44,7 +44,7 @@
     <ul>
       <li><a href="mypage.html">マイページ</a></li>
       <li><a href="Contribution.html">作品投稿</a></li>
-      <li><a href="Contribution.html">登録情報・変更</a></li>
+      <li><a class="Editing">登録情報・変更</a></li>
       <li><a class="logout">ログアウト</a></li>
     </ul>
   </div>
@@ -74,7 +74,7 @@
     </div>
   <!--保存完了画面終わり -->
 
-  <!--プロフィール編集画面 -->
+  <!--登録情報・変更編集画面 -->
     <div class="Editing_view">
       <div class="Editing_background"></div>
       <div class="Editing_image_container">
@@ -86,7 +86,7 @@
             </div>
             <div class="Editing_word"></div>
              <div class="Editing_form_waku">
-              <div class="Editing_title"><h1>プロフィール編集</h1></div>
+              <div class="Editing_title"><h1>登録情報・変更</h1></div>
                 <dl class="Editing_form">
                   <dt>ユーザー名</dt>
                   <dd><input type="text" name="user_name"id="sineIn_user_name"></dd>
@@ -240,6 +240,10 @@
                           <option value="アイテム">アイテム</option>
                         </select>
                       </div>
+                      <div classs="work_info">
+                        <p>作品概要</p>
+                      <textarea class="work_infoarea"></textarea>
+                    </div>
                       <div class="btn_lightbox">
                         <input class="delete_btn" type="button" value="削除">
                         <input class="storage_btn2" type="button" value="保存">

@@ -911,7 +911,7 @@ label p:hover {
  min-height:3467px;
  width:1920px;
  height:974px;
- position:relative;
+ position:fixed;
  bottom:0;
  background:url('../Images/background__.png') no-repeat 50% 50% ;
  background-size:cover;
@@ -950,7 +950,7 @@ label p:hover {
 }
 
 .toukou_form{
-	width: 57%;
+	width: 100%;
   height: 400px;
   position: absolute;
   top:325px;
@@ -1015,7 +1015,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.trimming_btn{
+.trimming_btn1{
 	width: 200px;
   top: 288px;
   position: absolute;
@@ -1028,7 +1028,7 @@ label p:hover {
   transition: .4s;
 }
 
-.trimming_btn:hover {
+.trimming_btn1:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
@@ -1115,6 +1115,23 @@ label p:hover {
   margin-top: 10px;
 }
 
+.trimming_btn2{
+	width: 200px;
+  top: 288px;
+  position: absolute;
+	font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 .toukou_waku3{
 	height: 280px;
   float:left;
@@ -1183,6 +1200,23 @@ label p:hover {
   font-size: 14px;
   line-height: 20px;
   margin-top: 10px;
+}
+
+.trimming_btn3{
+	width: 200px;
+  top: 288px;
+  position: absolute;
+	font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 label p{
@@ -2267,6 +2301,7 @@ label p:hover {
 
 /*コンテンツ内容*/
 .toukou{
+  width: 100%;
 	position: absolute;
 }
 
@@ -2280,11 +2315,10 @@ label p:hover {
 }
 
 .contents{
-  width: 71%;
+  width: 100%;
   height: auto;
   position: absolute;
   top: -110px;
-	margin-left: 41px;
 }
 .left_border{
   width: 50px;
@@ -2320,10 +2354,15 @@ label p:hover {
   top:325px;
 }
 
+.toukou_waku_all{
+	width: 200px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
 .toukou_waku1{
 	height: 280px;
   float:left;
-  margin:0 0 50px 46px;
 }
 
 .toukou_images1{
@@ -2380,8 +2419,8 @@ label p:hover {
 
 .trimming_btn1{
 	width: 200px;
-  top: 288px;
   position: absolute;
+	margin-top: 10px;
 	font-weight: bold;
   text-decoration: none;
   color: #FFF;
@@ -2397,8 +2436,8 @@ label p:hover {
 
 .trimming_btn2{
 	width: 200px;
-  top: 154%;
   position: absolute;
+	margin-top: 10px;
 	font-weight: bold;
   text-decoration: none;
   color: #FFF;
@@ -2415,8 +2454,8 @@ label p:hover {
 
 .trimming_btn3{
 	width: 200px;
-  top: 237%;
   position: absolute;
+	margin-top: 10px;
 	font-weight: bold;
   text-decoration: none;
   color: #FFF;
@@ -2447,7 +2486,7 @@ label p:hover {
 .toukou_waku2{
 	height: 280px;
   float:left;
-  margin:0 0 50px 46px;
+	margin-top: 50px;
 }
 
 .toukou_images2{
@@ -2517,7 +2556,7 @@ label p:hover {
 .toukou_waku3{
 	height: 280px;
   float:left;
-  margin:0 0 50px 46px;
+	margin-top: 50px;
 }
 
 .toukou_images3{
@@ -2746,7 +2785,7 @@ footer{
   width: 100%;
   height: 80px;
   position: absolute;
-  bottom: -655px;
+  bottom: -1500px;
   background: #000;
 }
 
