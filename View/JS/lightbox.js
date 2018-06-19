@@ -66,6 +66,11 @@ $('.delete_btn2').click(function(){//.close_btn img���N���b�N��
   $('body').removeClass("overflow");
 });
 
+$('.trimming_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.trimming_view').fadeIn();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
  // $('.Completion_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
  //   $('.delete_Completion_view').fadeIn();//view���t�F�[�h�A�E�g����//
  //   $('body').removeClass("overflow");
@@ -144,6 +149,19 @@ $('.login_btn4').click(function(){//.close_btn img���N���b�N��
   $('.new_touroku_view').fadeOut();//view���t�F�[�h�A�E�g����//
   $('body').removeClass("overflow");
 });
+
+$('.trimming_close_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.trimming_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+$('.trimming_delete_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+  $('.trimming_view').fadeOut();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
+
+
+
 
 /*$('.storage_btn').click(function(){//.close_btn img���N���b�N�����Ƃ�//
   $('.Editing_view,.lightbox_view').fadeOut();//view���t�F�[�h�A�E�g����//
