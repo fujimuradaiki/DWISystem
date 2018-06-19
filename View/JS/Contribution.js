@@ -92,7 +92,6 @@ $("#choice_btn1").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img1",
-	    			//name:"upload_file",
 	    		}));
 	    	};
 	    })(file);
@@ -115,16 +114,27 @@ $("#choice_btn1").on("change",function(e){
 /***************************/
 
 // トリミング開始ボタン(一番左の画像)
-$('#triming_btn1').on('click', function(){
-	var image = $('.toukou_images1 > img'),replaced;
-    $('#img1').cropper({
+$('#trimming_btn1').on('click', function(){
+	$('.trimming_view').fadeIn();
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('#img1').attr('src'), 'id':'trimming_img1'}));
+	var image = $('.trimming_image > img'),replaced;
+    $('#trimming_img1').cropper({
     	aspectRatio: 4 / 4
     });
 });
 
 // トリミング確定ボタン(一番左の画像)
-$('#enter_btn1').on('click', function(){
-	var data = $('#img1').cropper('getData');
+$('.trimming_view_btn').on('click', function(){
+	var imageId = $('.trimming_image').children('img').attr('id');
+	if(imageId != 'trimming_img1'){
+		//alert('1以外');
+		return;
+	}
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img1').attr('src');
+	var data = $('#trimming_img1').cropper('getData');
 
 	// width・・・トリミングしたときの横幅
 	// height・・・トリミングしたときの縦幅
@@ -136,7 +146,23 @@ $('#enter_btn1').on('click', function(){
 		x      : Math.round(data.x),
 		y      : Math.round(data.y),
 	};
-	alert(JSON.stringify(image));
+
+	$('.toukou_images1').append($('<canvas></canvas>').attr({"id":"canvasimg1"}));
+	this.canvas = document.getElementById('canvasimg1').getContext('2d');
+	var canvas = document.getElementById('canvasimg1');
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('#trimming_view_img1').remove();
+	$('#trimming_img1').remove();
+	$('.trimming_image').empty();
+	$('.toukou_images1').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img1' , 'width':200,'height':200}));
+	$('#canvasimg1').remove();
+	document.getElementById('img1').style.display = "none";
+
+	$('.trimming_view').fadeOut();
 });
 
 $("#choice_btn2").on("change",function(e){
@@ -158,7 +184,6 @@ $("#choice_btn2").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img2",
-	    			//name:"upload_file"
 	    		}));
 	    	};
 	    })(file);
@@ -167,16 +192,27 @@ $("#choice_btn2").on("change",function(e){
 });
 
 //トリミング開始ボタン(中央の画像)
-$('#triming_btn2').on('click', function(){
-	var image = $('.toukou_images2 > img'),replaced;
-    $('#img2').cropper({
+$('#trimming_btn2').on('click', function(){
+	$('.trimming_view').fadeIn();
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('#img2').attr('src'), 'id':'trimming_img2'}));
+	var image = $('.toukou_images > img'),replaced;
+    $('#trimming_img2').cropper({
     	aspectRatio: 4 / 4
     });
 });
 
 // トリミング確定ボタン(中央の画像)
-$('#enter_btn2').on('click', function(){
-	var data = $('#img2').cropper('getData');
+$('.trimming_view_btn').on('click', function(){
+	var imageId = $('.trimming_image').children('img').attr('id');
+	if(imageId != 'trimming_img2'){
+		//alert('2以外');
+		return;
+	}
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img2').attr('src');
+	var data = $('#trimming_img2').cropper('getData');
 
 	// width・・・トリミングしたときの横幅
 	// height・・・トリミングしたときの縦幅
@@ -188,7 +224,23 @@ $('#enter_btn2').on('click', function(){
 		x      : Math.round(data.x),
 		y      : Math.round(data.y),
 	};
-	alert(JSON.stringify(image));
+
+	$('.toukou_images2').append($('<canvas></canvas>').attr({"id":"canvasimg2"}));
+	this.canvas = document.getElementById('canvasimg2').getContext('2d');
+	var canvas = document.getElementById('canvasimg2');
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('#trimming_view_img2').remove();
+	$('#trimming_img2').remove();
+	$('.trimming_image').empty();
+	$('.toukou_images2').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img2' , 'width':200,'height':200}));
+	$('#canvasimg2').remove();
+	document.getElementById('img2').style.display = "none";
+
+	$('.trimming_view').fadeOut();
 });
 
 $("#choice_btn3").on("change",function(e){
@@ -196,7 +248,7 @@ $("#choice_btn3").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images3");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indejjghuxOf("png") < 0 || file.size > 5500000){
+	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
 	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
 	    	$("#choice_btn3").val("");
 	    	return false;
@@ -210,7 +262,6 @@ $("#choice_btn3").on("change",function(e){
 	    			class: "preview",
 	    			title: file.name,
 	    			id:"img3",
-	    			//name:"upload_file"
 	    		}));
 	    	};
 	    })(file);
@@ -218,17 +269,28 @@ $("#choice_btn3").on("change",function(e){
 	    reader.readAsDataURL(file);
 });
 
-//トリミング開始ボタン(中央の画像)
-$('#triming_btn3').on('click', function(){
-	var image = $('.toukou_images3 > img'),replaced;
-    $('#img3').cropper({
+//トリミング開始ボタン(右の画像)
+$('#trimming_btn3').on('click', function(){
+	$('.trimming_view').fadeIn();
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('#img3').attr('src'), 'id':'trimming_img3'}));
+	var image = $('.toukou_images > img'),replaced;
+    $('#trimming_img3').cropper({
     	aspectRatio: 4 / 4
     });
 });
 
-// トリミング確定ボタン(中央の画像)
-$('#enter_btn3').on('click', function(){
-	var data = $('#img3').cropper('getData');
+// トリミング確定ボタン(右の画像)
+$('.trimming_view_btn').on('click', function(){
+	var imageId = $('.trimming_image').children('img').attr('id');
+	if(imageId != 'trimming_img3'){
+		//alert('3以外');
+		return;
+	}
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img3').attr('src');
+	var data = $('#trimming_img3').cropper('getData');
 
 	// width・・・トリミングしたときの横幅
 	// height・・・トリミングしたときの縦幅
@@ -240,7 +302,23 @@ $('#enter_btn3').on('click', function(){
 		x      : Math.round(data.x),
 		y      : Math.round(data.y),
 	};
-	alert(JSON.stringify(image));
+
+	$('.toukou_images3').append($('<canvas></canvas>').attr({"id":"canvasimg3"}));
+	this.canvas = document.getElementById('canvasimg3').getContext('2d');
+	var canvas = document.getElementById('canvasimg3');
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('#trimming_view_img3').remove();
+	$('#trimming_img3').remove();
+	$('.trimming_image').empty();
+	$('.toukou_images3').append($('<img>').attr({'src':dataURI, 'id':'trimming_view_img3' , 'width':200,'height':200}));
+	$('#canvasimg3').remove();
+	document.getElementById('img3').style.display = "none";
+
+	$('.trimming_view').fadeOut();
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -249,10 +327,8 @@ $(".toukou_btn").on("click",function(){
 
     var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
-	//var imageInfo = $('[name="contribution"]').serializeArray();
 	var categoryArray = new Array($('#Genre1').val(), $('#Genre2').val(), $('#Genre3').val());
 	var titleArray = new Array($('.toukou_title1').val(), $('.toukou_title2').val(),$('.toukou_title3').val());
-	alert(titleArray);
 	var data  = [ userName, userId, categoryArray, titleArray ];
 
 	var param = new FormData($('[name="contribution"]').get(0));

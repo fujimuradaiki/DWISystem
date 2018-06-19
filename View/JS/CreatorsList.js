@@ -225,65 +225,67 @@ $(document).on("click",".login_btn3",function(){
 */
 $(document).on("click",".confirmation_btn",function(){
 
-var name = $('#sineUp_user_name').val();
-var mail = $('#sineUP_mail').val();
-var pass1 = $('#sineUp_password1').val();
-var pass2 = $('#sineUp_password2').val();
+    var name = $('#sineUp_user_name').val();
+    var mail = $('#sineUP_mail').val();
+    var pass1 = $('#sineUp_password1').val();
+    var pass2 = $('#sineUp_password2').val();
 
-var errorFlag = 0;
-var errorMsg = "入力内容に不備があります。\n\n";
+    var errorFlag = 0;
+    var errorMsg = "入力内容に不備があります。\n\n";
 
-//ユーザー名バリデーション
-if(name == ""){
-errorFlag = 1;
-errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
-}else{
-if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
-errorFlag = 1;
-errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
-}
-}
+    //ユーザー名バリデーション
+    if(name == ""){
+      errorFlag = 1;
+      errorMsg = errorMsg + "・ユーザー名が未入力です。\n";
+    }else{
+        if(!name.match(/^[ァ-ロワヲンー一-龠a-zA-Z0-9\r\n\t]*$/)){
+          errorFlag = 1;
+           errorMsg = errorMsg + "・ユーザー名に記号やスペースは使えません。\n";
+        }
+    }
 
-//メールアドレスバリデーション
-if(mail == ""){
-errorFlag = 1;
-errorMsg = errorMsg + "・メールアドレスが未入力です。\n";
-}else{
-if(!mail.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
-errorFlag = 1;
-errorMsg = errorMsg + "・メールアドレスの形式が間違っています。\n";
-}
-}
+    //メールアドレスバリデーション
+    if(mail == ""){
+      errorFlag = 1;
+      errorMsg = errorMsg + "・メールアドレスが未入力です。\n";
+    }else{
+        if(!mail.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
+          errorFlag = 1;
+          errorMsg = errorMsg + "・メールアドレスの形式が間違っています。\n";
+        }
+    }
+    //パスワードバリデーション
+    if(pass1 == "" || pass2 == ""){
+        errorFlag = 1;
+        errorMsg = errorMsg + "・パスワードが未入力です。\n";
+    }else if(pass1.length < 8 || pass2.length < 8){
+    	errorFlag = 1;
+    	errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
+    }else{
+        if(pass1 == pass2){
+            if(!pass1.match(/^[a-zA-Z0-9]+$/)){
+                errorFlag = 1;
+                errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
+            }
+        }else{
+          errorFlag = 1;
+          errorMsg = errorMsg + "・入力されたパスワードとパスワード再確認が一致しません。\n";
+        }
+    }
 
-//パスワードバリデーション
-if(pass1 == "" || pass2 == ""){
-errorFlag = 1;
-errorMsg = errorMsg + "・パスワードが未入力です。\n";
-}else{
-if(pass1 == pass2){
-if(!pass1.match(/^[a-zA-Z0-9]+$/)){
-errorFlag = 1;
-errorMsg = errorMsg + "・パスワードは半額英数字のみです。\n";
-}
-}else{
-errorFlag = 1;
-errorMsg = errorMsg + "・入力されたパスワードとパスワード再確認が一致しません。\n";
-}
-}
-
-if(errorFlag == 1){
-alert(errorMsg);
-}else{
-$('.new_confirmation_view').fadeIn();
-$('body').addClass("overflow");
-var name = $('#sineUp_user_name').val();
-var mail = $('#sineUP_mail').val();
-var pass1 = $('#sineUp_password1').val();
-var pass2 = $('#sineUp_password2').val();
-$('#user_name').val(name);
-$('#mail').val(mail);
-$('#password1').val(pass1);
-}
+    if(errorFlag == 1){
+        alert(errorMsg);
+    }else{
+        $('.new_confirmation_view').fadeIn();
+        $('body').addClass("overflow");
+        var name = $('#sineUp_user_name').val();
+        var mail = $('#sineUP_mail').val();
+        var pass1 = $('#sineUp_password1').val();
+        var pass2 = $('#sineUp_password2').val();
+        $('#user_name').val(name);
+        $('#mail').val(mail);
+        $('#password1').val(pass1);
+    }
 });
 
 $(document).on("click",".touroku_btn",function(){
