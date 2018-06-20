@@ -6,6 +6,7 @@ require_once ('images.php');
 header('Content-type: application/json');
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+   //     echo json_encode("hit");
   //  echo json_encode($_FILES['testimg']);
 
 //        $classname = new $_POST['model'];
@@ -37,8 +38,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     $classname = new $_POST['model'];
     $data = $_POST['data'];
 
-   //echo json_encode("OK");
-    //画像データが送信されているか？
+//     //画像データが送信されているか？
      if(isset($_FILES) && $_FILES['testimg']['name'] != ""){
          $data = str_replace('data:image/png;base64,', '', $data);
          $dataArray= explode(",", $data);
@@ -46,11 +46,17 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
       //   echo json_encode($dataArray);
      //   $classname->controller($_POST['action'],$dataArray);
        $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
-     }else{
-          //echo json_encode($data);
-          $classname->controller($_POST['action'],$data);
+     }else {
+         if(is_array($data)){
+             $type = str_replace('data:image/', '', $encode);
+             $type = substr($type, 0, strpos($type,";"));
+             $classname->controller($_POST['action'],$data);
+         }else{
+             $dataArray = explode(",", $data);
+             echo json_encode($dataArray[3]);
+         }
      }
 }else{
-    echo "controller.php:::エラー";
+    echo json_encode('err');
 }
 ?>
