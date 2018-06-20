@@ -590,7 +590,7 @@ $(document).on("click",".touroku_btn",function(){
 	if(trimming_view_img === undefined)
 		trimming_view_img = "";
 
-	console.log(trimming_view_img);
+	alert(trimming_view_img);
 
 	var data = [name, pass1, mail, trimming_view_img];
 	var param = new FormData($('[name="send"]').get(0));
@@ -598,25 +598,6 @@ $(document).on("click",".touroku_btn",function(){
 	param.append('action', 'insert');
 	param.append('data', data);
 
-	alert('dd');
-	//var icon = '';
-
-	// トリミングしていない
-	/*if($('.trimming_view_img')[1] == null){
-		var param = new FormData($('[name="send"]').get(0));
-	// トリミングした
-	}else{
-		var param = new FormData();
-		icon = $('.trimming_view_img').attr('src');
-
-		//alert(param);
-	}*/
-
-
-
-	/*var data = [name, pass1, mail, icon];
-
-	param.append('data', data);*/
 	//alert(param);
 
 		/*var param = [];
