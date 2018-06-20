@@ -330,7 +330,7 @@ function runSearch(){
 			$num.append(
 
 					$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +"/"+ $dispimge),
+					.attr("src","../../User/"+ userName +"/"+  $dispimge),
 
 					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
 			);
@@ -796,7 +796,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
 	$('.zoomer_wrapper').append(
 			$("<img>")
-			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +"/"+ dispimge)
+			.attr("src","../../User/"+ $creatorName +"/"+ $dispimge)
 	);
 	// class='view_image'
 	$(window).ready(function(){
