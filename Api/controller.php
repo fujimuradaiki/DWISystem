@@ -42,19 +42,17 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
      if(isset($_FILES) && $_FILES['testimg']['name'] != ""){
          $data = str_replace('data:image/png;base64,', '', $data);
          $dataArray= explode(",", $data);
-      //   echo json_encode($dataArray);
-      //   echo json_encode($dataArray);
-     //   $classname->controller($_POST['action'],$dataArray);
        $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else {
-         if(is_array($data)){
-             $type = str_replace('data:image/', '', $encode);
-             $type = substr($type, 0, strpos($type,";"));
-             $classname->controller($_POST['action'],$data);
-         }else{
-             $dataArray = explode(",", $data);
-             echo json_encode($dataArray[3]);
-         }
+         $classname->controller($_POST['action'],$data);
+//          if(is_array($data)){
+//              $type = str_replace('data:image/', '', $encode);
+//              $type = substr($type, 0, strpos($type,";"));
+//              $classname->controller($_POST['action'],$data);
+//          }else{
+//              $dataArray = explode(",", $data);
+//              echo json_encode($dataArray[3]);
+//          }
      }
 }else{
     echo json_encode('err');
