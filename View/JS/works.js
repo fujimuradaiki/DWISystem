@@ -38,6 +38,21 @@ $('.slider-wrapper').slick({
 
 
 $(document).ready(function(){
+
+  //レビューボックス//
+  $('#review_btn').on('click', function(){
+  $('.review_box').toggleClass("review_right0");
+  });
+  //制作者コメントボックス//
+  $('#creator_btn').on('click', function(){
+  $('.creator_box').toggleClass("creator_right0");
+  });
+
+  $('.box_close_btn').on("click",function(){
+    $('.review_box,.creator_box').fadeOut(0);//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
 	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
 	//画像表示実行
 	runSearch();
