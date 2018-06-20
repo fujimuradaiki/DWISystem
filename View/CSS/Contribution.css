@@ -8,19 +8,19 @@
 	content:"";
 }
 
-/*ƒXƒNƒ[ƒ‹ƒo[Á‹*/
+/*ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½[ï¿½ï¿½ï¿½ï¿½*/
 ::-webkit-scrollbar{
   width:0px;
 }
 
-/*ƒ‰ƒCƒgƒ{ƒbƒNƒX‚ğŠJ‚¢‚½‚ÉƒXƒNƒ[ƒ‹‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ég—p*/
+/*ï¿½ï¿½ï¿½Cï¿½gï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ß‚Égï¿½p*/
 .overflow{
   overflow:hidden;
 }
 body{
   margin:0;
 }
-/*------------------------------- ƒwƒbƒ_[ŠJn@-------------------------------*/
+/*------------------------------- ï¿½wï¿½bï¿½_ï¿½[ï¿½Jï¿½nï¿½@-------------------------------*/
 header{
   min-width:1360px;
   width:100%;
@@ -30,12 +30,12 @@ header{
   background-color:#111;
 }
 
-/*ƒƒS*/
+/*ï¿½ï¿½ï¿½S*/
 .logo{
   margin: 23px 0 0 20px;
 }
 
-/*ƒƒjƒ…[*/
+/*ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[*/
 .menu ul{
   float: right;
   margin-right:80px;
@@ -51,7 +51,7 @@ header{
   text-decoration: none;
 }
 
-/*SNSƒAƒCƒRƒ“*/
+/*SNSï¿½Aï¿½Cï¿½Rï¿½ï¿½*/
 .icon ul{
   width: 15%;
 	margin:-10px -20px;
@@ -68,7 +68,7 @@ i {
 	color:#fff;
 }
 
-/*ƒƒOƒCƒ“Œã‚Ìƒ†[ƒU[ƒAƒCƒRƒ“*/
+/*ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½Uï¿½[ï¿½Aï¿½Cï¿½Rï¿½ï¿½*/
 .login_user_icon{
   width:50px;
   height:50px;
@@ -79,7 +79,7 @@ i {
   border-radius: 30px;
 }
 
-/*ƒƒOƒCƒ“Œã‚Ìƒ†[ƒU[ƒAƒCƒRƒ“‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«‚Éo‚é*/
+/*ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½Uï¿½[ï¿½Aï¿½Cï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Éoï¿½ï¿½*/
 .login_user_menu{
   display: none;
   width:170px;
@@ -118,7 +118,7 @@ i {
   color:#ff0000;
 }
 
-/*ƒƒOƒCƒ“ƒ{ƒ^ƒ“*/
+/*ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½*/
 .login_btn{
   display:none;
   width: 120px;
@@ -134,12 +134,12 @@ i {
   background: #3F3ACE;
   transition: .4s;
 }
-/*ƒƒOƒCƒ“ƒ{ƒ^ƒ“@ƒzƒo[*/
+/*ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½@ï¿½zï¿½oï¿½[*/
 .login_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*V‹K“o˜^ƒ{ƒ^ƒ“*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½{ï¿½^ï¿½ï¿½*/
 .new_btn{
   display:none;
   width: 120px;
@@ -156,7 +156,7 @@ i {
   background: #3F3ACE;
   transition: .4s;
 }
-/*V‹K“o˜^ƒ{ƒ^ƒ“@ƒzƒo[*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½{ï¿½^ï¿½ï¿½ï¿½@ï¿½zï¿½oï¿½[*/
 .new_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -192,7 +192,7 @@ i {
   margin:0 auto;
 }
 
-/*ƒƒOƒCƒ“‰æ–Ê’†g*/
+/*ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ê’ï¿½ï¿½g*/
 .login_view{
   display:none;
   width:100%;
@@ -341,7 +341,7 @@ i {
   height: 22px;
 }
 
-/*V‹K“o˜^‰æ–Ê*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½*/
 .new_view{
   display:none;
   width:100%;
@@ -511,7 +511,7 @@ label p:hover {
   width: 200px;
 }
 
-/*V‹K“o˜^ƒtƒH[ƒ€*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½tï¿½Hï¿½[ï¿½ï¿½*/
 
 .new_form_waku{
   width: 670px;
@@ -547,7 +547,7 @@ label p:hover {
   float:right;
 }
 
-/*V‹K“o˜^Šm”F*/
+/*ï¿½Vï¿½Kï¿½oï¿½^ï¿½mï¿½F*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -578,7 +578,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*“o˜^ƒ{ƒ^ƒ“*/
+/*ï¿½oï¿½^ï¿½{ï¿½^ï¿½ï¿½*/
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -596,11 +596,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*“o˜^ƒ{ƒ^ƒ“@ƒzƒo[*/
+/*ï¿½oï¿½^ï¿½{ï¿½^ï¿½ï¿½ï¿½@ï¿½zï¿½oï¿½[*/
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-/*–ß‚éƒ{ƒ^ƒ“*/
+/*ï¿½ß‚ï¿½ï¿½{ï¿½^ï¿½ï¿½*/
 .return_btn{
   width: 100px;
   height: 35px;
@@ -617,12 +617,12 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*–ß‚éƒ{ƒ^ƒ“@ƒzƒo[*/
+/*ï¿½ß‚ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½@ï¿½zï¿½oï¿½[*/
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*“o˜^Š®—¹*/
+/*ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -631,7 +631,7 @@ label p:hover {
   top:0;
   left:0;
 }
-/*ƒ}ƒCƒy[ƒWƒ{ƒ^ƒ“*/
+/*ï¿½}ï¿½Cï¿½yï¿½[ï¿½Wï¿½{ï¿½^ï¿½ï¿½*/
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -663,7 +663,7 @@ label p:hover {
   font-size: 25px;
 }
 
-/*•Û‘¶Š®—¹*/
+/*ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .storage_view{
   display:none;
   width:100%;
@@ -682,7 +682,7 @@ label p:hover {
   margin-bottom: 20px;
   font-size: 25px;
 }
-/*“Še‰æ–Ê*/
+/*ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½*/
 .toukou_view{
   display:none;
   width:100%;
@@ -702,9 +702,9 @@ label p:hover {
   font-size: 25px;
 }
 
-/*“Še‰æ–ÊI—¹*/
+/*ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ÊIï¿½ï¿½*/
 
-/*ƒvƒƒtƒB[ƒ‹•ÒW‰æ–ÊŠJn*/
+/*ï¿½vï¿½ï¿½ï¿½tï¿½Bï¿½[ï¿½ï¿½ï¿½ÒWï¿½ï¿½ï¿½ÊŠJï¿½n*/
 
 .Editing_view{
   display:none;
@@ -899,9 +899,9 @@ label p:hover {
   float:right;
 }
 
-/*ƒvƒƒtƒB[ƒ‹•ÒWI—¹*/
+/*ï¿½vï¿½ï¿½ï¿½tï¿½Bï¿½[ï¿½ï¿½ï¿½ÒWï¿½Iï¿½ï¿½*/
 
-/*ƒRƒ“ƒeƒ“ƒc“à—e*/
+/*ï¿½Rï¿½ï¿½ï¿½eï¿½ï¿½ï¿½cï¿½ï¿½ï¿½e*/
 .toukou{
   min-width:1200px;
 	position: absolute;
@@ -940,7 +940,7 @@ label p:hover {
 .title{
 	width:38%;
   position: absolute;
-  margin: -90px 240px;
+  margin: -90px 226px;
   color:#fff;
 }
 
@@ -953,7 +953,7 @@ label p:hover {
 	width: 100%;
   height: 400px;
   position: absolute;
-  top:325px;
+  top:280px;
 	left: 575px;
 }
 
@@ -976,6 +976,13 @@ label p:hover {
   width: 200px;
   margin-top: 221px;
   position: absolute;
+}
+
+.work_info1{
+	resize: none;
+  width:200px;
+	height: 120px;
+	margin-top: -205px;
 }
 
 .serect_box1{
@@ -1066,6 +1073,13 @@ label p:hover {
   position: absolute;
 }
 
+.work_info2{
+	resize: none;
+  width:200px;
+	height: 120px;
+	margin-top: -205px;
+}
+
 .serect_box2{
   position: absolute;
   margin-top: 250px;
@@ -1151,6 +1165,13 @@ label p:hover {
   width: 200px;
   margin-top: 221px;
   position: absolute;
+}
+
+.work_info3{
+	resize: none;
+  width:200px;
+	height: 120px;
+	margin-top: -205px;
 }
 
 .serect_box3{
@@ -1256,7 +1277,7 @@ label p:hover {
   width: 120px;
   height: 40px;
   position: relative;
-  margin-top:70px;
+  margin-top:200px;
 	right:35%;
   display: inline-block;
   font-weight: bold;
@@ -2322,23 +2343,23 @@ label p:hover {
 }
 .left_border{
   width: 50px;
-	margin-top: 13px;
+	margin: 13px 0 0 60px;
 	float: left;
   border-bottom: 2px solid;
 }
 
 .right_border{
   width: 50px;
-	margin-top: 13px;
+	margin: 13px 60px 0 0 ;
 	float: right;
   border-bottom: 2px solid;
 }
 
 .title{
-	width: 235px;
+	width: 100%;
   height: 20px;
   position: absolute;
-  margin: -90px 30px;
+  margin-top: -90px;
   color: #fff;
 }
 
@@ -2378,6 +2399,13 @@ label p:hover {
   width: 200px;
   margin-top: 221px;
   position: absolute;
+}
+
+.work_info1{
+	resize: none;
+  width:200px;
+	height:120px;
+	margin-top: 50px
 }
 
 .serect_box1{
@@ -2486,7 +2514,7 @@ label p:hover {
 .toukou_waku2{
 	height: 280px;
   float:left;
-	margin-top: 50px;
+	margin-top: 200px;
 }
 
 .toukou_images2{
@@ -2502,6 +2530,13 @@ label p:hover {
   width: 200px;
   margin-top: 221px;
   position: absolute;
+}
+
+.work_info2{
+	resize: none;
+  width:200px;
+  height:120px;
+	margin-top: 50px
 }
 
 .serect_box2{
@@ -2556,7 +2591,7 @@ label p:hover {
 .toukou_waku3{
 	height: 280px;
   float:left;
-	margin-top: 50px;
+	margin-top: 200px;
 }
 
 .toukou_images3{
@@ -2572,6 +2607,13 @@ label p:hover {
   width: 200px;
   margin-top: 221px;
   position: absolute;
+}
+
+.work_info3{
+	resize: none;
+  width:200px;
+	height:120px;
+	margin-top: 50px
 }
 
 .serect_box3{
@@ -2627,7 +2669,8 @@ label p{
 	width: 36px;
   height: 18px;
   position: relative;
-  margin: -30px -60px;
+  top: 276px;
+	right:0;
   font-weight: bold;
   line-height: 20px;
   text-decoration: none;
@@ -2646,6 +2689,18 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.toukou_btn_waku1{
+	width: 200px;
+}
+
+.toukou_btn_waku2{
+	width: 200px;
+}
+
+.toukou_btn_waku3{
+	width: 200px;
+}
+
 #choice_btn{
   display: none;
 }
@@ -2653,14 +2708,14 @@ label p:hover {
 .toukou_Decision{
 	width: 246px;
   height: 44px;
+	margin: 0 auto;
 }
 
 .back_btn{
-  width: 120px;
+  width: 100px;
   height: 40px;
   position: relative;
-  margin-top:100px;
-	right:-35%;
+	margin: 215px 40px 0 0;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -2676,12 +2731,10 @@ label p:hover {
 }
 
 .toukou_btn{
-	width: 120px;
+	width: 100px;
   height: 40px;
   position: absolute;
-  margin-top: 85px;
-  top: 235%;
-  left: 86px;
+  margin-top: 215px;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -2785,7 +2838,7 @@ footer{
   width: 100%;
   height: 80px;
   position: absolute;
-  bottom: -1500px;
+  bottom: -1940px;
   background: #000;
 }
 
