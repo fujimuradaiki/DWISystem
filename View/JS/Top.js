@@ -302,7 +302,7 @@ function runSearch(){
 			var categoryName = data[i].categoryName;
 			var title = data[i].Title;
 			var insert_at = data[i].Insert_at;
-
+			var $dispimge = data[i].fileType;
 			//画像表示
 			$div.append(
 				("<div class='lightbox'id='"+ imageId + "Div'></div>")
@@ -311,7 +311,7 @@ function runSearch(){
 			$num.append(
 
 					$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+					.attr("src","../../User/"+ userName +"/"+ $dispimge),
 
 					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
 			);
@@ -407,6 +407,10 @@ function trimmingImage(img,size){
 */
 $(document).on("click",".close_btn",function(){
 	runSearch();
+	$('.creator_icon').empty();
+	$('.creator_name').empty();
+	$('.creator_coment').empty();
+	$('.work_coment').empty();
 });
 
 
@@ -679,7 +683,7 @@ $(document).on("click",".lightbox_hover",function(){
 
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
-
+	$dispimge = data[0]['usersData'][0]['fileType'];
 
 	//5段階評価に使う星画像の場所を明示
 	$.fn.raty.defaults.path = "../Lib/images";
@@ -690,7 +694,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
 	$('.zoomer_wrapper').append(
 			$("<img>")
-			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+			.attr("src","../../User/"+ $creatorName +"/"+ $dispimge)
 	);
 	$(window).ready(function(){
 		$('#Zoomer').zoomer();

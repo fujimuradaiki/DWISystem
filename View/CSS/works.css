@@ -7,19 +7,19 @@
 	content:"";
 }
 
-/*スクロールバー消去*/
+
 ::-webkit-scrollbar{
   width:0px;
 }
 
-/*ライトボックスを開いた時にスクロールできないようにするために使用*/
+
 .overflow{
   overflow:hidden;
 }
 body{
   margin:0;
 }
-/*------------------------------- ヘッダー開始　-------------------------------*/
+
 @media screen and ( min-width:415px ){
 header{
   min-width:1360px;
@@ -34,7 +34,7 @@ header{
   margin: 23px 0 0 20px;
 }
 
-/*----------g-nav開始----------*/
+
 
 .menu ul{
   float: right;
@@ -99,9 +99,6 @@ header{
   color:#ff0000;
 }
 
-/*----------g-nav終了----------*/
-
-/*----------SNS開始----------*/
 .icon ul{
   width: 15%;
 	margin:-10px -20px;
@@ -117,11 +114,7 @@ header{
 i {
 	color:#fff;
 }
-/*----------SNS終了----------*/
 
-/*--------------------ヘッダー終了--------------------*/
-
-/*ログインボタン*/
 .login_btn{
   width: 120px;
   height: 40px;
@@ -140,7 +133,7 @@ i {
 .login_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-/*新規登録ボタン*/
+
 .new_btn{
   width: 120px;
   height: 40px;
@@ -161,7 +154,6 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*----------ログイン画面開始----------*/
 .login_contents{
   width:800px;
   margin:0 auto;
@@ -362,9 +354,7 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*----------ログイン画面終了----------*/
 
-/*----------ログイン完了画面開始----------*/
 .login_Comp_view{
   display:none;
   width:100%;
@@ -400,9 +390,92 @@ i {
   margin-top: 155px;
   font-size: 23px;
 }
-/*----------ログイン完了画面終了----------*/
 
-/*----------新規登録画面開始----------*/
+/*蛻�繧雁叙繧翫Λ繧､繝医�懊ャ繧ｯ繧ｹ荳ｭ霄ｫ*/
+.trimming_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:2;
+  top:0;
+  left:0;
+}
+
+/*荳ｭ霄ｫ閭梧勹*/
+.trimming_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.9);
+}
+
+.trimming_close_btn{
+	float:right;
+	margin-top:-140px;
+}
+/*菴懷刀*/
+.trimming_image_container{
+  width: 72%;
+  position: absolute;
+	top: 45%;
+  left: 460px;
+  margin-top: -275px;
+
+}
+
+.trimming_image{
+	width: 1000px;
+  height: 600px;
+  float: left;
+	background: #fff;
+}
+
+.trimming_btns{
+	width:100%;
+	position: absolute;
+  top: 750px;
+	left: 825px;
+}
+
+.trimming_view_btn{
+	width: 120px;
+  height: 40px;
+  position: relative;
+  margin:70px 0 0 20px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_view_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.trimming_delete_btn{
+	width: 120px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+
+.trimming_delete_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 .new_view{
   display:none;
   width:100%;
@@ -531,8 +604,6 @@ label p:hover {
   width: 200px;
 }
 
-/*新規登録フォーム*/
-
 .new_form_waku{
   width: 670px;
   margin: 0 auto;
@@ -567,9 +638,6 @@ label p:hover {
   float:right;
 }
 
-/*新規登録画面終了*/
-
-/*新規登録内容確認画面開始*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -600,7 +668,7 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*登録ボタン*/
+
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -618,11 +686,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*登録ボタン　ホバー*/
+
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-/*戻るボタン*/
+
 .return_btn{
   width: 100px;
   height: 35px;
@@ -639,14 +707,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*戻るボタン　ホバー*/
+
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*新規登録内容確認ページ終了*/
-
-/*登録完了*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -805,7 +870,7 @@ label p:hover {
   width: 200px;
 }
 
-/*新規登録フォーム*/
+
 
 .Editing_form_waku{
   width: 670px;
@@ -841,7 +906,6 @@ label p:hover {
   float:right;
 }
 
-/*マイページへボタン*/
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -859,7 +923,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*マイページへボタン　ホバー*/
+
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -885,14 +949,14 @@ label p:hover {
 
 }
 
-/*-------------------- 作品一覧 ----------------------*/
+
 .works{
   width:100%;
   position: absolute;
   margin-bottom:100px;
 }
 
-/*項目タイトル*/
+
 .works_title{
   min-width:1200px;
   width:100%;
@@ -907,7 +971,7 @@ label p:hover {
   padding-top:65px;
 }
 
-/*背景*/
+
 .background{
 	min-height: 3500px;
   width: 1920px;
@@ -934,7 +998,7 @@ label p:hover {
   width: 100%;
 }
 
-/*ソートボタン*/
+
 .works_menu{
   width:100%;
   height:100px;
@@ -1038,7 +1102,7 @@ input[type=checkbox]:checked + .check_btn:before {
   opacity: 1;
 }
 
-/*ライトボックス*/
+
 .lightbox_waku{
   width:98%;
   margin: 0 auto;
@@ -1046,7 +1110,7 @@ input[type=checkbox]:checked + .check_btn:before {
   position: relative;
 }
 
-/*×ボタン*/
+
 .close_btn{
   position:absolute;
   top: -55px;
@@ -1085,7 +1149,7 @@ input[type=checkbox]:checked + .check_btn:before {
   font-size:11px;
 }
 
-/*ホバーしたときの背景*/
+
 .hover_background{
   width:250px;
   height:250px;
@@ -1093,7 +1157,7 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#000;
 }
 
-/*ホバーしたときに出るユーザー情報*/
+
 .lightbox_information {
     width: 250px;
     height: 250px;
@@ -1113,7 +1177,7 @@ input[type=checkbox]:checked + .check_btn:before {
   clear: both;
 }
 
-/*ライトボックス中身*/
+
 .lightbox_view{
   display:none;
   width:100%;
@@ -1123,7 +1187,7 @@ input[type=checkbox]:checked + .check_btn:before {
   left:0;
 }
 
-/*中身背景*/
+
 .lightbox_background{
   width:100%;
   height:983px;
@@ -1135,7 +1199,7 @@ input[type=checkbox]:checked + .check_btn:before {
   margin-left: 33px;
 }
 
-/*ユーザーアイコン*/
+
 .lightbox_user_icon{
   width: 30px;
   height: 30px;
@@ -1143,7 +1207,7 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#fff;
 }
 
-/*ユーザーネーム*/
+
 .lightbox_user_name{
   color:#fff;
 }
@@ -1165,7 +1229,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-/*作品*/
+
 .lightbox_image_container{
   min-width: 1400px;
   width: 72%;
@@ -1198,12 +1262,11 @@ input[type=checkbox]:checked + .check_btn:before {
 	float: right;
 }
 
-/*ユーザー情報*/
+
 .user_information{
   width:1000px;
 }
 
-/*ユーザーアイコン*/
 .user_icon{
   width:50px;
   height:50px;
@@ -1211,13 +1274,13 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#fff;
 }
 
-/*ユーザーネーム*/
+
 .user_name{
 	color:#fff;
   margin: -15px 0 0 60px;
 }
 
-/*作品タイトル*/
+
 .work_title{
   width:400px;
   height:40px;
@@ -1230,7 +1293,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-/*レビュー*/
+
 .review_box{
 	width: 394px;
   height: 900px;
@@ -1251,7 +1314,7 @@ input[type=checkbox]:checked + .check_btn:before {
 	position: absolute;
 	padding:0 5px 0 20px;
 	top: 0;
-	background: #F6E3CE;
+	background: url(../Images/background_left.png) 50% 50%;
 }
 
 .review_title{
@@ -1300,16 +1363,95 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review_title_h1 h1{
-	margin: -300px 0 76px;
-	font-size: 25px;
+		width: 314px;
+		height: 20px;
+    position: relative;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+    margin: -300px 0 76px;
+    padding: 0.5em 0.5em 0.5em 1.1em;
+    border-bottom: 3px solid #B92A2C;
 }
 
-.all_h1 h1{
+.review_title_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d48789;
+    top: 0;
+    left: 0.4em;
+    height: 15px;
+    width: 15px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.review_title_h1 h1:after{
+    content: "";
+    position: absolute;
+    background:#d26466;
+    top: 1.0em;
+    left: 0;
+    height: 11px;
+    width: 11px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+}
+
+/* .all_h1 h1{
 	margin: 100px 0 70px 0;
 	font-size: 25px;
+} */
+
+.all_h1 h1{
+		width: 314px;
+		height: 20px;
+    position: relative;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 90px 0 70px 0;
+    padding: 0.5em 0.5em 0.5em 1.1em;
+    border-bottom: 3px solid #d8a32d;
 }
 
-/*レビュー記入*/
+.all_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d4a887;
+    top: 0;
+    left: 0.4em;
+    height: 15px;
+    width: 15px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.all_h1 h1:after{
+    content: "";
+    position: absolute;
+    background: #dc8749;
+    top: 1.0em;
+    left: 0;
+    height: 11px;
+    width: 11px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+}
+
+
 textarea {
   resize: none;
   width:345px;
@@ -1317,7 +1459,7 @@ textarea {
   margin-top:5px;
 }
 
-/*レビュー投稿ボタン*/
+
 .review_btn{
   width: 70px;
   height: 30px;
@@ -1335,12 +1477,12 @@ textarea {
   transition: .4s;
 }
 
-/*レビュー投稿ボタン　ホバー*/
+
 .review_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*レビュー合計表示*/
+
 .review_all{
   margin-top:30px;
 }
@@ -1356,7 +1498,7 @@ textarea {
   color: #FFBF00;
 }
 
-/*過去レビューコメント表示場所*/
+
 .past_coment{
   width: 350px;
   height: 330px;
@@ -1365,13 +1507,13 @@ textarea {
 	border: 1px solid #999;
 }
 
-/*------------------- 制作者コメント ------------------*/
+
 
 .creator_box{
 	width: 394px;
   height: 900px;
   top: 0;
-  right: -395px;
+  right: -394px;
   position: absolute;
 	transition: 1s;
 }
@@ -1384,7 +1526,7 @@ textarea {
 	position: absolute;
 	/* padding-left: 20px; */
 	top: 0;
-	background: #F8E0E6;
+	background: url(../Images/background_left.png) 50% 50%;
 }
 
 .creator_info{
@@ -1392,10 +1534,27 @@ textarea {
 }
 
 .creator_info h2{
-	font-size: 20px;
+	width: 314px;
+	height: 20px;
+	position: relative;
+	color: #333;
+	font-size: 25px;
   font-weight: bold;
   margin: -50px 0 50px 30px;
+	padding: 0.5em 0.5em 0.5em 1.1em;
+	border-bottom: 3px solid #B92A2C;
 }
+
+.creator_info h2:before{
+	content: "";
+  position: absolute;
+  background: #d48789;
+  top: 0;
+  left: 0.4em;
+  height: 15px;
+  width: 15px;
+}
+
 
 .creator_icon{
 	width:200px;
@@ -1476,7 +1635,7 @@ i {
 }
 
 
-/*-------------------フッター開始--------------------*/
+
 footer{
   width: 100%;
   height: 80px;
@@ -1493,7 +1652,7 @@ footer h2{
   text-align: center;
   padding-top: 25px;
 }
-/*-------------------フッター終了--------------------*/
+
 
 #pageTop {
 		width: 140px;
@@ -1544,7 +1703,6 @@ header{
   margin: 23px 0 0 20px;
 }
 
-/*----------g-nav開始----------*/
 
 .menu ul{
   display: none;
@@ -1611,9 +1769,6 @@ header{
   color:#ff0000;
 }
 
-/*----------g-nav終了----------*/
-
-/*----------SNS開始----------*/
 .icon ul{
   display: none;
   width: 15%;
@@ -1630,11 +1785,7 @@ header{
 i {
 	color:#fff;
 }
-/*----------SNS終了----------*/
 
-/*--------------------ヘッダー終了--------------------*/
-
-/*ログインボタン*/
 	.login_btn{
 	  display: none;
 	  width: 120px;
@@ -1651,12 +1802,12 @@ i {
 	  transition: .4s;
 	}
 
-	/*ログインボタン　ホバーしたとき*/
+
 	.login_btn:hover {
 	  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 	}
 
-/*新規登録ボタン*/
+
 	.new_btn{
 	  display: none;
 		width: 120px;
@@ -1674,12 +1825,12 @@ i {
     transition: .4s;
 	}
 
-	/*新規登録ボタン　ホバーしたとき*/
+
 	.new_btn:hover {
 	  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 	}
 
-/*----------ログイン画面開始----------*/
+
 .login_contents{
   width:800px;
   margin:0 auto;
@@ -1880,9 +2031,7 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*----------ログイン画面終了----------*/
 
-/*----------ログイン完了画面開始----------*/
 .login_Comp_view{
   display:none;
   width:100%;
@@ -1918,9 +2067,7 @@ i {
   margin-top: 155px;
   font-size: 23px;
 }
-/*----------ログイン完了画面終了----------*/
 
-/*----------新規登録画面開始----------*/
 .new_view{
   display:none;
   width:100%;
@@ -2049,7 +2196,7 @@ label p:hover {
   width: 200px;
 }
 
-/*新規登録フォーム*/
+
 
 .new_form_waku{
   width: 670px;
@@ -2085,9 +2232,7 @@ label p:hover {
   float:right;
 }
 
-/*新規登録画面終了*/
 
-/*新規登録内容確認画面開始*/
 .new_confirmation_view{
   display:none;
   width:100%;
@@ -2117,8 +2262,7 @@ label p:hover {
 .confirmation_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-/*
-登録ボタン*/
+
 .touroku_btn{
   width: 100px;
   height: 35px;
@@ -2136,11 +2280,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*登録ボタン　ホバー*/
+
 .touroku_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
-/*戻るボタン*/
+
 .return_btn{
   width: 100px;
   height: 35px;
@@ -2157,14 +2301,11 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*戻るボタン　ホバー*/
+
 .return_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*新規登録内容確認ページ終了*/
-
-/*登録完了*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -2323,7 +2464,7 @@ label p:hover {
   width: 200px;
 }
 
-/*新規登録フォーム*/
+
 
 .Editing_form_waku{
   width: 670px;
@@ -2358,8 +2499,7 @@ label p:hover {
   height: 30px;
   float:right;
 }
-/*
-マイページへボタン*/
+
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -2377,7 +2517,7 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*マイページへボタン　ホバー*/
+
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -2403,14 +2543,14 @@ label p:hover {
 
 }
 
-/*-------------------- 作品一覧 ----------------------*/
+
 .works{
   width:100%;
   position: absolute;
   margin-bottom:100px;
 }
 
-/*項目タイトル*/
+
 .works_title{
 /*  min-width:1200px;*/
   width:100%;
@@ -2425,7 +2565,7 @@ label p:hover {
   padding-top:35px;
 }
 
-/*背景*/
+
 .background{
 /*	min-height: 3500px;*/
   width: 100%;
@@ -2453,7 +2593,7 @@ label p:hover {
   width: 100%;
 }
 
-/*ソートボタン*/
+
 .works_menu{
   width:100%;
   height:150px;
@@ -2569,7 +2709,6 @@ font-size: 15px;
 	}
 
 
-/*ライトボックス*/
 .lightbox_waku{
 /*  width:98%;*/
   width: 340px;
@@ -2578,7 +2717,7 @@ font-size: 15px;
   position: relative;
 }
 
-/*×ボタン*/
+
 .close_btn{
   position:absolute;
   top: -55px;
@@ -2591,12 +2730,12 @@ font-size: 15px;
 }
 
 .lightbox {
-	width: 40%;
-/*  height: 150px;*/
+	width: 130px;
+  height: 130px;
+  margin: 20px;
   position: relative;
 	z-index: 0;
   float: left;
-  margin: 16px;
   text-align: center;
   cursor: pointer;
   border-radius: 20px;
@@ -2608,35 +2747,10 @@ font-size: 15px;
 
 .lightbox_hover{
   display: none;
-/*  width:250px;
-  height:250px;
-  position:absolute;
-  top:0;
-  z-index:0;
-	border-radius: 20px;
-  transition:all .5s ease;
-  font-size:11px;*/
+
 }
 
-/*ホバーしたときの背景
-.hover_background{
-  width:40%;
-  height:150px;
-  opacity: 0.7;
-  background:#000;
-}
 
-ホバーしたときに出るユーザー情報
-.lightbox_information {
-    width: 40%;
-    height: 150px;
-    position: absolute;
-    top: 0;
-}
-
-.lightbox:hover .lightbox_hover{
-  display: block;
-}*/
 
 .lightbox img {
   position:relative;
@@ -2646,9 +2760,9 @@ font-size: 15px;
   clear: both;
 }
 
-/*ライトボックス中身*/
+
 .lightbox_view{
-  display:none;
+  /* display:none; */
   width:100%;
   position:fixed;
   z-index:1;
@@ -2656,7 +2770,7 @@ font-size: 15px;
   left:0;
 }
 
-/*中身背景*/
+
 .lightbox_background{
   width:100%;
   height:983px;
@@ -2668,7 +2782,7 @@ font-size: 15px;
   margin-left: 33px;
 }
 
-/*ユーザーアイコン*/
+
 .lightbox_user_icon{
   width: 30px;
   height: 30px;
@@ -2676,7 +2790,7 @@ font-size: 15px;
   background:#fff;
 }
 
-/*ユーザーネーム*/
+
 .lightbox_user_name{
   color:#fff;
 }
@@ -2698,7 +2812,7 @@ font-size: 15px;
   color: #fff;
 }
 
-/*作品*/
+
 .lightbox_image_container{
   min-width: 1400px;
   width: 72%;
@@ -2708,25 +2822,35 @@ font-size: 15px;
   margin-top: -275px;
 }
 
-.lightbox_left_image{
-  width:500px;
-  height:600px;
-  float: left;
-  background:#fff;
-}
-
-.lightbox_right{
-  width: 58%;
+.lightbox_image{
+	width: 1000px;
   height: 600px;
-  float:right;
+  float: left;
+  margin-left: 50px;
 }
 
-/*ユーザー情報*/
+.zoomer_wrapper {
+  border-radius: 3px;
+  height: 500px;
+  margin: 10px 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+.lightbox_title{
+	width:100%;
+	position: absolute;
+	margin: -115px 45px;
+	float: right;
+}
+
+
 .user_information{
-  width:400px;
+  width:1000px;
 }
 
-/*ユーザーアイコン*/
+
 .user_icon{
   width:50px;
   height:50px;
@@ -2734,13 +2858,13 @@ font-size: 15px;
   background:#fff;
 }
 
-/*ユーザーネーム*/
+
 .user_name{
 	color:#fff;
   margin: -15px 0 0 60px;
 }
 
-/*作品タイトル*/
+
 .work_title{
   width:400px;
   height:40px;
@@ -2749,20 +2873,66 @@ font-size: 15px;
 
 .work_title h1{
   font-size: 25px;
-  line-height: 42px;
+  line-height: 8px;
   color: #fff;
 }
 
-/*レビュー*/
+.box_close_btn {
+	float: right;
+  margin: 10px;
+	cursor: pointer;
+}
+
+
+.review_box{
+	width: 100%;
+  height: 900px;
+	z-index: 0;
+  top: 0;
+  right: -395px;
+  position: absolute;
+	transition: 1s;
+}
+
+.review_right0 {
+	right: -1px;
+}
+
+.review_box_inner{
+	width: 100%;
+	height: 983px;
+	position: absolute;
+	top: 0;
+	background: url(../Images/background_left.png) 50% 50%;
+}
+
+.review_title{
+	width:70px;
+	height:50px;
+	margin: 150px -90px;
+}
+
+#review_btn{
+	width: 70px;
+  position: absolute;
+  top: 280px;
+  right: 394px;
+  border: none;
+  background: #FFBF00;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+}
 .review{
   width:200px;
   height:30px;
-  margin-top: 20px;
+  margin: 20px 0 38px 0;
 }
 
 .review h1{
   font-size:13px;
-  color:#fff;
+  color:#000;
 }
 
 .review h2{
@@ -2772,29 +2942,122 @@ font-size: 15px;
 }
 
 .review_coment{
-  margin-top: 40px;
+	width: 306px;
+	margin-top: 40px;
+  margin: 0 auto;
 }
 
 .review_coment h1{
   font-size:13px;
-  color:#fff;
+  color:#000;
 }
 
-/*レビュー記入*/
+.review_title_h1 h1{
+		width: 265px;
+		height: 20px;
+    position: relative;
+		margin: 0 auto;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 0.5em 0.2em 1.9em;
+    border-bottom: 3px solid #B92A2C;
+}
+
+.review_title_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d48789;
+    top: 0;
+    left: 0.4em;
+    height: 13px;
+    width: 13px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.review_title_h1 h1:after{
+    content: "";
+    position: absolute;
+    background:#d26466;
+    top: 0.9em;
+    left: -0.2em;
+    height: 9px;
+    width: 9px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+}
+
+
+.all_h1 h1{
+	width: 265px;
+	height: 20px;
+	position: relative;
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 auto;
+	margin-top: 75px;
+	margin-bottom: 20px;
+	padding: 0 0.5em 0.2em 1.9em;
+	border-bottom: 3px solid #d8a32d;
+}
+
+
+.all_h1 h1:before{
+    content: "";
+    position: absolute;
+    background: #d4a887;
+    top: 0;
+    left: 0.4em;
+    height: 13px;
+    width: 13px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.all_h1 h1:after{
+    content: "";
+    position: absolute;
+    background: #dc8749;
+    top: 0.9em;
+    left: -0.2em;
+    height: 9px;
+    width: 9px;
+    transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+}
+
+.review_waku{
+	margin-top: -315px;
+}
+
+
 textarea {
   resize: none;
-  width:400px;
-  height:120px;
+  width:300px;
+  height:85px;
   margin-top:5px;
 }
 
-/*レビュー投稿ボタン*/
+
 .review_btn{
   width: 70px;
   height: 30px;
   position: relative;
-  left: 25%;
-  margin-top: -33px;
+  margin: 10px 115px;
   float: right;
   display: inline-block;
   font-weight: bold;
@@ -2807,19 +3070,20 @@ textarea {
   transition: .4s;
 }
 
-/*レビュー投稿ボタン　ホバー*/
+
 .review_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*レビュー合計表示*/
+
 .review_all{
-  margin-top:30px;
+	width: 300px;
+  margin: 0 auto;
 }
 
 .review_all h1{
   font-size:13px;
-  color:#fff;
+  color:#000;
 }
 
 .review_all h2{
@@ -2828,16 +3092,205 @@ textarea {
   color: #FFBF00;
 }
 
-/*過去レビューコメント表示場所*/
+
 .past_coment{
-  width: 500px;
-  height: 160px;
+	width: 300px;
+  height: 180px;
+  margin: 0 auto;
   background: #fff;
   margin-top: 9px;
+  border: 1px solid #999;
 }
 
 
-/*-------------------フッター開始--------------------*/
+
+.creator_box{
+	display: block;
+	width: 100%;
+  height: 900px;
+  top: 0;
+  right: -394px;
+  position: absolute;
+	transition: 1s;
+}
+
+.creator_box_inner{
+	/* width: 370px; */
+	width: 100%;
+	height: 983px;
+	z-index: 1;
+	position: absolute;
+	/* padding-left: 20px; */
+	top: 0;
+	background: url(../Images/background_left.png) 50% 50%;
+}
+
+.creator_info{
+	margin-top: 30px;
+}
+
+.creator_info h2{
+	width: 100px;
+	height: 20px;
+	position: relative;
+	bottom: 10px;
+	margin: 0 auto;
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0 0.5em 0.1em 1.8em;
+	border-bottom: 3px solid #2a5db9;
+}
+
+.creator_info h2:before{
+	content: "";
+	position: absolute;
+	background: #8790d4;
+	top: 0;
+	left: 0.4em;
+	height: 13px;
+	width: 13px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.creator_info h2:after{
+	content: "";
+	position: absolute;
+	background: #8064d2;
+	top: 0.7em;
+	left: -0.2em;
+	height: 9px;
+	width: 9px;
+  transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+}
+
+
+.creator_icon{
+	width:130px;
+	height:130px;
+	margin: 0 auto;
+	background:#000;
+}
+
+.creator_icon img{
+	width:130px;
+}
+
+.creator_name h1{
+	text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.creator_sns ul{
+	width: 38%;
+	margin: 0 auto;
+	margin-top:-30px;
+	font-size: 30px;
+}
+
+.creator_sns ul li{
+	float: left;
+	margin: 45px 0 0 17px;
+}
+
+i {
+	color:#000;
+}
+
+.creator_coment{
+	width:300px;
+	height:100px;
+	background: #000;
+	margin: 0 auto;
+	margin-top: 95px;
+}
+
+.work_coment_title h1{
+	width: 100px;
+	height: 20px;
+	margin: 0 auto;
+	margin-top: 45px;
+	position: relative;
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0 0.5em 0.2em 1.9em;
+	border-bottom: 3px solid #2aa5b9;
+}
+
+.work_coment_title h1:before{
+	content: "";
+	position: absolute;
+	background: #87d49c;
+	top: 0;
+	left: 0.4em;
+	height: 13px;
+	width: 13px;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.work_coment_title h1:after{
+	content: "";
+	position: absolute;
+	background: #3f8e55;
+	top: 0.8em;
+	left: -0.2em;
+	height: 9px;
+	width: 9px;
+  transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+}
+
+.work_coment{
+	width: 315px;
+  height: 145px;
+	margin: 0 auto;
+  margin-top: 10px;
+  background: #000;
+}
+
+.creator_title{
+	width:70px;
+	height:50px;
+	margin: 150px -90px;
+}
+
+#creator_btn{
+	width: 70px;
+  position: absolute;
+  top: 200px;
+  right: 394px;
+  border: none;
+  background: #FE2E64;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+}
+
+ .creator_right0 {
+	right: -1px;
+}
+
+
+
+
 footer{
   width: 100%;
   height: 200px;
@@ -2856,7 +3309,7 @@ footer h2{
   text-align: center;
   padding-top: 70px;
 }
-/*-------------------フッター終了--------------------*/  
+
 
 
 

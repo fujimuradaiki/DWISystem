@@ -36,6 +36,7 @@ $('.new_btn').click(function(){
 $('.return_btn').click(function(){
   $('.new_view').fadeIn();
   $('body').addClass("overflow");
+  //$('#trimming_view_img').remove();
 });
 // /*登録ボタンを押したとき登録完了画面を表示させる*/
 // $('.touroku_btn').click(function(){

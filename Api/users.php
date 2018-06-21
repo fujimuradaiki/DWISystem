@@ -150,6 +150,8 @@ class users{
   //  $postData = array("t","t","555@sss.ss");
     //passの暗号化
     $pass = md5( $postData[1] );
+    $postUserName = $postData[0];
+
 
     $sql = "insert
             into
@@ -166,23 +168,24 @@ class users{
             .")";
 //           //echo $sql;
 //         //新規登録名でフォルダ名を検索
-        if($this->searchDirectory($postData[0])){
-            //SQL実行
+          if($this->searchDirectory($postUserName)){
             $stmt=$pdo->dbo->prepare($sql);
             $resultFlg = $stmt->execute();
             //$resultFlg = true;
             if($resultFlg == true){
-                $this->createDirectory($postData[0]);
+                $this->createDirectory($postUserName);
               //  echo json_encode($postFiles['name']);
                 if($postFiles['name'] == null){
-                    //echo json_encode("default");
-                    $this->defaultIcon($postData[0]);
-                }else{
+                    $this->defaultIcon($postUserName);
+                }else if($postData[3] != ""){
+                    //トリミングありの画像保存 $userName,$encode,$postType
+                    $this->trimingIcon($postUserName,$postData[3],$postFiles['type']);
                     //echo json_encode("original");
-                    $this->icon($postData[0],$postFiles);
-
+                }else{
+                    //typeでの画像の保存
+                    $this->icon($postUserName,$postFiles);
                 }
-                echo json_encode($postData[0]);
+                echo json_encode($postUserName);
              }
              echo "true";
         }else{
@@ -254,6 +257,18 @@ class users{
         //拡張子の指定
         $fileName = '../User/'.$directoryName.'/icon'.'.'.$type;
 
+        file_put_contents($fileName, $fileData);
+    }
+
+    //トリミングされてたら
+    public  function trimingIcon($userName,$encode,$postType){
+        $directoryName = str_replace("'", "", $userName);
+        $img = $encode;
+        $fileData = base64_decode($img);
+        //拡張子の指定
+        $fileName = '../User/'.$directoryName.'/'.'icon'.'.'.$postType;
+
+        //echo $fileName;
         file_put_contents($fileName, $fileData);
     }
 //////////////////////////////////////////////////////////////////////////////////
