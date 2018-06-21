@@ -31,7 +31,7 @@ class users{
             case "delete":
                 $this->delete($postData);
                 break;
-            case"mail":
+            case"lostPass":
                 $this->mail($postData);
                 break;
             default:
@@ -280,15 +280,15 @@ class users{
         $pdo = new connectdb();
         $update_at =  date("Y/m/d H:i:s");//日時
         //$postData = array(12,'v','w','w','aaaa@aaaa.aa.aa');
-        $postData = array(5,'mono','mono!!','mono',"");
+        //$postData = array(5,'mono','mono!!','mono',"");
 
         $directoryPath = '../User/';
         $updateUserId = $postData[0];
-
-         $newName = $postData[1];
-         $Introduction = $postData[2];
+        $updateUserName = $postData[1];
+         $newName = $postData[2];
+         $Introduction = $postData[3];
 //         $olderName = $postData[6];
-         $pass    = $postData[3];
+        // $pass    = $postData[3];
          $base64 = $postData[4];
 //         $newPass = $postData[3];
 //         $newMail = $postData[4];
@@ -299,7 +299,7 @@ class users{
 //             $icon = $postData[5];
 //         }
         //暗号化
-        $pass = md5($pass);
+        //$pass = md5($pass);
         //$newPass = md5($newPass);
         $sql = "select * from users WHERE user_id =".$updateUserId;
         $usersql = "select COUNT(*) from users WHERE (user_id !=".$updateUserId." AND account_name LIKE "."'%$newName%'" .")";
@@ -317,7 +317,7 @@ class users{
         $errorStr = "";
 
         //update 対象のpasswordがあってるか
-        if($pass == $result['password']){
+       // if($pass == $result['password']){
             //名前更新 被ってなかったら
             if($result['name'] != $newName && $userResult['COUNT(*)'] == 0){
                 $updateSpl .= "account_name ="."'$newName'";
@@ -334,8 +334,8 @@ class users{
                  $updateSpl.= ",";
             }
                 $updateSpl.= "user_update_at = "."'$update_at'";
-        }
-        $sql = "UPDATE users SET ".$updateSpl;
+      //  }
+                $sql = "UPDATE users SET ".$updateSpl." WHERE user_id = ".$updateUserId;
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
         rename($directoryPath.$result['account_name'], $directoryPath.$newName );
@@ -361,7 +361,7 @@ class users{
         if($resultFlg){
             echo json_encode("HIT");
         }else{
-            echo json_encode("BAT");
+            echo json_encode($sql);
         }
         //DBに同じ名前があっても登録できる
        // echo json_encode($userResult['COUNT(*)']);
@@ -446,7 +446,7 @@ class users{
         //updateSQLの作成
         if($result['password'] == $pass){
             if($result['user_name'] != $userName){
-                $searchSql=$searchSql."'%$newUserName%'" .")";
+                $searchSql=$searchSql."'$newUserName'" .")";
                 $stmt=$pdo->dbo->prepare($searchSql);
                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
                 if($searchResult['COUNT(*)'] == 0){
@@ -455,7 +455,7 @@ class users{
             }
             //メールアドレス
             if($result['user_mail'] != $mail){
-                $searchSql=$searchSql."'%$mail%'" .")";
+                $searchSql=$searchSql."'$mail'" .")";
                 $stmt=$pdo->dbo->prepare($searchSql);
                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
                 if($searchResult['COUNT(*)'] == 0){
@@ -521,17 +521,25 @@ class users{
             $userPass = $postData[1];
             $pass = md5( $userPass );
 
-            if(!(strpos($postData[0],'@'))){
-                $userName = $postData[0];
-                $sql .= "account_name ="."'$userName'";
-
-            }else{
-                $mail =$postData[0];
-                $sql .= "user_mail =  " . "'$mail'";
-            }
-        }else{
-            exit();
+            $mail =$postData[0];
+            $sql .= "user_mail =  " . "'$mail'";
         }
+
+//         if($postData[0] != "" && $postData[1] != ""){
+//             $userPass = $postData[1];
+//             $pass = md5( $userPass );
+
+//             if(!(strpos($postData[0],'@'))){
+//                 $userName = $postData[0];
+//                 $sql .= "account_name ="."'$userName'";
+
+//             }else{
+//                 $mail =$postData[0];
+//                 $sql .= "user_mail =  " . "'$mail'";
+//             }
+//         }else{
+//             exit();
+//         }
 
         $stmt=$pdo->dbo->prepare($sql);
        // echo $sql;
@@ -600,8 +608,27 @@ class users{
          }
     }
 /////////////////////////////////////////////////////////////////////////////
+//パスワード忘れ
+    public  function lostPass($postData){
+        $result = "";
+        //メールアドレス
+        $postMail = $postData;
+        $searchSql = "SELECT COUNT(*) users WHERE user_mail LIKE "."'$mail'";
+        $stmt=$pdo->dbo->prepare($searchSql);
+        $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($searchResult['COUNT(*)'] == 0){
+            $result = "該当のメールアドレスがありません";
+        }else{
+            if($this->mail($postMail)){;
+                $result = "メールを送信致しました";
+            }
+        }
+        echo json_encode($result);
+    }
+///////////////////////////////////////////////////////////////////////////
     public function mail($postData){
         $result = "";
+        $postData = "mono@mono.mono";
         if($postData != ""){
             $to = $postData;
             $subject = "デザイナー紹介 アカウント作成のご案内";
@@ -614,13 +641,13 @@ class users{
             $headers = "From: from@imaizumihome.com";
 
             if(mail($to, $subject, $message, $headers)){
-                $result = "メールを送信しました";
+                $result = true;
             }else{
-                $result = "メール送信に失敗しました";
+                $result =false;
             }
         }else{
-            $result = "メールアドレスが入力されていません。";
+            $result = false;
         }
-        echo json_encode($result);
+        return $result;
     }
 }

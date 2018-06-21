@@ -64,5 +64,6 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
      }
 }else{
     echo json_encode('err');
+
 }
 ?>
