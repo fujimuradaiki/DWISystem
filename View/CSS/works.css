@@ -1551,8 +1551,6 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review_title{
-	width:70px;
-	height:50px;
 	margin: 150px -90px;
 }
 
