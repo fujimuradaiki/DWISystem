@@ -35,6 +35,33 @@ $(document).ready(function(){
 	//sessionStorage.setItem('infoId','1');
 	//////////////////////////////////
 
+
+	//レビューボックス//
+  $('#review_btn').on('click', function(){
+  $('.review_box').toggleClass("review_right0");
+  });
+  //制作者コメントボックス//
+  $('#creator_btn').on('click', function(){
+  $('.creator_box').toggleClass("creator_right0");
+  });
+
+  //レビューボックス//
+  $('#review_btn_top').on('click', function(){
+  $('.review_box').fadeIn(0);
+  $('body').removeClass("overflow");
+  });
+  //制作者コメントボックス//
+  $('#creator_btn_top').on('click', function(){
+  $('.creator_box').fadeIn(0);
+  $('body').removeClass("overflow");
+  });
+
+  $('.box_close_btn').on("click",function(){
+    $('.review_box,.creator_box').fadeOut(0);//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+
 	//ログイン中かどうかを取得
 	if(sessionStorage.getItem('userId') == null){
 		$('.login_btn').css("display","inline-block");
@@ -565,6 +592,9 @@ $("#choice_btn").on("change",function(e){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
+	$(window).ready(function(){
+			$('#Zoomer').zoomer();
+	});
   $('body').addClass("overflow");
 
   var $image = $(this).prev('img');
@@ -744,7 +774,187 @@ $(document).on("click",".lightbox_hover",function(){
 	alert("error");
   });
 });
+$(document).on("click",".lightbox",function(){
+  $('.lightbox_view').fadeIn();
+  $('body').addClass("overflow");
 
+  var $image = $(this).prev('img');
+  var $imageId = $image.attr('id');
+  var $userId = $image.attr('value');
+  var $imageWidth = $image.width();
+  var $imageHeight = $image.height();
+
+  var $imageTitle;
+  var $creatorName;
+
+  var $div;
+
+  var param = {
+		  0:$imageId,
+		  1:$userId
+  };
+  console.log(param);
+  var data = {'model':'images','action':'imageInfo','data':param};
+  //ajax通信
+  $.ajax({
+	url:"../../Api/controller.php",
+	dataType:'json',
+	type:"POST",
+	data:data
+  //ajax通信成功時
+  }).done(function(data){
+	console.log(data);
+
+	$imageTitle = data[0]['usersData'][0]['imageTitle'];
+	$creatorName = data[0]['usersData'][0]['creatorName'];
+
+	//5段階評価に使う星画像の場所を明示
+	$.fn.raty.defaults.path = "../Lib/images";
+
+	//画像詳細を表示////////////////////
+	var $div = $('.lightbox_left_image');
+	$div.empty();
+	$div.append(
+			$("<img class='view_image'>")
+			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+	);
+	var w,h;
+	if($imageWidth >= $imageHeight){
+		w = 500;
+		h = (500 / $imageWidth) * $imageHeight;
+	}else{
+		w = (600 / $imageHeight) * $imageWidth;
+		h = 600;
+	}
+	$('.lightbox_left_image').css('background','transparent')
+	$('.view_image').css('width',w);
+	$('.view_image').css('height',h);
+	//ユーザーアイコン表示//////////////////
+	$div = $('.user_icon');
+	$div.empty();
+	$div.append(
+			$("<img class='view_icon'>")
+			.attr("src","../../User/"+ $creatorName +"/icon.png")
+	);
+	$('.view_icon').css('width',50);
+	$('.view_icon').css('height',50);
+	$('.view_icon').css('border-radius','50%');
+
+	//作者名表示////////////////////////
+	$div = $('.user_name');
+	$div.empty();
+	$div.append("{{creatorName}}");
+	var drowCreatorName = new Vue({
+		el : '.user_name',
+		data :{
+			creatorName : "illustration by "+ $creatorName
+		}
+	})
+
+
+	//作品タイトル表示////////////////////////
+	$div = $('.work_title');
+	$div.empty();
+	$div.append("{{imageTitle}}");
+	$div.css("color","white");
+	$div.css("fontSize","1.5rem")
+	var drowImageTitle = new Vue({
+		el : '.work_title',
+		data :{
+			imageTitle : $imageTitle
+		}
+	})
+
+	//レビューコメント表示/////////////////////
+	$div = $('.past_coment');
+	$div.empty();
+	$div.append(
+		("<div id='commentPreview' style='overflow: auto; width: 500px; height: 160px'></div>")
+	);
+	var sum = 0;
+	for(var i = 0;i<data[0]['commentData'].length;i++){
+		$('#commentPreview').append(
+			("<div id ='comment"+ i +"'</div>")
+		);
+		$('#comment' + i).raty({
+			readOnly : true,
+			hints: ['', '', '', '', ''],
+			number : 5,
+			score : data[0]['commentData'][i]['rank']
+		});
+
+		if( data[0]['commentData'][i]['userName'] == ""){
+			$('#comment' + i).append(
+				("<br>"),
+				("<img src='../Images/user.png' class='gest'><p1>GestUser</p1>"),
+				("<br>"),
+				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
+				("<br><br><br>")
+			);
+			$('.gest').css('width',20);
+			$('.gest').css('height',20);
+			$('.gest').css('margin-right','5px');
+			$('.gest').css('border-radius','50%');
+		}else{
+			$('#comment' + i).append(
+				("<br>"),
+				$("<img id='commenter_icon"+i+"'>")
+					.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
+				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+				("<br>"),
+				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
+				("<br><br><br>")
+			);
+			$('#commenter_icon'+i).css('width',20);
+			$('#commenter_icon'+i).css('height',20);
+			$('#commenter_icon'+i).css('border-radius','50%');
+		}
+	sum = parseInt(sum) +  parseInt(data[0]['commentData'][i]['rank']);
+	}
+
+	//レビュー合計表示/////////////////////////////
+	$div = $('.review_all');
+	$div.empty();
+	$div.append(
+		("<h1>レビュー合計 : "+ data[0]['commentData'].length +"件</h1>"),
+		("<div id = 'averageReview'></div>")
+	);
+	$('#averageReview').raty({
+		readOnly : true,
+		number : 5,
+		hints: ['', '', '', '', ''],
+		halfShow : true,
+		score : (sum / data[0]['commentData'].length)
+	});
+
+	//レビューする部分を表示////////////////////////
+	$div = $('.review');
+	$div.empty();
+	$div.append(
+		("<h1>レビューをする</h1>"),
+		("<div id = 'reviewErea'></div>"),
+		("<input id = 'hint'type='hidden'value = '0' readonly>")
+	);
+	$('#reviewErea').raty({
+		number : 5,
+		hints: ['1', '2', '3', '4', '5'],
+		targetScore : '#hint'
+	});
+	$div = $('.review_coment');
+	$div.empty();
+	$div.append(
+		("<h1>コメントをする</h1>"),
+		("<textarea name='comment'id='"+$imageId+"ComentErea' cols='40' rows='8'></textarea>"),
+		("<button class='review_btn' id='"+$imageId+"' value='"+$userId+"'>レビュー</button>")
+	);
+
+
+
+  //ajax通信失敗時
+  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+	alert("error");
+  });
+});
 
 //レビューボタン押下時//////////////////////////////////////////////////////////
 $(document).on("click",".review_btn",function(){

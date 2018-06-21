@@ -84,6 +84,7 @@
 							  <!--入力フォーム-->
 	              ユーザー名<h2>※またはメールアドレス</h2><input class="login_text" type="text" >
 	              パスワード<input class="pass_text" type="password" >
+								<p><a class="know_pass">パスワードをお忘れの方はこちら</a></p>
 	            </div>
 
 	            <div class="login_btn_content">
@@ -97,28 +98,39 @@
 	      </div>
 	    </div>
 	  <!--ログイン画面終わり -->
-    <!--ログイン完了画面 -->
-    <div class="login_Comp_view">
-      <div class="new_background"></div>
-      <div class="new_image_container">
-        <div class="close_btn_container">
-          <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-          <div class="new_box">
-            <div class="new_header">
-              <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
-            </div>
-            <div class="login_Comp_text">
-              <h1>ログインしました。</h1>
-            </div>
-            <div class="new_btn_content">
-              <input class="close_btn2" type="button"  value="閉じる"  >
-              <input class="mypage_btn" type="button" onclick="location.href='mypage.html'" value="マイページへ" >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--ログイン完了画面終わり -->
+
+		<!--パスワードを忘れたら画面 -->
+	    <div class="pass_view">
+	      <div class="pass_background"></div>
+	      <div class="pass_image_container">
+	        <div class="close_btn_container">
+					<!--閉じるボタン-->
+	          <div class="pass_close_btn"><img src="../Images/close.png"  alt="閉じるボタン"/></div>
+	          <div class="pass_box">
+	            <div class="pass_header">
+                <div class="pass_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
+	            </div>
+	            <div class="pass_word">
+                <!--タイトル-->
+	              <div class="pass_title"><h1>パスワード変更</h1></div>
+
+							  <!--入力フォーム-->
+	              ユーザー名<input class="passpop_text" type="text" >
+	              メールアドレス<input class="mail_text" type="text" >
+	            </div>
+
+	            <div class="pass_btn_content">
+								<!--閉じるボタン-->
+	                <input class="close_btn2" type="button"  value="閉じる">
+								<!--ログインボタン-->
+	                <input class="mail_btn" type="button"  value="送信">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  <!--パスワードを忘れたら画面終わり -->
+
 
 	　<!--新規登録画面 -->
       <div class="new_view">
@@ -139,10 +151,13 @@
                   </div>
                   <label for="choice_btn">
                     <p>選択</p>
-                    <input id="choice_btn" type="file">
+                    <input id="choice_btn" type="file" name="testimg">
                   </label>
                 </div>
+								<input class="new_trimming_btn" type="button"  value="アイコンをトリミング">
                 <dl class="new_form">
+									<dt>アカウント名</dt>
+                  <dd><input type="text" name="account_name"id="sineUp_account_name"></dd>
                   <dt>ユーザー名</dt>
                   <dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
                   <dt>メールアドレス</dt>
@@ -302,9 +317,15 @@
               <div class="close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
             </div>
             <div class="lightbox_image">
-              <!-- <div id="Zoomer" class="zoomer_wrapper">
+               <div id="Zoomer" class="zoomer_wrapper">
                 <img src="../Images/05.png" alt="イメージ">
-              </div> -->
+              </div>
+							<div class="lightbox_contents_btn_waku">
+								<div class="lightbox_contents_btn">
+								<input id="review_btn_top" type="button" value="レビュー">
+								<input id="creator_btn_top" type="button" value="詳細">
+							</div>
+						</div>
             </div>
             <div class="lightbox_title">
               <div class="user_information">
