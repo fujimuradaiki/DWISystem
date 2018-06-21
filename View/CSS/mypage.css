@@ -626,7 +626,7 @@ label p:hover {
   height: 150px;
   margin: 0 auto;
   margin-top: 20px;
-  background: #000;
+  background: #fff;
 }
 
 /*ユーザーアイコンと２つのボタンが入っているところの背景*/
@@ -982,12 +982,6 @@ input[type=checkbox]:checked + .mycheck_btn:before {
   font-size:20px;
 }
 
-.work_info p{
-	color: #fff;
-  font-size: 20px;
-  margin-top: 70px;
-}
-
 .work_infoarea{
 	resize: none;
   width:500px;
@@ -999,6 +993,13 @@ input[type=checkbox]:checked + .mycheck_btn:before {
   width:20%;
   height:30px;
   font-size: 18px;
+}
+
+.lightbox_right .works_info p{
+	color: #fff;
+  font-size: 20px;
+  margin: 30px 0 -10px;
+
 }
 
 /*削除ボタン*/
@@ -1785,7 +1786,7 @@ label p:hover {
   height: 150px;
   margin: 0 auto;
   margin-top: 20px;
-  background: #000;
+  background: #fff;
 }
 
 /*ユーザーアイコンと２つのボタンが入っているところの背景*/
@@ -2127,9 +2128,9 @@ input[type=checkbox]:checked + .mycheck_btn:before {
 }
 
 .title_box{
-  width: 100%;
-  height: 40px;
-  font-size: 25px;
+	width: 100%;
+  height: 25px;
+  font-size: 16px;
 }
 
 .serect_box{
@@ -2143,9 +2144,9 @@ input[type=checkbox]:checked + .mycheck_btn:before {
 }
 
 #Genre{
-  width:100%;
-  height:30px;
-  font-size: 18px;
+	width: 100%;
+  height: 25px;
+  font-size: 16px;
 }
 
 /*削除ボタン*/

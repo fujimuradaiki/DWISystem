@@ -67,6 +67,8 @@ $('.delete_btn2').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿
   $('body').removeClass("overflow");
 });
 
+
+
 $('.trimming_btn').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
   //$('.trimming_view').fadeIn();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   //$('body').removeClass("overflow");
@@ -79,6 +81,8 @@ $('.trimming_btn').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï
 
 // closeï¿½{ï¿½^ï¿½ï¿½//
 
+
+
 $('.close_btn img').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
   $('.lightbox_view,.login_view,.new_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   $('body').removeClass("overflow");
@@ -88,6 +92,7 @@ $('.login_close_btn img').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï
   $('.login_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
   $('body').removeClass("overflow");
 });
+
 
 $('.new_close_btn img').click(function(){//.close_btn imgï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½//
   $('.new_view,.new_confirmation_view,.new_touroku_view,.toukou_view,.login_Comp_view').fadeOut();//viewï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½ï¿½//
