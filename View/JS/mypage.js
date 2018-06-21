@@ -81,6 +81,24 @@ $(document).ready(function(){
 		("<h1>"+ userName +"</h1>")
 	);
 
+	/*$.ajax({
+		url:"../../Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data,
+		timeout:1000
+	}).done(function(data){
+		//var text = "";
+		//$('my_introduction').append($('<pre id="intro">'+text+'</pre>'));  // 自己紹介
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});*/
+
+	var text = "あああああ";
+	$('.my_introduction').append($('<pre id="intro">'+text+'</pre>'));
+
+
 	//作品一覧を表示
 	runSearch();
 
@@ -98,7 +116,145 @@ $(document).ready(function(){
 */
 $(document).on("click",".Editing_btn",function(){
 	//ajax通信で登録されている内容をテキストボックスに表示する
+	 var userId = sessionStorage.getItem('userId');
+	 var userName = sessionStorage.getItem('userName');
 
+	//$('.mypage_icon').empty();
+	//$('.mypage_icon').append($('<img>').attr("src","../../User/"+ userName +"/icon.png"));
+	$('.mypage_name').empty();
+	$('.mypage_name').append($('<input type="text" id="editname" value="'+userName+'">'));
+	$('.my_introduction').append($('<textarea id="introbox"></textarea>').val(document.getElementById('intro').innerHTML));
+	$('#intro').remove();
+});
+
+$(".choice_btn").on("change",function(e){
+	var file = e.target.files[0],
+    reader = new FileReader(),
+    $preview = $(".mypage_icon");
+    // pngファイル以外の場合は何もしない
+    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+    	alert("画像以外のファイルは利用できません。");
+    	$(".choice_btn").val("");
+    	return false;
+    }
+    reader.onload = (function(file) {
+    	return function(e) {
+    		$preview.empty();
+    		$preview.append($('<img>').attr({
+    			src: e.target.result,
+    			width: "200px",
+    			height: "200px",
+    			class: "preview",
+    			title: file.name,
+    			id: "iconimg",
+    			name:"upload_file"
+    		}));
+    	};
+    })(file);
+
+    reader.readAsDataURL(file);
+});
+
+//トリミング開始ボタン
+$('.trimming_btn').on('click', function(){
+    /*var imageId = $('#iconimg').attr('src');
+	if(imageC != 'preview'){
+		imageId('No');
+		return;
+	}*/
+
+	$('.trimming_view').fadeIn();
+	/*
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('#iconimg').attr('src'), 'id':'trimming_img'}));
+	var image = $('.trimming_image > img'),replaced;
+    $('#trimming_img').cropper({
+    	aspectRatio: 4 / 4
+    });
+    */
+});
+
+//トリミング確定ボタン(一番左の画像)
+$('.trimming_view_btn').on('click', function(){
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img').attr('src');
+	var data = $('#trimming_img').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+
+	$('.mypage_icon').append($('<canvas></canvas>').attr({"id":"canvasimg1"}));
+	this.canvas = document.getElementsById('canvasimg1').getContext('2d');
+	var canvas = document.getElementsById('canvasimg1');
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('#trimming_view_img').remove();
+	$('#trimming_img').remove();
+	$('.trimming_image').empty();
+	$('.mypage_icon').append($('<img>').attr({'src':dataURI, 'title':$('#iconimg').attr('title'), 'name':'trimming_file', 'id':'trimming_view_img' , 'width':200,'height':200}));
+	$('#canvasimg1').remove();
+	//$('#iconimg').remove();
+	document.getElementsById('iconimg').style.display = "none";
+
+	$('.trimming_view').fadeOut();
+});
+
+
+// 公開領域送信
+$(document).on("click",".send",function(){
+
+	 var userId = sessionStorage.getItem('userId');
+	 var userName = sessionStorage.getItem('userName');
+	 var introduction = document.getElementById('introbox').value;
+	 var data = [ userId, userName, $('#editname').val(),introduction ];
+	 var trimming_view_img = $('#trimming_view_img').attr('src');
+		if(trimming_view_img === undefined)
+			trimming_view_img = "";
+
+	 var param = new FormData($('[name="send"]').get(0));
+	 param.append('model', 'users');
+	 param.append('action', 'profile');
+	 param.append('data', data);
+
+	//ajax通信
+	$.ajax({
+		url:"../../Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data
+	//ajax通信成功時
+	}).done(function(data){
+		//テキストボックスに送られてきたデータを投げる
+		$('#sineIn_user_name').val(data['userName']);
+		$('#sineIn_mail').val(data['userMail']);
+
+		$('.Editing_image').empty();
+		$('.Editing_image').append(
+				$("<img id='editingIcon'class='icon'>")
+				.attr("src","../../User/"+ data['userName'] +"/icon.png")
+		);
+
+	//ajax通信失敗時
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+		alert("error");
+	});
+
+});
+
+/*$(document).on("click",".Editing_btn",function(){
+	//ajax通信で登録されている内容をテキストボックスに表示する
 	 var userId = sessionStorage.getItem('userId');
 	 var data = {'model':'users','action':'profile','data':userId};
 
@@ -126,7 +282,7 @@ console.log(data);
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
-});
+});*/
 
 
 /*

@@ -77,9 +77,10 @@ $("#choice_btn1").on("change",function(e){
 		var file = e.target.files[0],
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images1");
+		alert(file.type);
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+	    	alert("画像以外のファイル または5MBを超えるファイルは利用できません");
 	    	$("#choice_btn1").val("");
 	    	return false;
 	    }
@@ -117,9 +118,9 @@ $("#choice_btn1").on("change",function(e){
 // トリミング開始ボタン(一番左の画像)
 $('#trimming_btn1').on('click', function(){
     var imageId = $('.toukou_images1').children('img').attr('id');
-	alert(imageId);
+	//alert(imageId);
 	if(imageId != 'img1'){
-		alert('No');
+		//alert('No');
 		return;
 	}
 
@@ -178,8 +179,8 @@ $("#choice_btn2").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images2");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+	    	alert("画像以外のファイル または5MBを超えるファイルは利用できません");
 	    	$("#choice_btn2").val("");
 	    	return false;
 	    }
@@ -261,8 +262,8 @@ $("#choice_btn3").on("change",function(e){
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images3");
 	    // pngファイル以外の場合は何もしない
-	    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-	    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+	    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+	    	alert("画像以外のファイル または5MBを超えるファイルは利用できません");
 	    	$("#choice_btn3").val("");
 	    	return false;
 	    }
@@ -347,10 +348,12 @@ $(".toukou_btn").on("click",function(){
 	var userName = sessionStorage.getItem('userName');
 	var categoryArray = new Array($('#Genre1').val(), $('#Genre2').val(), $('#Genre3').val());
 	var titleArray = new Array($('.toukou_title1').val(), $('.toukou_title2').val(),$('.toukou_title3').val());
+	var workinfoArray = new Array($('.work_info1').val(), $('.work_info2').val(), $('.work_info3').val());
 	var trimming_view_img1 = $('#trimming_view_img1').attr('src');
 	var trimming_view_img2 = $('#trimming_view_img2').attr('src');
 	var trimming_view_img3 = $('#trimming_view_img3').attr('src');
 
+	//alert(workinfoArray);
 
 	var trimmingArray =[];
 	var trimmingIndex = 0;
@@ -372,14 +375,14 @@ $(".toukou_btn").on("click",function(){
 			trimmingArray[count] = trimming_view_img3;
 		}
 	}
-	var data  = [ userName, userId, categoryArray, titleArray, trimmingArray];
+	var data  = [ userName, userId, categoryArray, titleArray, trimmingArray, workinfoArray ];
 
 	var param = new FormData($('[name="contribution"]').get(0));
 	param.append('model'  , 'images');
 	param.append('action' , 'insertImage');
 	param.append('data'   ,  data)
 	//console.log(JSON.stringify(param));
-	console.log(trimmingArray);
+	//console.log(trimmingArray);
 
 	//ajax通信
 	$.ajax({
