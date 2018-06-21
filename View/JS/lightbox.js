@@ -15,17 +15,16 @@ $('.login_btn4').click(function(){
   $('body').addClass("overflow");
 });
 
-/*ボタンを押したとき新規登録画面を表示させる*/
-$('.new_btn').click(function(){
-  $('.new_view').fadeIn();
-  $('body').addClass("overflow");
-});
+// /*ボタンを押したとき新規登録画面を表示させる*/
+// $('.new_btn').click(function(){
+//   $('.new_view').fadeIn();
+//   $('body').addClass("overflow");
+// });
 /*ボタンを押したとき新規登録確認画面を表示させる*/
-
-//$('.confirmation_btn').click(function(){
-//  $('.new_confirmation_view').fadeIn();
-//  $('body').addClass("overflow");
-//});
+  $('.confirmation_btn').on('click', function(){
+  $('.new_confirmation_view').fadeIn();//view���t�F�[�h�A�E�g����//
+  $('body').removeClass("overflow");
+});
 
 //$('.confirmation_btn').click(function(){
 //  $('.new_confirmation_view').fadeIn();
