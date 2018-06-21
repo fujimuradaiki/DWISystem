@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>新規登録</title>
+	<title>プロフィール編集</title>
 	<meta charset="utf-8">
   <meta content="text/html; charset=shift_jis" http-equiv="Content-Type" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
-	<link href="../CSS/profil.css" rel="stylesheet" type="text/css"/>
+	<link href="../CSS/profil_re.css" rel="stylesheet" type="text/css"/>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 	<script src="../JS/jquery.3.3.1.js"></script>
 	<script src="../JS/lightbox.js"></script>
@@ -74,7 +74,7 @@
 	              <div class="login_title"><h1>ログイン</h1></div>
 
 							  <!--入力フォーム-->
-	              メールアドレス<input class="login_text" type="text" >
+	              ユーザー名<h2>※またはメールアドレス</h2><input class="login_text" type="text" >
 	              パスワード<input class="pass_text" type="password" >
 	            </div>
 
@@ -118,7 +118,7 @@
 	        <div class="new_image_container">
 	          <div class="close_btn_container">
 	            <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-	            <div class="new_box">
+	            <div class="new_touroku_box">
 	              <div class="new_header">
                   <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
 	              </div>
@@ -126,8 +126,8 @@
 	                <h1>登録完了</h1>
 	                <h2>ご登録ありがとうございます。</h2>
 	              </div>
-	                <div class="new_btn_content">
-	                  <input class="close_btn2" type="button"  value="閉じる"  >
+	                <div class="new_touroku_btn_content">
+	                  <input class="top_btn" type="button"  value="トップへ" onclick=location.href="Top.html" >
 	                  <input class="login_btn4" type="button"  value="ログイン" >
 	                </div>
 	            </div>
@@ -147,7 +147,7 @@
         <div class="new_title">
           <div class="left_border"></div>
           <div class="right_border"></div>
-          <h1>新規登録</h1>
+          <h1>新規登録内容確認</h1>
         </div>
         <div class="new_box">
           <div class="new_left_content">
@@ -158,25 +158,25 @@
                   <input id="choice_btn" type="file">
                 </label>
               </div>
-							<input class="new_trimming_btn" type="button" value="アイコンをトリミング">
+
           </div>
           <div class="new_right_content">
 						<dl class="new_form">
 							<dt>ニックネーム</dt>
-							<dd><input type="text" name="account_name"id="sineUp_account_name"></dd>
+							<dd><input type="text" disabled="disabled" name="account_name"id="sineUp_account_name"></dd>
 							<dt>ユーザー名</dt>
-							<dd><input type="text" name="user_name"id="sineUp_user_name"></dd>
+							<dd><input type="text" disabled="disabled" name="user_name"id="sineUp_user_name"></dd>
 							<dt>メールアドレス</dt>
-							<dd><input type="text" name="mail"id="sineUP_mail"></dd>
+							<dd><input type="text" disabled="disabled" name="mail"id="sineUP_mail"></dd>
 							<dt>パスワード</dt>
-							<dd><input type="password" name="password1"id="sineUp_password1"></dd>
+							<dd><input type="password" disabled="disabled" name="password1"id="sineUp_password1"></dd>
 							<dt>※パスワード確認</dt>
-							<dd><input type="password" name="password2"id="sineUp_password2"></dd>
+							<dd><input type="password" disabled="disabled" name="password2"id="sineUp_password2"></dd>
 						</dl>
 					</div>
           <div class="new_btn_content">
-<!--            <input class="delete_btn2" type="button"  value="アカウント消去">-->
-            <input class="confirmation_btn" type="button" value="確認">
+						<input class="return_btn" type="button" value="戻る">
+            <input class="touroku_btn" type="button" value="登録">
           </div>
       </div>
       </div>

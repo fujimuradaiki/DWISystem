@@ -491,7 +491,88 @@ i {
   left:0;
 }
 
+.new_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
 
+.new_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.new_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.new_header{
+  width: 400px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.new_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.new_logo img{
+  width:200px;
+}
+
+.new_touroku_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+  margin-left: 200px;
+}
+
+.touroku_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.touroku_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.new_touroku_btn_content{
+/*  float: left;*/
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+.top_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
 /*�v���t�B�[���ҏW���ʊJ�n*/
 
 
@@ -881,7 +962,7 @@ i {
   width: 400px;
   height: 500px;
   background: #fff;
-  margin-left: 200px;
+	margin: -217px 200px;
 }
 
 .login_header{
@@ -1155,6 +1236,7 @@ i {
 /*�V�K�o�^���e�m�F�y�[�W�I��
 
 �o�^����*/
+/*�o�^����*/
 .new_touroku_view{
   display:none;
   width:100%;
@@ -1164,7 +1246,89 @@ i {
   left:0;
 }
 
+.new_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
 
+.new_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.new_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.new_header{
+  width: 400px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.new_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.new_logo img{
+  width:200px;
+}
+
+.new_touroku_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+	margin: -217px 200px;
+}
+
+.touroku_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.touroku_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.new_touroku_btn_content{
+/*  float: left;*/
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+
+.top_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
 
 /*�v���t�B�[���ҏW���ʊJ�n*/
 
