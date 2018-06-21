@@ -42,9 +42,17 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
      if(isset($_FILES) && $_FILES['testimg']['name'] != ""){
          $data = str_replace('data:image/png;base64,', '', $data);
          $dataArray= explode(",", $data);
-       $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
+
+         $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else {
-         $classname->controller($_POST['action'],$data);
+
+         if($_POST['action'] == "insert" || $_POST['action'] == "update"){
+             $data = str_replace('data:image/png;base64,', '', $data);
+             $dataArray= explode(",", $data);
+             $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
+         }else{
+             $classname->controller($_POST['action'],$data);
+         }
 //          if(is_array($data)){
 //              $type = str_replace('data:image/', '', $encode);
 //              $type = substr($type, 0, strpos($type,";"));
