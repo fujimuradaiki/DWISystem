@@ -678,14 +678,26 @@ class images{
         //  echo $sql . "\n";
         //SQL実行
         $result = $pdo->dbo->query($sql);
-
+        $exts = ['jpg', 'png','jpeg'];
+        $resultExt='';
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
+
+                // 拡張子を判断する
+                foreach( $exts as $ext) {
+                    $filePath = '../User/'.$val['account_name'].'/'.$val['image_id'].'.'.$ext;
+                    if(is_file($filePath)) {
+                        $resultExt = $ext;
+                        break;
+                    }
+                }
+
             $imagesArray[] = array(
                 'Id' => $val['image_id'],
                 'Title' => $val['image_title'],
                 'UserName' => $val['account_name'],
                 'userId'=>$val['user_id'],
-                'categoryName' => $val['category_name']
+                'categoryName' => $val['category_name'],
+                'fileType'=>$val['image_id'].'.'.$resultExt
             );
         };
         echo json_encode($imagesArray);
