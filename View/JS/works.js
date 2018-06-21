@@ -352,7 +352,7 @@ function runSearch(){
 			var categoryName = data[i].categoryName;
 			var title = data[i].Title;
 			var insert_at = data[i].Insert_at;
-
+			var $dispimge = data[i].fileType;
 			//画像表示
 			$div.append(
 				("<div class='lightbox'id='"+ imageId + "Div'></div>")
@@ -361,7 +361,7 @@ function runSearch(){
 			$num.append(
 
 					$("<img id='"+imageId+"'class='images'value='"+userId+"'>")
-					.attr("src","../../User/"+ userName +"/"+ imageId +".png"),
+					.attr("src","../../User/"+ userName +"/"+  $dispimge),
 
 					("<div class='lightbox_hover'id='"+imageId+"Hover'></div>")
 			);
@@ -457,6 +457,10 @@ function trimmingImage(img,size){
 */
 $(document).on("click",".close_btn",function(){
 	runSearch();
+	$('.creator_icon').empty();
+	$('.creator_name').empty();
+	$('.creator_coment').empty();
+	$('.work_coment').empty();
 });
 
 
@@ -627,7 +631,22 @@ $(document).on("click",".touroku_btn",function(){
 	var iconData = $("#choice_btn").val();
 	$("#new_form_waku").text
 
-		var param = [];
+
+	var trimming_view_img = $('.trimming_view_img').attr('src');
+	if(trimming_view_img === undefined)
+		trimming_view_img = "";
+
+	alert(trimming_view_img);
+
+	var data = [name, pass1, mail, trimming_view_img];
+	var param = new FormData($('[name="send"]').get(0));
+	param.append('model', 'users');
+	param.append('action', 'insert');
+	param.append('data', data);
+
+	//alert(param);
+
+		/*var param = [];
 		param[0] = name;
 		param[1] = pass1;
 		param[2] = mail;
@@ -635,17 +654,20 @@ $(document).on("click",".touroku_btn",function(){
 
 		console.log(param[3] );
 		var data = {'model':'users','action':'insert','data':param};
-		console.log(data);
+		console.log(data);*/
 		//ajax通信
 		$.ajax({
 			url:"../../Api/controller.php",
 			dataType:'json',
 			type:"POST",
-			data:data,
+			processData : false,
+		    contentType : false,
+			data:param,
 		//ajax通信成功時
 		}).done(function(data){
+			alert(JSON.stringify(data));
 			console.log(data);
-			if(data != false){
+			/*if(data != false){
 			  $('.new_touroku_view').fadeIn();
 			  $('body').addClass("overflow");
 			// alert("新規登録が完了しました。");
@@ -656,10 +678,10 @@ $(document).on("click",".touroku_btn",function(){
 			$("#choice_btn").val('');
 			}else{
 		    alert("登録名がすでに使用されています。");
-			}
+			}*/
 		//ajax通信失敗時
-		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-			alert("error");
+		}).fail(function(data){
+			alert('error');
 		});
 });
 
@@ -683,8 +705,10 @@ $("#choice_btn").on("change",function(e){
     		$preview.append($('<img>').attr({
     			src: e.target.result,
     			width: "200px",
+    			height: "200px",
     			class: "preview",
     			title: file.name,
+    			//id: "iconimg",
     			name:"upload_file"
     		}));
     	};
@@ -693,6 +717,66 @@ $("#choice_btn").on("change",function(e){
     reader.readAsDataURL(file);
 });
 
+//トリミング開始ボタン(一番左の画像)
+$('.trimming_btn').on('click', function(){
+    var imageC = $('.new_image').children('img').attr('class');
+	//alert(imageC);
+	if(imageC != 'preview'){
+		alert('No');
+		return;
+	}
+
+	$('.trimming_view').fadeIn();
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('.preview').attr('src'), 'id':'trimming_img'}));
+	var image = $('.trimming_image > img'),replaced;
+    $('#trimming_img').cropper({
+    	aspectRatio: 4 / 4
+    });
+});
+
+//トリミング確定ボタン(一番左の画像)
+$('.trimming_view_btn').on('click', function(){
+	/*var imageId = $('.trimming_image').children('img').attr('id');
+	if(imageId != 'trimming_img'){
+		//alert('1以外');
+		return;
+	}*/
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img').attr('src');
+	var data = $('#trimming_img').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+
+	$('.new_image').append($('<canvas></canvas>').attr({"class":"canvasimg1"}));
+	this.canvas = document.getElementsByClassName('canvasimg1')[0].getContext('2d');
+	var canvas = document.getElementsByClassName('canvasimg1')[0];
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('.trimming_view_img').remove();
+	$('#trimming_img').remove();
+	$('.trimming_image').empty();
+	$('.new_image').append($('<img>').attr({'src':dataURI, 'title':$('.preview').attr('title'), 'name':'trimming_file', 'class':'trimming_view_img' , 'width':200,'height':200}));
+	$('.canvasimg1').remove();
+	//$('#iconimg').remove();
+	document.getElementsByClassName('preview')[0].style.display = "none";
+	document.getElementsByClassName('preview')[1].style.display = "none";
+
+	$('.trimming_view').fadeOut();
+});
 
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
@@ -731,6 +815,7 @@ $(document).on("click",".lightbox_hover",function(){
 
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
+	$dispimge = data[0]['usersData'][0]['fileType'];
 
 	//5段階評価に使う星画像の場所を明示
 	$.fn.raty.defaults.path = "../Lib/images";
@@ -742,7 +827,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
 	$('.zoomer_wrapper').append(
 			$("<img>")
-			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+			.attr("src","../../User/"+ $creatorName +"/"+ $dispimge)
 	);
 	// class='view_image'
 	$(window).ready(function(){
@@ -794,7 +879,12 @@ $(document).on("click",".lightbox_hover",function(){
 		data :{
 			imageTitle : $imageTitle
 		}
-	})
+	});
+
+	$('.creator_icon').append($('<img>').attr("src","../../User/"+ $creatorName +"/icon.png"));
+	$('.creator_name').append($('<h1>'+data[0]['usersData'][0]['creatorName']+'</h1>'));       // アカウント名
+	$('.creator_coment').append($('<pre>'+data[0]['usersData'][0]['Introduction']+'</pre>'));  // 自己紹介
+	$('.work_coment').append($('<pre>'+data[0]['usersData'][0]['imageSummary']+'</pre>'));
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -832,7 +922,7 @@ $(document).on("click",".lightbox_hover",function(){
 				("<br>"),
 				$("<img id='commenter_icon"+i+"'>")
 					.attr("src","../../User/"+ data[0]['commentData'][i]['userName'] +"/icon.png"),
-				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"</p1>"),
+				("<p1>"+" "+ data[0]['commentData'][i]['userName'] +"&emsp;&emsp;"+data[0]['commentData'][i]['commentInsertAt']+"</p1>"),
 				("<br>"),
 				("<p2>"+" "+data[0]['commentData'][i]['comment'] +"</p2>"),
 				("<br><br><br>")
