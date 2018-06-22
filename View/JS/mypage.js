@@ -44,9 +44,10 @@ $(document).ready(function(){
 	//ログイン中のユーザーIDとユーザー名を取得
 	//取得できなかった場合、トップページに遷移
 	var userId = sessionStorage.getItem('userId');
-	var userName = sessionStorage.getItem('userName');
+	var userName = sessionStorage.getItem('userName');  // アカウント名
+
 	console.log(userId,userName);
-	if(userId == null || userName == null){
+	if(userId == null || sessionStorage.getItem('privateUserName') == null){
 		alert("ログイン状態ではありません。\nトップページに戻ります。")
 		window.location.href =  "Top.html";
 	}
@@ -81,27 +82,35 @@ $(document).ready(function(){
 		("<h1>"+ userName +"</h1>")
 	);
 
-	/*$.ajax({
+	var data = {'model':'users', 'action':'profile', 'data':userId };
+
+	$.ajax({
 		url:"../../Api/controller.php",
 		dataType:'json',
 		type:"POST",
 		data:data,
 		timeout:1000
 	}).done(function(data){
+		console.log(data);
+		var text = data.introduction;
+		if(text == null)
+			text = "";
+
+		$('.my_introduction').append($('<pre id="intro">'+text+'</pre>'));
+		sessionStorage.setItem('privateUserName',data['user']);    // 非公開名(ユーザ名)※古いものになる
+		$('#sineIn_user_name').val(sessionStorage.getItem('privateUserName'));
+		$('#sineIn_mail').val(data['userMail']);
+		//sessionStorage.setItem('userMail',data['userMail']);       // メールアドレス
 		//var text = "";
 		//$('my_introduction').append($('<pre id="intro">'+text+'</pre>'));  // 自己紹介
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
-	});*/
-
-	var text = "あああああ";
-	$('.my_introduction').append($('<pre id="intro">'+text+'</pre>'));
+	});
 
 
 	//作品一覧を表示
 	runSearch();
-
 });
 
 
@@ -197,7 +206,7 @@ $('.trimming_view_btn').on('click', function(){
 	var canvas = document.getElementById('canvasimg1');
 	canvas.width = 200;
 	canvas.height = 200;
-	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 130, 130);
 
 	var dataURI = canvas.toDataURL();
 	$('#trimming_view_img').remove();
@@ -205,6 +214,9 @@ $('.trimming_view_btn').on('click', function(){
 	$('.trimming_image').empty();
 	$('.mypage_icon').append($('<img>').attr({'src':dataURI, 'title':$('#iconimg').attr('title'), 'class':'icon', 'name':'trimming_file', 'id':'trimming_view_img'}));
 	$('#canvasimg1').remove();
+	var $mypageIcon = $('#iconimg');
+	$mypageIcon.css('width',130);
+	$mypageIcon.css('height',130);
 	//$('#iconimg').remove();
 	document.getElementById('iconimg').style.display = "none";
 
@@ -223,11 +235,11 @@ $(document).on("click",".send",function(){
 		if(trimming_view_img === undefined)
 			trimming_view_img = "";
 
-		var data = [ userId, userName, $('#editname').val(),introduction, trimming_view_img ];
+	 var data = [ userId, userName, $('#editname').val(),introduction, trimming_view_img ];
 
 	 var param = new FormData($('[name="send"]').get(0));
 	 param.append('model', 'users');
-	 param.append('action', 'profile');
+	 param.append('action', 'update');
 	 param.append('data', data);
 
 	//ajax通信
@@ -304,16 +316,16 @@ console.log(data);
 $(document).on("click",".storage_btn",function(){
 	if($pass = window.prompt('パスワードを入力してください')){
 		var user_id = sessionStorage.getItem('userId');
-		var name = $('#sineIn_user_name').val();
+		var name = $('#sineIn_user_name').val();      // 新しい非公開名(ユーザ名)
 		var mail = $('#sineIn_mail').val();
-		var pass_new = $('#sineIn_pass_old').val();
-		var passAgain = $('#sineIn_pass_new').val();
+		var pass_new = $('#sineIn_pass_old').val();   // 1回目パスワード
+		var passAgain = $('#sineIn_pass_new').val();  // 2回目パスワード
 
 		var errorFlag = 0;
 		var errorMsg = "入力内容に不備があります。\n\n";
 
-		var obj = document.getElementById("editingIcon");
-		var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
+		//var obj = document.getElementById("editingIcon");
+		//var bace64 = imageToBase64(obj, 'image/png',obj.naturalWidth,obj.naturalHeight);
 		//ユーザー名バリデーション
 		if(name == "pass_old"){
 			errorFlag = 1;
@@ -357,16 +369,17 @@ $(document).on("click",".storage_btn",function(){
 		}else{
 			//ajax通信で入力されている情報をPHPに渡す
 
-			 var param = [];
+			var param = [];
 			param[0] = user_id;
-			param[1] = name;
-			param[2] = $pass;
-			param[3] = pass_new;
-			param[4] = mail;
-			param[5] = bace64;
-			param[6] = sessionStorage.getItem('userName');
-			 var data = {'model':'users','action':'update','data':param};
+			param[1] = sessionStorage.getItem('privateUserName');  // 古い非公開名
+			param[2] = name;     // 新しい非公開名
+			param[3] = mail;     // 古いパスワード
+			param[4] = $pass;    // 古いパスワード
+			param[5] = pass_new; // 新しいパスワード
+
+			 var data = {'model':'users','action':'userUpdate','data':param};
 			 console.log(data);
+			 //alert(param);
 			 //ajax通信
 				$.ajax({
 					url:"../../Api/controller.php",
@@ -376,7 +389,7 @@ $(document).on("click",".storage_btn",function(){
 				//ajax通信成功時
 				}).done(function(data){
 
-					console.log(data);
+					//alert(data);
 					if(data == "true"){
 					$('.Editing_view,.lightbox_view').fadeOut();
 					  $('body').removeClass("overflow");
@@ -384,9 +397,9 @@ $(document).on("click",".storage_btn",function(){
 						$('.storage_view').fadeIn();
 						$('body').addClass("overflow");
 						sessionStorage.removeItem('userId');
-						sessionStorage.removeItem('userName');
-						sessionStorage.setItem('userId',user_id);
-						sessionStorage.setItem('userName',name);
+						sessionStorage.removeItem('privateUserName');
+						sessionStorage.setItem('userId', user_id);
+						sessionStorage.setItem('privateUserName', name)
 						runSearch();
 					}else{
 						alert(data);
@@ -787,6 +800,7 @@ $(document).on("click",".lightbox_hover",function(){
   }).done(function(data){
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$dispimge = data[0]['usersData'][0]['fileType'];
+	alert(data[0]['usersData'][0]['fileType']);
 
 	//画像詳細を表示////////////////////
 	var $div = $('.lightbox_left_image');
@@ -810,6 +824,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$('.title_box').val($imageTitle);
 
 	$('#Genre').val(data[0]['usersData'][0]['categoryName']);
+	$('.work_infoarea').val(data[0]['usersData'][0]['imageSummary']);
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
@@ -966,10 +981,15 @@ $(document).on("click",".Completion_btn",function(){
 			$('.delete_Completion_view').fadeIn();
 			$('body').removeClass("overflow");
 			sessionStorage.removeItem('userId');
-			sessionStorage.removeItem('userName');
+			sessionStorage.removeItem('privateUserName');
 			}else{
-				alert(data);
+				//alert(data);
+				alert('アカウントを削除しました。');
+				sessionStorage.removeItem('userId');
+				sessionStorage.removeItem('privateUserName');
+				window.location.href =  "Top.html";
 			}
+
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 			alert("error : " + textStatus);

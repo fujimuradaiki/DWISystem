@@ -108,6 +108,67 @@ function runSearch(){
 	});
 }
 
+//トリミング開始ボタン(一番左の画像)
+$('.new_trimming_btn').on('click', function(){
+    var imageC = $('.new_image').children('img').attr('class');
+	//alert(imageC);
+	if(imageC != 'preview'){
+		alert('No');
+		return;
+	}
+
+	$('.trimming_view').fadeIn();
+	$('body').addClass("overflow");
+	$('.trimming_image').append($('<img>').attr({'src':$('.preview').attr('src'), 'id':'trimming_img'}));
+	var image = $('.trimming_image > img'),replaced;
+    $('#trimming_img').cropper({
+    	aspectRatio: 4 / 4
+    });
+});
+
+//トリミング確定ボタン(一番左の画像)
+$('.trimming_view_btn').on('click', function(){
+	/*var imageId = $('.trimming_image').children('img').attr('id');
+	if(imageId != 'trimming_img'){
+		//alert('1以外');
+		return;
+	}*/
+
+	var imageinfo = new Image();
+	imageinfo.src = $('#trimming_img').attr('src');
+	var data = $('#trimming_img').cropper('getData');
+
+	// width・・・トリミングしたときの横幅
+	// height・・・トリミングしたときの縦幅
+	// x・・・トリミングする際の一番左上のX座標
+	// y・・・トリミングする際の一番左上のY座標
+	var image = {
+		width  : Math.round(data.width),
+		height : Math.round(data.height),
+		x      : Math.round(data.x),
+		y      : Math.round(data.y),
+	};
+
+	$('.new_image').append($('<canvas></canvas>').attr({"class":"canvasimg1"}));
+	this.canvas = document.getElementsByClassName('canvasimg1')[0].getContext('2d');
+	var canvas = document.getElementsByClassName('canvasimg1')[0];
+	canvas.width = 200;
+	canvas.height = 200;
+	this.canvas.drawImage(imageinfo, image.x, image.y, image.width, image.height, 0, 0, 200, 200);
+
+	var dataURI = canvas.toDataURL();
+	$('.trimming_view_img').remove();
+	$('#trimming_img').remove();
+	$('.trimming_image').empty();
+	$('.new_image').append($('<img>').attr({'src':dataURI, 'title':$('.preview').attr('title'), 'name':'trimming_file', 'class':'trimming_view_img' , 'width':200,'height':200}));
+	$('.canvasimg1').remove();
+	//$('#iconimg').remove();
+	document.getElementsByClassName('preview')[0].style.display = "none";
+	document.getElementsByClassName('preview')[1].style.display = "none";
+
+	$('.trimming_view').fadeOut();
+});
+
 /*
 ///////////////////////////////////
 
@@ -258,7 +319,7 @@ $(document).on("click",".confirmation_btn",function(){
     if(pass1 == "" || pass2 == ""){
         errorFlag = 1;
         errorMsg = errorMsg + "・パスワードが未入力です。\n";
-    }else if(pass1.length < 8 || pass2.length < 8){
+    }else if(pass1.length < 8 || pass2.length < 8  && pass1.length > 16 || pass2.length > 16){
     	errorFlag = 1;
     	errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
     }else{
@@ -341,8 +402,8 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".new_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-    	alert("png以外のファイル または5MBを超えるファイルは利用できません");
+    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+    	alert("画像以外のファイル または5MBを超えるファイルは利用できません");
     	$("#choice_btn").val("");
     	return false;
     }
@@ -372,6 +433,8 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
+
+	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページ以外の時は書く処理 ここから
 	$('.login_btn').css("display","inline-block");

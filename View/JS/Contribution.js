@@ -77,7 +77,6 @@ $("#choice_btn1").on("change",function(e){
 		var file = e.target.files[0],
 	    reader = new FileReader(),
 	    $preview = $(".toukou_images1");
-		alert(file.type);
 	    // pngファイル以外の場合は何もしない
 	    if(file.type.indexOf("image") < 0 || file.size > 5500000){
 	    	alert("画像以外のファイル または5MBを超えるファイルは利用できません");
@@ -446,6 +445,8 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
+
+	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページの時は書く処理 ここから
 		alert("トップページに戻ります。");
