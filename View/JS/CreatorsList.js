@@ -28,6 +28,17 @@ $(document).ready(function(){
 	runSearch();
 });
 
+$('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+
+  $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
 // $(".login_close_btn").click(function () {
 //   $(".login_text,.pass_text").remove();
 // });
@@ -245,7 +256,7 @@ $(document).on("click",".login_btn3",function(){
 			$('body').removeClass("overflow");
 			//ユーザーidとユーザー名をストレージに保存
 			sessionStorage.setItem('userId',data['userId']);
-			sessionStorage.setItem('userName',data['user_name']);
+			sessionStorage.setItem('privateUserName',data['user_name']);
 
 			//アイコンを表示
 			$('.login_btn').css("display","none");
