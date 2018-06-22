@@ -99,7 +99,7 @@ $(document).ready(function(){
 		$('.login_user_icon').css("display","block");
 
 		var userId = sessionStorage.getItem('userId');
-		var userName = sessionStorage.getItem('userName');
+		var userName = sessionStorage.getItem('userName');  // アカウント名
 		console.log(userId,userName);
 
 		$('.login_user_icon').empty();
@@ -119,6 +119,16 @@ $(document).ready(function(){
 
 });
 
+$('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+
+  $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
 
 /*
 ///////////////////////////////////
@@ -477,6 +487,8 @@ $(document).on("click",".login_btn3",function(){
 
 	var text = $('.login_text').val();
 	var pass = $('.pass_text').val();
+	$('.login_text').val('');
+	$('.pass_text').val('');
 	var param = [];
 	param[0] = text;
 	param[1] = pass;
@@ -497,7 +509,7 @@ $(document).on("click",".login_btn3",function(){
 	$('body').removeClass("overflow");
 		//ユーザーidとユーザー名をストレージに保存
 		sessionStorage.setItem('userId',data['userId']);
-		sessionStorage.setItem('userName',data['user_name']);
+		sessionStorage.setItem('privateUserName',data['user_name']);
 
 		//アイコンを表示
 		$('.login_btn').css("display","none");
@@ -694,8 +706,8 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".new_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-    	alert("png以外のファイルは利用できません。");
+    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+    	alert("画像以外のファイルは利用できません。");
     	$("#choice_btn").val("");
     	return false;
     }
