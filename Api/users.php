@@ -34,6 +34,8 @@ class users{
             case"lostPass":
                 $this->mail($postData);
                 break;
+            case"remake":
+                break;
             default:
                 echo "users.php ユーザー定義関数に該当しませんでした";
                 break;
@@ -154,7 +156,7 @@ class users{
     //passの暗号化
     $pass = md5( $postData[1] );
     $postAccountName = $postData[0];
-    $postUserName = "testUserName"; //$postData[4];
+    $postUserName = $postData[4];
     $sql = "insert
             into
             users(
@@ -429,59 +431,70 @@ class users{
 /////////////////////////////////////////////////////////////////////////////////////
 ///ユーザーデータのupdate
     public function userUpdate($postData){
-        $updateUserID = $postData[0] ;
-        $userName = $postData[1];
-        $newUserName = $postData[2];
-        $mail = $postData[3];
-        $pass = $postData[4];
-        $newPass = $postData[5];
+        $pdo = new connectdb();
 
-        $updataStr = "";
-        $sql = "select * from users WHERE user_id = ".$updateUserID;
-        $stmt=$pdo->dbo->prepare($sql);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $pass = md5($pass);
+         $updateUserID = $postData[0] ;
+         $userName = $postData[1];
+         $newUserName = $postData[2];
+         $mail = $postData[3];
+         $pass = $postData[4];
+         $newPass = $postData[5];
 
-        $searchSql="select COUNT(*) from users WHERE (user_id != ".$updateUserID." AND account_name LIKE ";
+         $updataStr = "";
+         $sql = "select * from users WHERE user_id = ".$updateUserID;
+
+         $stmt = $pdo->dbo->prepare($sql);
+         $stmt->execute();
+         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+         $pass = md5($pass);
+
+         $searchSql="select COUNT(*) from users WHERE (user_id != ".$updateUserID." AND user_name LIKE ";
         //updateSQLの作成
-        if($result['password'] == $pass){
-            if($result['user_name'] != $userName){
+      if($result['password'] == $pass){
+
+          if($result['user_name'] != $newUserName){
                 $searchSql=$searchSql."'$newUserName'" .")";
                 $stmt=$pdo->dbo->prepare($searchSql);
+                $stmt->execute();
                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
                 if($searchResult['COUNT(*)'] == 0){
-                    $updataStr .= " user_name = ".$newUserName;
+                    $updataStr .= " user_name = '$newUserName'";
                 }
             }
             //メールアドレス
             if($result['user_mail'] != $mail){
                 $searchSql=$searchSql."'$mail'" .")";
                 $stmt=$pdo->dbo->prepare($searchSql);
+                $stmt->execute();
                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
                 if($searchResult['COUNT(*)'] == 0){
                     if($updataStr != ""){
                         $updataStr .= ",";
                     }
-                    $updataStr .= " user_mail = ".$mail;
+                    $updataStr .= " user_mail = '$mail'";
                 }
             }
             //パスワード
+            $newPass = md5($newPass);
             if($result['password'] != $newPass){
                 if($updataStr != ""){
                     $updataStr .= ", ";
                 }
-                $updataStr .= "password = ".$newPass;
+                $updataStr .= "password = '$newPass'";
             }
         }
-        $sql = "UPDATE users SET ".$updataStr;
-        $stmt=$pdo->dbo->prepare($sql);
+
+
+        $sql = "UPDATE users SET ".$updataStr." WHERE user_id = ".$updateUserID;
+        $stmt = $pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
 
         if($resultFlg){
-            echo json_decode("true");
+            echo json_encode("true");
         }else{
-            echo json_decode("false");
+            echo json_encode($sql);
         }
+
     }
 ////////////////////////////////////////////////////////////////////////////////////
 //プロフィール表示 0 ユーザーID
@@ -610,23 +623,33 @@ class users{
 /////////////////////////////////////////////////////////////////////////////
 //パスワード忘れ
     public  function lostPass($postData){
+        $pdo = new connectdb();
         $result = "";
         //メールアドレス
         $postMail = $postData;
         $searchSql = "SELECT COUNT(*) users WHERE user_mail LIKE "."'$mail'";
         $stmt=$pdo->dbo->prepare($searchSql);
+        $stmt->execute();
         $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        $oncePassSql = "UPDATE users SET oneTime_pass = ";
         if($searchResult['COUNT(*)'] == 0){
             $result = "該当のメールアドレスがありません";
         }else{
-            if($this->mail($postMail)){;
+            $oncePass = $this->makeOneTimePass(8);
+            $stmt=$pdo->dbo->prepare($oncePass);
+            $resultFlg = $stmt->execute();
+
+            if($resultFlg){
+                $this->mail($postMail,$oncePass);
                 $result = "メールを送信致しました";
+            }else{
+                $result = $oncePassSql;
             }
         }
-        echo json_encode($result);
+        echo $result;
     }
 ///////////////////////////////////////////////////////////////////////////
-    public function mail($postData){
+    public function mail($postData,$pass){
         $result = "";
         $postData = "mono@mono.mono";
         if($postData != ""){
@@ -635,6 +658,7 @@ class users{
             $message = "
                 新規登録URL
                 http://192.168.63.130/DWISystem_test_imaizumi/View/HTML/Top.html
+                '$pass'
                 上記のURLから新規登録をお願いします。
                 ";
             $message = "PHP";
@@ -649,5 +673,40 @@ class users{
             $result = false;
         }
         return $result;
+    }
+    public function makeOneTimePass($length) {
+        $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
+        $r_str = null;
+        for ($i = 0; $i < $length; $i++) {
+            $r_str .= $str[rand(0, count($str) - 1)];
+        }
+        return $r_str;
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//パスワードの作り直し
+    public function remakePass($postData){
+        $pdo = new connectdb();
+        $oncePass = $postData[0];
+        $newpass =  $postData[1];
+        $searchSql = "SELECT * FROM users WHERE once_pass LIKE '$oncePass'";
+        $stmt=$pdo->dbo->prepare($searchSql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultStr = "";
+        //echo json_encode()
+        if($result['once_pass'] == $oncePass){
+            $newpass = md5($newpass);
+            $updateSql = "UPDATE users SET password = '$newpass' ,once_pass = NULL' WHERE user_id = ".$result['user_id'];
+            $resultflg = $stmt->execute();
+            if($resultflg){
+                $resultStr = "変更が完了しました";
+            }else{
+                $resultStr =
+                $updateSql;
+            }
+        }else{
+            $resultStr = "パスワードが間違っています";
+        }
+        echo json_encode($resultStr);
     }
 }
