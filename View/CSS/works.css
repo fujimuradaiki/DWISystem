@@ -198,7 +198,7 @@ i {
   width: 400px;
   height: 500px;
   background: #fff;
-  margin-left: 200px;
+  margin-left:200px;
 }
 
 .login_header{
@@ -1410,6 +1410,7 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 
+/*���C�g�{�b�N�X���g*/
 .lightbox_view{
   display:none;
   width:100%;
@@ -1419,7 +1420,7 @@ input[type=checkbox]:checked + .check_btn:before {
   left:0;
 }
 
-
+/*���g�w�i*/
 .lightbox_background{
   width:100%;
   height:983px;
@@ -1429,19 +1430,17 @@ input[type=checkbox]:checked + .check_btn:before {
 
 .lightbox_user_waku{
   margin-left: 33px;
-	margin-top: 123px;
 }
 
-
+/*���[�U�[�A�C�R��*/
 .lightbox_user_icon{
   width: 30px;
   height: 30px;
-	margin-left: 30px;
   border-radius:30px;
   background:#fff;
 }
 
-
+/*���[�U�[�l�[��*/
 .lightbox_user_name{
   color:#fff;
 }
@@ -1463,7 +1462,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-
+/*���i*/
 .lightbox_image_container{
   min-width: 1400px;
   width: 72%;
@@ -1477,29 +1476,31 @@ input[type=checkbox]:checked + .check_btn:before {
 	width: 1000px;
   height: 600px;
   float: left;
-  margin-left: 50px;
 }
 
 .zoomer_wrapper {
+	width: 1100px;
+	height: 650px;
   border-radius: 3px;
-  height: 500px;
-  margin: 10px 0;
+  margin: -50px 0;
   overflow: hidden;
-  width: 100%;
 }
 
 
 .lightbox_title{
-	width:100%;
+	width: 25%;
 	position: absolute;
+	margin: -50px 93px;
 	float: right;
 }
 
-
+/*���[�U�[����*/
 .user_information{
   width:1000px;
+	margin-top: -130px;
 }
 
+/*���[�U�[�A�C�R��*/
 .user_icon{
   width:50px;
   height:50px;
@@ -1507,13 +1508,13 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#fff;
 }
 
-
+/*���[�U�[�l�[��*/
 .user_name{
 	color:#fff;
   margin: -15px 0 0 60px;
 }
 
-
+/*���i�^�C�g��*/
 .work_title{
   width:400px;
   height:40px;
@@ -1526,7 +1527,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-
+/*���r���[*/
 .review_box{
 	width: 394px;
   height: 900px;
@@ -1551,6 +1552,8 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review_title{
+	width:70px;
+	height:50px;
 	margin: 150px -90px;
 }
 
@@ -1574,8 +1577,9 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
 .review h2{
@@ -1589,9 +1593,19 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 .review_coment h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
+
+.box_close_btn {
+	display:none;
+}
+
+/* .review_title_h1 h1{
+	margin: -300px 0 76px;
+	font-size: 25px;
+} */
 
 .review_title_h1 h1{
 		width: 314px;
@@ -1682,7 +1696,7 @@ input[type=checkbox]:checked + .check_btn:before {
     -ms-transform: rotate(15deg);
 }
 
-
+/*���r���[�L��*/
 textarea {
   resize: none;
   width:345px;
@@ -1690,7 +1704,7 @@ textarea {
   margin-top:5px;
 }
 
-
+/*���r���[���e�{�^��*/
 .review_btn{
   width: 70px;
   height: 30px;
@@ -1708,19 +1722,20 @@ textarea {
   transition: .4s;
 }
 
-
+/*���r���[���e�{�^���@�z�o�[*/
 .review_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-
+/*���r���[���v�\��*/
 .review_all{
   margin-top:30px;
 }
 
 .review_all h1{
-  font-size:13px;
-  color:#000;
+	font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
 .review_all h2{
@@ -1729,22 +1744,32 @@ textarea {
   color: #FFBF00;
 }
 
+#reviewErea img{
+	width:20px;
+	height:20px;
+}
 
+#averageReview img{
+	width:20px;
+	height:20px;
+}
+
+/*�ߋ����r���[�R�����g�\���ꏊ*/
 .past_coment{
   width: 350px;
-  height: 330px;
+  height: 307px;
   background: #fff;
   margin-top: 9px;
 	border: 1px solid #999;
 }
 
-
+/*------------------- �����҃R�����g ------------------*/
 
 .creator_box{
 	width: 394px;
   height: 900px;
   top: 0;
-  right: -394px;
+  right: -395px;
   position: absolute;
 	transition: 1s;
 }
@@ -1761,12 +1786,17 @@ textarea {
 }
 
 .creator_info{
-	margin-top: 80px;
+	margin-top: 100px;
 }
 
-.creator_info h2 {
-    width: 285px;
-    height: 20px;
+/* .creator_info h2{
+	font-size: 20px;
+  font-weight: bold;
+  margin: -50px 0 50px 30px;
+} */
+.creator_info h2{
+		width: 285px;
+		height: 20px;
     position: relative;
     color: #333;
     font-size: 25px;
@@ -1776,7 +1806,7 @@ textarea {
     border-bottom: 3px solid #2a5db9;
 }
 
-.creator_info h2:before {
+.creator_info h2:before{
     content: "";
     position: absolute;
     background: #8790d4;
@@ -1791,7 +1821,7 @@ textarea {
     -ms-transform: rotate(45deg);
 }
 
-.creator_info h2:after {
+.creator_info h2:after{
     content: "";
     position: absolute;
     background: #8064d2;
@@ -1805,7 +1835,6 @@ textarea {
     -o-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
 }
-
 
 
 .creator_icon{
@@ -1844,14 +1873,19 @@ i {
 .creator_coment{
 	width:300px;
 	height:100px;
-	background: #fff;
+	background: #000;
 	margin: 0 auto;
 	margin-top: 100px;
 }
 
-.work_coment_title h1 {
-    width: 285px;
-    height: 20px;
+/* .work_coment_title h1{
+	font-size: 20px;
+  font-weight: bold;
+  margin: 100px 0 0 40px;
+} */
+.work_coment_title h1{
+		width: 285px;
+		height: 20px;
     position: relative;
     color: #333;
     font-size: 25px;
@@ -1861,7 +1895,7 @@ i {
     border-bottom: 3px solid #2aa5b9;
 }
 
-.work_coment_title h1:before {
+.work_coment_title h1:before{
     content: "";
     position: absolute;
     background: #87d49c;
@@ -1876,7 +1910,7 @@ i {
     -ms-transform: rotate(45deg);
 }
 
-.work_coment_title h1:after {
+.work_coment_title h1:after{
     content: "";
     position: absolute;
     background: #3f8e55;
@@ -1891,12 +1925,13 @@ i {
     -ms-transform: rotate(15deg);
 }
 
+
 .work_coment{
 	width: 315px;
   height: 270px;
 	margin: 0 auto;
   margin-top: 20px;
-  background: #fff;
+  background: #000;
 }
 
 .creator_title{
@@ -1921,34 +1956,6 @@ i {
  .creator_right0 {
 	right: -1px;
 }
-
-#creator_btn_top{
-	display: none;
-	width: 70px;
-	height:40px;
-  position: absolute;
-  border: none;
-  background: #FE2E64;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  line-height: 40px;
-	right:25%;
-}
-
-#review_btn_top{
-	display: none;
-	width: 70px;
-	height:40px;
-  position: absolute;
-  border: none;
-  background: #ff8f00;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  line-height: 40px;
-}
-
 
 footer{
   width: 100%;
@@ -2189,7 +2196,7 @@ i {
   width: 400px;
   height: 500px;
   background: #fff;
-  margin-left: 200px;
+  margin: -217px 200px;
 }
 
 .login_header{
@@ -2226,6 +2233,19 @@ i {
 }
 .login_btn3:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.know_pass{
+	font-size: 11px;
+  color: #0000ff;
+  cursor: pointer;
+}
+
+.know_pass:hover{
+	font-size: 11px;
+  color: #ff0000;
+  border-bottom: 1px solid;
+  cursor: pointer;
 }
 
 .login_btn4{
@@ -2345,7 +2365,184 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.pass_contents{
+  width:800px;
+  margin:0 auto;
+}
 
+.pass_background{
+  width:100%;
+  height:983px;
+  z-index:1;
+  background:rgba(0,0,000,0.6);
+}
+
+.pass_image_container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-275px;
+  margin-left:-400px;
+}
+
+.pass_title h1{
+  text-align: center;
+  font-size:25px;
+  margin: -60px 0 33px;
+}
+
+.pass_contents{
+  width:800px;
+  margin:0 auto;
+}
+
+.pass_view{
+  display:none;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+}
+
+.pass_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+  margin: -217px 200px;
+}
+
+.pass_header{
+  width:400px;
+  height:80px;
+  background: #3F3ACE;
+}
+
+.pass_logo{
+  text-align: center;
+  padding-top: 28px;
+}
+
+.pass_logo img{
+  width:200px;
+}
+
+.pass_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.pass_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.pass_btn4{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.pass_btn4:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.pass_close_btn{
+  position: absolute;
+  left: 110%;
+  top: -55px;
+  cursor: pointer;
+}
+
+.pass_word{
+  width: 48%;
+  margin: 0 auto;
+  margin-top: 90px;
+  line-height: 35px;
+}
+
+.pass_word h2{
+	font-size:11px;
+	line-height: 15px;
+}
+
+.pass_btn_content{
+  width: 400px;
+  text-align: center;
+  margin: 70px 0 0 5px;
+}
+
+.mail_text{
+  width: 105%;
+  height: 22px;
+}
+
+
+
+.passpop_text{
+  width: 105%;
+  height: 22px;
+}
+
+.mail_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
 
 
 .login_Comp_view{
@@ -2895,7 +3092,6 @@ label p:hover {
 .slider-wrapper {
   overflow: hidden;
   width: 100%;
-  margin-top: -164px;
   height: 199px;
   background: #99ffff;
 }
