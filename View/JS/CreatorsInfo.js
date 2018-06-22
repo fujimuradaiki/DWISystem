@@ -117,8 +117,8 @@ $(document).ready(function(){
 				.attr("src","../../User/"+ creatorName +"/icon.png")
 		);
 
-		$('.info_icon').css('width',400);
-		$('.info_icon').css('height',400);
+		$('.info_icon').css('width',200);
+		$('.info_icon').css('height',200);
 
 		$div = $('.name');
 		$div.empty();
@@ -126,6 +126,8 @@ $(document).ready(function(){
 				("<h1>" + creatorName +"</h1>")
 		);
 
+		$div = $('.profileBox');
+		$div.append($('<pre>'+data.introduction+'</pre>'));
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
@@ -138,6 +140,8 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
+
+	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページの時は書く処理 ここから
 		alert("トップページに戻ります。");
@@ -367,35 +371,11 @@ data:data
 //ajax通信成功時
 }).done(function(data){
 //alert(data['user_name']+"でログインしました");
-<<<<<<< HEAD
-$('.login_Comp_view').fadeIn();
-$('body').removeClass("overflow");
-//ユーザーidとユーザー名をストレージに保存
-sessionStorage.setItem('userId',data['userId']);
-sessionStorage.setItem('userName',data['user_name']);
-
-//アイコンを表示
-$('.login_btn').css("display","none");
-$('.new_btn').css("display","none");
-$('.login_user_icon').css("display","block");
-
-$('.login_user_icon').empty();
-$('.login_user_icon').append(
-$("<img id='headerIcon'class='icon'>")
-.attr("src","../../User/"+ data['user_name'] +"/icon.png")
-);
-var $headerIcon = $('#headerIcon');
-$headerIcon.css('width',50);
-$headerIcon.css('height',50);
-$headerIcon.css('border-radius','50%');
-
-$('.login_view').fadeOut();
-=======
 
 	if(data != "error"){
 //	alert(data['user_name']+"でログインしました");
 $('.login_Comp_view').fadeIn();
->>>>>>> origin/imaizumi
+
 $('body').removeClass("overflow");
 	//ユーザーidとユーザー名をストレージに保存
 	sessionStorage.setItem('userId',data['userId']);
@@ -474,6 +454,9 @@ errorMsg = errorMsg + "・メールアドレスの形式が間違っています
 if(pass1 == "" || pass2 == ""){
 errorFlag = 1;
 errorMsg = errorMsg + "・パスワードが未入力です。\n";
+}else if(pass1.length < 8 || pass2.length < 8  && pass1.length > 16 || pass2.length > 16){
+	errorFlag = 1;
+	errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
 }else{
 if(pass1 == pass2){
 if(!pass1.match(/^[a-zA-Z0-9]+$/)){
@@ -526,7 +509,7 @@ $(document).on("click",".touroku_btn",function(){
 		}).done(function(data){
 			console.log(data);
 			if(data != false){
-<<<<<<< HEAD
+
 			//alert("新規登録が完了しました。");
 			$('.new_touroku_view').fadeIn();
 			$('body').addClass("overflow");
@@ -540,19 +523,7 @@ $(document).on("click",".touroku_btn",function(){
 			}else{
 		    alert("登録名がすでに使用されています。");
 			}
-=======
-				  $('.new_touroku_view').fadeIn();
-				  $('body').addClass("overflow");
-				//alert("新規登録が完了しました。");
-				$('#sineUp_user_name').val('');
-				$('#sineUP_mail').val('');
-				$('#sineUp_password1').val('');
-				$('#sineUp_password2').val('');
-				$("#choice_btn").val('');
-				}else{
-			    alert("登録名がすでに使用されています。");
-				}
->>>>>>> origin/imaizumi
+
 		//ajax通信失敗時
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 			alert("error");
@@ -592,9 +563,6 @@ $("#choice_btn").on("change",function(e){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
-	$(window).ready(function(){
-			$('#Zoomer').zoomer();
-	});
   $('body').addClass("overflow");
 
   var $image = $(this).prev('img');
@@ -622,21 +590,26 @@ $(document).on("click",".lightbox_hover",function(){
 	data:data
   //ajax通信成功時
   }).done(function(data){
-	console.log(data);
-
+	//console.log(data);
+	//alert('gg');
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
+	$dispimge = data[0]['usersData'][0]['fileType'];
 
 	//5段階評価に使う星画像の場所を明示
 	$.fn.raty.defaults.path = "../Lib/images";
 
 	//画像詳細を表示////////////////////
-	var $div = $('.lightbox_left_image');
+	$div = $('.lightbox_image');
 	$div.empty();
-	$div.append(
-			$("<img class='view_image'>")
-			.attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png")
+	$div.append($('<div></div>').attr({'id':'Zoomer', 'class':'zoomer_wrapper'}));
+	$('.zoomer_wrapper').append(
+			$("<img>")
+			.attr("src","../../User/"+ $creatorName +"/"+$dispimge)
 	);
+	$(window).ready(function(){
+		$('#Zoomer').zoomer();
+    });
 	var w,h;
 	if($imageWidth >= $imageHeight){
 		w = 500;
@@ -683,6 +656,16 @@ $(document).on("click",".lightbox_hover",function(){
 			imageTitle : $imageTitle
 		}
 	})
+
+	$('.creator_icon').empty();
+	$('.creator_name').empty();
+	$('.creator_coment').empty();
+	$('.work_coment').empty();
+
+	$('.creator_icon').append($('<img>').attr("src","../../User/"+ $creatorName +"/icon.png"));
+	$('.creator_name').append($('<h1>'+data[0]['usersData'][0]['creatorName']+'</h1>'));       // アカウント名
+	$('.creator_coment').append($('<pre>'+data[0]['usersData'][0]['Introduction']+'</pre>'));  // 自己紹介
+	$('.work_coment').append($('<pre>'+data[0]['usersData'][0]['imageSummary']+'</pre>'));
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -1089,31 +1072,7 @@ $(document).on("click",".review_btn",function(){
 	  });
 	}
 });
-<<<<<<< HEAD
-$(document).on("click",".new_close_btn",function(){
-	var name = $('#sineUp_user_name').val('');
-	var mail = $('#sineUP_mail').val('');
-	var pass1 = $('#sineUp_password1').val('');
-	var pass2 = $('#sineUp_password2').val('');
-	var iconData = $("#choice_btn").val('');
-	$('.new_image').children('img').remove();
 
-});
-
-$(document).on("click",".login_close_btn",function(){
-	var name = $('.login_text').val('');
-	var pass1 = $('.pass_text').val('');
-
-});
-
-$(document).on("click",".close_btn2",function(){
-	var name = $('.login_text').val('');
-	var pass1 = $('.pass_text').val('');
-
-});
-=======
-
->>>>>>> origin/imaizumi
 $(document).on("click",".new_close_btn",function(){
 	var name = $('#sineUp_user_name').val('');
 	var mail = $('#sineUP_mail').val('');

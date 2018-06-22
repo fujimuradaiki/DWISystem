@@ -571,7 +571,7 @@ $(document).on("click",".confirmation_btn",function(){
 	if(pass1 == "" || pass2 == ""){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・パスワードが未入力です。\n";
-	}else if(pass1.length < 8 || pass2.length < 8){
+	}else if(pass1.length < 8 || pass2.length < 8  && pass1.length > 16 || pass2.length > 16){
 		errorFlag = 1;
 		errorMsg = errorMsg + "・パスワードは8文字以上、16文字以内で設定してください。\n";
 	}else{
@@ -624,7 +624,8 @@ $(document).on("click",".close_btn2",function(){
 });
 
 $(document).on("click",".touroku_btn",function(){
-	var name = $('#sineUp_user_name').val();
+	var name = $('#sineUp_account_name').val();
+	var userName = $('sineUp_user_name').val();
 	var mail = $('#sineUP_mail').val();
 	var pass1 = $('#sineUp_password1').val();
 	var pass2 = $('#sineUp_password2').val();
@@ -636,9 +637,9 @@ $(document).on("click",".touroku_btn",function(){
 	if(trimming_view_img === undefined)
 		trimming_view_img = "";
 
-	alert(trimming_view_img);
+	//alert(trimming_view_img);
 
-	var data = [name, pass1, mail, trimming_view_img];
+	var data = [name, pass1, mail, trimming_view_img, userName ];
 	var param = new FormData($('[name="send"]').get(0));
 	param.append('model', 'users');
 	param.append('action', 'insert');
@@ -718,7 +719,7 @@ $("#choice_btn").on("change",function(e){
 });
 
 //トリミング開始ボタン(一番左の画像)
-$('.trimming_btn').on('click', function(){
+$('.new_trimming_btn').on('click', function(){
     var imageC = $('.new_image').children('img').attr('class');
 	//alert(imageC);
 	if(imageC != 'preview'){
@@ -880,6 +881,11 @@ $(document).on("click",".lightbox_hover",function(){
 			imageTitle : $imageTitle
 		}
 	});
+
+	$('.creator_icon').empty();
+	$('.creator_name').empty();
+	$('.creator_coment').empty();
+	$('.work_coment').empty();
 
 	$('.creator_icon').append($('<img>').attr("src","../../User/"+ $creatorName +"/icon.png"));
 	$('.creator_name').append($('<h1>'+data[0]['usersData'][0]['creatorName']+'</h1>'));       // アカウント名
@@ -1313,6 +1319,8 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
+
+	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページ以外の時は書く処理 ここから
 		$('.login_btn').css("display","inline-block");
