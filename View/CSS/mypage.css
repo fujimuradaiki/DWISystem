@@ -350,7 +350,69 @@ i {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
+.send{
+  width: 100px;
+  height: 40px;
+  position: relative;
+  right: 0;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.send:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
 
+.trimming_btn{
+  width: 135px;
+  height: 40px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.trimming_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display:none;
+}
+
+label p {
+  width: 81px;
+  height: 26px;
+  position: relative;
+      margin: -26px 50px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  line-height: 22px;
+  color: #FFF;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
 
 /*アカウント削除画面*/
 .delete_view{
@@ -622,24 +684,6 @@ i {
   padding-top:95px;
 }
 
-label p{
-	width: 56px;
-  height: 19px;
-  position: relative;
-  float: right;
-  margin-top: -26px;
-  display: inline-block;
-  font-weight: bold;
-	text-align: center;
-  text-decoration: none;
-	line-height: 22px;
-  color: #FFF;
-  font-size: 12px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
 
 label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
@@ -720,7 +764,7 @@ label p:hover {
 .infomation_background{
   min-width:1920px;
   width:100%;
-  height: 571px;
+  height: 764px;
   position: absolute;
   top: 0;
   background:url('../Images/mypage.png') no-repeat 50% 50% ;
@@ -1460,7 +1504,7 @@ i {
   width: 900px;
   height: 500px;
   background: #fff;
-  margin-left: -50px;
+  margin:-217px -50px;
 }
 
 .delete_header{
@@ -1697,17 +1741,61 @@ i {
   padding-top:95px;
 }
 
-label p{
-	width: 56px;
-  height: 19px;
+.send{
+  width: 100px;
+  height: 36px;
   position: relative;
-  float: right;
-  margin-top: -26px;
+  right: 0;
+  margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
-	text-align: center;
   text-decoration: none;
-	line-height: 22px;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.send:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.trimming_btn{
+  width: 120px;
+  height: 36px;
+  position: relative;
+  right: 6%;
+  margin-left: 25px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.trimming_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+#choice_btn{
+  display:none;
+}
+
+label p {
+  width: 105px;
+  height: 26px;
+  position: relative;
+  margin: -26px 42px 0 24px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  line-height: 22px;
   color: #FFF;
   font-size: 12px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
@@ -1715,6 +1803,7 @@ label p{
   background: #3F3ACE;
   transition: .4s;
 }
+
 
 label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
@@ -1792,7 +1881,7 @@ label p:hover {
 /*ユーザーアイコンと２つのボタンが入っているところの背景*/
 .infomation_background{
   width:100%;
-  height: 571px;
+  height: 705px;
   position: absolute;
   top: 0;
   background:url('../Images/mypage.png') no-repeat 50% 50% ;
