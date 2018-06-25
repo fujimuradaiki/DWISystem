@@ -2,6 +2,8 @@
 $(document).ready(function(){
 	//$('#sineUp_user_name').val(sessionStorage.getItem('signUp_user_name'));
 	//$('#sineUp_user_name').val($('#sineUp_user_name').val());
+	$('.return_btn').css("visibility", "hidden");
+	$('.touroku_btn').css("visibility", "hidden");
 })
 
 $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
@@ -106,8 +108,9 @@ $('.trimming_view_btn').on('click', function(){
 	$('.trimming_view').fadeOut();
 });
 
-$(document).on("click", ".confirmation_btn", function(){
+/*$(document).on("click", ".confirmation_btn", function(){
 
+	sessionStorage.removeItem('originalImage');
 	sessionStorage.removeItem('trimmingImage');
 
 	var originalCanvas = document.createElement("canvas");
@@ -116,17 +119,7 @@ $(document).on("click", ".confirmation_btn", function(){
 	originalImage.src = $('#img').attr('src');
 	originalCanvas.width = originalImage.naturalWidth;
 	originalCanvas.height = originalImage.naturalHeight;
-	//alert(originalCanvas.height);
 	originalCtx.drawImage(originalImage, 0, 0);
-
-	/*var originalCanvas = document.createElement("canvas");
-	originalCanvas = originalCanvas.getContext("2d");
-	var originalImage = new Image();
-	originalImage.src = $('#img').attr('src');
-	originalCanvas.width = originalImage.naturalWidth;
-	originalCanvas.height = originalImage.naturalHeight;
-	alert(originalCanvas.height);
-	originalCanvas.drawImage(originalImage, 0, 0, originalImage.naturalWidth, originalImage.naturalHeight);*/
 
 	var trimmingCanvas = document.createElement("canvas");
 	var trimmingCtx = trimmingCanvas.getContext("2d");
@@ -146,14 +139,9 @@ $(document).on("click", ".confirmation_btn", function(){
 		sessionStorage.setItem('originalImage', originalCanvas.toDataURL("jpeg"));
 		sessionStorage.setItem('trimmingImage', trimmingCanvas.toDataURL("jpeg"));
 	}
+})*/
 
-	alert(sessionStorage.getItem('originalImage'));
-	//alert(sessionStorage.getItem('trimmingImage'));
-
-	//$('#sineUp_user_name').val($('#sineUp_user_name').val());
-})
-
-/*$(document).on("click",".confirmation_btn",function(){
+$(document).on("click",".confirmation_btn",function(){
 
 	var name = $('#sineUp_user_name').val();
 	var mail = $('#sineUP_mail').val();
@@ -217,10 +205,111 @@ $(document).on("click", ".confirmation_btn", function(){
 		$('#mail').val(mail);
 		$('#password1').val(pass1);
 
+		/*sessionStorage.removeItem('originalImage');
+		sessionStorage.removeItem('trimmingImage');
+
+		var originalCanvas = document.createElement("canvas");
+		var originalCtx = originalCanvas.getContext("2d");
+		var originalImage = new Image();
+		originalImage.src = $('#img').attr('src');
+		originalCanvas.width = originalImage.naturalWidth;
+		originalCanvas.height = originalImage.naturalHeight;
+		originalCtx.drawImage(originalImage, 0, 0);
+
+		var trimmingCanvas = document.createElement("canvas");
+		var trimmingCtx = trimmingCanvas.getContext("2d");
+		var trimmingImage = new Image();
+		trimmingImage.src = $('#trimming_view_img').attr('src');
+		trimmingCanvas.width = trimmingImage.naturalWidth;
+		trimmingCanvas.height = trimmingImage.naturalHeight;
+		trimmingCtx.drawImage(trimmingImage, 0, 0);
+
+		if(originalImage.src.indexOf("png") > 0){
+			sessionStorage.setItem('originalImage', originalCanvas.toDataURL());
+			if($('#trimming_view_img').attr('src') != undefined){
+				sessionStorage.setItem('trimmingImage', trimmingCanvas.toDataURL());
+			}
+		}else{
+			sessionStorage.setItem('originalImage', originalCanvas.toDataURL("jpeg"));
+			sessionStorage.setItem('trimmingImage', trimmingCanvas.toDataURL("jpeg"));
+		}
+
 		sessionStorage.setItem('signUp_account_name', $('#sineUp_account_name').val());
 		sessionStorage.setItem('signUp_user_name', $('#sineUp_user_name').val());
 		sessionStorage.setItem('signUp_mail', $('#sineUP_mail').val());
 		sessionStorage.setItem('signUp_password1', $('#sineUp_password1').val());
-		sessionStorage.setItem('signUp_password2', $('#sineUp_password2').val());
+		sessionStorage.setItem('signUp_password2', $('#sineUp_password2').val());*/
+
+		$('#sineUp_account_name').prop("disabled", true);
+		$('#sineUp_user_name').prop("disabled", true);
+		$('#sineUP_mail').prop("disabled", true);
+		$('#sineUp_password1').prop("disabled", true);
+		$('#sineUp_password2').prop("disabled", true);
+
+		$('.new_trimming_btn').css("display", "none");
+		$('.confirmation_btn').css("visibility", "hidden");
+		$('.return_btn').css("visibility", "visible");
+		$('.touroku_btn').css("visibility", "visible");
+
 	}
-});*/
+});
+
+$(document).on("click",".return_btn",function(){
+	$('.new_trimming_btn').css("display", "block");
+	$('.confirmation_btn').css("visibility", "visible");
+	$('.return_btn').css("visibility", "hidden");
+	$('.touroku_btn').css("visibility", "hidden");
+	$('#sineUp_account_name').prop("disabled", false);
+	$('#sineUp_user_name').prop("disabled", false);
+	$('#sineUP_mail').prop("disabled", false);
+	$('#sineUp_password1').prop("disabled", false);
+	$('#sineUp_password2').prop("disabled", false);
+});
+
+$(document).on("click",".touroku_btn",function(){
+	var name = $('#sineUp_account_name').val();
+	var userName = $('#sineUp_user_name').val();
+	var mail = $('#sineUP_mail').val();
+	var pass1 = $('#sineUp_password1').val();
+	var pass2 = $('#sineUp_password2').val();
+
+	var trimming_view_img = $('.trimming_view_img').attr('src');
+	if(trimming_view_img === undefined)
+		trimming_view_img = "";
+
+	var data = [name, pass1, mail, trimming_view_img, userName ];
+	var param = new FormData($('[name="send"]').get(0));
+	param.append('model', 'users');
+	param.append('action', 'insert');
+	param.append('data', data);
+
+		//ajax通信
+		$.ajax({
+			url:"../../Api/controller.php",
+			dataType:'json',
+			type:"POST",
+			processData : false,
+		    contentType : false,
+			data:param,
+		//ajax通信成功時
+		}).done(function(data){
+			alert(JSON.stringify(data));
+			alert('ddd');
+			console.log(data);
+			/*if(data != false){
+			  $('.new_touroku_view').fadeIn();
+			  $('body').addClass("overflow");
+			// alert("新規登録が完了しました。");
+			$('#sineUp_user_name').val('');
+			$('#sineUP_mail').val('');
+			$('#sineUp_password1').val('');
+			$('#sineUp_password2').val('');
+			$("#choice_btn").val('');
+			}else{
+		    alert("登録名がすでに使用されています。");
+			}*/
+		//ajax通信失敗時
+		}).fail(function(data){
+			alert('error');
+		});
+});
