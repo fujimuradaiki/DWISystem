@@ -1,5 +1,5 @@
 <?php
-$pdo  = new connectdb();
+
 class connectdb{
     //データーベース接続のための変数宣言
 //     private $DBuser ='root';
@@ -13,22 +13,23 @@ class connectdb{
 //     private $DBname ='server0531_dwisystem';
 
 
-    private $DBuser ='esmilehd_dtest';
-    private $DBpass ='v2RS3LgD';
-    private $DBhost ='sv6110.xserver.jp';
-    private $DBname ='esmilehd_testdesign';
+//     public $DBuser ='esmilehd_dtest';
+//     public $DBpass ='v2RS3LgD';
+//     public $DBhost ='mysql6011.xserver.jp';
+//     public $DBname ='esmilehd_testdesign';
 
-//     private $DBuser ='root';
-//     private $DBpass ='Yq8jNrvJ';
-//     private $DBhost ='localhost';
-//     private $DBname ='DWISystem_testdb';
+        public $DBuser ='root';
+        public $DBpass ='Yq8jNrvJ';
+        public $DBhost ='localhost';
+        public $DBname ='DWISystem_testdb';
 
 
     public function __construct(){
         try{
             //データベースに接続
-            $this->dbo = new PDO('mysql:host=localhost; dbname=DWISystem_testdb; charset=utf8mb4',$this->DBuser,$this->DBpass);
-           // $this->dbo = new PDO('mysql:host='.$this->DBhost.';dbname='.$this->DBname.';charset=utf8mb4',$this->DBuser,$this->DBpass);
+           // $this->dbo = new PDO('mysql:host=localhost; dbname=DWISystem_testdb; charset=utf8mb4',$this->DBuser,$this->DBpass);
+            $this->dbo = new PDO('mysql:host='.$this->DBhost.';dbname='.$this->DBname.';charset=utf8mb4',$this->DBuser,$this->DBpass);
+
         }catch(PDOException $e){
             echo $e->getMessage();
             exit;
