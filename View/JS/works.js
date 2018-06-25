@@ -114,6 +114,9 @@ $(document).ready(function(){
 
 	}
 
+	/*sessionStorage.removeItem('pageNum');
+	sessionStorage.setItem('pageNum',1);*/
+
 	//sessionStorage.clear();
 
 
@@ -1340,3 +1343,26 @@ $(document).on("click",".logout",function(){
 		$('.login_user_icon').css("display","none");
 	//ここまで
 });
+
+
+
+/*$(document).on("click",".before_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt - 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});
+
+
+$(document).on("click",".next_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt + 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});*/

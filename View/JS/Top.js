@@ -1270,3 +1270,21 @@ $(document).on("click",".logout",function(){
 		$('.login_user_icon').css("display","none");
 	//ここまで
 });
+
+$('.mail_btn').on("click",function(){
+	var mail = $('.mail_text').val();
+	var data = { 'model':'users', 'action':'lostPass', 'data': mail };
+
+	alert(mail);
+	$.ajax({
+		url:"../../Api/controller.php",
+		dataType:'json',
+		type:"POST",
+		data:data,
+		timeout:1000
+	}).done(function(data){
+		alert('aa');
+	}).fail(function(data){
+		alert(JSON.stringify(data));
+	});
+});

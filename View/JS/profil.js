@@ -273,9 +273,11 @@ $(document).on("click",".touroku_btn",function(){
 	var pass1 = $('#sineUp_password1').val();
 	var pass2 = $('#sineUp_password2').val();
 
-	var trimming_view_img = $('.trimming_view_img').attr('src');
+	var trimming_view_img = $('#trimming_view_img').attr('src');
 	if(trimming_view_img === undefined)
 		trimming_view_img = "";
+
+	alert(trimming_view_img);
 
 	var data = [name, pass1, mail, trimming_view_img, userName ];
 	var param = new FormData($('[name="send"]').get(0));
@@ -294,7 +296,7 @@ $(document).on("click",".touroku_btn",function(){
 		//ajax通信成功時
 		}).done(function(data){
 			alert(JSON.stringify(data));
-			alert('ddd');
+			//alert('ddd');
 			console.log(data);
 			/*if(data != false){
 			  $('.new_touroku_view').fadeIn();
