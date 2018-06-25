@@ -610,7 +610,7 @@ i {
   height: 35px;
   position: relative;
   right: 2%;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -1116,8 +1116,6 @@ label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-
-
 .background{
 	min-height: 3500px;
   width: 1920px;
@@ -1126,6 +1124,18 @@ label p:hover {
   bottom: 0;
   background: url(../Images/background__.png) no-repeat 50% 50%;
   background-size: cover;
+}
+
+.click_before{
+	width: 100%;
+  position: absolute;
+  top: 86%;
+}
+
+.click_after{
+	width: 100%;
+  z-index: 0;
+  margin: 0 auto;
 }
 
 /*-------------------�t�b�^�[�J�n--------------------*/
@@ -1716,7 +1726,7 @@ i {
   height: 35px;
   position: relative;
   right: 2%;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -1734,12 +1744,13 @@ i {
 
 /*�o�^�{�^��*/
 .touroku_btn{
-  width: 100px;
+	width: 100px;
   height: 35px;
-  position: relative;
-  right: 2%;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  position: absolute;
+  /* right: 0; */
+  right: 17%;
+  /* margin-left: 20px; */
+  /* margin-bottom: 30px; */
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -1756,11 +1767,12 @@ i {
 }
 /*�߂��{�^��*/
 .return_btn{
-  width: 100px;
+	width: 100px;
   height: 35px;
-  position: relative;
-  right: 2%;
-  margin-bottom: 30px;
+  position: absolute;
+	left: 17%;
+  /* right: 36%; */
+  /* margin-bottom: 30px; */
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -2150,6 +2162,19 @@ label p:hover {
   bottom: 0;
   background: url(../Images/background__.png) no-repeat 50% 50%;
   background-size: cover;
+}
+
+.click_before{
+	width: 100%;
+  position: absolute;
+  top: 86%;
+}
+
+.click_after{
+	width: 67%;
+  height: 20px;
+  z-index: 0;
+  margin: 0 auto;
 }
 
 /*-------------------�t�b�^�[�J�n--------------------*/
