@@ -63,8 +63,8 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 //          }
      }
 }else{
-   // echo json_encode('err');
-    $classname = new users();
-    $classname->lostPass("imaizumi01281@gmail.com");
+    echo json_encode('err');
+//    $classname = new users();
+//    $classname->lostPass('imaizumi01281@gmail.com');
 }
 ?>
