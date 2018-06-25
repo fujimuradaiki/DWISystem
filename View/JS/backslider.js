@@ -1,9 +1,14 @@
 $(document).ready(function(){
   
-  if(!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)){
-    
+  if(!navigator.userAgent.match(/(iPhone|iPad|iPod|Android&Mobile)/)){
+//  var ua1 = navigator.userAgent.indexOf('iPhone');
+//  var ua2 = navigator.userAgent.indexOf('Mobile');
+//  
+//  alert('iPhone'+ua1+'Mobile'+ua2);
+  
+  //if(navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('Mobile') > 0){ 
     // PC slider
-    $('.parallax-bg').bgSwitcher({
+   $('.parallax-bg').bgSwitcher({
       images: [
       '../Images/background2.png',
       '../Images/background3.jpg',
@@ -13,8 +18,10 @@ $(document).ready(function(){
       '../Images/051.png'
       ]
     });
+       
   } else {
-    // SP slider
+//    alert('DDD');
+     // SP slider
     $('.parallax-bg').bgSwitcher({
       images: [
       '../Images/sp0512.png',
@@ -27,7 +34,7 @@ $(document).ready(function(){
       ]
     });
     
-//    $(this).prev("div").css("background-size","200px 200px"); 
-  
+    alert($(".parallax-bg").prev("div").css("width"));
+    $(".parallax-bg").prev("div").css("width","100%");
   }
 });
