@@ -1963,9 +1963,10 @@ footer h2{
   right: 20px;
 }
 
-#pageTop i {
+#pageTop i{
   margin-left: -7px;
   padding-top: 4px;
+	color:#fff;
 }
 
 #pageTop a {
@@ -2924,6 +2925,19 @@ header .nav {
 	}
 	.pass_btn3:hover {
 	  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+	}
+
+	.know_pass{
+		font-size: 11px;
+	  color: #0000ff;
+	  cursor: pointer;
+	}
+
+	.know_pass:hover{
+		font-size: 11px;
+	  color: #ff0000;
+	  border-bottom: 1px solid;
+	  cursor: pointer;
 	}
 
 	.pass_btn4{

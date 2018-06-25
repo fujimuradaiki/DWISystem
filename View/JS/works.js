@@ -38,11 +38,11 @@ $('.slider-wrapper').slick({
 
 
 $(document).ready(function(){
+  /*パスワードを忘れたとき*/
   $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
     $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
     $('body').removeClass("overflow");
   });
-
 
   $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
     $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
