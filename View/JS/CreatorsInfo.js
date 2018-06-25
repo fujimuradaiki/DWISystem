@@ -35,6 +35,27 @@ $(document).ready(function(){
 	//sessionStorage.setItem('infoId','1');
 	//////////////////////////////////
 
+  /*パスワードを忘れたとき*/
+  $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+  $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+  $('.close_btn2').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+  $('.pass_close_btn img').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
 
 	//レビューボックス//
   $('#review_btn').on('click', function(){
