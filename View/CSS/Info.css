@@ -352,7 +352,7 @@ i {
   width:800px;
   margin:0 auto;
 }
-
+/*パスワードを忘れたら*/
 .pass_view{
   display:none;
   width:100%;
@@ -576,7 +576,7 @@ i {
 }
 
 .new_header{
-  width:900px;
+  width:400px;
   height:80px;
   background: #3F3ACE;
 }
@@ -843,90 +843,6 @@ label p:hover {
   left:0;
 }
 
-.new_background{
-  width:100%;
-  height:983px;
-  z-index:1;
-  background:rgba(0,0,000,0.6);
-}
-
-.new_image_container{
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-top:-275px;
-  margin-left:-400px;
-}
-
-.new_close_btn{
-  position: absolute;
-  left: 110%;
-  top: -55px;
-  cursor: pointer;
-}
-
-.new_header{
-  width: 400px;
-  height:80px;
-  background: #3F3ACE;
-}
-
-.new_logo{
-  text-align: center;
-  padding-top: 28px;
-}
-
-.new_logo img{
-  width:200px;
-}
-
-.new_touroku_box{
-  width: 400px;
-  height: 500px;
-  background: #fff;
-  margin-left: 200px;
-}
-
-.touroku_text{
-  margin-top: 160px;
-  text-align: center;
-}
-
-.touroku_text h1{
-  margin-bottom: 20px;
-  font-size: 25px;
-}
-
-.new_touroku_btn_content{
-/*  float: left;*/
-  width: 100%;
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 30px;
-/*  margin-left: 186px;*/
-}
-
-.top_btn{
-  width: 100px;
-  height: 35px;
-  position: relative;
-  right: 2%;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-.top_btn:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
-}
-
-/*�}�C�y�[�W�{�^��*/
 .mypage_btn{
   width: 100px;
   height: 35px;
@@ -944,7 +860,6 @@ label p:hover {
   background: #3F3ACE;
   transition: .4s;
 }
-/*�}�C�y�[�W�{�^���@�z�o�[*/
 .mypage_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
@@ -957,6 +872,42 @@ label p:hover {
 .touroku_text h1{
   margin-bottom: 20px;
   font-size: 25px;
+}
+
+.new_touroku_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+	margin-left: 200px;
+}
+
+.new_touroku_btn_content{
+/*  float: left;*/
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+.top_btn1{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn1:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 /*�v���t�B�[���ҏW*/
@@ -1232,6 +1183,8 @@ label p:hover {
   margin-left: 20px;
 }
 
+
+
 .profileBox {
   width: 400px;
   height: 90px;
@@ -1318,10 +1271,10 @@ dl.kensaku dd button{
 }
 
 .close_btn{
-  position:absolute;
-  top: -55px;
-  left: 80%;
-  cursor:pointer;
+	position: absolute;
+  top: -150px;
+  left: 81%;
+  cursor: pointer;
 }
 
 .no_works{
@@ -1798,6 +1751,10 @@ textarea {
 }
 
 /*------------------- �����҃R�����g ------------------*/
+
+.creator_sns i{
+	color:#000;
+}
 
 .creator_box{
 	width: 394px;
@@ -2521,6 +2478,10 @@ i {
   transition: .4s;
 }
 
+.snsicon ul li a i{
+	color:#fff;
+}
+
 /*----------���O�C���������ʊJ�n----------*/
 .login_Comp_view{
   display:none;
@@ -2549,6 +2510,26 @@ i {
   transition: .4s;
 }
 .mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.top_btn1{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn1:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
@@ -2596,7 +2577,7 @@ i {
 }
 
 .new_header{
-  width:900px;
+  width:400px;
   height:80px;
   background: #3F3ACE;
 }
@@ -3184,6 +3165,11 @@ label p:hover {
 .return_icon h1{
 	margin: -21px 31px;
 	font-size:17px;
+	color:#fff;
+}
+
+.return_icon a i{
+	color:#fff;
 }
 
 .return_icon :hover{
@@ -3521,10 +3507,6 @@ td p{
 	border-radius: 3px;
 }
 
-.zoomer_wrapper img{
-	width:100%;
-}
-
 
 .lightbox_title{
 	width: 100%;
@@ -3584,7 +3566,9 @@ td p{
 	transition: 1s;
 }
 
-
+.review_right0 {
+	right:0px;
+}
 
 .review_box_inner{
 	width: 100%;
@@ -3892,13 +3876,13 @@ textarea {
 }
 
 i {
-	color:#fff;
+	color:#000;
 }
 
 .creator_coment{
 	width:300px;
 	height:100px;
-	background: #000;
+	background: #fff;
 	margin: 0 auto;
 	margin-top: 95px;
 }
@@ -3951,7 +3935,7 @@ i {
   height: 145px;
 	margin: 0 auto;
   margin-top: 10px;
-  background: #000;
+  background: #fff;
 }
 
 .creator_title{
@@ -4015,6 +3999,7 @@ i {
 	height:100%;
 	margin: 0 auto;
 }
+
 
 
 

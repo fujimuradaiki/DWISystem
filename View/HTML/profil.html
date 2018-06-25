@@ -8,10 +8,12 @@
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css"/>
 	<link href="../CSS/profil.css" rel="stylesheet" type="text/css"/>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css" rel="stylesheet" type="text/css" media="all"/>
 	<script src="../JS/jquery.3.3.1.js"></script>
 	<script src="../JS/lightbox.js"></script>
 	<script src="../JS/style.js" type="text/javascript"></script>
 	<script src="../JS/dropdown.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
 	</head>
 	<body>
 		<!---------- ヘッダー開始 ---------->
@@ -58,7 +60,7 @@
     </div>
 
 
-	  <!--ログイン画面 -->
+		<!--ログイン画面 -->
 	    <div class="login_view">
 	      <div class="login_background"></div>
 	      <div class="login_image_container">
@@ -76,7 +78,7 @@
 							  <!--入力フォーム-->
 	              メールアドレス<input class="login_text" type="text" >
 	              パスワード<input class="pass_text" type="password" >
-								<a class="know_pass">パスワードをお忘れの方はこちら</a>
+								<p><a class="know_pass">パスワードをお忘れの方はこちら</a></p>
 	            </div>
 
 	            <div class="login_btn_content">
@@ -122,21 +124,21 @@
 	    </div>
 	  <!--パスワードを忘れたら画面終わり -->
 
-    <!--ログイン完了画面 -->
+		<!--ログイン完了画面 -->
     <div class="login_Comp_view">
       <div class="new_background"></div>
       <div class="new_image_container">
         <div class="close_btn_container">
           <div class="new_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
-          <div class="new_box">
+          <div class="new_touroku_box">
             <div class="new_header">
               <div class="new_logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
             </div>
             <div class="login_Comp_text">
               <h1>ログインしました。</h1>
             </div>
-            <div class="new_btn_content">
-              <input class="close_btn2" type="button"  value="閉じる"  >
+            <div class="new_touroku_btn_content">
+              <input class="top_btn1" type="button"  value="トップへ" onclick=location.href="Top.html" >
               <input class="mypage_btn" type="button" onclick="location.href='mypage.html'" value="マイページへ" >
             </div>
           </div>
@@ -167,7 +169,25 @@
 	          </div>
 	        </div>
 	    </div>
-	        <!--登録完了画面終わり -->
+<!--登録完了画面終わり -->
+			<!-- 切り取りライトボックス中身 -->
+				<div class="trimming_view">
+					<div class="trimming_background"></div>
+					<div class="trimming_image_container">
+						<div class="trimming_close_btn_container">
+							<div class="trimming_close_btn"><img src="../Images/close.png" alt="閉じるボタン"/></div>
+						</div>
+						<div class="trimming_image">
+								<!-- イメージが入るところ -->
+						</div>
+					</div>
+					<div class="trimming_btns">
+					<input class="trimming_delete_btn" type="button"  value="閉じる">
+					<input class="trimming_view_btn" type="button" value="トリミング">
+				</div>
+				</div>
+
+
 
           <div class="">
 						<!--背景-->
@@ -176,19 +196,20 @@
 
       <!------------コンテンツ部分------------>
       <!--新規登録画面開始-->
+			<form id="send" name="send" method="POST" enctype="multipart/form-data">
       <div class="new_contents">
         <div class="new_title">
           <div class="left_border"></div>
           <div class="right_border"></div>
           <h1>新規登録</h1>
         </div>
-        <div class="new_box">
+        <div class="new_box1">
           <div class="new_left_content">
             <div class="new_images">
                 <div class="new_image"></div>
                 <label for="choice_btn">
                   <p>選択</p>
-                  <input id="choice_btn" type="file">
+                  <input id="choice_btn" type="file" name="testimg">
                 </label>
               </div>
 							<input class="new_trimming_btn" type="button" value="アイコンをトリミング">
@@ -210,11 +231,13 @@
           <div class="new_btn_content">
 <!--            <input class="delete_btn2" type="button"  value="アカウント消去">-->
             <input class="confirmation_btn" type="button" value="確認">
+            <input class="return_btn" type="button" value="戻る">
+            <input class="touroku_btn" type="button" value="登録">
           </div>
       </div>
       </div>
 
-
+</form>
 
 
 
@@ -236,6 +259,6 @@
     </footer>
 		<!---------- フッター終了 ---------->
     </div>
-		<script type="text/javascript" src="../JS/CreatorsList.js" ></script>
+		<script type="text/javascript" src="../JS/profil.js" ></script>
 </body>
 </html>

@@ -38,11 +38,11 @@ $('.slider-wrapper').slick({
 
 
 $(document).ready(function(){
+  /*パスワードを忘れたとき*/
   $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
     $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
     $('body').removeClass("overflow");
   });
-
 
   $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
     $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
@@ -99,7 +99,7 @@ $(document).ready(function(){
 		$('.login_user_icon').css("display","block");
 
 		var userId = sessionStorage.getItem('userId');
-		var userName = sessionStorage.getItem('userName');
+		var userName = sessionStorage.getItem('userName');  // アカウント名
 		console.log(userId,userName);
 
 		$('.login_user_icon').empty();
@@ -114,11 +114,24 @@ $(document).ready(function(){
 
 	}
 
+	/*sessionStorage.removeItem('pageNum');
+	sessionStorage.setItem('pageNum',1);*/
+
 	//sessionStorage.clear();
 
 
 });
 
+$('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.pass_view').fadeIn();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
+
+
+  $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
+    $('.login_view').fadeOut();//view���t�F�[�h�A�E�g����//
+    $('body').removeClass("overflow");
+  });
 
 /*
 ///////////////////////////////////
@@ -477,6 +490,8 @@ $(document).on("click",".login_btn3",function(){
 
 	var text = $('.login_text').val();
 	var pass = $('.pass_text').val();
+	$('.login_text').val('');
+	$('.pass_text').val('');
 	var param = [];
 	param[0] = text;
 	param[1] = pass;
@@ -497,7 +512,7 @@ $(document).on("click",".login_btn3",function(){
 	$('body').removeClass("overflow");
 		//ユーザーidとユーザー名をストレージに保存
 		sessionStorage.setItem('userId',data['userId']);
-		sessionStorage.setItem('userName',data['user_name']);
+		sessionStorage.setItem('privateUserName',data['user_name']);
 
 		//アイコンを表示
 		$('.login_btn').css("display","none");
@@ -694,8 +709,8 @@ $("#choice_btn").on("change",function(e){
     $preview = $(".new_image");
 
     // pngファイル以外の場合は何もしない
-    if(file.type.indexOf("png") < 0 || file.size > 5500000){
-    	alert("png以外のファイルは利用できません。");
+    if(file.type.indexOf("image") < 0 || file.size > 5500000){
+    	alert("画像以外のファイルは利用できません。");
     	$("#choice_btn").val("");
     	return false;
     }
@@ -1328,3 +1343,26 @@ $(document).on("click",".logout",function(){
 		$('.login_user_icon').css("display","none");
 	//ここまで
 });
+
+
+
+/*$(document).on("click",".before_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt - 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});
+
+
+$(document).on("click",".next_btn",function(){
+	var pageNum = sessionStorage.getItem('pageNum');
+	sessionStorage.removeItem('pageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt + 1;
+	sessionStorage.setItem('pageNum',result);
+	var infoId = sessionStorage.getItem('infoId');
+	runSearch(infoId);
+});*/

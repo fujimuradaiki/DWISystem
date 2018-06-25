@@ -727,7 +727,7 @@ i {
 }
 
 .new_header{
-  width:900px;
+  width:400px;
   height:80px;
   background: #3F3ACE;
 }
@@ -952,6 +952,74 @@ label p:hover {
   top:0;
   left:0;
 }
+
+.mypage_btn{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.mypage_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.touroku_text{
+  margin-top: 160px;
+  text-align: center;
+}
+
+.touroku_text h1{
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.new_touroku_box{
+  width: 400px;
+  height: 500px;
+  background: #fff;
+	margin-left: 200px;
+}
+
+.new_touroku_btn_content{
+/*  float: left;*/
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
+}
+
+.top_btn1{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn1:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
 
 .Editing_view{
   display:none;
@@ -1344,10 +1412,10 @@ input[type=checkbox]:checked + .check_btn:before {
 
 
 .close_btn{
-  position:absolute;
-  top: -55px;
-  left: 80%;
-  cursor:pointer;
+	position: absolute;
+  top: -150px;
+  left: 81%;
+  cursor: pointer;
 }
 
 .lightbox_contents{
@@ -2544,6 +2612,7 @@ i {
   transition: .4s;
 }
 
+/*box*/
 
 .login_Comp_view{
   display:none;
@@ -2552,6 +2621,26 @@ i {
   z-index:1;
   top:0;
   left:0;
+}
+
+.top_btn1{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.top_btn1:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 .mypage_btn{
@@ -2581,13 +2670,13 @@ i {
   font-size: 23px;
 }
 
-.new_view{
-  display:none;
-  width:100%;
-  position:fixed;
-  z-index:1;
-  top:0;
-  left:0;
+.new_touroku_btn_content{
+/*  float: left;*/
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+/*  margin-left: 186px;*/
 }
 
 .new_contents{
@@ -2609,15 +2698,15 @@ i {
   margin-top:-275px;
   margin-left:-400px;
 }
-.new_box{
-  width: 900px;
+.new_touroku_box{
+	width: 400px;
   height: 500px;
   background: #fff;
-  margin-left: -50px;
+  margin:-217px 200px;
 }
 
 .new_header{
-  width:900px;
+  width:400px;
   height:80px;
   background: #3F3ACE;
 }
@@ -2634,6 +2723,47 @@ i {
 .new_contents{
   width:800px;
   margin:0 auto;
+}
+
+.login_btn3{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.login_btn3:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.close_btn2{
+  width: 100px;
+  height: 35px;
+  position: relative;
+  right: 2%;
+  margin-bottom: 30px;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.close_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 .new_close_btn{
@@ -2658,92 +2788,12 @@ i {
 }
 
 .new_title h1{
+	text-align: center;
   font-size:25px;
   margin-top: -42px
 }
 
-.new_images{
-  width:200px;
-  margin-top: 40px;
-  border:1px solid #111;
-}
-
-.new_image{
-  width:200px;
-  height:200px;
-}
-
-.new_image h1{
-  text-align: center;
-  padding-top:95px;
-}
-
-label p{
-	width: 56px;
-  height: 19px;
-  position: relative;
-  float: right;
-  margin-top: -26px;
-  display: inline-block;
-  font-weight: bold;
-	text-align: center;
-  text-decoration: none;
-	line-height: 22px;
-  color: #FFF;
-  font-size: 12px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  padding: 0.3em 0.5em;
-  background: #3F3ACE;
-  transition: .4s;
-}
-
-label p:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
-}
-
-#choice_btn{
-  display: none;
-}
-
-.new_images img{
-  width: 200px;
-}
-
-
-
-.new_form_waku{
-  width: 670px;
-  margin: 0 auto;
-}
-
-.new_form{
-  width: 307px;
-  margin-top: -205px;
-  float:right;
-}
-
-.new_form dt{
-  width: 128px;
-  height: 30px;
-  line-height: 32px;
-  margin-left: -75px;
-  padding-left: 6px;
-  float:left;
-  font-size: 13px;
-  color:#fff;
-  background:#383474;
-}
-
-.new_form dd{
-  height: 20px;
-  margin-bottom: 38.5px;
-}
-
-.new_form dd input{
-  width: 244px;
-  height: 24px;
-  float:right;
-}
+/*box*/
 
 
 .new_confirmation_view{
