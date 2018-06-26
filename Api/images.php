@@ -45,10 +45,28 @@ class images{
         $fileType = array();
         //DBへの接続関数
         $pdo = new connectdb();
+        $max = $pageNamber * $postMaxNum;
+        $record = $postMaxNum;//進める数
+        $min = $max - $postMaxNum;
+
+        if(isset($postData[2]['value']) && isset($postData[3]['value'])){
+            $pageNamber = $postData[2]['value'];      //ページ番号番号
+            $postMaxNum = $postData[3]['value'];
+        }else{
+            $pageNamber = 1;      //ページ番号番号
+            $postMaxNum = 50;
+        }
+        $max = $pageNamber * $postMaxNum;
+        $record = $postMaxNum;//進める数
+        $min = $max - $postMaxNum;
         //追加のsql文作成
         $addSql ="";
         $addSortSql = "";
 
+        $limitSql =  " LIMIT ".$min.",".$record;
+        $countSql= "select COUNT(*) from images ";
+        $totalCount = $pdo->dbo->query($countSql);
+        $countVal = $totalCount->fetch(PDO::FETCH_ASSOC);
         if($postData != ""){
             //文字列 分割 (配列)　ソート 0:対象 1:ソート種類
          $pieces = explode(":", $postData[0]['value']);
@@ -80,7 +98,7 @@ class images{
                     $addSortSql .= " ORDER BY COUNT(comment_id) $pieces[1] , image_insert_at ASC ";
                 }
             }else{
-                $addSortSql .= " ORDER BY image_id DESC limit 0,50 ";
+                $addSortSql .= " ORDER BY image_id DESC ";
             }
         }
         //sqlの発行
@@ -112,21 +130,31 @@ class images{
              $sql .= $categorySql;
          }
          //ソートSQLの結合
-         $sql .= " GROUP BY  image_id ". $addSortSql;
+         $sql .= " GROUP BY  image_id ". $addSortSql.$limitSql;
        //  echo $sql . "\n";
         //SQL実行
          $result = $pdo->dbo->query($sql);
 
-         $exts = ['jpg', 'png','jpeg'];
-         $resultExt='';
+
+
+        // echo ($sql);
+
          while($val = $result->fetch(PDO::FETCH_ASSOC)){
-            // 拡張子を判断する
+             $typeA = "";
+             $exts = ['jpg', 'png','jpeg'];
+             // 拡張子を判断する
              foreach( $exts as $ext) {
+                 $filePath = '../User/'.$val['account_name'].'/samne_'.$val['image_id'].'.'.$ext;
+                 if(is_file($filePath)){
+                     $typeA = 'samne_'.$val['image_id'].'.'.$ext;
+                     break;
+                 }
+
                  $filePath = '../User/'.$val['account_name'].'/'.$val['image_id'].'.'.$ext;
-                  if(is_file($filePath)) {
-                      $resultExt = $ext;
-                      break;
-                  }
+                 if(is_file($filePath)) {
+                     $typeA = $val['image_id'].'.'.$ext;
+                     break;
+                 }
              }
 
 
@@ -136,11 +164,12 @@ class images{
               'UserName' => $val['account_name'],
               'userId'=>$val['user_id'],
               'categoryName' => $val['category_name'],
-              'fileType'=>$val['image_id'].".".$resultExt
+              'fileType'=>$typeA
             );
          };
-
-         echo json_encode($imagesArray);
+         $imageTotalArray = array($countVal["COUNT(*)"]);
+         $dataArray = array($imagesArray,$imageTotalArray);
+         echo json_encode($dataArray);
     }
 
 

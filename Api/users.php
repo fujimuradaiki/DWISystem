@@ -32,10 +32,13 @@ class users{
                 $this->delete($postData);
                 break;
             case"lostPass":
-                $this->mail($postData);
+                $this->lostPass($postData);
                 break;
             case"remakeMail":
                 $this->remakeMail($postData);
+                break;
+            case"remakePass":
+                $this->remakePass($postData);
                 break;
             default:
                 echo "users.php ユーザー定義関数に該当しませんでした";
@@ -563,7 +566,8 @@ class users{
         if($pass != "" && $pass == $result['password']){
                 $userdata = array(
                     "userId"=>$result['user_id'],
-                    "user_name"=>$result['account_name']
+                    "user_name"=>$result['account_name'],
+                    "user"=>$result['user_name']
                 );
             }else{
                 echo json_encode("error");
@@ -628,10 +632,11 @@ class users{
         $result = "";
         //メールアドレス
         $postMail = $postData;
-        $searchSql = "SELECT COUNT(*) users WHERE user_mail LIKE "."'$mail'";
+        $searchSql = "SELECT COUNT(*),user_id,user_name FROM users WHERE user_mail LIKE "."'$postMail'";
         $stmt=$pdo->dbo->prepare($searchSql);
         $stmt->execute();
         $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        $userId;
         //$oncePassSql = "UPDATE users SET oneTime_pass = ";
         if($searchResult['COUNT(*)'] == 0){
             $result = "該当のメールアドレスがありません";
@@ -639,40 +644,45 @@ class users{
 //             $oncePass = $this->makeOneTimePass(8);
 //             $stmt=$pdo->dbo->prepare($oncePass);
 //             $resultFlg = $stmt->execute();
-
-            if($resultFlg){
-                $this->mail($postMail,$oncePass);
+                $userId = $searchResult['user_id'];
+                $name = $searchResult['user_name'];
+                //$this->mail($postMail,$oncePass);
+                $result = $this->translationmail($postData,$userId,$name);
                 $result = "メールを送信致しました";
-            }else{
-                $result = $searchSql;
-            }
         }
      //  $oncePass = $this->makeOneTimePass(8);
-     //デバック
-       // $userId = 5;
-        echo  $this->translationmail($postData,$userId);
+        echo json_encode($result);
 
     }
 ///////////////////////////////////////////////////////////////////////////
 //メール送信処理　メールアドレスとIDが欲しい
-    public function translationmail($mail,$id){
+    public function translationmail($mail,$id,$name){
         $now = time();
-        $expiry_string = $now + (5 * 60);
+        $expiry_string = $now + (30 * 60);
         $password = "password";
         $cipher = 'AES-256-ECB';
         $string = rawurlencode(openssl_encrypt($expiry_string, $cipher, $password));
         $id = rawurlencode(openssl_encrypt($id, $cipher, $password));
         $result = "";
         //$postData = "mono@mono.mono";
-        if($postData != ""){
-            $to = $postData;
-            $subject = "デザイナー紹介 アカウント作成のご案内";
-            $message = "
-                新規登録URL
-                http://esmilehd.xsrv.jp/design/View/HTML/Top.html?id=".
-                $string."&".$id."\n".
-                "上記のURLから新規登録をお願いします。
-                ";
+        if($mail != ""){
+            $to = $mail;
+            $subject = "【portffolio】パスワード再設定のお知らせ";
+            $message = "【パスワード再設定のお知らせ】"."\n\n".$name."様"."\n\n".
+                "この度は、弊社のサービスをご利用いただき誠にありがとうございます。"."\n".
+                "パスワード再設定リクエストをお受けいたしました。"."\n".
+               "下記のURLからパスワードの再設定を行ってください。"."\n\n".
+                "http://esmilehd.xsrv.jp/design/View/HTML/password.html?".$string."&".$id."\n\n".
+                "※ご注意"."\n".
+                "・URLの有効期限は30分となります。"."\n".
+                "・このメールは、パスワード再設定のリクエストをされた方に自動で送信しています。"."\n\n".
+                "----------------------------------------------------------------------------------------------------"."\n\n".
+                "本メールにお心当たりがない場合は、誠に恐れ入りますがお問い合わせくださいますようお願いいたします。"."\n"."\n".
+                "〒103-0016"."\n".
+                "東京都中央区日本橋小網町18-3　小網町ゼネラルビル３Ｆ"."\n".
+                "TEL 03-5645-1766"."\n".
+                "FAX 03-5645-1767"
+                ;
             //$message = "PHP";
             $headers = "From: from@imaizumihome.com";
 
@@ -685,7 +695,7 @@ class users{
             $result = false;
          }
         // $post = array($string,$id);
-         return $this->remakeMail($post); //date('Y-m-d H:i:s',$expiry_string);
+         return $expiry_string; //date('Y-m-d H:i:s',$expiry_string);
 
     }
 
@@ -697,51 +707,42 @@ class users{
         }
         return $r_str;
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//パスワードの作り直し update呼べばいいと思う
-//     public function remakePass($postData){
-//         $pdo = new connectdb();
-//         $oncePass = $postData[0];
-//         $newpass =  $postData[1];
-//         $searchSql = "SELECT * FROM users WHERE once_pass LIKE '$oncePass'";
-//         $stmt=$pdo->dbo->prepare($searchSql);
-//         $stmt->execute();
-//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//         $resultStr = "";
-//         //echo json_encode()
-//         if($result['once_pass'] == $oncePass){
-//             $newpass = md5($newpass);
-//             $updateSql = "UPDATE users SET password = '$newpass' ,once_pass = NULL' WHERE user_id = ".$result['user_id'];
-//             $resultflg = $stmt->execute();
-//             if($resultflg){
-//                 $resultStr = "変更が完了しました";
-//             }else{
-//                 $resultStr =
-//                 $updateSql;
-//             }
-//         }else{
-//             $resultStr = "パスワードが間違っています";
-//         }
-//         echo json_encode($resultStr);
-//     }
-///////////////////////////////////////////////////////////////////////////////////////////////
+
 ///メールの有効期限check
     public function remakeMail($postData){
-        $pdo = new connectdb();
-        $limit = $postData[0];
-        $userId = $postData[1];
-        $now = time();
-        $password = "password";
-        $cipher = 'AES-256-ECB';
-        $encrypted_expiry_string = rawurldecode($limit);
-        $userId = rawurldecode($userId);
-        $expiry = openssl_decrypt($encrypted_expiry_string, $cipher, $password);
-        $userId = openssl_decrypt($userId, $cipher, $password);
+
+         $limit = $postData[0];
+         $userId = $postData[1];
+         $now = time();
+         $password = "password";
+         $cipher = 'AES-256-ECB';
+         $encrypted_expiry_string = rawurldecode($limit);
+         $userId = rawurldecode($userId);
+
+         $expiry = openssl_decrypt($encrypted_expiry_string, $cipher, $password);
+         $userId = openssl_decrypt($userId, $cipher, $password);
+         $a = date('Y-m-d H:i:s',$expiry);
+
         if(intval($expiry) < $now ){
-            echo 'URLの有効が切れています';
+            echo json_encode('URLの有効が切れています');
         }else{
-           // echo date('Y-m-d H:i:s',$expiry);
             echo json_encode($userId);
+        }
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//パスワードの選定し直し
+    public function remakePass($postData){
+        $pdo = new connectdb();
+        $userId = $postData[0];
+        $passWord = md5( $postData[1] );
+        $sql = "UPDATE users SET password = '$passWord' WHERE user_id =  ".$userId;
+        $stmt=$pdo->dbo->prepare($sql);
+        $resultflg = $stmt->execute();
+        //echo json_encode($sql);
+        if($resultflg){
+            echo json_encode($passWord);
+        }else{
+            echo json_encode("パスワード変更に失敗しました。");
         }
     }
 }
