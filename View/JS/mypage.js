@@ -44,9 +44,9 @@ $(document).ready(function(){
 	//ログイン中のユーザーIDとユーザー名を取得
 	//取得できなかった場合、トップページに遷移
 	var userId = sessionStorage.getItem('userId');
-	var userName = sessionStorage.getItem('userName');  // アカウント名
+	//var userName = sessionStorage.getItem('userName');  // アカウント名
 
-	console.log(userId,userName);
+	//console.log(userId,userName);
 	if(userId == null || sessionStorage.getItem('privateUserName') == null){
 		alert("ログイン状態ではありません。\nトップページに戻ります。")
 		window.location.href =  "Top.html";
@@ -58,29 +58,21 @@ $(document).ready(function(){
 	$('.login_user_icon').css("display","block");
 
 	$('.login_user_icon').empty();
-	$('.login_user_icon').append(
-			$("<img id='headerIcon'class='icon'>")
-			.attr("src","../../User/"+ userName +"/icon.png")
-	);
+
 	var $headerIcon = $('#headerIcon');
 	$headerIcon.css('width',50);
 	$headerIcon.css('height',50);
 	$headerIcon.css('border-radius','50%');
 
 	$('.mypage_icon').empty();
-	$('.mypage_icon').append(
-			$("<img id='mypageIcon'class='icon'>")
-			.attr("src","../../User/"+ userName +"/icon.png")
-	);
+
 	var $mypageIcon = $('#mypageIcon');
 	$mypageIcon.css('width',130);
 	$mypageIcon.css('height',130);
 
 	var $mypageName = $('.mypage_name');
 	$mypageName.empty();
-	$mypageName.append(
-		("<h1>"+ userName +"</h1>")
-	);
+
 
 	var data = {'model':'users', 'action':'profile', 'data':userId };
 
@@ -100,6 +92,19 @@ $(document).ready(function(){
 		sessionStorage.setItem('privateUserName',data['user']);    // 非公開名(ユーザ名)※古いものになる
 		$('#sineIn_user_name').val(sessionStorage.getItem('privateUserName'));
 		$('#sineIn_mail').val(data['userMail']);
+
+		$('.login_user_icon').append(
+				$("<img id='headerIcon'class='icon'>")
+				.attr({"src":"../../User/"+ data.userName +"/icon.png", "width":"50", "height":"50"})
+		);
+
+		$('.mypage_icon').append(
+				$("<img id='mypageIcon'class='icon'>")
+				.attr({"src":"../../User/"+ data.userName +"/icon.png", "width":"130", "height":"130"})
+		);
+		$mypageName.append(
+				("<h1>"+ data.userName +"</h1>")
+			);
 		//sessionStorage.setItem('userMail',data['userMail']);       // メールアドレス
 		//var text = "";
 		//$('my_introduction').append($('<pre id="intro">'+text+'</pre>'));  // 自己紹介

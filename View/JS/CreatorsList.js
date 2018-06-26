@@ -27,6 +27,12 @@ $(document).ready(function(){
 	var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
 
+	// PCサイズの時
+	if(window.parent.screen.width >= 415)
+		sessionStorage.setItem('illustNum', 50);
+	else
+		sessionStorage.setItem('illustNum', 30);
+
 	//ログイン中かどうかを取得
 	if(userId == null){
 		$('.login_btn').css("display","inline-block");
@@ -280,7 +286,8 @@ $(document).on("click",".login_btn3",function(){
 			$('body').removeClass("overflow");
 			//ユーザーidとユーザー名をストレージに保存
 			sessionStorage.setItem('userId',data['userId']);
-			sessionStorage.setItem('privateUserName',data['user_name']);
+			sessionStorage.setItem('privateUserName',data['user']);
+			sessionStorage.setItem('userName', data['user_name']);
 
 			//アイコンを表示
 			$('.login_btn').css("display","none");
