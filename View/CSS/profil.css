@@ -609,7 +609,7 @@ i {
   width: 100px;
   height: 35px;
   position: relative;
-  right: 2%;
+  /* right: 2%; */
   /* margin-left: 20px; */
   margin-bottom: 30px;
   display: inline-block;
@@ -631,7 +631,7 @@ i {
   width: 100px;
   height: 35px;
   position: relative;
-  right: 2%;
+  /* right: 2%; */
   margin-left: 20px;
   margin-bottom: 30px;
   display: inline-block;
@@ -1075,7 +1075,7 @@ label p:hover {
 
 .new_btn_content{
 /*  float: left;*/
-  width: 541px;
+  width: 100%;
   text-align: center;
   margin: 0 auto;
   padding-top: 30px;
@@ -1129,7 +1129,8 @@ label p:hover {
 .click_before{
 	width: 100%;
   position: absolute;
-  top: 86%;
+  top: 100%;
+  left: 0;
 }
 
 .click_after{
@@ -2019,6 +2020,23 @@ i {
 .new_title h1 {
     text-align: center;
     font-size: 21px;
+}
+
+.new_box {
+	width: 400px;
+  height: 500px;
+  background: #fff;
+  margin: -217px 200px;
+}
+
+.touroku_text h1 {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.touroku_text {
+  margin-top: 160px;
+  text-align: center;
 }
 
 .new_box1 {
