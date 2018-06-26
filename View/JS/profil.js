@@ -2,8 +2,8 @@
 $(document).ready(function(){
 	//$('#sineUp_user_name').val(sessionStorage.getItem('signUp_user_name'));
 	//$('#sineUp_user_name').val($('#sineUp_user_name').val());
-	$('.return_btn').css("visibility", "hidden");
-	$('.touroku_btn').css("visibility", "hidden");
+	$('.return_btn').css("display", "none");
+	$('.touroku_btn').css("display", "none");
 })
 
 $('.know_pass').click(function(){//.close_btn img���N���b�N�����Ƃ�//
@@ -196,7 +196,7 @@ $(document).on("click",".confirmation_btn",function(){
 		alert(errorMsg);
 	}else{
 		$('.new_confirmation_view').fadeIn();
-		$('body').addClass("overflow");
+		// $('body').addClass("overflow");
 		var name = $('#sineUp_user_name').val();
 		var mail = $('#sineUP_mail').val();
 		var pass1 = $('#sineUp_password1').val();
@@ -247,18 +247,18 @@ $(document).on("click",".confirmation_btn",function(){
 		$('#sineUp_password2').prop("disabled", true);
 
 		$('.new_trimming_btn').css("display", "none");
-		$('.confirmation_btn').css("visibility", "hidden");
-		$('.return_btn').css("visibility", "visible");
-		$('.touroku_btn').css("visibility", "visible");
+		$('.confirmation_btn').css("display", "none");
+		$('.return_btn').css("display", "inline-block");
+		$('.touroku_btn').css("display", "inline-block");
 
 	}
 });
 
 $(document).on("click",".return_btn",function(){
 	$('.new_trimming_btn').css("display", "block");
-	$('.confirmation_btn').css("visibility", "visible");
-	$('.return_btn').css("visibility", "hidden");
-	$('.touroku_btn').css("visibility", "hidden");
+	$('.confirmation_btn').css("display", "inline-block");
+	$('.return_btn').css("display", "none");
+	$('.touroku_btn').css("display", "none");
 	$('#sineUp_account_name').prop("disabled", false);
 	$('#sineUp_user_name').prop("disabled", false);
 	$('#sineUP_mail').prop("disabled", false);
@@ -273,11 +273,9 @@ $(document).on("click",".touroku_btn",function(){
 	var pass1 = $('#sineUp_password1').val();
 	var pass2 = $('#sineUp_password2').val();
 
-	var trimming_view_img = $('#trimming_view_img').attr('src');
+	var trimming_view_img = $('.trimming_view_img').attr('src');
 	if(trimming_view_img === undefined)
 		trimming_view_img = "";
-
-	alert(trimming_view_img);
 
 	var data = [name, pass1, mail, trimming_view_img, userName ];
 	var param = new FormData($('[name="send"]').get(0));
@@ -296,7 +294,7 @@ $(document).on("click",".touroku_btn",function(){
 		//ajax通信成功時
 		}).done(function(data){
 			alert(JSON.stringify(data));
-			//alert('ddd');
+			alert('ddd');
 			console.log(data);
 			/*if(data != false){
 			  $('.new_touroku_view').fadeIn();

@@ -1,5 +1,17 @@
-﻿/*
-*************************************
+$('.slider-wrapper').slick({
+  fade: true,
+  // 自動再生するか [初期値:false]
+  autoplay: true,
+
+  autoplaySpeed: 3300,
+
+  speed: 1000
+
+
+  // 自動再生で切り替えする時間(ミリ秒) [初期値:3000]
+});
+
+/**************************************
 
 *名前 : Top.js
 
@@ -82,6 +94,13 @@ $(document).ready(function(){
 
 
 	var s = "横幅 = " + window.parent.screen.width + " / 高さ = " + window.parent.screen.height;
+
+	// PCサイズの時
+	if(window.parent.screen.width >= 415)
+		sessionStorage.setItem('illustNum', 50);
+	else
+		sessionStorage.setItem('illustNum', 30);
+
 	//alert(s)
 	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
 	//画像表示実行
@@ -303,7 +322,6 @@ function getForm(){
 		1:{category1:{name:'charactor',value:$category1},
 		   category2:{name:'backGround',value:$category2},
 		   category3:{name:'item',value:$category3}
-
 		}
 	};
 
@@ -340,19 +358,20 @@ function runSearch(){
 	}).done(function(data){
 		console.log(data);
 		var $div = $('.lightbox_waku');
+		alert(data);
 
 		//表示中の画像を削除
 		$div.empty();
 
-		for(var i = 0;i < data.length;i++){
+		for(var i = 0;i < data[0].length;i++){
 
-			var userName = data[i].UserName;
-			var userId = data[i].userId;
-			var imageId = data[i].Id;
-			var categoryName = data[i].categoryName;
-			var title = data[i].Title;
-			var insert_at = data[i].Insert_at;
-			var $dispimge = data[i].fileType;
+			var userName = data[0][i].UserName;
+			var userId = data[0][i].userId;
+			var imageId = data[0][i].Id;
+			var categoryName = data[0][i].categoryName;
+			var title = data[0][i].Title;
+			var insert_at = data[0][i].Insert_at;
+			var $dispimge = data[0][i].fileType;
 			//画像表示
 			$div.append(
 				("<div class='lightbox'id='"+ imageId + "Div'></div>")
@@ -405,8 +424,8 @@ function runSearch(){
 		);
 
 	//ajax通信失敗時
-	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("error");
+	}).fail(function(data){
+		alert(JSON.stringify(data));
 	});
 }
 
@@ -497,7 +516,10 @@ $(document).on("click",".login_btn3",function(){
 	$('body').removeClass("overflow");
 		//ユーザーidとユーザー名をストレージに保存
 		sessionStorage.setItem('userId',data['userId']);
-		sessionStorage.setItem('privateUserName',data['user_name']);
+		sessionStorage.setItem('privateUserName',data['user']);
+		sessionStorage.setItem('userName', data['user_name']);
+		//console.log(JSON.stringify(data));
+		//
 
 		//アイコンを表示
 		$('.login_btn').css("display","none");
@@ -1261,7 +1283,6 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
-
 	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページ以外の時は書く処理 ここから
@@ -1283,7 +1304,7 @@ $('.mail_btn').on("click",function(){
 		data:data,
 		timeout:1000
 	}).done(function(data){
-		alert('aa');
+		alert(data);
 	}).fail(function(data){
 		alert(JSON.stringify(data));
 	});
