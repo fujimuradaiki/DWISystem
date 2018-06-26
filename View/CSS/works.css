@@ -606,7 +606,7 @@ i {
   font-size: 23px;
 }
 
-/*åˆ‡ã‚Šå–ã‚Šãƒ©ã‚¤ãƒˆãƒœãƒƒã‚¯ã‚¹ä¸­èº«*/
+/*åˆ?ã‚Šå–ã‚Šãƒ©ã‚¤ãƒˆã?œãƒƒã‚¯ã‚¹ä¸­èº«*/
 .trimming_view{
   display:none;
   width:100%;
@@ -802,7 +802,7 @@ i {
 }
 
 .new_trimming_btn:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+  table-layout: ext-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
 label p{
@@ -1403,6 +1403,70 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 
+/*ƒy[ƒWƒƒ[‹@”\*/
+
+.before_btn{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+	font-size: 14px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+	padding: 0.3em 0.5em;
+	background: #3F3ACE;
+	transition: .4s;
+}
+
+.before_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.next_btn{
+  width: 80px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.next_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+
+
+
+table{
+	width: 265px;
+  margin: 0 auto;
+}
+
+tbody{
+	text-align: center;
+}
+
+td{
+	width: 80px;
+}
+
+td p{
+	width: 66px;
+	float: right;
+	margin-right: 12px;
+}
+
+
+/*ƒy[ƒWƒƒ[‹@”\*/
+
 .lightbox_waku{
   width:98%;
   margin: 0 auto;
@@ -1478,7 +1542,7 @@ input[type=checkbox]:checked + .check_btn:before {
 }
 
 
-/*ï¿½ï¿½ï¿½Cï¿½gï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½g*/
+/*?¿½?¿½?¿½C?¿½g?¿½{?¿½b?¿½N?¿½X?¿½?¿½?¿½g*/
 .lightbox_view{
   display:none;
   width:100%;
@@ -1488,7 +1552,7 @@ input[type=checkbox]:checked + .check_btn:before {
   left:0;
 }
 
-/*ï¿½ï¿½ï¿½gï¿½wï¿½i*/
+/*?¿½?¿½?¿½g?¿½w?¿½i*/
 .lightbox_background{
   width:100%;
   height:983px;
@@ -1500,7 +1564,7 @@ input[type=checkbox]:checked + .check_btn:before {
   margin-left: 33px;
 }
 
-/*ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½Aï¿½Cï¿½Rï¿½ï¿½*/
+/*?¿½?¿½?¿½[?¿½U?¿½[?¿½A?¿½C?¿½R?¿½?¿½*/
 .lightbox_user_icon{
   width: 30px;
   height: 30px;
@@ -1508,7 +1572,7 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#fff;
 }
 
-/*ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½lï¿½[ï¿½ï¿½*/
+/*?¿½?¿½?¿½[?¿½U?¿½[?¿½l?¿½[?¿½?¿½*/
 .lightbox_user_name{
   color:#fff;
 }
@@ -1530,7 +1594,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-/*ï¿½ï¿½ï¿½i*/
+/*?¿½?¿½?¿½i*/
 .lightbox_image_container{
   min-width: 1400px;
   width: 72%;
@@ -1562,13 +1626,13 @@ input[type=checkbox]:checked + .check_btn:before {
 	float: right;
 }
 
-/*ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½ï¿½ï¿½ï¿½*/
+/*?¿½?¿½?¿½[?¿½U?¿½[?¿½?¿½?¿½?¿½*/
 .user_information{
   width:1000px;
 	margin-top: -130px;
 }
 
-/*ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½Aï¿½Cï¿½Rï¿½ï¿½*/
+/*?¿½?¿½?¿½[?¿½U?¿½[?¿½A?¿½C?¿½R?¿½?¿½*/
 .user_icon{
   width:50px;
   height:50px;
@@ -1576,13 +1640,13 @@ input[type=checkbox]:checked + .check_btn:before {
   background:#fff;
 }
 
-/*ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½lï¿½[ï¿½ï¿½*/
+/*?¿½?¿½?¿½[?¿½U?¿½[?¿½l?¿½[?¿½?¿½*/
 .user_name{
 	color:#fff;
   margin: -15px 0 0 60px;
 }
 
-/*ï¿½ï¿½ï¿½iï¿½^ï¿½Cï¿½gï¿½ï¿½*/
+/*?¿½?¿½?¿½i?¿½^?¿½C?¿½g?¿½?¿½*/
 .work_title{
   width:400px;
   height:40px;
@@ -1595,7 +1659,7 @@ input[type=checkbox]:checked + .check_btn:before {
   color: #fff;
 }
 
-/*ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[*/
+/*?¿½?¿½?¿½r?¿½?¿½?¿½[*/
 .review_box{
 	width: 394px;
   height: 900px;
@@ -1764,7 +1828,7 @@ input[type=checkbox]:checked + .check_btn:before {
     -ms-transform: rotate(15deg);
 }
 
-/*ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½Lï¿½ï¿½*/
+/*?¿½?¿½?¿½r?¿½?¿½?¿½[?¿½L?¿½?¿½*/
 textarea {
   resize: none;
   width:345px;
@@ -1772,7 +1836,7 @@ textarea {
   margin-top:5px;
 }
 
-/*ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½eï¿½{ï¿½^ï¿½ï¿½*/
+/*?¿½?¿½?¿½r?¿½?¿½?¿½[?¿½?¿½?¿½e?¿½{?¿½^?¿½?¿½*/
 .review_btn{
   width: 70px;
   height: 30px;
@@ -1790,12 +1854,12 @@ textarea {
   transition: .4s;
 }
 
-/*ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½eï¿½{ï¿½^ï¿½ï¿½ï¿½@ï¿½zï¿½oï¿½[*/
+/*?¿½?¿½?¿½r?¿½?¿½?¿½[?¿½?¿½?¿½e?¿½{?¿½^?¿½?¿½?¿½@?¿½z?¿½o?¿½[*/
 .review_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-/*ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½vï¿½\ï¿½ï¿½*/
+/*?¿½?¿½?¿½r?¿½?¿½?¿½[?¿½?¿½?¿½v?¿½\?¿½?¿½*/
 .review_all{
   margin-top:30px;
 }
@@ -1822,7 +1886,7 @@ textarea {
 	height:20px;
 }
 
-/*ï¿½ß‹ï¿½ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½gï¿½\ï¿½ï¿½ï¿½êŠ*/
+/*?¿½ß‹ï¿½?¿½?¿½?¿½r?¿½?¿½?¿½[?¿½R?¿½?¿½?¿½?¿½?¿½g?¿½\?¿½?¿½?¿½ê?*/
 .past_coment{
   width: 350px;
   height: 307px;
@@ -1831,7 +1895,7 @@ textarea {
 	border: 1px solid #999;
 }
 
-/*------------------- ï¿½ï¿½ï¿½ï¿½ï¿½ÒƒRï¿½ï¿½ï¿½ï¿½ï¿½g ------------------*/
+/*------------------- ?¿½?¿½?¿½?¿½?¿½ÒƒR?¿½?¿½?¿½?¿½?¿½g ------------------*/
 
 .creator_box{
 	width: 394px;
@@ -3270,6 +3334,77 @@ font-size: 15px;
 	  opacity: 1;
 	}
 
+/*ƒy[ƒWƒƒ[‹@”\  */
+
+.before_btn{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+	font-size: 14px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+	padding: 0.3em 0.5em;
+	background: #3F3ACE;
+	transition: .4s;
+}
+
+.before_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.next_btn{
+  width: 80px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.next_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+
+
+
+
+
+
+
+  
+table{
+	width: 265px;
+  margin: 0 auto;
+}
+
+tbody{
+	text-align: center;
+}
+
+td{
+	width: 80px;
+}
+
+td p{
+	width: 66px;
+	float: right;
+	margin-right: 12px;
+}
+
+  
+/*ƒy[ƒWƒƒ[‹@”\  */  
+  
+  
+  
 
 .lightbox_waku{
 /*  width:98%;*/
