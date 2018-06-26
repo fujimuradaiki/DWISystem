@@ -84,6 +84,12 @@ $(document).ready(function(){
     $('body').removeClass("overflow");
   });
 
+    //PCサイズの時
+	if(window.parent.screen.width >= 415)
+		sessionStorage.setItem('illustNum', 50);
+	else
+		sessionStorage.setItem('illustNum', 30);
+
 	$('.NEW_btn').css("background-color","rgb(46, 204, 250)");
 	//画像表示実行
 	runSearch();
@@ -114,8 +120,8 @@ $(document).ready(function(){
 
 	}
 
-	/*sessionStorage.removeItem('pageNum');
-	sessionStorage.setItem('pageNum',1);*/
+	sessionStorage.removeItem('worksPageNum');
+	sessionStorage.setItem('worksPageNum',1);
 
 	//sessionStorage.clear();
 
@@ -316,8 +322,9 @@ function getForm(){
 		1:{category1:{name:'charactor',value:$category1},
 		   category2:{name:'backGround',value:$category2},
 		   category3:{name:'item',value:$category3}
-
-		}
+		},
+		2:{name:'page',value:sessionStorage.getItem('worksPageNum')},
+		3:{name:'illustNum', value:sessionStorage.getItem('illustNum')}
 	};
 
 	return param;
@@ -338,9 +345,9 @@ function getForm(){
 function runSearch(){
 
 	var data = {'model':'images','action':'imageList','data':getForm()};
-
+	var pageNum = sessionStorage.getItem('worksPageNum');
 	/*デバッグ用表示//////
-	*/console.log(data);/*
+	*///console.log(data);/*
 	////////////////////*/
 
 	//ajax通信
@@ -353,19 +360,24 @@ function runSearch(){
 	}).done(function(data){
 		console.log(data);
 		var $div = $('.lightbox_waku');
+		var userData = data[1][0];
+		var recordCnt = parseInt(userData);
+		var maxPage = parseInt(recordCnt);
+	    maxPage = Math.ceil(maxPage / sessionStorage.getItem('illustNum'));
+	    alert(maxPage);
 
 		//表示中の画像を削除
 		$div.empty();
 
-		for(var i = 0;i < data.length;i++){
+		for(var i = 0;i < data[0].length;i++){
 
-			var userName = data[i].UserName;
-			var userId = data[i].userId;
-			var imageId = data[i].Id;
-			var categoryName = data[i].categoryName;
-			var title = data[i].Title;
-			var insert_at = data[i].Insert_at;
-			var $dispimge = data[i].fileType;
+			var userName = data[0][i].UserName;
+			var userId = data[0][i].userId;
+			var imageId = data[0][i].Id;
+			var categoryName = data[0][i].categoryName;
+			var title = data[0][i].Title;
+			var insert_at = data[0][i].Insert_at;
+			var $dispimge = data[0][i].fileType;
 			//画像表示
 			$div.append(
 				("<div class='lightbox'id='"+ imageId + "Div'></div>")
@@ -417,11 +429,48 @@ function runSearch(){
 			("<div class='cle'></div>")
 		);
 
+		$('p.pageNum').text("Page : " + pageNum);
+
+		if(pageNum == 1){
+			$('.before_btn').css("display","none");
+		}else{
+			$('.before_btn').show();
+		}
+		if(pageNum == maxPage){
+			$('.next_btn').hide();
+		}else{
+			$('.next_btn').show();
+		}
+
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("error");
+		//alert("error");
+		$('.next_btn').hide();
+		$('.before_btn').css("display","none");
+		$('.no_works').css("display","block");
 	});
 }
+
+$(document).on("click",".before_btn",function(){
+	var pageNum = sessionStorage.getItem('worksPageNum');
+	sessionStorage.removeItem('worksPageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt - 1;
+	sessionStorage.setItem('worksPageNum',result);
+	//var infoId = sessionStorage.getItem('infoId');
+	runSearch();
+});
+
+
+$(document).on("click",".next_btn",function(){
+	var pageNum = sessionStorage.getItem('worksPageNum');
+	sessionStorage.removeItem('worksPageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt + 1;
+	sessionStorage.setItem('worksPageNum',result);
+	//var infoId = sessionStorage.getItem('infoId');
+	runSearch();
+});
 
 /*
 ///////////////////////////////////
@@ -512,7 +561,8 @@ $(document).on("click",".login_btn3",function(){
 	$('body').removeClass("overflow");
 		//ユーザーidとユーザー名をストレージに保存
 		sessionStorage.setItem('userId',data['userId']);
-		sessionStorage.setItem('privateUserName',data['user_name']);
+		sessionStorage.setItem('privateUserName',data['user']);
+		sessionStorage.setItem('userName', data['user_name']);
 
 		//アイコンを表示
 		$('.login_btn').css("display","none");
@@ -1343,26 +1393,3 @@ $(document).on("click",".logout",function(){
 		$('.login_user_icon').css("display","none");
 	//ここまで
 });
-
-
-
-/*$(document).on("click",".before_btn",function(){
-	var pageNum = sessionStorage.getItem('pageNum');
-	sessionStorage.removeItem('pageNum');
-	var pageNumInt =  parseInt(pageNum);
-	var result = pageNumInt - 1;
-	sessionStorage.setItem('pageNum',result);
-	var infoId = sessionStorage.getItem('infoId');
-	runSearch(infoId);
-});
-
-
-$(document).on("click",".next_btn",function(){
-	var pageNum = sessionStorage.getItem('pageNum');
-	sessionStorage.removeItem('pageNum');
-	var pageNumInt =  parseInt(pageNum);
-	var result = pageNumInt + 1;
-	sessionStorage.setItem('pageNum',result);
-	var infoId = sessionStorage.getItem('infoId');
-	runSearch(infoId);
-});*/

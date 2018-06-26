@@ -31,9 +31,10 @@ $(document).ready(function(){
 		//ログイン中のユーザーIDとユーザー名を取得
 		//取得できなかった場合、トップページに遷移
 		var userId = sessionStorage.getItem('userId');
-		var userName = sessionStorage.getItem('userName');
+		var userName = sessionStorage.getItem('userName');  // アカウント名
+		var privateUserName = sessionStorage.getItem('privateUserName');
 		console.log(userId,userName);
-		if(userId == null || userName == null){
+		if(userId == null || sessionStorage.getItem('privateUserName') == null){
 			alert("ログイン状態ではありません。\nトップページに戻ります。")
 			window.location.href =  "Top.html";
 		}
@@ -445,7 +446,6 @@ $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();
 	sessionStorage.removeItem('userId');
 	sessionStorage.removeItem('userName');
-
 	sessionStorage.removeItem('privateUserName');
 
 	//マイページと画像投稿ページの時は書く処理 ここから

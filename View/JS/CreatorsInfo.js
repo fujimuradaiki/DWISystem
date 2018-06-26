@@ -82,6 +82,12 @@ $(document).ready(function(){
     $('body').removeClass("overflow");
   });
 
+    //PCサイズの時
+	if(window.parent.screen.width >= 415)
+		sessionStorage.setItem('illustNum', 50);
+	else
+		sessionStorage.setItem('illustNum', 30);
+
 
 	//ログイン中かどうかを取得
 	if(sessionStorage.getItem('userId') == null){
@@ -415,7 +421,8 @@ $('.login_Comp_view').fadeIn();
 $('body').removeClass("overflow");
 	//ユーザーidとユーザー名をストレージに保存
 	sessionStorage.setItem('userId',data['userId']);
-	sessionStorage.setItem('privateUserName',data['user_name']);
+	sessionStorage.setItem('privateUserName',data['user']);
+	sessionStorage.setItem('userName', data['user_name']);
 
 	//アイコンを表示
 	$('.login_btn').css("display","none");
