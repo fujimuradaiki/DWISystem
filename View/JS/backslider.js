@@ -1,12 +1,7 @@
 $(document).ready(function(){
   
   if(!navigator.userAgent.match(/(iPhone|iPad|iPod|Android&Mobile)/)){
-//  var ua1 = navigator.userAgent.indexOf('iPhone');
-//  var ua2 = navigator.userAgent.indexOf('Mobile');
-//  
-//  alert('iPhone'+ua1+'Mobile'+ua2);
-  
-  //if(navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('Mobile') > 0){ 
+
     // PC slider
    $('.parallax-bg').bgSwitcher({
       images: [
@@ -20,7 +15,6 @@ $(document).ready(function(){
     });
        
   } else {
-//    alert('DDD');
      // SP slider
     $('.parallax-bg').bgSwitcher({
       images: [
@@ -36,5 +30,8 @@ $(document).ready(function(){
     
     alert($(".parallax-bg").prev("div").css("width"));
     $(".parallax-bg").prev("div").css("width","100%");
+    
+    
+    
   }
 });
