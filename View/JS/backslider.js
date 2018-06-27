@@ -31,7 +31,8 @@ $(document).ready(function(){
     alert($(".parallax-bg").prev("div").css("width"));
     $(".parallax-bg").prev("div").css("width","100%");
     
-    
+    location.href = 'spindex.html';
+
     
   }
 });
