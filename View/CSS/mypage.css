@@ -106,9 +106,32 @@
   overflow:hidden;
 }
 body{
+	font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */
+               'Helvetica Neue', /* Macの欧文 (OS X 10.10以前) */
+               'Segoe UI',       /* Windowsの欧文 */
+               YuGothicM,        /* Windows8.1以上は游ゴシック */
+               YuGothic,         /* Macの游ゴシック */
+               Meiryo,           /* 游ゴシックが入っていないWindows */
+               sans-serif;
+
   margin:0;
-	/* overflow-x: hidden; */
 }
+
+/* Windows */
+@font-face {
+  font-family: YuGothicM;
+  font-weight: normal;
+  src: local('YuGothic-Medium'),  /* Mediumを明示的に指定 */
+       local('Yu Gothic Medium'), /* Chrome用 */
+       local('YuGothic-Regular'); /* Windows8.1ではMediumがないのでRegularを指定 */
+}
+@font-face {
+  font-family: YuGothicM;
+  font-weight: bold;
+  src: local('YoGothic-Bold'), /* Boldはそのまま */
+       local('Yu Gothic');     /* Chrome用 */
+}
+
 /*------------------------------- ヘッダー開始　-------------------------------*/
 header{
   min-width:1360px;
@@ -355,7 +378,8 @@ i {
   height: 40px;
   position: relative;
   right: 0;
-  margin-left: 20px;
+  margin:20px 0 30px 0;
+  margin-top: 20px;
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -375,8 +399,7 @@ i {
   width: 135px;
   height: 40px;
   position: relative;
-  right: 2%;
-  margin-left: 20px;
+  margin-top: -15px;
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -396,22 +419,39 @@ i {
   display:none;
 }
 
+#introbox{
+  margin: 0px;
+  width: 400px;
+  height: 150px;
+  resize: none;
+}
+
 label p {
-  width: 81px;
-  height: 26px;
+  width: 119px;
+  height: 30px;
+  line-height: 31px;
   position: relative;
-      margin: -26px 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
-  text-align: center;
   text-decoration: none;
-  line-height: 22px;
   color: #FFF;
-  font-size: 12px;
+  font-size: 14px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
   padding: 0.3em 0.5em;
   background: #3F3ACE;
   transition: .4s;
+}
+
+.icon_trimming{
+  text-align: center;
+  width: 100%;
+}
+
+.icon_picture{
+  text-align: center;
+  width: 100%;
 }
 
 /*アカウント削除画面*/
@@ -1743,10 +1783,10 @@ i {
 
 .send{
   width: 100px;
-  height: 36px;
+  height: 40px;
   position: relative;
   right: 0;
-  margin-bottom: 30px;
+  margin: 20px 0 22px 0;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -1762,11 +1802,10 @@ i {
 }
 
 .trimming_btn{
-  width: 120px;
-  height: 36px;
+  width: 135px;
+  height: 40px;
   position: relative;
-  right: 6%;
-  margin-left: 25px;
+  margin-top: -15px;
   margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
@@ -1787,17 +1826,17 @@ i {
 }
 
 label p {
-  width: 105px;
-  height: 26px;
+  width: 119px;
+  height: 30px;
+  line-height: 31px;
   position: relative;
-  margin: -26px 42px 0 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: inline-block;
   font-weight: bold;
-  text-align: center;
   text-decoration: none;
-  line-height: 22px;
   color: #FFF;
-  font-size: 12px;
+  font-size: 14px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
   padding: 0.3em 0.5em;
   background: #3F3ACE;
@@ -1807,6 +1846,23 @@ label p {
 
 label p:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.icon_trimming {
+    text-align: center;
+    width: 100%;
+}
+
+.icon_picture {
+    text-align: center;
+    width: 100%;
+}
+
+#introbox {
+    margin: 0px;
+    width: 282px;
+    height: 150px;
+    resize: none;
 }
 
 #choice_btn{
@@ -1960,7 +2016,7 @@ label p:hover {
 	width: 100%;
   height: 140px;
   margin: 0 auto;
-  margin-top: 29px;
+  /* margin-top: 29px; */
   color: #fff;
   background: #111;
 }
