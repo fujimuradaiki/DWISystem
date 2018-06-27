@@ -1979,8 +1979,9 @@ footer{
   min-width: 1200px;
   width: 100%;
   height: 150px;
-  position: absolute;
-  bottom: -260px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   background: #000;
 }
 
@@ -1992,7 +1993,6 @@ footer small{
 }
 
 .footer_menu{
-
 	min-width: 733px;
   width: 40%;
   height: 10px;
@@ -4141,11 +4141,11 @@ i {
 
 /*--------------------?申?申?申r?申?申?申[?申\?申?申?申?申----------------------*/
 footer{
-  min-width: 1200px;
   width: 100%;
   height: 150px;
-  position: absolute;
-  bottom: -260px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   background: #000;
 }
 
@@ -4157,8 +4157,6 @@ footer small{
 }
 
 .footer_menu{
-
-	min-width: 733px;
   width: 40%;
   height: 10px;
   margin: 0 auto;
