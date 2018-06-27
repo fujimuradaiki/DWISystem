@@ -154,52 +154,63 @@ class users{
     //新規作成
     public  function insert($postData,$postFiles){
 
-    $pdo = new connectdb();
-    $insert_at=  date("Y/m/d H:i:s");//日時
-  //  $postData = array("t","t","555@sss.ss");
-    //passの暗号化
-    $pass = md5( $postData[1] );
-    $postAccountName = $postData[0];
-    $postUserName = $postData[4];
-    $sql = "insert
-            into
-            users(
-            account_name,
-            password,
-            user_insert_at,
-            user_mail,
-            user_name
-            )VALUES("
-            ."'$postData[0]'".","
-            ."'$pass'".","
-            ."'$insert_at'".","
-            ."'$postData[2]'".","
-            ."'$postUserName'"
-            .")";
-//           //echo $sql;
-//         //新規登録名でフォルダ名を検索
-            if($this->searchDirectory($postAccountName)){
-            $stmt=$pdo->dbo->prepare($sql);
-            $resultFlg = $stmt->execute();
-            //$resultFlg = true;
-            if($resultFlg == true){
-                $this->createDirectory($postAccountName);
-                if($postFiles['name'] == null){
-                    //画像なし
-                    $this->defaultIcon($postAccountName);
-                }else if($postData[3] != ""){
-                    //トリミングありの画像保存 $userName,$encode,$postType
-                    $this->trimingIcon($postAccountName,$postData[3],$postFiles);
-                }else{
-                    //fileでの画像の保存
-                    $this->icon($postAccountName,$postFiles);
-                }
-             }
-             echo "true";
+        $pdo = new connectdb();
+        $insert_at=  date("Y/m/d H:i:s");//日時
+      //  $postData = array("t","t","555@sss.ss");
+        //passの暗号化
+        $pass = md5( $postData[1] );
+        $postMail = $postData[2];
+        $postAccountName = $postData[0];
+        $postUserName = $postData[4];
+        $searchSql="select COUNT(*) from users WHERE user_mail LIKE "."'$postMail'";
 
+        $stmt=$pdo->dbo->prepare($searchSql);
+        $stmt->execute();
+        $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        //echo json_encode($searchSql);
+        if($searchResult['COUNT(*)'] == 0){
+            $sql = "insert
+                    into
+                    users(
+                    account_name,
+                    password,
+                    user_insert_at,
+                    user_mail,
+                    user_name
+                    )VALUES("
+                    ."'$postData[0]'".","
+                    ."'$pass'".","
+                    ."'$insert_at'".","
+                        ."'$postMail'".","
+                    ."'$postUserName'"
+                    .")";
+        //           //echo $sql;
+        //         //新規登録名でフォルダ名を検索
+                    if($this->searchDirectory($postAccountName)){
+                    $stmt=$pdo->dbo->prepare($sql);
+                    $resultFlg = $stmt->execute();
+                    //$resultFlg = true;
+                    if($resultFlg == true){
+                        $this->createDirectory($postAccountName);
+                        if($postFiles['name'] == null){
+                            //画像なし
+                            $this->defaultIcon($postAccountName);
+                        }else if($postData[3] != ""){
+                            //トリミングありの画像保存 $userName,$encode,$postType
+                            $this->trimingIcon($postAccountName,$postData[3],$postFiles);
+                        }else{
+                            //fileでの画像の保存
+                            $this->icon($postAccountName,$postFiles);
+                        }
+                     }
+                     echo json_encode("ご登録ありがとうございます。");
+
+                }else{
+                  echo json_encode("入力されたニックネームは現在使用されています。");
+                }
         }else{
-          echo "false";
-     }
+            echo json_encode("ご登録のメールアドレスは現在使用されています。");
+        }
     }
 ////////////////////////////////////////////////////////////////////////
 //フォルダ検索
@@ -267,7 +278,14 @@ class users{
 
         file_put_contents($fileName, $fileData);
     }
+    public  function updateIcon($userName,$encode){
+        $directoryName = str_replace("'", "", $userName);
+        $fileData = base64_decode($encode);
+        //拡張子の指定
+        $fileName = '../User/'.$directoryName.'/icon.png';
 
+        return file_put_contents($fileName, $fileData);
+    }
     //トリミングされてたら
     public  function trimingIcon($userName,$encode,$postType){
         $directoryName = str_replace("'", "", $userName);
@@ -296,6 +314,7 @@ class users{
 //         $olderName = $postData[6];
         // $pass    = $postData[3];
          $base64 = $postData[4];
+
 //         $newPass = $postData[3];
 //         $newMail = $postData[4];
 //         $data = array();
@@ -308,7 +327,7 @@ class users{
         //$pass = md5($pass);
         //$newPass = md5($newPass);
         $sql = "select * from users WHERE user_id =".$updateUserId;
-        $usersql = "select COUNT(*) from users WHERE (user_id !=".$updateUserId." AND account_name LIKE "."'%$newName%'" .")";
+        $usersql = "select COUNT(*) from users WHERE (user_id !=".$updateUserId." AND account_name LIKE "."'$newName')";
         //$userList = "select + from users";
         $stmt=$pdo->dbo->prepare($sql);
         $userStmt=$pdo->dbo->prepare($usersql);
@@ -319,56 +338,67 @@ class users{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $userResult = $userStmt->fetch(PDO::FETCH_ASSOC);
         //$userListResult = $userListStmt->fetch(PDO::FETCH_ASSOC);
-        $updateFlg = false;
+        //$updateFlg = false;
         $errorStr = "";
-
+        $accountNameflg = true;
         //update 対象のpasswordがあってるか
        // if($pass == $result['password']){
             //名前更新 被ってなかったら
-            if($result['name'] != $newName && $userResult['COUNT(*)'] == 0){
-                $updateSpl .= "account_name ="."'$newName'";
-            }else{
-                $newName = $result['name'];
-            }
-            //自己紹介
-            if($updateSpl != ""){
-                $updateSpl.=  ",";
-            }
-                $updateSpl .= "Introduction  = "."'$Introduction'";
-            //更新日時
-            if($updateSpl != ""){
-                 $updateSpl.= ",";
-            }
-                $updateSpl.= "user_update_at = "."'$update_at'";
-      //  }
-                $sql = "UPDATE users SET ".$updateSpl." WHERE user_id = ".$updateUserId;
-        $stmt=$pdo->dbo->prepare($sql);
-        $resultFlg = $stmt->execute();
-        rename($directoryPath.$result['account_name'], $directoryPath.$newName );
-        //画像のUpdate
-        if($postFiles['name'] != null){
-            $exts = ['jpg', 'png','jpeg'];
-            foreach( $exts as $ext) {
-                $filePath = '../User/'.$newName.'/icon.'.$ext;
-                if(is_file($filePath)) {
-                    unlink("../User/".$newName."/icon.".$ext);
-                    break;
+            if($result['account_name'] != $newName ){
+                if($userResult['COUNT(*)'] == 0){
+                    $updateSpl .= "account_name ="."'$newName'";
+                }else{
+                    $accountNameflg = false;
                 }
             }
-            //トリミングされているか
-            if($base64 != ""){
-                $this->trimingIcon($newName,$base64,$postFiles);
-            }else if($postFiles['name'] != null){
-                $this->icon($newName,$postFiles);
+            if($accountNameflg){
+                //自己紹介
+                if($updateSpl != ""){
+                    $updateSpl.=  ",";
+                }
+                    $updateSpl .= "Introduction  = "."'$Introduction'";
+                //更新日時
+                if($updateSpl != ""){
+                     $updateSpl.= ",";
+                }
+                    $updateSpl.= "user_update_at = "."'$update_at'";
+          //  }
+            $sql = "UPDATE users SET ".$updateSpl." WHERE user_id = ".$updateUserId;
+            $stmt=$pdo->dbo->prepare($sql);
+            $resultFlg = $stmt->execute();
+            rename($directoryPath.$result['account_name'], $directoryPath.$newName );
+
+            //画像のUpdate
+            if($postFiles['name'] != null){
+                $exts = ['jpg', 'png','jpeg'];
+                foreach( $exts as $ext) {
+                    $filePath = '../User/'.$newName.'/icon.'.$ext;
+                    if(is_file($filePath)) {
+                        unlink("../User/".$newName."/icon.".$ext);
+                        break;
+                    }
+                }
+                //トリミングされているか
+                if($base64 != "" ){
+                    $this->trimingIcon($newName,$base64,$postFiles);
+                }else if($postFiles['name'] != null){
+                    $this->icon($newName,$postFiles);
+                }else{
+                    $this->defaultIcon($newName);
+                }
             }else{
-                $this->defaultIcon($newName);
+                if($base64 != "" ){
+                    $this->updateIcon($newName,$base64);
+                }
             }
-        }
-        if($resultFlg){
-            echo json_encode("HIT");
-        }else{
-            echo json_encode($sql);
-        }
+            if($resultFlg){
+                echo json_encode("編集を完了しました。\n 反映のためリダイレクトします。");
+            }else{
+                echo json_encode($sql);
+            }
+            }else{
+                echo json_encode($usersql);
+            }
         //DBに同じ名前があっても登録できる
        // echo json_encode($userResult['COUNT(*)']);
 //         if($pass == $result['password'] ){
@@ -436,7 +466,7 @@ class users{
 ///ユーザーデータのupdate
     public function userUpdate($postData){
         $pdo = new connectdb();
-
+        $updateFlg = true;
          $updateUserID = $postData[0] ;
          $userName = $postData[1];
          $newUserName = $postData[2];
@@ -452,31 +482,45 @@ class users{
          $result = $stmt->fetch(PDO::FETCH_ASSOC);
          $pass = md5($pass);
 
-         $searchSql="select COUNT(*) from users WHERE (user_id != ".$updateUserID." AND user_name LIKE ";
+         $searchSql="select COUNT(*) from users WHERE (user_id != ".$updateUserID." AND ";
         //updateSQLの作成
       if($result['password'] == $pass){
 
-          if($result['user_name'] != $newUserName){
-                $searchSql=$searchSql."'$newUserName'" .")";
+//           if($result['user_name'] != $newUserName){
+//                 $searchSql=$searchSql.".'user_name LIKE '.'$newUserName'" .")";
+//                 $stmt=$pdo->dbo->prepare($searchSql);
+//                 $stmt->execute();
+//                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+//                 if($searchResult['COUNT(*)'] != 0){
+//                   $updateFlg = false;
+//                   $resultArray[] = "名前：すでに使用されています。";
+//                 }
+//           }else{
+//               $updateFlg = false;
+//           }
+            //メールアドレス
+            if($result['user_mail'] != $mail){
+                $searchSql=$searchSql.'user_mail LIKE '."'$mail'" .")";
                 $stmt=$pdo->dbo->prepare($searchSql);
                 $stmt->execute();
                 $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
-                if($searchResult['COUNT(*)'] == 0){
-                    $updataStr .= " user_name = '$newUserName'";
+                if($searchResult['COUNT(*)'] != 0){
+                    $updateFlg = false;
                 }
+            }
+        }
+
+        if($updateFlg){
+            //ユーザー名
+            if($result['user_name'] != $newUserName){
+                $updataStr .= " user_name = '$newUserName'";
             }
             //メールアドレス
             if($result['user_mail'] != $mail){
-                $searchSql=$searchSql."'$mail'" .")";
-                $stmt=$pdo->dbo->prepare($searchSql);
-                $stmt->execute();
-                $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
-                if($searchResult['COUNT(*)'] == 0){
-                    if($updataStr != ""){
-                        $updataStr .= ",";
-                    }
-                    $updataStr .= " user_mail = '$mail'";
+                if($updataStr != ""){
+                    $updataStr .= ",";
                 }
+                $updataStr .= " user_mail = '$mail'";
             }
             //パスワード
             $newPass = md5($newPass);
@@ -486,19 +530,20 @@ class users{
                 }
                 $updataStr .= "password = '$newPass'";
             }
-        }
 
 
-        $sql = "UPDATE users SET ".$updataStr." WHERE user_id = ".$updateUserID;
-        $stmt = $pdo->dbo->prepare($sql);
-        $resultFlg = $stmt->execute();
+            $sql = "UPDATE users SET ".$updataStr." WHERE user_id = ".$updateUserID;
+            $stmt = $pdo->dbo->prepare($sql);
+            $resultFlg = $stmt->execute();
 
-        if($resultFlg){
-            echo json_encode("true");
+            if($resultFlg){
+                echo json_encode("true");
+            }else{
+                echo json_encode($sql);
+            }
         }else{
-            echo json_encode($sql);
+            echo json_encode("ご登録のメールアドレスはすでに使用されています。") ;
         }
-
     }
 ////////////////////////////////////////////////////////////////////////////////////
 //プロフィール表示 0 ユーザーID

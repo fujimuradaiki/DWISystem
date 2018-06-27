@@ -18,11 +18,11 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 
          $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
      }else {
+         if($_POST['action'] == "insert" || $_POST['action'] == "update" && $_POST['model'] == "users" ){
 
-         if($_POST['action'] == "insert" || $_POST['action'] == "update"){
-             $data = str_replace('data:image/png;base64,', '', $data);
-             $dataArray= explode(",", $data);
-             $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
+              $data = str_replace('data:image/png;base64,', '', $data);
+              $dataArray= explode(",", $data);
+              $classname->controller($_POST['action'],$dataArray,$_FILES['testimg']);
          }else{
              $classname->controller($_POST['action'],$data);
          }
