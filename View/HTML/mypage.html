@@ -189,16 +189,23 @@
             <form id="mypage_send" name="send" method="POST" enctype="multipart/form-data">
             <div class="user_information">
               <div class="mypage_icon"></div>
+
               <div class="mypage_name"><h1></h1></div>
+							<div class="icon_picture">
+								<label for="choice_btn">
+									<p>画像選択</p>
+									<input id="choice_btn" type="file" name="testimg">
+								</label>
+							</div>
+							<div class="icon_trimming">
+								<input class="trimming_btn" type="button" value="トリミング開始">
+							</div>
               <div class="my_introduction"></div>
               <div class="btn_mypage">
                 <input class="works_btn" type="button" onclick="location.href='Contribution.html'" value="作品投稿">
                 <input class="Editing_btn" type="button" value="プロフィール編集">
-								<label for="choice_btn">
-									<p>ファイル選択</p>
-	                <input id="choice_btn" type="file" name="testimg">
-								</label>
-	                <input class="trimming_btn" type="button" value="トリミング開始">
+
+
                 <input class="send" type="button" value="変更内容送信">
               </div>
             </div>
