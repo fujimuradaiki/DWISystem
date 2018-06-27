@@ -12,6 +12,7 @@
   <link href="../CSS/slick.css" rel="stylesheet" type="text/css"/>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css" rel="stylesheet" type="text/css" media="all"/>
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="../JS/jquery.3.3.1.min.js"></script>
   <script src="../JS/jquery.fs.zoomer.js"></script>
 	<script src="../JS/lightbox.js"></script>
@@ -22,6 +23,14 @@
   <script type="text/javascript" src="../Lib/jquery.raty.js"></script>
 <script type="text/javascript" src="../Lib/vue.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	</head>
 	<body>
 		<!---------- ヘッダー開始 ---------->
@@ -31,22 +40,13 @@
 				<!--ログインボタン-->
 	        <input class="login_btn" type="button" value="ログイン">
 				<!--新規登録ボタン-->
-	        <input class="new_btn" type="button" value="新規登録">
+	        <input class="new_btn" type="button" onclick="location.href='profil.html'" value="新規登録">
 				  <div class="login_user_icon"></div>
-				<!--SNS開始-->
-	        <div class="icon">
-            <ul>
-              <li><a href="https://twitter.com/social_sharing1" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram" target="_blank"></i></a></li>
-              <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
-            </ul>
-	        </div>
-			  <!--SNS終了-->
+				
 				<!--g-nav開始-->
 	        <div class="menu">
 	          <ul>
 	            <li><a href="Top.html">トップ</a></li>
-              <li><a href="#works">新着作品一覧</a></li>
 	            <li><a href="Top.html#works">作品一覧</a></li>
 	            <li><a href="CreatorsList.html">制作者一覧</a></li>
 	          </ul>
@@ -54,8 +54,8 @@
 				<!--g-nav終了-->
 	      </nav>
 	    </div>
-      
-      
+
+
             <!-- ハンバーガーメニュー開始 -->
 
     <div class="sp-box">
@@ -65,26 +65,26 @@
         <span></span>
         <span>menu</span>
       </div>
-      
+
       <!-- ログイン前 nav -->
       <nav class="sp-nav">
         <div class="drawer-menu">
           <!-- ログイン前 ul -->
           <ul class="before">
             <li><a href="spindex.html">トップ</a></li>
-            <li><a href="works.html">作品一覧</a></li>              
+            <li><a href="works.html">作品一覧</a></li>
             <li><a href="CreatorsList.html">制作者一覧</a></li>
             <li><a class="new_btn" href="profil.html">新規登録</a></li>
             <li><a class="login_btn">ログイン</a></li>
           </ul>
-          
+
           <!-- ログイン前 ul -->
           <div class="user_data">
           <div class="login_user_icon"></div>
           </div>
           <ul class="after">
               <li><a href="spindex.html">トップ</a></li>
-              <li><a href="works.html">作品一覧</a></li>              
+              <li><a href="works.html">作品一覧</a></li>
               <li><a href="CreatorsList.html">制作者一覧</a></li>
               <li><p class="main_01">マイメニュー</p>
                 <ul class="child_01">
@@ -93,9 +93,9 @@
                 </ul>
               </li>
               <li><a class="logout">ログアウト</a></li>
-            </ul>       
+            </ul>
         </div>
-        
+
 <!--        <div class="drawer-icon">
           <ul>
             <li><a href="https://twitter.com/social_sharing1" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
@@ -103,13 +103,13 @@
             <li><a href="https://ja-jp.facebook.com/%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-238624082989029/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
           </ul>
         </div>-->
-        
+
       </nav>
     </div>
 
     <!-- ハンバーガーメニュー終了 -->
 
-      
+
 			<!--ロゴ-->
         <div class="logo"><a href="Top.html"><img src="../Images/logo.png"></a></div>
 	  </header>
@@ -313,7 +313,7 @@
             </div>
             <div class="lightbox_image">
                <div id="Zoomer" class="zoomer_wrapper">
-                <img src="../Images/05.png" alt="イメージ">
+                <!-- <img src="../Images/05.png" alt="イメージ"> -->
               </div>
 							<div class="lightbox_contents_btn_waku">
 								<div class="lightbox_contents_btn">
@@ -385,7 +385,7 @@
             </div>
       <!---------- 作品投稿終了 ---------->
 <!--   作品リスト -->
-
+<div class="pager">
      <table>
        <tr>
          <td>
@@ -399,6 +399,7 @@
          </td>
        </tr>
      </table>
+	 </div>
 
 
       <!------------コンテンツ部分------------>
@@ -406,7 +407,7 @@
 
           <!---------- フッター開始 ---------->
 		<footer>
-      
+
       <div class="footer_menu">
           <ul>
               <li><a href="#">サイトポリシー</a></li>
@@ -422,7 +423,7 @@
     </footer>
 		</div>
 		<!---------- フッター終了 ---------->
-    
+
 
 		<script type="text/javascript" src="../JS/works.js" ></script>
 </body>

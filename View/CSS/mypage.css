@@ -2122,7 +2122,7 @@ input[type=checkbox]:checked + .mycheck_btn:before {
 
 /*ライトボックス（作品編集）*/
 .lightbox_waku{
-  width:340px;
+  width:100%;
   margin: 0 auto;
   position: relative;
 }
@@ -2139,17 +2139,17 @@ input[type=checkbox]:checked + .mycheck_btn:before {
 }
 
 .lightbox {
-	width: 130px;
+	width: calc(100%/3);
   height: 130px;
   position: relative;
   z-index: 0;
   float: left;
-  margin: 20px;
   text-align: center;
-  border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
   color: #fff;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .lightbox_hover{
@@ -2346,6 +2346,69 @@ input[type=checkbox]:checked + .mycheck_btn:before {
   transition: .4s;
 }
 .storage_btn2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.pager{
+	width: 63%;
+	margin:0 auto;
+	margin-top:11px;
+}
+
+
+table{
+	width: 100%;
+}
+
+tbody{
+	text-align: center;
+}
+
+td{
+	float: left;
+}
+
+td p{
+	width: 66px;
+	float: left;
+	margin-right: 12px;
+	line-height:29px;
+}
+
+.next_btn{
+  width: 80px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.next_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.before_btn{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+	font-size: 14px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+	padding: 0.3em 0.5em;
+	background: #3F3ACE;
+	transition: .4s;
+}
+
+.before_btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
