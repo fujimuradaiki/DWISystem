@@ -55,11 +55,11 @@ $(document).ready(function(){
 
   //レビューボックス//
   $('#review_btn').on('click', function(){
-  $('.review_box').toggleClass("review_right0");
+  $('.review_box').toggleClass(".review_right0");
   });
   //制作者コメントボックス//
   $('#creator_btn').on('click', function(){
-  $('.creator_box').toggleClass("creator_right0");
+  $('.creator_box').toggleClass(".creator_right0");
   });
 
   //レビューボックス//
@@ -413,7 +413,7 @@ function runSearch(){
 
 	//ajax通信失敗時
 	}).fail(function(data){
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 	});
 }
 
@@ -915,7 +915,8 @@ $(document).on("click",".lightbox_hover",function(){
 
 
 });
-/*$(document).on("click",".lightbox",function(){
+
+$(document).on("click",".lightbox",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 
@@ -945,7 +946,6 @@ $(document).on("click",".lightbox_hover",function(){
 	data:data
   //ajax通信成功時
   }).done(function(data){
-	  //alert('ここまで問題なし');
 	console.log(data);
 
 
@@ -968,7 +968,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$(window).ready(function(){
 		$('#Zoomer').zoomer();
     });
-	/*$div.append($('<img>').$('.view_image').attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png"));
+	$div.append($('<img>').$('.view_image').attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png"));
 
 	var w,h;
 	if($imageWidth >= $imageHeight){
@@ -1121,11 +1121,11 @@ $(document).on("click",".lightbox_hover",function(){
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-	alert("lightbox");
+	//alert("lightbox");
   });
 
 
-});*/
+});
 
 //レビューボックス//
 $('#review_btn').on('click', function(){

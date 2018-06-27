@@ -70,12 +70,12 @@ $(document).ready(function(){
 
   //レビューボックス//
   $('#review_btn_top').on('click', function(){
-  $('.review_box').fadeIn(0);
+  $('.review_box').fadeIn();
   $('body').removeClass("overflow");
   });
   //制作者コメントボックス//
   $('#creator_btn_top').on('click', function(){
-  $('.creator_box').fadeIn(0);
+  $('.creator_box').fadeIn();
   $('body').removeClass("overflow");
   });
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
 
     //PCサイズの時
 	if(window.parent.screen.width >= 415)
-		sessionStorage.setItem('illustNum', 50);
+		sessionStorage.setItem('illustNum', 54);
 	else
 		sessionStorage.setItem('illustNum', 30);
 
@@ -110,13 +110,29 @@ $(document).ready(function(){
 
 		$('.login_user_icon').empty();
 		$('.login_user_icon').append(
-				$("<img id='headerIcon'class='icon'>")
-				.attr("src","../../User/"+ userName +"/icon.png")
+				$("<img>")
+				.attr({'id':'headerIcon','class':'icon','src':'../../User/'+ userName +'/icon.png'})
 		);
 		var $headerIcon = $('#headerIcon');
-		$headerIcon.css('width',50);
-		$headerIcon.css('height',50);
-		$headerIcon.css('border-radius','50%');
+		$headerIcon.css({'width':'100%', 'height':'100%', 'border-radius':'50%'});
+		/*new Promise(function(resolve,reject){
+			$('.login_user_icon').append(
+					$("<img>")
+					.attr({'id':'headerIcon','class':'icon','src':'../../User/'+ userName +'/icon.png'})
+			);
+			resolve();
+		}).then(function(){
+			var $headerIcon = $('#headerIcon');
+			$headerIcon.css({'width':'100%', 'height':'100%', 'border-radius':'50%'});
+		}).catch(function(){
+			alert('NO');
+		})*/
+
+
+
+		/*$headerIcon.css('width','100%');
+		$headerIcon.css('height','100%');
+		$headerIcon.css('border-radius','50%');*/
 
 	}
 
@@ -848,9 +864,9 @@ $('.trimming_view_btn').on('click', function(){
 ////////////////////////////////////////////////////////////////////
 $(document).on("click",".lightbox_hover",function(){
   $('.lightbox_view').fadeIn();
-    $(window).ready(function(){
+    /*$(window).ready(function(){
   			$('#Zoomer').zoomer();
-  	});
+  	});*/
   $('body').addClass("overflow");
 
   var $image = $(this).prev('img');
@@ -1012,7 +1028,7 @@ $(document).on("click",".lightbox_hover",function(){
 	$div = $('.review_all');
 	$div.empty();
 	$div.append(
-		("<h1>合計 : "+ data[0]['commentData'].length +"件</h1>"),
+		("<h1>レビュー合計 : "+ data[0]['commentData'].length +"件</h1>"),
 		("<div id = 'averageReview'></div>")
 	);
 	$('#averageReview').raty({
@@ -1053,7 +1069,7 @@ $(document).on("click",".lightbox_hover",function(){
 
 
 });
-/*$(document).on("click",".lightbox",function(){
+$(document).on("click",".lightbox",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 
@@ -1245,7 +1261,7 @@ $(document).on("click",".lightbox_hover",function(){
   });
 
 
-});*/
+});
 
 //レビューボタン押下時//////////////////////////////////////////////////////////
 $(document).on("click",".review_btn",function(){

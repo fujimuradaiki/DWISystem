@@ -327,10 +327,14 @@
 			data.marginReal = data.marginMin * 2;
 			data.originalDOM = data.$target.html();
 
+			var image = new Image();
 			if (data.$target.find("img").length > 0) {
 				data.source = [];
 				data.$target.find("img").each(function() {
 					data.source.push($(this).attr("src"));
+					image.src = $(this).attr("src");
+					//sessionStorage
+					//alert(image.naturalWidth);
 				});
 				data.$target.empty();
 			}
@@ -357,9 +361,7 @@
 				html = '<div class="zoomer-controls zoomer-controls-' + data.controls.position + '">';
 				html += '<span class="zoomer-previous">&lsaquo;</span>';
 
-				//alert(JSON.stringify(data));
-				//alert(data.naturalWidth);
-				if(data.naturalHeight > 500 && data.naturalWidth > 500){
+				if(image.naturalHeight > 500 && image.naturalWidth > 500){
 					html += '<span class="zoomer-zoom-out">-</span>';
 					html += '<span class="zoomer-zoom-in">+</span>';
 				}

@@ -385,6 +385,11 @@ $(".toukou_btn").on("click",function(){
 			errorFlag = 1;
 			errorMsg = errorMsg + "1枚目のカテゴリーを選択してください。\n";
 		}
+	}else{
+		if(title1 != "" || $('#Genre1').val() != 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "1枚目に画像が選択されていません。"
+		}
 	}
 
 	if(img2 != null){
@@ -397,6 +402,11 @@ $(".toukou_btn").on("click",function(){
 			errorFlag = 1;
 			errorMsg = errorMsg + "2枚目のカテゴリーを選択してください。\n";
 		}
+	}else{
+		if(title2 != "" || $('#Genre2').val() != 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "2枚目に画像が選択されていません。"
+		}
 	}
 
 	if(img3 != null){
@@ -405,12 +415,22 @@ $(".toukou_btn").on("click",function(){
 			errorMsg = errorMsg + "3枚目のタイトルを入力してください。\n";
 		}
 
-
 		if($('#Genre3').val() == 0){
 			errorFlag = 1;
 			errorMsg = errorMsg + "3枚目のカテゴリーを選択してください。\n";
 		}
+	}else{
+		if(title3 != "" || $('#Genre3').val() != 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "3枚目に画像が選択されていません。"
+		}
 	}
+
+	if(img1 == null && img2 == null && img3 == null){
+		errorFlag = 1;
+		errorMsg = errorMsg + "画像が選択されていません。"
+	}
+
 
 	if(errorFlag == 1){
 		alert(errorMsg);

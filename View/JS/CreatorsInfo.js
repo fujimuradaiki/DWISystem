@@ -240,8 +240,8 @@ function runSearch(infoId){
 		var maxPage = parseInt(recordCnt);
 	    maxPage = Math.ceil(maxPage / 12);
 
-		console.log(imageData,userData,recordCnt,maxPage);
-
+		//console.log(imageData,userData,recordCnt,maxPage);
+	    $('.no_works').css("display","none");
 		var userName =  userData.userName;
 		var userId = userData.userId;
 
@@ -316,7 +316,6 @@ function runSearch(infoId){
 		$('.next_btn').hide();
 		$('.before_btn').css("display","none");
 		$('.no_works').css("display","block");
-
 	});
 }
 
@@ -1154,3 +1153,10 @@ $(document).on("click",".close_btn2",function(){
 	var pass1 = $('.pass_text').val('');
 
 });
+
+$('#searchErea').keypress(function(e){
+	if(e.which == 13){
+		runSearch();
+	}
+});
+

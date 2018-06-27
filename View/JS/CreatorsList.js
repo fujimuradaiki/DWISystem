@@ -54,6 +54,14 @@ $(document).ready(function(){
 	$headerIcon.css('height',50);
 	$headerIcon.css('border-radius','50%');
 	}
+
+	if(window.parent.screen.width >= 415)
+		sessionStorage.setItem('CreatorsNum', 40);
+	else
+		sessionStorage.setItem('CreatorsNum', 20);
+
+	sessionStorage.removeItem('CreatorsListPageNum');
+	sessionStorage.setItem('CreatorsListPageNum',1);
 	//画像表示実行
 	runSearch();
 });
@@ -88,8 +96,13 @@ $('.know_pass').click(function(){//.close_btn img���N���b�N���
 function runSearch(){
 
 	var searchWord = $('#searchErea').val();
-
-	var data = {'model':'users','action':'userList','data':searchWord};
+	var pageNum = sessionStorage.getItem('CreatorsListPageNum');
+	var creatorsNum = sessionStorage.getItem('CreatorsNum');
+	var param = [];
+	param[0] = searchWord;
+	param[1] = pageNum;
+	param[2] = creatorsNum;
+	var data = {'model':'users','action':'userList','data':param};
 
 	/*デバッグ用表示//////
 	*/console.log(data);/*
@@ -105,7 +118,9 @@ function runSearch(){
 	}).done(function(data){
 
 		var $div = $('.creators_box_waku');
-
+		var recordCnt = parseInt();
+		var maxPage= parseInt(recordCnt);
+		maxPage = Math.cell(maxPage / sessionStorage.getItem('CreatorsNum'));
 		//表示中の画像を削除
 		$div.empty();
 
@@ -143,11 +158,45 @@ function runSearch(){
 			("<div class='cle'></div>")
 		);
 
+		$('p.pageNum').text("Page : " + pageNum);
+
+		if(pageNum == 1){
+			$('.before_btn').css("display","none");
+		}else{
+			$('.before_btn').show();
+		}
+		if(pageNum == maxPage){
+			$('.next_btn').hide();
+		}else{
+			$('.next_btn').show();
+		}
+
 	//ajax通信失敗時
 	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
 		alert("error");
 	});
 }
+
+$(document).on("click",".before_btn",function(){
+	var pageNum = sessionStorage.getItem('CreatorsListPageNum');
+	sessionStorage.removeItem('CreatorsListPageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt - 1;
+	sessionStorage.setItem('CreatorsListPageNum',result);
+	//var infoId = sessionStorage.getItem('infoId');
+	runSearch();
+});
+
+
+$(document).on("click",".next_btn",function(){
+	var pageNum = sessionStorage.getItem('CreatorsListPageNum');
+	sessionStorage.removeItem('CreatorsListPageNum');
+	var pageNumInt =  parseInt(pageNum);
+	var result = pageNumInt + 1;
+	sessionStorage.setItem('CreatorsListPageNum',result);
+	//var infoId = sessionStorage.getItem('infoId');
+	runSearch();
+});
 
 //トリミング開始ボタン(一番左の画像)
 $('.new_trimming_btn').on('click', function(){
@@ -315,7 +364,6 @@ $(document).on("click",".login_btn3",function(){
 		alert(XMLHttpRequest['responseText']);
 	});
 });
-
 
 /*
 ///////////////////////////////////
@@ -488,6 +536,12 @@ $(document).on("click",".logout",function(){
 
 $(document).on("click","#searchButton",function(){
 	runSearch();
+});
+
+$('#searchErea').keypress(function(e){
+	if(e.which == 13){
+		runSearch();
+	}
 });
 
 $(document).on("click",".new_close_btn",function(){
