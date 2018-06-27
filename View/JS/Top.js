@@ -1,15 +1,3 @@
-$('.slider-wrapper').slick({
-  fade: true,
-  // 自動再生するか [初期値:false]
-  autoplay: true,
-
-  autoplaySpeed: 3300,
-
-  speed: 1000
-
-
-  // 自動再生で切り替えする時間(ミリ秒) [初期値:3000]
-});
 
 /**************************************
 
@@ -358,7 +346,7 @@ function runSearch(){
 	}).done(function(data){
 		console.log(data);
 		var $div = $('.lightbox_waku');
-		alert(data);
+		//alert(data);
 
 		//表示中の画像を削除
 		$div.empty();
@@ -645,6 +633,7 @@ $(document).on("click",".close_btn2",function(){
 
 });
 
+// 登録ボタン
 $(document).on("click",".touroku_btn",function(){
 	var name = $('#sineUp_user_name').val();
 	var mail = $('#sineUP_mail').val();
@@ -921,12 +910,12 @@ $(document).on("click",".lightbox_hover",function(){
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-	alert("error");
+	alert("lightbox_hover");
   });
 
 
 });
-$(document).on("click",".lightbox",function(){
+/*$(document).on("click",".lightbox",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 
@@ -956,7 +945,9 @@ $(document).on("click",".lightbox",function(){
 	data:data
   //ajax通信成功時
   }).done(function(data){
+	  //alert('ここまで問題なし');
 	console.log(data);
+
 
 	$imageTitle = data[0]['usersData'][0]['imageTitle'];
 	$creatorName = data[0]['usersData'][0]['creatorName'];
@@ -973,10 +964,11 @@ $(document).on("click",".lightbox",function(){
 			$("<img>")
 			.attr("src","../../User/"+ $creatorName +"/"+ $dispimge)
 	);
+
 	$(window).ready(function(){
 		$('#Zoomer').zoomer();
     });
-	/*$div.append($('<img>').$('.view_image').attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png"));*/
+	/*$div.append($('<img>').$('.view_image').attr("src","../../User/"+ $creatorName +"/"+ $imageId +".png"));
 
 	var w,h;
 	if($imageWidth >= $imageHeight){
@@ -986,6 +978,7 @@ $(document).on("click",".lightbox",function(){
 		w = (600 / $imageHeight) * $imageWidth;
 		h = 600;
 	}
+
 
 	$('.lightbox_left_image').css('background','transparent')
 	$('.view_image').css('width',w);
@@ -1035,6 +1028,8 @@ $(document).on("click",".lightbox",function(){
 	$('.creator_name').append($('<h1>'+data[0]['usersData'][0]['creatorName']+'</h1>'));       // アカウント名
 	$('.creator_coment').append($('<pre>'+data[0]['usersData'][0]['Introduction']+'</pre>'));  // 自己紹介
 	$('.work_coment').append($('<pre>'+data[0]['usersData'][0]['imageSummary']+'</pre>'));
+
+
 
 	//レビューコメント表示/////////////////////
 	$div = $('.past_coment');
@@ -1126,18 +1121,19 @@ $(document).on("click",".lightbox",function(){
 
   //ajax通信失敗時
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-	alert("error");
+	alert("lightbox");
   });
 
 
-});
+});*/
+
 //レビューボックス//
 $('#review_btn').on('click', function(){
-$('.review_box').toggleClass("review_right0");
+$('.review_box').toggleClass(".review_right0");
 });
 //制作者コメントボックス//
 $('#creator_btn').on('click', function(){
-$('.creator_box').toggleClass("creator_right0");
+$('.creator_box').toggleClass(".creator_right0");
 });
 
 
@@ -1152,6 +1148,7 @@ $(document).on("click",".review_btn",function(){
 	var $commenterId = sessionStorage.getItem('userId');
 	var $point = $('#hint').attr('value');
 	var $comment = $('#'+ $imageId + 'ComentErea').val();
+	$comment = escape_html($comment);
 
 	String.prototype.bytes = function () {
 	  return(encodeURIComponent(this).replace(/%../g,"x").length);
@@ -1278,6 +1275,23 @@ $(document).on("click",".review_btn",function(){
 	  });
 	}
 });
+
+function escape_html(string){
+	if(typeof string !== 'string'){
+		return string;
+	}
+	return string.replace(/[&'`"<>]/g, function(match){
+		return {
+			'&': '&amp;',
+			"'": '&#x27;',
+			'`': '&#x60;',
+			'"': '&quot;',
+			'<': '&lt;',
+			'>': '&gt;',
+		}[match]
+	});
+}
+
 
 $(document).on("click",".logout",function(){
 	$('.login_user_menu').fadeToggle();

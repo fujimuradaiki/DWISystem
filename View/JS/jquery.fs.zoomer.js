@@ -356,8 +356,14 @@
 			} else {
 				html = '<div class="zoomer-controls zoomer-controls-' + data.controls.position + '">';
 				html += '<span class="zoomer-previous">&lsaquo;</span>';
-				html += '<span class="zoomer-zoom-out">-</span>';
-				html += '<span class="zoomer-zoom-in">+</span>';
+
+				//alert(JSON.stringify(data));
+				//alert(data.naturalWidth);
+				if(data.naturalHeight > 500 && data.naturalWidth > 500){
+					html += '<span class="zoomer-zoom-out">-</span>';
+					html += '<span class="zoomer-zoom-in">+</span>';
+				}
+
 				html += '<span class="zoomer-next">&rsaquo;</span>';
 				html += '</div>';
 

@@ -69,6 +69,10 @@ $(document).ready(function(){
 		$mypageName.append(
 			("<h1>"+ userName +"</h1>")
 		);
+
+		sessionStorage.removeItem('img1');
+		sessionStorage.removeItem('img2');
+		sessionStorage.removeItem('img3');
 });
 
 /////////////////////////////////////////////////////////////////////////
@@ -99,6 +103,7 @@ $("#choice_btn1").on("change",function(e){
 	    })(file);
 
 	    reader.readAsDataURL(file);
+	    sessionStorage.setItem('img1','true');
 });
 
 /***************************/
@@ -199,6 +204,7 @@ $("#choice_btn2").on("change",function(e){
 	    })(file);
 
 	    reader.readAsDataURL(file);
+	    sessionStorage.setItem('img2','true');
 });
 
 //トリミング開始ボタン(中央の画像)
@@ -282,6 +288,7 @@ $("#choice_btn3").on("change",function(e){
 	    })(file);
 
 	    reader.readAsDataURL(file);
+	    sessionStorage.setItem('img3','true');
 });
 
 //トリミング開始ボタン(右の画像)
@@ -347,69 +354,147 @@ $(".toukou_btn").on("click",function(){
     var userId = sessionStorage.getItem('userId');
 	var userName = sessionStorage.getItem('userName');
 	var categoryArray = new Array($('#Genre1').val(), $('#Genre2').val(), $('#Genre3').val());
-	var titleArray = new Array($('.toukou_title1').val(), $('.toukou_title2').val(),$('.toukou_title3').val());
-	var workinfoArray = new Array($('.work_info1').val(), $('.work_info2').val(), $('.work_info3').val());
-	var trimming_view_img1 = $('#trimming_view_img1').attr('src');
-	var trimming_view_img2 = $('#trimming_view_img2').attr('src');
-	var trimming_view_img3 = $('#trimming_view_img3').attr('src');
 
-	//alert(workinfoArray);
+	var title1 = $('.toukou_title1').val();
+	var title2 = $('.toukou_title2').val();
+	var title3 = $('.toukou_title3').val();
+	var work_info1 = $('.work_info1').val();
+	var work_info2 = $('.work_info2').val();
+	var work_info3 = $('.work_info3').val();
+	title1 = escape_html(title1);
+	title2 = escape_html(title2);
+	title3 = escape_html(title3);
+	work_info1 = escape_html(work_info1);
+	work_info2 = escape_html(work_info2);
+	work_info3 = escape_html(work_info3);
 
-	var trimmingArray =[];
-	var trimmingIndex = 0;
+	var img1 = sessionStorage.getItem('img1');
+	var img2 = sessionStorage.getItem('img2');
+	var img3 = sessionStorage.getItem('img3');
 
-	for(var count = 0; count < 3;count++){
-		if( count == 0 && trimming_view_img1 === undefined){
-			trimmingArray[count] = "";
-		}else if(count == 0){
-			trimmingArray[count] = trimming_view_img1;
+	var errorFlag = 0;
+	var errorMsg = "入力内容に不備があります。\n\n";
+
+	if(img1 != null){
+		if(title1 == ""){
+			errorFlag = 1;
+			errorMsg = errorMsg + "1枚目のタイトルを入力してください。\n";
 		}
-		if( count == 1 && trimming_view_img2 === undefined){
-			trimmingArray[count] = "";
-		}else if(count == 1){
-			trimmingArray[count] = trimming_view_img2;
-		}
-		if( count == 2 && trimming_view_img3 === undefined){
-			trimmingArray[count] = "";
-		}else if(count == 2){
-			trimmingArray[count] = trimming_view_img3;
+
+		if($('#Genre1').val() == 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "1枚目のカテゴリーを選択してください。\n";
 		}
 	}
-	var data  = [ userName, userId, categoryArray, titleArray, trimmingArray, workinfoArray ];
 
-	var param = new FormData($('[name="contribution"]').get(0));
-	param.append('model'  , 'images');
-	param.append('action' , 'insertImage');
-	param.append('data'   ,  data)
-	//console.log(JSON.stringify(param));
-	//console.log(trimmingArray);
-
-	//ajax通信
-	$.ajax({
-		url         :'../../Api/controller.php',
-		dataType    :'json',
-		type        :'POST',
-		processData : false,
-	    contentType : false,
-		data        : param,
-		timeout     : 1000
-	//ajax通信成功時
-	}).done(function(data){
-		console.log(data);
-		$('.toukou_view').fadeIn();
-		$('body').addClass("overflow");
-		for(var i = 1;i <= 3;i++){
-			console.log(i);
-			$('.toukou_title'+i).val("");
-			$('#Genre'+i).val(0);
-			$("#choice_btn"+i).val("");
-			$(".toukou_images"+i).children('img').remove();
+	if(img2 != null){
+		if(title2 == ""){
+			errorFlag = 1;
+			errorMsg = errorMsg + "2枚目のタイトルを入力してください。\n";
 		}
-	//ajax通信失敗時
-	}).fail(function(XMLHttpRequest, textStatus, errorThrown){
-		alert("error");
-	});
+
+		if($('#Genre2').val() == 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "2枚目のカテゴリーを選択してください。\n";
+		}
+	}
+
+	if(img3 != null){
+		if(title3 == ""){
+			errorFlag = 1;
+			errorMsg = errorMsg + "3枚目のタイトルを入力してください。\n";
+		}
+
+
+		if($('#Genre3').val() == 0){
+			errorFlag = 1;
+			errorMsg = errorMsg + "3枚目のカテゴリーを選択してください。\n";
+		}
+	}
+
+	if(errorFlag == 1){
+		alert(errorMsg);
+	}else{
+		var titleArray = new Array(title1, title2, title3);
+		var workinfoArray = new Array(work_info1, work_info2, work_info3);
+		var trimming_view_img1 = $('#trimming_view_img1').attr('src');
+		var trimming_view_img2 = $('#trimming_view_img2').attr('src');
+		var trimming_view_img3 = $('#trimming_view_img3').attr('src');
+
+		//alert(workinfoArray);
+
+		var trimmingArray =[];
+		var trimmingIndex = 0;
+
+		for(var count = 0; count < 3;count++){
+			if( count == 0 && trimming_view_img1 === undefined){
+				trimmingArray[count] = "";
+			}else if(count == 0){
+				trimmingArray[count] = trimming_view_img1;
+			}
+			if( count == 1 && trimming_view_img2 === undefined){
+				trimmingArray[count] = "";
+			}else if(count == 1){
+				trimmingArray[count] = trimming_view_img2;
+			}
+			if( count == 2 && trimming_view_img3 === undefined){
+				trimmingArray[count] = "";
+			}else if(count == 2){
+				trimmingArray[count] = trimmning_view_img3;
+			}
+		}
+		var data  = [ userName, userId, categoryArray, titleArray, trimmingArray, workinfoArray ];
+
+		var param = new FormData($('[name="contribution"]').get(0));
+		param.append('model'  , 'images');
+		param.append('action' , 'insertImage');
+		param.append('data'   ,  data)
+		//console.log(JSON.stringify(param));
+		//console.log(trimmingArray);
+
+		//ajax通信
+		$.ajax({
+			url         :'../../Api/controller.php',
+			dataType    :'json',
+			type        :'POST',
+			processData : false,
+		    contentType : false,
+			data        : param,
+			timeout     : 1000
+		//ajax通信成功時
+		}).done(function(data){
+			console.log(data);
+			$('.toukou_view').fadeIn();
+			$('body').addClass("overflow");
+			for(var i = 1;i <= 3;i++){
+				console.log(i);
+				$('.toukou_title'+i).val("");
+				$('#Genre'+i).val(0);
+				$("#choice_btn"+i).val("");
+				$(".toukou_images"+i).children('img').remove();
+			}
+		//ajax通信失敗時
+		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+			alert("error");
+		});
+	}
 });
+
+function escape_html(string){
+	if(typeof string !== 'string'){
+		return string;
+	}
+	return string.replace(/[&'`"<>]/g, function(match){
+		return {
+			'&': '&amp;',
+			"'": '&#x27;',
+			'`': '&#x60;',
+			'"': '&quot;',
+			'<': '&lt;',
+			'>': '&gt;',
+		}[match]
+	});
+}
 
 $(".delete3_1_btn").on("click",function(e){
 	$("#choice_btn1").val("");
@@ -420,6 +505,7 @@ $(".delete3_1_btn").on("click",function(e){
 	$('#Genre1').val(0);
 	$("#choice_btn1").val("");
 	$(".toukou_images1").children('img').remove();
+	sessionStorage.removeItem('img1','true');
 });
 $(".delete3_2_btn").on("click",function(e){
 	$("#choice_btn2").val("");
@@ -429,6 +515,7 @@ $(".delete3_2_btn").on("click",function(e){
 	$('#Genre2').val(0);
 	$("#choice_btn2").val("");
 	$(".toukou_images2").children('img').remove();
+	sessionStorage.removeItem('img2','true');
 });
 $(".delete3_3_btn").on("click",function(e){
 	$("#choice_btn3").val("");
@@ -438,6 +525,7 @@ $(".delete3_3_btn").on("click",function(e){
 	$('#Genre3').val(0);
 	$("#choice_btn3").val("");
 	$(".toukou_images3").children('img').remove();
+	sessionStorage.removeItem('img3','true');
 });
 
 ///////////////////////////////////////////////////////////////

@@ -800,7 +800,7 @@ $(document).on("click",".lightbox_hover",function(){
 	alert("error");
   });
 });
-$(document).on("click",".lightbox",function(){
+/*$(document).on("click",".lightbox",function(){
   $('.lightbox_view').fadeIn();
   $('body').addClass("overflow");
 
@@ -980,7 +980,7 @@ $(document).on("click",".lightbox",function(){
   }).fail(function(XMLHttpRequest, textStatus, errorThrown){
 	alert("error");
   });
-});
+});*/
 
 //レビューボタン押下時//////////////////////////////////////////////////////////
 $(document).on("click",".review_btn",function(){
@@ -989,6 +989,7 @@ $(document).on("click",".review_btn",function(){
 	var $commenterId = sessionStorage.getItem('userId');
 	var $point = $('#hint').attr('value');
 	var $comment = $('#'+ $imageId + 'ComentErea').val();
+	$comment = escape_html($comment);
 
 	String.prototype.bytes = function () {
 	  return(encodeURIComponent(this).replace(/%../g,"x").length);
@@ -1115,6 +1116,22 @@ $(document).on("click",".review_btn",function(){
 	  });
 	}
 });
+
+function escape_html(string){
+	if(typeof string !== 'string'){
+		return string;
+	}
+	return string.replace(/[&'`"<>]/g, function(match){
+		return {
+			'&': '&amp;',
+			"'": '&#x27;',
+			'`': '&#x60;',
+			'"': '&quot;',
+			'<': '&lt;',
+			'>': '&gt;',
+		}[match]
+	});
+}
 
 $(document).on("click",".new_close_btn",function(){
 	var name = $('#sineUp_user_name').val('');
