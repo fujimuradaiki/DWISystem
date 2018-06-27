@@ -1937,6 +1937,71 @@ i {
 	right: -1px;
 }
 
+.before_btn{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	float: right;
+	display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+	font-size: 14px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+	padding: 0.3em 0.5em;
+	background: #3F3ACE;
+	transition: .4s;
+}
+
+.before_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.next_btn{
+  width: 80px;
+  height: 30px;
+  position: relative;
+	float: left;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #3F3ACE;
+  transition: .4s;
+}
+.next_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.pager{
+	width:154px;
+	margin:0 auto;
+	margin-top:20px;
+}
+
+
+table{
+	width: 340px;
+}
+
+tbody{
+	text-align: center;
+}
+
+td{
+	float: left;
+}
+
+td p{
+	width: 66px;
+	float: left;
+	margin-right: 12px;
+	line-height:29px;
+}
+
 /*-------------------- �t�b�^�[ ----------------------*/
 footer{
   min-width: 1200px;
@@ -3716,13 +3781,13 @@ header .nav {
 	  height: 900px;
 		z-index: 0;
 	  top: 0;
-	  right:0;
+	  opacity:0;
 	  position: absolute;
 		transition: 1s;
 	}
 
 	.review_right0 {
-		right:0px;
+		opacity:1;
 	}
 
 	.review_box_inner{
@@ -3937,7 +4002,7 @@ header .nav {
 		width: 100%;
 	  height: 900px;
 	  top: 0;
-	  right:0;
+	  opacity:0;
 	  position: absolute;
 		transition: 1s;
 	}
@@ -4114,7 +4179,7 @@ header .nav {
 	}
 
 	 .creator_right0 {
-		right: 0px;
+		opacity:1;
 	}
 
 	#creator_btn_top{
@@ -4166,7 +4231,7 @@ header .nav {
 	  background: #000;
 	}
 
-	footer h2{
+	footer small{
 		text-align: center;
 	  font-size: 10px;
 	  margin-top: 10px;
