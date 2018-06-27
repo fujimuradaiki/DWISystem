@@ -23,7 +23,7 @@ class images{
                 $this->delete($postData);
                 break;
             case"update":
-                $this->update($postData);
+                $this->update($postData,$postFiles);
                 break;
             case"creatorWorksList":
                 $this->creatorWorksList($postData);
@@ -140,19 +140,19 @@ class images{
         // echo ($sql);
 
          while($val = $result->fetch(PDO::FETCH_ASSOC)){
-             $typeA = "";
+             $iamgefile = "";
              $exts = ['jpg', 'png','jpeg'];
              // 拡張子を判断する
              foreach( $exts as $ext) {
                  $filePath = '../User/'.$val['account_name'].'/samne_'.$val['image_id'].'.'.$ext;
                  if(is_file($filePath)){
-                     $typeA = 'samne_'.$val['image_id'].'.'.$ext;
+                     $iamgefile = 'samne_'.$val['image_id'].'.'.$ext;
                      break;
                  }
 
                  $filePath = '../User/'.$val['account_name'].'/'.$val['image_id'].'.'.$ext;
                  if(is_file($filePath)) {
-                     $typeA = $val['image_id'].'.'.$ext;
+                     $iamgefile = $val['image_id'].'.'.$ext;
                      break;
                  }
              }
@@ -164,7 +164,7 @@ class images{
               'UserName' => $val['account_name'],
               'userId'=>$val['user_id'],
               'categoryName' => $val['category_name'],
-              'fileType'=>$typeA
+              'fileType'=>$iamgefile
             );
          };
          $imageTotalArray = array($countVal["COUNT(*)"]);
@@ -551,12 +551,25 @@ class images{
         $imageId = $postData[0];
         $userName = $postData[1];
         $userId = $postData[2];
-        $imageName = $imageId.".png";
+        $imageName = $imageId.".";
+
         $sql = "DELETE FROM images WHERE image_id = ".$imageId ." AND image_user_id =".$userId;
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
+        $resultExt;
+        $exts = ['jpg', 'png','jpeg'];
+        // 拡張子を判断する
+        foreach( $exts as $ext) {
+            $filePath = '../User/'.$userName.'/'.$imageId.'.'.$ext;
+            if(is_file($filePath)) {
+                $resultExt = $ext;
+                break;
+            }
+        }
+
         if($resultFlg){
-            if(unlink("../User/".$userName."/".$imageName)){
+            if(unlink("../User/".$userName."/".$imageName.$resultExt)){
+
                     echo json_encode("画像を削除しました。");
                 }else{
                     echo json_encode("削除対象がありません。");
@@ -564,6 +577,7 @@ class images{
         }else{
            echo json_encode("DBに対象のレコードが存在しません。");
         }
+
     }
 /////////////////////////////////////////////////////////////////////////////////////////
 //画像更新
@@ -574,7 +588,7 @@ class images{
         $userId = $postData[2];
         $title = $postData[3];
         $userName = $postData[4];
-        $Summary = $postData[6];
+        $Summary = $postData[5];
 //         if(isset($postData[5])){
 //             $base64 = $postData[5];
 //         }
@@ -585,6 +599,7 @@ class images{
                " image_title = "."'$title'".','.
                " image_summary = "."'$Summary'".
                "WHERE image_id = ".$imageId;
+
         $stmt=$pdo->dbo->prepare($sql);
         $resultFlg = $stmt->execute();
         if($resultFlg){
@@ -711,13 +726,21 @@ class images{
         $resultExt='';
         while($val = $result->fetch(PDO::FETCH_ASSOC)){
 
-                // 拡張子を判断する
-                foreach( $exts as $ext) {
-                    $filePath = '../User/'.$val['account_name'].'/'.$val['image_id'].'.'.$ext;
-                    if(is_file($filePath)) {
-                        $resultExt = $ext;
-                        break;
-                    }
+            $iamgefile = "";
+            $exts = ['jpg', 'png','jpeg'];
+            // 拡張子を判断する
+            foreach( $exts as $ext) {
+                $filePath = '../User/'.$val['account_name'].'/samne_'.$val['image_id'].'.'.$ext;
+                if(is_file($filePath)){
+                    $iamgefile = 'samne_'.$val['image_id'].'.'.$ext;
+                    break;
+                }
+
+                $filePath = '../User/'.$val['account_name'].'/'.$val['image_id'].'.'.$ext;
+                if(is_file($filePath)) {
+                    $iamgefile = $val['image_id'].'.'.$ext;
+                    break;
+                }
                 }
 
             $imagesArray[] = array(
@@ -726,7 +749,7 @@ class images{
                 'UserName' => $val['account_name'],
                 'userId'=>$val['user_id'],
                 'categoryName' => $val['category_name'],
-                'fileType'=>$val['image_id'].'.'.$resultExt
+                'fileType'=>$iamgefile
             );
         };
         echo json_encode($imagesArray);
